@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IG 限動靈感製造機</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+        "PingFang TC", sans-serif;
+      background: #fff8f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: auto;
+      padding: 28px 18px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffe8ee;
+      color: #c96b82;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 5px 0 10px;
+    }
+
+    .subtitle {
+      color: #777;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    }
+
+    label.title {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    select,
+    textarea,
+    input {
+      width: 100%;
+      border: 1px solid #eadfe2;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 16px;
+      background: #fff;
+      outline: none;
+    }
+
+    select:focus,
+    textarea:focus,
+    input:focus {
+      border-color: #e5a9b8;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .chip input {
+      display: none;
+    }
+
+    .chip span {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f7f2f3;
+      border: 1px solid transparent;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .chip input:checked + span {
+      background: #ffe7ed;
+      border-color: #e8a9b8;
+      color: #b95c73;
+      font-weight: 600;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .generate {
+      background: #dc879c;
+      color: white;
+      margin-top: 6px;
+    }
+
+    .copy {
+      background: #333;
+      color: white;
+      margin-top: 12px;
+    }
+
+    #resultBox {
+      display: none;
+    }
+
+    #result {
+      white-space: pre-wrap;
+      background: #faf7f8;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.8;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="badge">♡ Creator Tool</div>
+    <h1>IG 限動靈感製造機</h1>
+    <div class="subtitle">
+      不知道今天限動要發什麼？<br>
+      填入你的情境，幫你產生一份可以直接貼給 ChatGPT 的完整指令。
+    </div>
+  </div>
+
+  <div class="card">
+    <label class="title">① 你的帳號定位</label>
+
+    <select id="accountType">
+      <option>育兒親子</option>
+      <option>美食料理</option>
+      <option>健康減脂</option>
+      <option>美妝保養</option>
+      <option>穿搭生活</option>
+      <option>美業</option>
+      <option>團購／銷售</option>
+      <option>個人品牌</option>
+      <option>其他</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <label class="title">② 今天想發哪一類？</label>
+
+    <div class="chips">
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="日常生活" checked>
+        <span>日常生活</span>
+      </label>
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="共鳴">
+        <span>共鳴</span>
+      </label>
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="互動">
+        <span>互動</span>
+      </label>
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="知識分享">
+        <span>知識分享</span>
+      </label>
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="產品分享">
+        <span>產品分享</span>
+      </label>
+
+      <label class="chip">
+        <input type="radio" name="contentType" value="自然銷售">
+        <span>自然銷售</span>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <label class="title">③ 想要幾則限動？</label>
+
+    <select id="storyCount">
+      <option value="3">3 則</option>
+      <option value="5" selected>5 則</option>
+      <option value="7">7 則</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <label class="title">④ 今天發生什麼事？</label>
+
+    <textarea
+      id="todayEvent"
+      placeholder="例如：今天早上送小孩上學，回來之後喝了一杯可可，下午工作很忙……"
+    ></textarea>
+  </div>
+
+  <div class="card">
+    <label class="title">⑤ 今天有想帶到什麼產品嗎？</label>
+
+    <input
+      id="product"
+      placeholder="沒有的話可以空白"
+    >
+  </div>
+
+  <div class="card">
+    <label class="title">⑥ 想要的文案感覺</label>
+
+    <select id="tone">
+      <option>自然日常、不像業配</option>
+      <option>溫柔有共鳴</option>
+      <option>幽默輕鬆</option>
+      <option>簡短直接</option>
+      <option>專業但不要太生硬</option>
+    </select>
+  </div>
+
+  <button class="generate" onclick="generatePrompt()">
+    ✨ 產生我的 ChatGPT 指令
+  </button>
+
+  <div class="card" id="resultBox" style="margin-top:20px;">
+    <label class="title">你的專屬指令</label>
+
+    <div id="result"></div>
+
+    <button class="copy" onclick="copyPrompt()">
+      複製完整指令
+    </button>
+  </div>
+
+  <div class="small">
+    IG Story Tool · Made with ♡
+  </div>
+
+</div>
+
+<script>
+
+function generatePrompt() {
+
+  const accountType =
+    document.getElementById("accountType").value;
+
+  const contentType =
+    document.querySelector(
+      'input[name="contentType"]:checked'
+    ).value;
+
+  const storyCount =
+    document.getElementById("storyCount").value;
+
+  const todayEvent =
+    document.getElementById("todayEvent").value.trim();
+
+  const product =
+    document.getElementById("product").value.trim();
+
+  const tone =
+    document.getElementById("tone").value;
+
+  if (!todayEvent) {
+    alert("先告訴我今天發生什麼事 ♡");
+    return;
+  }
+
+  let productText = product
+    ? `今天希望可以自然帶到的產品是：「${product}」。
+請不要突然硬置入產品，要從前面的生活情境自然銜接。`
+    : `今天沒有一定要帶產品，如果內容不適合銷售，就以生活與互動為主。`;
+
+  const prompt =
+`你是一位專業的 Instagram 限時動態內容顧問。
+
+請幫我規劃今天的 IG 限時動態。
+
+【我的帳號定位】
+${accountType}
+
+【今天主要內容類型】
+${contentType}
+
+【今天發生的事情】
+${todayEvent}
+
+【限動數量】
+請規劃 ${storyCount} 則。
+
+【文案風格】
+${tone}
+
+${productText}
+
+請遵守以下原則：
+
+1. 不要每一則都像在教學或賣東西。
+2. 文案要像真人平常發 IG 限動的語氣。
+3. 每則不要太長，手機畫面閱讀要舒服。
+4. 前後限動必須有連貫性，不要每一則像不同主題。
+5. 如果適合，可以安排投票、問答或互動，但不要硬塞。
+6. 不要有太濃的 AI 感。
+7. 不要使用太官方、太業配的句子。
+8. 如果有產品，先讓觀眾看到生活情境或需求，再自然帶出。
+9. 文案請使用繁體中文，符合台灣日常用語。
+
+請按照以下格式輸出：
+
+第1則
+畫面建議：
+文案：
+互動方式（沒有可寫「不用」）：
+
+第2則
+畫面建議：
+文案：
+互動方式：
+
+依序完成全部 ${storyCount} 則。
+
+最後再告訴我：
+「今天這組限動的核心目的」是什麼，
+例如互動、建立信任、生活感、產品曝光或轉單。`;
+
+  document.getElementById("result").textContent = prompt;
+  document.getElementById("resultBox").style.display = "block";
+
+  document.getElementById("resultBox")
+    .scrollIntoView({ behavior: "smooth" });
+}
+
+function copyPrompt() {
+
+  const text =
+    document.getElementById("result").textContent;
+
+  navigator.clipboard.writeText(text).then(() => {
+
+    const button =
+      document.querySelector(".copy");
+
+    button.textContent = "✓ 已複製，可以貼到 ChatGPT";
+
+    setTimeout(() => {
+      button.textContent = "複製完整指令";
+    }, 2000);
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
