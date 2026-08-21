@@ -1,642 +1,1122 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator AI｜內容策略助手</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-  box-sizing:border-box;
-}
+  <title>Creator AI｜內容策略助手</title>
 
-html{
-  scroll-behavior:smooth;
-}
+  <style>
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
-  background:#fff9fa;
-  color:#292929;
-  padding-bottom:90px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-button,
-input,
-select,
-textarea{
-  font-family:inherit;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.app{
-  max-width:680px;
-  margin:auto;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC",
+        "Noto Sans TC", sans-serif;
+      background: #fff9fa;
+      color: #292929;
+      padding-bottom: 90px;
+    }
 
-.topbar{
-  padding:24px 20px 12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
 
-.logo{
-  font-size:20px;
-  font-weight:800;
-}
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.badge{
-  font-size:12px;
-  font-weight:700;
-  color:#b9637a;
-  background:#ffeaf0;
-  padding:7px 11px;
-  border-radius:999px;
-}
+    .app {
+      max-width: 680px;
+      margin: auto;
+    }
 
-.hero{
-  padding:10px 20px 14px;
-}
+    .topbar {
+      padding: 24px 20px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.hero h1{
-  margin:0 0 10px;
-  font-size:30px;
-  line-height:1.3;
-}
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+    }
 
-.hero p{
-  margin:0;
-  color:#858085;
-  line-height:1.8;
-  font-size:15px;
-}
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: #b9637a;
+      background: #ffeaf0;
+      padding: 7px 11px;
+      border-radius: 999px;
+    }
 
-.section{
-  padding:0 16px;
-  margin-top:20px;
-}
+    .hero {
+      padding: 10px 20px 14px;
+    }
 
-.section-title{
-  font-size:18px;
-  font-weight:800;
-  margin:0 5px 12px;
-}
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.3;
+    }
 
-.card{
-  background:#fff;
-  border-radius:23px;
-  padding:20px;
-  margin-bottom:15px;
-  box-shadow:0 8px 30px rgba(80,40,50,.055);
-}
+    .hero p {
+      margin: 0;
+      color: #858085;
+      line-height: 1.8;
+      font-size: 15px;
+    }
 
-.strategy-card{
-  background:linear-gradient(135deg,#fff0f4,#fffafa);
-}
+    .section {
+      padding: 0 16px;
+      margin-top: 20px;
+    }
 
-.strategy-label{
-  font-size:12px;
-  font-weight:800;
-  color:#b6677c;
-  margin-bottom:8px;
-}
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 5px 12px;
+    }
 
-.strategy-main{
-  font-size:21px;
-  font-weight:850;
-  margin-bottom:10px;
-}
+    .card {
+      background: #fff;
+      border-radius: 23px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 8px 30px rgba(80, 40, 50, .055);
+    }
 
-.strategy-desc{
-  color:#777;
-  font-size:14px;
-  line-height:1.8;
-}
+    .strategy-card {
+      background: linear-gradient(135deg, #fff0f4, #fffafa);
+    }
 
-.ratio{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
+    .strategy-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #b6677c;
+      margin-bottom: 8px;
+    }
 
-.ratio span{
-  border:1px solid #efd4db;
-  background:#fff;
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:12px;
-}
+    .strategy-main {
+      font-size: 21px;
+      font-weight: 850;
+      margin-bottom: 10px;
+    }
 
-.mode-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:11px;
-}
+    .strategy-desc {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.8;
+    }
 
-.mode{
-  appearance:none;
-  width:100%;
-  text-align:left;
-  background:#fff;
-  border:1px solid #eedfe3;
-  border-radius:20px;
-  padding:17px 14px;
-  cursor:pointer;
-  transition:.18s ease;
-  color:#292929;
-}
+    .ratio {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
 
-.mode:active{
-  transform:scale(.98);
-}
+    .ratio span {
+      border: 1px solid #efd4db;
+      background: #fff;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
 
-.mode.active{
-  background:#fff0f4;
-  border-color:#dc96aa;
-  box-shadow:0 5px 16px rgba(206,115,140,.08);
-}
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
 
-.mode-icon{
-  font-size:23px;
-  margin-bottom:8px;
-}
+    .mode {
+      appearance: none;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border: 1px solid #eedfe3;
+      border-radius: 20px;
+      padding: 17px 14px;
+      cursor: pointer;
+      transition: .18s ease;
+      color: #292929;
+    }
 
-.mode-title{
-  font-size:16px;
-  font-weight:850;
-  margin-bottom:5px;
-}
+    .mode:hover {
+      border-color: #dfa1b1;
+    }
 
-.mode-desc{
-  font-size:12px;
-  color:#8a8588;
-  line-height:1.55;
-}
+    .mode:active {
+      transform: scale(.98);
+    }
 
-.current-mode{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  background:#fff0f4;
-  border:1px solid #efd2da;
-  border-radius:18px;
-  padding:14px 16px;
-  margin-bottom:15px;
-}
+    .mode.active {
+      background: #fff0f4;
+      border-color: #dc96aa;
+      box-shadow: 0 5px 16px rgba(206, 115, 140, .08);
+    }
 
-.current-mode small{
-  display:block;
-  color:#a47a85;
-  font-size:11px;
-  margin-bottom:4px;
-}
+    .mode-icon {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
 
-.current-mode strong{
-  font-size:16px;
-  color:#ad5d73;
-}
+    .mode-title {
+      font-size: 16px;
+      font-weight: 850;
+      margin-bottom: 5px;
+    }
 
-.change-mode{
-  border:none;
-  background:#fff;
-  color:#b45e76;
-  border-radius:999px;
-  padding:8px 11px;
-  font-size:12px;
-  font-weight:750;
-  cursor:pointer;
-}
+    .mode-desc {
+      font-size: 12px;
+      color: #8a8588;
+      line-height: 1.55;
+    }
 
-.field-title{
-  display:block;
-  font-size:14px;
-  font-weight:800;
-  margin:17px 0 9px;
-}
+    .current-mode {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #fff0f4;
+      border: 1px solid #efd2da;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 15px;
+    }
 
-.field-title:first-child{
-  margin-top:0;
-}
+    .current-mode small {
+      display: block;
+      color: #a47a85;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
 
-input,
-select,
-textarea{
-  width:100%;
-  border:1px solid #ebdfe2;
-  background:#fff;
-  color:#333;
-  border-radius:14px;
-  padding:13px 14px;
-  font-size:15px;
-  outline:none;
-}
+    .current-mode strong {
+      font-size: 16px;
+      color: #ad5d73;
+    }
 
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#d997aa;
-}
+    .change-mode {
+      border: none;
+      background: #fff;
+      color: #b45e76;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+    }
 
-textarea{
-  min-height:110px;
-  resize:vertical;
-  line-height:1.65;
-}
+    .field-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+      margin: 17px 0 9px;
+    }
 
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
+    .field-title:first-child {
+      margin-top: 0;
+    }
 
-.chip input{
-  display:none;
-}
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #ebdfe2;
+      background: #fff;
+      color: #333;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-size: 15px;
+      outline: none;
+    }
 
-.chip span{
-  display:inline-block;
-  background:#f8f4f5;
-  border:1px solid transparent;
-  border-radius:999px;
-  padding:9px 12px;
-  font-size:13px;
-  cursor:pointer;
-}
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #d997aa;
+    }
 
-.chip input:checked + span{
-  background:#ffe8ee;
-  border-color:#dda0b0;
-  color:#b45e75;
-  font-weight:750;
-}
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.65;
+    }
 
-.primary-btn{
-  width:100%;
-  border:none;
-  border-radius:17px;
-  background:#d77d96;
-  color:#fff;
-  padding:16px;
-  font-size:16px;
-  font-weight:850;
-  cursor:pointer;
-}
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-.primary-btn:active{
-  transform:scale(.99);
-}
+    .chip input {
+      display: none;
+    }
 
-.secondary-btn{
-  width:100%;
-  border:none;
-  border-radius:15px;
-  background:#303030;
-  color:#fff;
-  padding:14px;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:12px;
-}
+    .chip span {
+      display: inline-block;
+      background: #f8f4f5;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
 
-.save-btn{
-  width:100%;
-  border:1px solid #e4bdc8;
-  border-radius:15px;
-  background:#fff5f8;
-  color:#ad5c73;
-  padding:14px;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:17px;
-}
+    .chip input:checked + span {
+      background: #ffe8ee;
+      border-color: #dda0b0;
+      color: #b45e75;
+      font-weight: 750;
+    }
 
-.helper{
-  font-size:12px;
-  color:#999;
-  line-height:1.6;
-  margin-top:7px;
-}
+    .primary-btn {
+      width: 100%;
+      border: none;
+      border-radius: 17px;
+      background: #d77d96;
+      color: #fff;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 850;
+      cursor: pointer;
+    }
 
-.success{
-  display:none;
-  text-align:center;
-  color:#a65b70;
-  font-size:13px;
-  margin-top:10px;
-}
+    .primary-btn:active {
+      transform: scale(.99);
+    }
 
-#resultCard{
-  display:none;
-}
+    .secondary-btn {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      background: #303030;
+      color: #fff;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 12px;
+    }
 
-#result{
-  white-space:pre-wrap;
-  background:#faf6f7;
-  border-radius:16px;
-  padding:16px;
-  font-size:14px;
-  line-height:1.8;
-  max-height:520px;
-  overflow-y:auto;
-}
+    .outline-btn {
+      width: 100%;
+      border: 1px solid #e5c7cf;
+      border-radius: 15px;
+      background: #fff;
+      color: #ad6176;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      margin-top: 9px;
+    }
 
-.page{
-  display:none;
-}
+    .save-btn {
+      width: 100%;
+      border: 1px solid #e4bdc8;
+      border-radius: 15px;
+      background: #fff5f8;
+      color: #ad5c73;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 17px;
+    }
 
-.page.active{
-  display:block;
-}
+    .success {
+      display: none;
+      text-align: center;
+      color: #a65b70;
+      font-size: 13px;
+      margin-top: 10px;
+    }
 
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:78px;
-  z-index:100;
-  background:rgba(255,255,255,.96);
-  border-top:1px solid #f0e4e7;
-  backdrop-filter:blur(14px);
-  display:flex;
-  justify-content:center;
-}
+    #resultCard {
+      display: none;
+    }
 
-.bottom-inner{
-  max-width:680px;
-  width:100%;
-  display:flex;
-}
+    .result-success {
+      text-align: center;
+      padding: 12px 5px 7px;
+    }
 
-.nav-item{
-  flex:1;
-  border:none;
-  background:transparent;
-  color:#9a9698;
-  font-size:11px;
-  cursor:pointer;
-}
+    .result-icon {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 13px;
+      border-radius: 50%;
+      background: #ffe8ee;
+      color: #b55f77;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+    }
 
-.nav-icon{
-  display:block;
-  font-size:20px;
-  margin-bottom:4px;
-}
+    .result-success h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
 
-.nav-item.active{
-  color:#be6c82;
-  font-weight:850;
-}
+    .result-success p {
+      margin: 0;
+      font-size: 13px;
+      color: #888;
+      line-height: 1.7;
+    }
 
-@media(max-width:390px){
-  .hero h1{
-    font-size:27px;
-  }
-}
-</style>
+    #fullPromptWrap {
+      display: none;
+      margin-top: 14px;
+    }
+
+    #result {
+      white-space: pre-wrap;
+      background: #faf6f7;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.8;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 78px;
+      z-index: 100;
+      background: rgba(255, 255, 255, .96);
+      border-top: 1px solid #f0e4e7;
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-inner {
+      max-width: 680px;
+      width: 100%;
+      display: flex;
+    }
+
+    .nav-item {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: #9a9698;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-icon {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item.active {
+      color: #be6c82;
+      font-weight: 850;
+    }
+
+    @media(max-width:390px) {
+
+      .hero h1 {
+        font-size: 27px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
-<div class="topbar">
-  <div class="logo">Creator AI ♡</div>
-  <div class="badge">內容策略助手</div>
-</div>
-
-<!-- 首頁 -->
-<div id="home" class="page active">
-
-  <div class="hero">
-    <h1>今天也不用煩惱<br>要發什麼。</h1>
-    <p>
-      根據你的帳號、今天素材與近期曝光狀況，
-      幫你整理最適合的內容方向。
-    </p>
+  <div class="topbar">
+    <div class="logo">Creator AI ♡</div>
+    <div class="badge">內容策略助手</div>
   </div>
 
-  <div class="section">
 
-    <div class="section-title">今天的內容建議</div>
+  <!-- 首頁 -->
 
-    <div class="card strategy-card">
+  <div id="home" class="page active">
 
-      <div class="strategy-label">TODAY'S STRATEGY</div>
+    <div class="hero">
 
-      <div class="strategy-main" id="strategyMain">
-        今天可以安排產品曝光
+      <h1>
+        今天也不用煩惱<br>
+        要發什麼。
+      </h1>
+
+      <p>
+        根據你的帳號、今天素材與近期曝光狀況，
+        幫你整理最適合的內容方向。
+      </p>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        今天的內容建議
       </div>
 
-      <div class="strategy-desc" id="strategyDesc">
-        最近兩天都沒有產品內容，今天可以自然安排一個使用情境，
-        讓觀眾重新知道你最近正在使用或分享什麼。
+      <div class="card strategy-card">
+
+        <div class="strategy-label">
+          TODAY'S STRATEGY
+        </div>
+
+        <div class="strategy-main"
+          id="strategyMain">
+          今天可以安排產品曝光
+        </div>
+
+        <div class="strategy-desc"
+          id="strategyDesc">
+
+          最近兩天都沒有產品內容，
+          今天可以自然安排一個使用情境，
+          讓觀眾重新知道你最近正在使用或分享什麼。
+
+        </div>
+
+        <div class="ratio"
+          id="ratioBox">
+
+          <span>生活 45%</span>
+          <span>互動 20%</span>
+          <span>產品 35%</span>
+
+        </div>
+
       </div>
 
-      <div class="ratio" id="ratioBox">
-        <span>生活 45%</span>
-        <span>互動 20%</span>
-        <span>產品 35%</span>
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        你今天想做什麼？
+      </div>
+
+      <div class="mode-grid">
+
+        <button
+          class="mode active"
+          data-mode="story"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            📱
+          </div>
+
+          <div class="mode-title">
+            限動規劃
+          </div>
+
+          <div class="mode-desc">
+            安排今天 3～7 則完整限動
+          </div>
+
+        </button>
+
+
+        <button
+          class="mode"
+          data-mode="reels"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            🎬
+          </div>
+
+          <div class="mode-title">
+            Reels 腳本
+          </div>
+
+          <div class="mode-desc">
+            鉤子、畫面、字幕、CTA
+          </div>
+
+        </button>
+
+
+        <button
+          class="mode"
+          data-mode="threads"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            ✏️
+          </div>
+
+          <div class="mode-title">
+            Threads
+          </div>
+
+          <div class="mode-desc">
+            找角度＋完整貼文內容
+          </div>
+
+        </button>
+
+
+        <button
+          class="mode"
+          data-mode="product"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            🛍️
+          </div>
+
+          <div class="mode-title">
+            自然帶產品
+          </div>
+
+          <div class="mode-desc">
+            從生活情境自然銜接商品
+          </div>
+
+        </button>
+
+
+        <button
+          class="mode"
+          data-mode="week"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            🗓️
+          </div>
+
+          <div class="mode-title">
+            一週規劃
+          </div>
+
+          <div class="mode-desc">
+            7 天內容比例與主題安排
+          </div>
+
+        </button>
+
+
+        <button
+          class="mode"
+          data-mode="rescue"
+          onclick="selectMode(this)">
+
+          <div class="mode-icon">
+            💡
+          </div>
+
+          <div class="mode-title">
+            沒素材救援
+          </div>
+
+          <div class="mode-desc">
+            今天什麼都沒發生也能用
+          </div>
+
+        </button>
+
       </div>
 
     </div>
 
   </div>
 
-  <div class="section">
 
-    <div class="section-title">你今天想做什麼？</div>
+  <!-- 今日內容 -->
 
-    <div class="mode-grid">
+  <div id="today" class="page">
 
-      <button class="mode active"
-        data-mode="限動規劃"
-        onclick="selectMode(this)">
-        <div class="mode-icon">📱</div>
-        <div class="mode-title">限動規劃</div>
-        <div class="mode-desc">安排今天 3～7 則完整限動</div>
-      </button>
+    <div class="hero">
 
-      <button class="mode"
-        data-mode="Reels腳本"
-        onclick="selectMode(this)">
-        <div class="mode-icon">🎬</div>
-        <div class="mode-title">Reels 腳本</div>
-        <div class="mode-desc">鉤子、畫面、字幕、CTA</div>
-      </button>
+      <h1 id="todayTitle">
+        今天有什麼<br>
+        可以拿來發？
+      </h1>
 
-      <button class="mode"
-        data-mode="Threads貼文"
-        onclick="selectMode(this)">
-        <div class="mode-icon">✏️</div>
-        <div class="mode-title">Threads</div>
-        <div class="mode-desc">找角度＋完整貼文內容</div>
-      </button>
+      <p id="todaySubtitle">
 
-      <button class="mode"
-        data-mode="產品自然置入"
-        onclick="selectMode(this)">
-        <div class="mode-icon">🛍️</div>
-        <div class="mode-title">自然帶產品</div>
-        <div class="mode-desc">從生活情境自然銜接商品</div>
-      </button>
+        不需要特別精彩，
+        把你今天真實發生的事情告訴我就好。
 
-      <button class="mode"
-        data-mode="一週內容規劃"
-        onclick="selectMode(this)">
-        <div class="mode-icon">🗓️</div>
-        <div class="mode-title">一週規劃</div>
-        <div class="mode-desc">7 天內容比例與主題安排</div>
-      </button>
-
-      <button class="mode"
-        data-mode="內容救援"
-        onclick="selectMode(this)">
-        <div class="mode-icon">💡</div>
-        <div class="mode-title">沒素材救援</div>
-        <div class="mode-desc">今天什麼都沒發生也能用</div>
-      </button>
+      </p>
 
     </div>
 
-  </div>
 
-</div>
+    <div class="section">
 
-<!-- 今日內容 -->
-<div id="today" class="page">
+      <div class="current-mode">
 
-  <div class="hero">
-    <h1>今天有什麼<br>可以拿來發？</h1>
-    <p>
-      不需要特別精彩，把你今天真實發生的事情告訴我就好。
-    </p>
-  </div>
+        <div>
 
-  <div class="section">
+          <small>
+            目前內容模式
+          </small>
 
-    <div class="current-mode">
-      <div>
-        <small>目前內容模式</small>
-        <strong id="currentModeText">限動規劃</strong>
-      </div>
+          <strong id="currentModeText">
+            限動規劃
+          </strong>
 
-      <button class="change-mode" onclick="goHome()">
-        換模式
-      </button>
-    </div>
+        </div>
 
-    <div class="card">
+        <button
+          class="change-mode"
+          onclick="showPage('home')">
 
-      <label class="field-title">今天最主要的目標</label>
+          換模式
 
-      <select id="goal">
-        <option>增加限動觀看</option>
-        <option>提高粉絲互動</option>
-        <option>建立信任感</option>
-        <option>增加新粉絲</option>
-        <option>產品曝光</option>
-        <option>引導私訊詢問</option>
-        <option>促成購買</option>
-      </select>
-
-      <label class="field-title">最近兩天產品出現頻率</label>
-
-      <select id="productFrequency" onchange="updateStrategy()">
-        <option value="none">兩天都沒有產品</option>
-        <option value="one">其中一天有產品</option>
-        <option value="two">兩天都有產品</option>
-      </select>
-
-      <label class="field-title">今天發生什麼事？</label>
-
-      <textarea
-        id="todayEvent"
-        placeholder="例如：晚上突然想吃宵夜，所以泡了一杯可可奶茶；下午去接小孩時下大雨……"></textarea>
-
-      <label class="field-title">今天手上有哪些素材？</label>
-
-      <div class="chips">
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="自拍">
-          <span>自拍</span>
-        </label>
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="生活照片">
-          <span>生活照片</span>
-        </label>
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="生活影片">
-          <span>生活影片</span>
-        </label>
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="產品照片">
-          <span>產品照片</span>
-        </label>
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="家庭素材">
-          <span>家庭素材</span>
-        </label>
-
-        <label class="chip">
-          <input type="checkbox" name="material" value="只有文字">
-          <span>只有文字</span>
-        </label>
+        </button>
 
       </div>
 
-      <label class="field-title">今天想帶什麼產品？</label>
 
-      <input
-        id="todayProduct"
-        placeholder="今天不打算帶產品可以空白">
+      <div class="card">
 
-      <div id="storyCountWrap">
+        <label class="field-title">
+          今天最主要的目標
+        </label>
 
-        <label class="field-title">想要幾則限動？</label>
+        <select id="goal">
 
-        <select id="storyCount">
-          <option value="3">3 則</option>
-          <option value="5" selected>5 則</option>
-          <option value="7">7 則</option>
+          <option>
+            增加限動觀看
+          </option>
+
+          <option>
+            提高粉絲互動
+          </option>
+
+          <option>
+            建立信任感
+          </option>
+
+          <option>
+            增加新粉絲
+          </option>
+
+          <option>
+            產品曝光
+          </option>
+
+          <option>
+            引導私訊詢問
+          </option>
+
+          <option>
+            促成購買
+          </option>
+
         </select>
 
+
+        <label class="field-title">
+          最近兩天產品出現頻率
+        </label>
+
+        <select
+          id="productFrequency"
+          onchange="updateStrategy()">
+
+          <option value="none">
+            兩天都沒有產品
+          </option>
+
+          <option value="one">
+            其中一天有產品
+          </option>
+
+          <option value="two">
+            兩天都有產品
+          </option>
+
+        </select>
+
+
+        <div id="eventWrap">
+
+          <label class="field-title">
+            今天發生什麼事？
+          </label>
+
+          <textarea
+            id="todayEvent"
+            placeholder="例如：早上起床泡了一杯可可、下午帶小孩出去、晚上突然想吃宵夜……"></textarea>
+
+        </div>
+
+
+        <div id="materialsWrap">
+
+          <label class="field-title">
+            今天手上有哪些素材？
+          </label>
+
+          <div class="chips">
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="自拍">
+
+              <span>
+                自拍
+              </span>
+
+            </label>
+
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="生活照片">
+
+              <span>
+                生活照片
+              </span>
+
+            </label>
+
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="生活影片">
+
+              <span>
+                生活影片
+              </span>
+
+            </label>
+
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="產品照片">
+
+              <span>
+                產品照片
+              </span>
+
+            </label>
+
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="家庭素材">
+
+              <span>
+                家庭素材
+              </span>
+
+            </label>
+
+
+            <label class="chip">
+
+              <input
+                type="checkbox"
+                name="material"
+                value="只有文字">
+
+              <span>
+                只有文字
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div id="productWrap">
+
+          <label class="field-title">
+            今天想帶什麼產品？
+          </label>
+
+          <input
+            id="todayProduct"
+            placeholder="今天不打算帶產品可以空白">
+
+        </div>
+
+
+        <div id="storyCountWrap">
+
+          <label class="field-title">
+            想要幾則限動？
+          </label>
+
+          <select id="storyCount">
+
+            <option value="3">
+              3 則
+            </option>
+
+            <option
+              value="5"
+              selected>
+              5 則
+            </option>
+
+            <option value="7">
+              7 則
+            </option>
+
+          </select>
+
+        </div>
+
       </div>
 
-    </div>
 
-    <button class="primary-btn" onclick="generatePrompt()">
-      ✨ 幫我生成專屬 AI 指令
-    </button>
+      <button
+        class="primary-btn"
+        onclick="generatePrompt()">
 
-  </div>
+        ✨ 幫我生成專屬 AI 指令
 
-  <div class="section">
-
-    <div class="card" id="resultCard">
-
-      <div class="section-title" style="margin-left:0">
-        你的 AI 專屬指令
-      </div>
-
-      <div id="result"></div>
-
-      <button class="secondary-btn" onclick="copyPrompt()">
-        複製完整指令
       </button>
 
-      <div class="success" id="copySuccess">
-        ✓ 已複製，可以直接貼到 ChatGPT
+    </div>
+
+
+    <!-- 結果 -->
+
+    <div class="section">
+
+      <div
+        class="card"
+        id="resultCard">
+
+        <div class="result-success">
+
+          <div class="result-icon">
+            ✓
+          </div>
+
+          <h3>
+            你的 AI 指令已完成
+          </h3>
+
+          <p id="resultDescription">
+            已依照你的帳號與今天情境，
+            產生限動專屬指令。
+          </p>
+
+        </div>
+
+
+        <button
+          class="secondary-btn"
+          onclick="copyPrompt()">
+
+          複製完整指令
+
+        </button>
+
+
+        <button
+          class="outline-btn"
+          onclick="togglePrompt()"
+          id="viewPromptBtn">
+
+          查看完整指令
+
+        </button>
+
+
+        <div
+          class="success"
+          id="copySuccess">
+
+          ✓ 已複製，可以直接貼到 ChatGPT
+
+        </div>
+
+
+        <div id="fullPromptWrap">
+
+          <div id="result"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- 我的 -->
+
+  <div
+    id="profile"
+    class="page">
+
+    <div class="hero">
+
+      <h1>
+        先讓 AI<br>
+        真正認識你的帳號。
+      </h1>
+
+      <p>
+        儲存一次後，
+        下次使用這台裝置就不用重新輸入。
+      </p>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="card">
+
+        <label class="field-title">
+          帳號定位
+        </label>
+
+        <input
+          id="accountType"
+          placeholder="例如：育兒親子、減脂料理、美妝保養">
+
+
+        <label class="field-title">
+          主要受眾
+        </label>
+
+        <input
+          id="audience"
+          placeholder="例如：25～40 歲、有小孩的媽媽">
+
+
+        <label class="field-title">
+          平常主要分享什麼？
+        </label>
+
+        <textarea
+          id="topics"
+          placeholder="例如：育兒日常、媽媽生活、料理、保健、親子共鳴"></textarea>
+
+
+        <label class="field-title">
+          喜歡的文案語氣
+        </label>
+
+        <select id="tone">
+
+          <option>
+            自然日常、像真人聊天
+          </option>
+
+          <option>
+            溫柔有共鳴
+          </option>
+
+          <option>
+            幽默輕鬆
+          </option>
+
+          <option>
+            簡短直接
+          </option>
+
+          <option>
+            專業但生活化
+          </option>
+
+        </select>
+
+
+        <label class="field-title">
+          你不喜歡什麼文案感覺？
+        </label>
+
+        <textarea
+          id="avoid"
+          placeholder="例如：不要 AI 感、不要雞湯、不要太官方、不要太像業配"></textarea>
+
+
+        <label class="field-title">
+          平常會分享的產品／服務
+        </label>
+
+        <textarea
+          id="products"
+          placeholder="沒有也可以空白"></textarea>
+
+
+        <button
+          class="save-btn"
+          onclick="saveProfile()">
+
+          儲存我的帳號設定
+
+        </button>
+
+
+        <div
+          class="success"
+          id="saveSuccess">
+
+          ✓ 已儲存
+
+        </div>
+
       </div>
 
     </div>
@@ -645,72 +1125,9 @@ textarea{
 
 </div>
 
-<!-- 我的 -->
-<div id="profile" class="page">
 
-  <div class="hero">
-    <h1>先讓 AI<br>真正認識你的帳號。</h1>
-    <p>
-      儲存一次後，下次打開這台裝置就不用重新輸入。
-    </p>
-  </div>
+<!-- 底部導航 -->
 
-  <div class="section">
-
-    <div class="card">
-
-      <label class="field-title">帳號定位</label>
-
-      <input id="accountType"
-        placeholder="例如：育兒親子、減脂料理、美妝保養">
-
-      <label class="field-title">主要受眾</label>
-
-      <input id="audience"
-        placeholder="例如：25～40 歲、有小孩的媽媽">
-
-      <label class="field-title">平常主要分享什麼？</label>
-
-      <textarea id="topics"
-        placeholder="例如：育兒日常、媽媽生活、料理、保健、親子共鳴"></textarea>
-
-      <label class="field-title">喜歡的文案語氣</label>
-
-      <select id="tone">
-        <option>自然日常、像真人聊天</option>
-        <option>溫柔有共鳴</option>
-        <option>幽默輕鬆</option>
-        <option>簡短直接</option>
-        <option>專業但生活化</option>
-      </select>
-
-      <label class="field-title">你不喜歡什麼文案感覺？</label>
-
-      <textarea id="avoid"
-        placeholder="例如：不要 AI 感、不要雞湯、不要一直講大道理、不要太像業配"></textarea>
-
-      <label class="field-title">平常會分享的產品／服務</label>
-
-      <textarea id="products"
-        placeholder="沒有也可以空白"></textarea>
-
-      <button class="save-btn" onclick="saveProfile()">
-        儲存我的帳號設定
-      </button>
-
-      <div class="success" id="saveSuccess">
-        ✓ 已儲存
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-<!-- 底部 -->
 <div class="bottom-nav">
 
   <div class="bottom-inner">
@@ -720,27 +1137,38 @@ textarea{
       class="nav-item active"
       onclick="showPage('home')">
 
-      <span class="nav-icon">⌂</span>
+      <span class="nav-icon">
+        ⌂
+      </span>
+
       首頁
 
     </button>
+
 
     <button
       id="navToday"
       class="nav-item"
       onclick="showPage('today')">
 
-      <span class="nav-icon">✦</span>
+      <span class="nav-icon">
+        ✦
+      </span>
+
       今日內容
 
     </button>
+
 
     <button
       id="navProfile"
       class="nav-item"
       onclick="showPage('profile')">
 
-      <span class="nav-icon">♡</span>
+      <span class="nav-icon">
+        ♡
+      </span>
+
       我的
 
     </button>
@@ -749,578 +1177,1233 @@ textarea{
 
 </div>
 
+
 <script>
 
-let selectedMode = "限動規劃";
+  let selectedMode = "story";
 
-function setActiveNav(pageId){
+  const modeNames = {
 
-  document.querySelectorAll(".nav-item")
-    .forEach(item => item.classList.remove("active"));
+    story: "限動規劃",
 
-  if(pageId === "home"){
-    document.getElementById("navHome").classList.add("active");
-  }
+    reels: "Reels 腳本",
 
-  if(pageId === "today"){
-    document.getElementById("navToday").classList.add("active");
-  }
+    threads: "Threads",
 
-  if(pageId === "profile"){
-    document.getElementById("navProfile").classList.add("active");
-  }
-}
+    product: "自然帶產品",
 
-function showPage(pageId){
+    week: "一週規劃",
 
-  document.querySelectorAll(".page")
-    .forEach(page => page.classList.remove("active"));
+    rescue: "沒素材救援"
 
-  document.getElementById(pageId)
-    .classList.add("active");
-
-  setActiveNav(pageId);
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-function goHome(){
-  showPage("home");
-}
-
-function selectMode(element){
-
-  selectedMode =
-    element.getAttribute("data-mode");
-
-  document.querySelectorAll(".mode")
-    .forEach(mode => mode.classList.remove("active"));
-
-  element.classList.add("active");
-
-  document.getElementById("currentModeText")
-    .textContent = selectedMode;
-
-  const storyWrap =
-    document.getElementById("storyCountWrap");
-
-  if(selectedMode === "限動規劃"){
-    storyWrap.style.display = "block";
-  }else{
-    storyWrap.style.display = "none";
-  }
-
-  showPage("today");
-}
-
-function updateStrategy(){
-
-  const frequency =
-    document.getElementById("productFrequency").value;
-
-  const main =
-    document.getElementById("strategyMain");
-
-  const desc =
-    document.getElementById("strategyDesc");
-
-  const ratio =
-    document.getElementById("ratioBox");
-
-  if(frequency === "two"){
-
-    main.textContent =
-      "今天先不要急著賣東西";
-
-    desc.textContent =
-      "最近兩天都有產品曝光，今天建議增加生活、互動或共鳴內容，先降低銷售感。";
-
-    ratio.innerHTML =
-      "<span>生活 60%</span><span>互動 30%</span><span>產品 10%</span>";
-
-  }else if(frequency === "one"){
-
-    main.textContent =
-      "今天可以自然帶一次產品";
-
-    desc.textContent =
-      "近期產品曝光比例適中，可以先從生活情境或需求切入，再自然安排一則產品內容。";
-
-    ratio.innerHTML =
-      "<span>生活 50%</span><span>互動 20%</span><span>產品 30%</span>";
-
-  }else{
-
-    main.textContent =
-      "今天可以安排產品曝光";
-
-    desc.textContent =
-      "最近兩天都沒有產品內容，今天可以自然安排一個使用情境，讓觀眾重新知道你最近正在用或分享什麼。";
-
-    ratio.innerHTML =
-      "<span>生活 45%</span><span>互動 20%</span><span>產品 35%</span>";
-
-  }
-}
-
-function saveProfile(){
-
-  const profile = {
-
-    accountType:
-      document.getElementById("accountType").value.trim(),
-
-    audience:
-      document.getElementById("audience").value.trim(),
-
-    topics:
-      document.getElementById("topics").value.trim(),
-
-    tone:
-      document.getElementById("tone").value,
-
-    avoid:
-      document.getElementById("avoid").value.trim(),
-
-    products:
-      document.getElementById("products").value.trim()
   };
 
-  localStorage.setItem(
-    "creatorAIProfile",
-    JSON.stringify(profile)
-  );
 
-  const success =
-    document.getElementById("saveSuccess");
+  function setActiveNav(pageId) {
 
-  success.style.display = "block";
+    document
+      .querySelectorAll(".nav-item")
+      .forEach(item => {
 
-  setTimeout(()=>{
-    success.style.display = "none";
-  },2000);
-}
+        item.classList.remove("active");
 
-function loadProfile(){
+      });
 
-  const saved =
-    localStorage.getItem("creatorAIProfile");
 
-  if(!saved){
-    return;
+    if (pageId === "home") {
+
+      document
+        .getElementById("navHome")
+        .classList.add("active");
+
+    }
+
+
+    if (pageId === "today") {
+
+      document
+        .getElementById("navToday")
+        .classList.add("active");
+
+    }
+
+
+    if (pageId === "profile") {
+
+      document
+        .getElementById("navProfile")
+        .classList.add("active");
+
+    }
+
   }
 
-  try{
 
-    const profile =
-      JSON.parse(saved);
+  function showPage(pageId) {
 
-    document.getElementById("accountType").value =
-      profile.accountType || "";
+    document
+      .querySelectorAll(".page")
+      .forEach(page => {
 
-    document.getElementById("audience").value =
-      profile.audience || "";
+        page.classList.remove("active");
 
-    document.getElementById("topics").value =
-      profile.topics || "";
+      });
 
-    document.getElementById("tone").value =
-      profile.tone || "自然日常、像真人聊天";
 
-    document.getElementById("avoid").value =
-      profile.avoid || "";
+    document
+      .getElementById(pageId)
+      .classList.add("active");
 
-    document.getElementById("products").value =
-      profile.products || "";
 
-  }catch(e){
-    console.log("Profile load error");
+    setActiveNav(pageId);
+
+
+    window.scrollTo({
+
+      top: 0,
+
+      behavior: "smooth"
+
+    });
+
   }
-}
 
-function getMaterials(){
 
-  const selected =
-    Array.from(
-      document.querySelectorAll(
-        'input[name="material"]:checked'
-      )
+  function selectMode(element) {
+
+    selectedMode =
+      element.getAttribute("data-mode");
+
+
+    document
+      .querySelectorAll(".mode")
+      .forEach(mode => {
+
+        mode.classList.remove("active");
+
+      });
+
+
+    element.classList.add("active");
+
+
+    updateModeUI();
+
+
+    showPage("today");
+
+  }
+
+
+  function updateModeUI() {
+
+    const name =
+      modeNames[selectedMode];
+
+
+    document
+      .getElementById("currentModeText")
+      .textContent = name;
+
+
+    const storyWrap =
+      document.getElementById("storyCountWrap");
+
+
+    const productWrap =
+      document.getElementById("productWrap");
+
+
+    const eventWrap =
+      document.getElementById("eventWrap");
+
+
+    const materialsWrap =
+      document.getElementById("materialsWrap");
+
+
+    storyWrap.style.display =
+      selectedMode === "story"
+        ? "block"
+        : "none";
+
+
+    eventWrap.style.display = "block";
+
+    materialsWrap.style.display = "block";
+
+    productWrap.style.display = "block";
+
+
+    if (selectedMode === "rescue") {
+
+      eventWrap.style.display = "none";
+
+    }
+
+
+    if (selectedMode === "week") {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "這週要發什麼？";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "幫你安排未來 7 天，不用每天臨時想題目。";
+
+    }
+
+    else if (selectedMode === "reels") {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "今天想拍<br>什麼 Reels？";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "把今天可以使用的生活素材告訴我。";
+
+    }
+
+    else if (selectedMode === "threads") {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "今天有什麼<br>值得寫？";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "一件小事也可以變成有共鳴的 Threads。";
+
+    }
+
+    else if (selectedMode === "product") {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "今天怎麼<br>自然帶產品？";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "先從生活開始，不要一打開就像在賣東西。";
+
+    }
+
+    else if (selectedMode === "rescue") {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "今天沒素材？<br>也沒關係。";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "根據你的帳號定位直接幫你找今天能發的題目。";
+
+    }
+
+    else {
+
+      document
+        .getElementById("todayTitle")
+        .innerHTML =
+        "今天有什麼<br>可以拿來發？";
+
+
+      document
+        .getElementById("todaySubtitle")
+        .textContent =
+        "不需要特別精彩，把你今天真實發生的事情告訴我就好。";
+
+    }
+
+  }
+
+
+  function updateStrategy() {
+
+    const frequency =
+      document
+        .getElementById("productFrequency")
+        .value;
+
+
+    const main =
+      document
+        .getElementById("strategyMain");
+
+
+    const desc =
+      document
+        .getElementById("strategyDesc");
+
+
+    const ratio =
+      document
+        .getElementById("ratioBox");
+
+
+    if (frequency === "two") {
+
+      main.textContent =
+        "今天先不要急著賣東西";
+
+
+      desc.textContent =
+        "最近兩天都有產品曝光，今天建議增加生活、互動或共鳴內容，先降低銷售感。";
+
+
+      ratio.innerHTML =
+        "<span>生活 60%</span><span>互動 30%</span><span>產品 10%</span>";
+
+    }
+
+    else if (frequency === "one") {
+
+      main.textContent =
+        "今天可以自然帶一次產品";
+
+
+      desc.textContent =
+        "近期產品曝光比例適中，可以先從生活情境切入，再自然安排一次產品出現。";
+
+
+      ratio.innerHTML =
+        "<span>生活 50%</span><span>互動 20%</span><span>產品 30%</span>";
+
+    }
+
+    else {
+
+      main.textContent =
+        "今天可以安排產品曝光";
+
+
+      desc.textContent =
+        "最近兩天都沒有產品內容，今天可以自然安排一個使用情境。";
+
+
+      ratio.innerHTML =
+        "<span>生活 45%</span><span>互動 20%</span><span>產品 35%</span>";
+
+    }
+
+  }
+
+
+  function saveProfile() {
+
+    const profile = {
+
+      accountType:
+        document
+          .getElementById("accountType")
+          .value
+          .trim(),
+
+      audience:
+        document
+          .getElementById("audience")
+          .value
+          .trim(),
+
+      topics:
+        document
+          .getElementById("topics")
+          .value
+          .trim(),
+
+      tone:
+        document
+          .getElementById("tone")
+          .value,
+
+      avoid:
+        document
+          .getElementById("avoid")
+          .value
+          .trim(),
+
+      products:
+        document
+          .getElementById("products")
+          .value
+          .trim()
+
+    };
+
+
+    localStorage.setItem(
+
+      "creatorAIProfile",
+
+      JSON.stringify(profile)
+
     );
 
-  if(selected.length === 0){
-    return "沒有特別素材，可以使用純文字或建議補拍簡單生活畫面";
+
+    const success =
+      document
+        .getElementById("saveSuccess");
+
+
+    success.style.display =
+      "block";
+
+
+    setTimeout(() => {
+
+      success.style.display =
+        "none";
+
+    }, 2000);
+
   }
 
-  return selected
-    .map(item => item.value)
-    .join("、");
-}
 
-function generatePrompt(){
+  function loadProfile() {
 
-  let profile = {};
+    const saved =
+      localStorage
+        .getItem("creatorAIProfile");
 
-  try{
-    profile =
-      JSON.parse(
-        localStorage.getItem("creatorAIProfile")
+
+    if (!saved) {
+
+      return;
+
+    }
+
+
+    try {
+
+      const profile =
+        JSON.parse(saved);
+
+
+      document
+        .getElementById("accountType")
+        .value =
+        profile.accountType || "";
+
+
+      document
+        .getElementById("audience")
+        .value =
+        profile.audience || "";
+
+
+      document
+        .getElementById("topics")
+        .value =
+        profile.topics || "";
+
+
+      document
+        .getElementById("tone")
+        .value =
+        profile.tone ||
+        "自然日常、像真人聊天";
+
+
+      document
+        .getElementById("avoid")
+        .value =
+        profile.avoid || "";
+
+
+      document
+        .getElementById("products")
+        .value =
+        profile.products || "";
+
+    }
+
+    catch (e) {
+
+      console.log("profile error");
+
+    }
+
+  }
+
+
+  function getProfile() {
+
+    try {
+
+      return JSON.parse(
+
+        localStorage
+          .getItem("creatorAIProfile")
         || "{}"
+
       );
-  }catch(e){
-    profile = {};
-  }
 
-  const goal =
-    document.getElementById("goal").value;
+    }
 
-  const frequency =
-    document.getElementById("productFrequency").value;
+    catch {
 
-  const todayEvent =
-    document.getElementById("todayEvent").value.trim();
+      return {};
 
-  const todayProduct =
-    document.getElementById("todayProduct").value.trim();
-
-  const storyCount =
-    document.getElementById("storyCount").value;
-
-  const materials =
-    getMaterials();
-
-  if(
-    selectedMode !== "內容救援"
-    &&
-    todayEvent === ""
-  ){
-
-    alert("先寫一下今天發生什麼事 ♡");
-    return;
-  }
-
-  let frequencyText = "";
-
-  if(frequency === "none"){
-    frequencyText =
-      "最近兩天都沒有產品曝光";
-  }
-
-  if(frequency === "one"){
-    frequencyText =
-      "最近兩天其中一天有產品曝光";
-  }
-
-  if(frequency === "two"){
-    frequencyText =
-      "最近兩天都有產品曝光";
-  }
-
-  let modeInstruction = "";
-
-  if(selectedMode === "限動規劃"){
-
-    modeInstruction = `
-請規劃 ${storyCount} 則前後有連貫性的 Instagram 限時動態。
-
-每一則都請提供：
-
-第 X 則
-內容目的：
-建議畫面：
-可以直接使用的限動文案：
-互動貼紙：
-是否帶產品：
-下一則如何銜接：
-
-不要讓每一則像不同主題。
-`;
+    }
 
   }
 
-  if(selectedMode === "Reels腳本"){
 
-    modeInstruction = `
-請幫我規劃一支 Reels。
+  function getMaterials() {
+
+    const selected =
+      Array.from(
+
+        document.querySelectorAll(
+
+          'input[name="material"]:checked'
+
+        )
+
+      );
+
+
+    if (selected.length === 0) {
+
+      return "沒有特別素材";
+
+    }
+
+
+    return selected
+
+      .map(item => item.value)
+
+      .join("、");
+
+  }
+
+
+  function getFrequencyText() {
+
+    const value =
+      document
+        .getElementById("productFrequency")
+        .value;
+
+
+    if (value === "two") {
+
+      return "最近兩天都有產品曝光";
+
+    }
+
+
+    if (value === "one") {
+
+      return "最近兩天其中一天有產品曝光";
+
+    }
+
+
+    return "最近兩天都沒有產品曝光";
+
+  }
+
+
+  function getBaseContext() {
+
+    const profile =
+      getProfile();
+
+
+    return {
+
+      account:
+        profile.accountType ||
+        "尚未設定",
+
+      audience:
+        profile.audience ||
+        "尚未設定",
+
+      topics:
+        profile.topics ||
+        "尚未設定",
+
+      tone:
+        profile.tone ||
+        "自然日常、像真人聊天",
+
+      avoid:
+        profile.avoid ||
+        "不要有明顯 AI 感、不要太官方、不要太業配",
+
+      products:
+        profile.products ||
+        "沒有設定",
+
+      goal:
+        document
+          .getElementById("goal")
+          .value,
+
+      frequency:
+        getFrequencyText(),
+
+      event:
+        document
+          .getElementById("todayEvent")
+          .value
+          .trim(),
+
+      materials:
+        getMaterials(),
+
+      product:
+        document
+          .getElementById("todayProduct")
+          .value
+          .trim(),
+
+      storyCount:
+        document
+          .getElementById("storyCount")
+          .value
+
+    };
+
+  }
+
+
+  function buildStoryPrompt(c) {
+
+    return `你是一位專業的 Instagram 限時動態內容顧問。
+
+請根據我的真實生活情境，幫我規劃今天的 IG 限時動態。
+
+【我的帳號】
+帳號定位：${c.account}
+主要受眾：${c.audience}
+平常分享：${c.topics}
+
+【今天】
+目標：${c.goal}
+近期產品曝光：${c.frequency}
+今天發生的事情：${c.event}
+現有素材：${c.materials}
+今天想帶到的產品：${c.product || "沒有一定要帶產品"}
+限動數量：${c.storyCount} 則
+
+【我的文案偏好】
+${c.tone}
+
+【請避免】
+${c.avoid}
+
+請規劃 ${c.storyCount} 則前後有連貫性的限動。
+
+每一則請直接提供：
+
+第 1 則
+畫面建議：
+限動文字：
+互動方式：
+
+依序完成 ${c.storyCount} 則。
+
+請特別注意：
+
+1. 第一則優先從真實生活開始，不要一開始就賣東西。
+2. 不要每一則都有產品。
+3. 如果產品適合出現，從生活需求自然銜接。
+4. 如果今天不適合賣，直接不要安排銷售。
+5. 不要硬塞投票或問答。
+6. 每則文字不要過長。
+7. 語氣要像真人平常發 IG，不要像 AI 或業配。
+8. 前後要像同一天發生的故事，不要像三篇不同文章。
+9. 使用繁體中文與台灣日常用語。
+10. 優先增加觀看與讓人願意繼續看下一則。
+
+最後只需要補充一句：
+「今天這組限動最主要的目的：＿＿＿」`;
+
+  }
+
+
+  function buildReelsPrompt(c) {
+
+    return `你是一位專業的 Instagram Reels 內容企劃。
+
+請根據我的帳號與今天真正能拍到的素材，幫我規劃一支 Reels。
+
+【帳號定位】
+${c.account}
+
+【主要受眾】
+${c.audience}
+
+【平常分享】
+${c.topics}
+
+【今天的目標】
+${c.goal}
+
+【今天發生的事情】
+${c.event}
+
+【現有素材】
+${c.materials}
+
+【產品】
+${c.product || "今天沒有一定要帶產品"}
+
+【文案語氣】
+${c.tone}
 
 請提供：
 
-1. 3 個不同開頭鉤子
-2. 最推薦的鉤子
-3. 建議影片長度
-4. 前 3 秒畫面
-5. 每個鏡頭的畫面內容
-6. 畫面字幕
-7. 完整口播或字幕腳本
-8. Caption
+1. 3 個不同風格的前三秒鉤子
+2. 選出最推薦的一個
+3. 建議影片秒數
+4. 完整分鏡
+5. 每個畫面的字幕
+6. 完整口播或字幕腳本
+7. 封面標題 3 個
+8. IG Caption
 9. CTA
-10. 封面標題
 
-請優先考慮完播率與真人感，不要做成制式教學影片。
-`;
+請遵守：
 
-  }
-
-  if(selectedMode === "Threads貼文"){
-
-    modeInstruction = `
-請幫我規劃 Threads 內容。
-
-先提供：
-
-1. 3 個不同切角
-2. 每個切角的開頭
-3. 說明哪一個最容易引起討論或共鳴
-
-接著把最推薦的切角寫成完整 Threads。
-
-文案要像真人臨時想到而發，
-不要像文章、教科書、品牌業配或 AI 生成內容。
-`;
+- 不要做成制式知識型影片
+- 開頭不要太像廣告
+- 不要有明顯 AI 文案感
+- 有產品時也要先有生活情境
+- 優先考慮讓人想繼續看與完播
+- 使用繁體中文及台灣日常語氣
+- 如果今天素材不適合原本方向，可以主動調整成更好的切角`;
 
   }
 
-  if(selectedMode === "產品自然置入"){
 
-    modeInstruction = `
-今天的重點是自然帶到產品。
+  function buildThreadsPrompt(c) {
 
-請依照：
+    return `你是一位擅長 Threads 的社群內容顧問。
 
-生活情境
-→ 真實需求／困擾
-→ 我自己的選擇
+請把今天的真實生活素材，轉成一篇讓人想停下來看、留言或產生共鳴的 Threads。
+
+【帳號定位】
+${c.account}
+
+【主要受眾】
+${c.audience}
+
+【平常分享】
+${c.topics}
+
+【今天發生的事情】
+${c.event}
+
+【今天目標】
+${c.goal}
+
+【文案語氣】
+${c.tone}
+
+【不要出現的感覺】
+${c.avoid}
+
+請先提供 3 個不同切角。
+
+每個切角請附：
+- 開頭一句
+- 為什麼適合
+
+接著選出最推薦的一個，寫成完整 Threads。
+
+要求：
+
+1. 像真人突然有感而發。
+2. 不要像文章或教科書。
+3. 不要過度分段說教。
+4. 不用硬塞 CTA。
+5. 不要為了流量刻意製造爭議。
+6. 保留生活細節與個人觀點。
+7. 使用繁體中文與台灣日常語氣。`;
+
+  }
+
+
+  function buildProductPrompt(c) {
+
+    return `你是一位擅長「生活化產品置入」的 Instagram 內容顧問。
+
+我不想發出一看就知道在業配或賣東西的內容。
+
+【帳號定位】
+${c.account}
+
+【主要受眾】
+${c.audience}
+
+【今天發生的事情】
+${c.event}
+
+【現有素材】
+${c.materials}
+
+【今天想分享的產品】
+${c.product || c.products}
+
+【近期產品曝光】
+${c.frequency}
+
+【主要目標】
+${c.goal}
+
+【喜歡的語氣】
+${c.tone}
+
+請幫我設計一組自然的產品內容。
+
+請依照這個邏輯：
+
+真實生活
+→ 當下需求／感受
+→ 我的選擇
 → 產品自然出現
-→ 使用感
-→ 輕 CTA
+→ 個人使用感
+→ 輕 CTA（需要才放）
 
-設計完整內容。
+請提供：
 
-不要第一句就提商品名稱，
-也不要一開始講功效或優惠。
-`;
+1. 最適合的切入點
+2. 前面生活內容怎麼鋪
+3. 產品在哪個時間點出現最自然
+4. 可以直接使用的文案
+5. 畫面怎麼拍
+6. 是否需要 CTA
+7. 如果今天其實不適合賣，也請直接告訴我
+
+避免：
+
+- 第一則就介紹產品
+- 太多功效描述
+- 官方業配語氣
+- 每句都在稱讚產品
+- 硬推優惠
+- 明顯 AI 感
+
+使用繁體中文與台灣日常語氣。`;
 
   }
 
-  if(selectedMode === "一週內容規劃"){
 
-    modeInstruction = `
-請規劃未來 7 天的社群內容。
+  function buildWeekPrompt(c) {
+
+    return `你是一位專業的 Instagram 自媒體內容策略顧問。
+
+請根據我的帳號定位，規劃未來 7 天的內容。
+
+【帳號定位】
+${c.account}
+
+【主要受眾】
+${c.audience}
+
+【平常分享】
+${c.topics}
+
+【產品／服務】
+${c.products}
+
+【主要目標】
+${c.goal}
+
+【文案風格】
+${c.tone}
+
+請安排 Day 1～Day 7。
 
 每天提供：
 
-Day 1～Day 7
-內容目的：
-主題：
-內容形式：
-開頭方向：
-生活／互動／價值／產品分類：
-產品是否出現：
-一句內容重點：
+- 當天主要目的
+- 主題
+- 適合形式（限動／Reels／Threads／輪播）
+- 開頭方向
+- 生活／互動／價值／產品分類
+- 是否帶產品
+- 一句具體內容方向
 
-整週不要每天都在教東西，
-也不要產品集中連續出現。
-`;
+請特別注意：
+
+1. 不要連續幾天都在賣產品。
+2. 不要每天都像知識教學。
+3. 至少安排生活內容、共鳴內容與互動內容。
+4. 產品曝光必須穿插在自然內容之間。
+5. 同一週不要重複相似主題。
+6. 每天都要是實際可以執行的題目，不要只寫抽象方向。
+7. 使用繁體中文與台灣日常語氣。
+
+最後整理：
+本週生活／互動／價值／產品的建議比例。`;
 
   }
 
-  if(selectedMode === "內容救援"){
 
-    modeInstruction = `
-假設我今天完全沒有特別事件或素材。
+  function buildRescuePrompt(c) {
 
-請根據我的帳號定位與受眾：
+    return `你是一位專業的 Instagram 內容靈感顧問。
 
-先列出 10 個今天馬上能發的題材。
+我今天沒有特別事件，也沒有準備素材，但還是想發一些自然、不無聊的內容。
 
-再選出最適合今天的 3 個。
+【我的帳號定位】
+${c.account}
 
-每一個都請提供：
+【主要受眾】
+${c.audience}
 
-切角：
-開頭：
-內容：
-適合的畫面：
+【平常分享】
+${c.topics}
+
+【產品／服務】
+${c.products}
+
+【今天目標】
+${c.goal}
+
+【喜歡的語氣】
+${c.tone}
+
+請先提供 10 個今天馬上可以做的內容題材。
+
+要求：
+
+- 不需要特別出門
+- 不需要準備複雜素材
+- 可以從日常、小觀點、小習慣、共鳴、互動發想
+- 不要全部都是知識內容
+- 不要全部都需要自拍
+- 不要有明顯 AI 題目感
+
+接著選出最適合今天的 3 個。
+
+每個請提供：
+
+題目：
+適合形式：
+建議畫面：
+可以直接使用的文字：
 是否適合互動：
 是否適合帶產品：
 
-題目不要過度知識型，
-要讓一般生活也能成立。
-`;
+使用繁體中文與台灣日常語氣。`;
 
   }
 
-  const prompt = `
-你是一位專業的 Instagram 與自媒體內容策略顧問。
 
-你不是單純的文案生成器。
+  function generatePrompt() {
 
-你必須先分析我的帳號、受眾、今天素材、近期產品曝光狀況與今天的目標，再決定最適合的內容。
-
-【我的帳號】
-
-帳號定位：
-${profile.accountType || "尚未設定"}
-
-主要受眾：
-${profile.audience || "尚未設定"}
-
-平常分享主題：
-${profile.topics || "尚未設定"}
-
-喜歡的文案語氣：
-${profile.tone || "自然日常、像真人聊天"}
-
-不喜歡的文案感覺：
-${profile.avoid || "不要太像 AI、不要過度雞湯、不要太像業配"}
-
-平常分享的產品／服務：
-${profile.products || "沒有設定"}
+    const c =
+      getBaseContext();
 
 
-【今天】
+    if (
 
-內容模式：
-${selectedMode}
+      selectedMode !== "rescue"
 
-主要目標：
-${goal}
+      &&
 
-近期產品曝光：
-${frequencyText}
+      selectedMode !== "week"
 
-今天發生的事情：
-${todayEvent || "今天沒有特別事件"}
+      &&
 
-今天手上的素材：
-${materials}
+      c.event === ""
 
-今天想帶到的產品：
-${todayProduct || "沒有一定要帶產品"}
+    ) {
 
+      alert(
+        "先簡單寫一下今天發生什麼事 ♡"
+      );
 
-第一步：
+      return;
 
-請先做「今日內容策略判斷」。
-
-告訴我：
-
-1. 今天最適合的內容主軸
-2. 今天建議的生活／互動／價值／產品比例
-3. 今天適不適合銷售
-4. 為什麼
-5. 今天應該避免什麼
-6. 今天最值得放大的真實細節
+    }
 
 
-第二步：
-
-依照以下模式執行：
-
-${modeInstruction}
+    let prompt = "";
 
 
-所有內容都必須遵守：
+    if (selectedMode === "story") {
 
-1. 使用繁體中文與台灣日常語氣。
-2. 不要有明顯 AI 感。
-3. 不要每一篇都像教學。
-4. 不要過度雞湯。
-5. 不要亂塞投票或問答。
-6. 不需要每一篇都有 CTA。
-7. 產品必須從真實情境自然出現。
-8. 手機閱讀要舒服。
-9. 優先保留真人講話感。
-10. 避免空泛句子。
-11. 不要一直重複相同句型。
-12. 如果我的素材本身不夠好，直接幫我換一個更適合的切角。
-`.trim();
+      prompt =
+        buildStoryPrompt(c);
 
-  document.getElementById("result")
-    .textContent = prompt;
+    }
 
-  document.getElementById("resultCard")
-    .style.display = "block";
 
-  document.getElementById("resultCard")
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-}
+    else if (selectedMode === "reels") {
 
-function copyPrompt(){
+      prompt =
+        buildReelsPrompt(c);
 
-  const text =
-    document.getElementById("result").textContent;
+    }
 
-  if(!text){
-    return;
-  }
 
-  if(
-    navigator.clipboard
-    &&
-    navigator.clipboard.writeText
-  ){
+    else if (selectedMode === "threads") {
 
-    navigator.clipboard
-      .writeText(text)
-      .then(showCopySuccess)
-      .catch(fallbackCopy);
+      prompt =
+        buildThreadsPrompt(c);
 
-  }else{
+    }
 
-    fallbackCopy();
+
+    else if (selectedMode === "product") {
+
+      prompt =
+        buildProductPrompt(c);
+
+    }
+
+
+    else if (selectedMode === "week") {
+
+      prompt =
+        buildWeekPrompt(c);
+
+    }
+
+
+    else {
+
+      prompt =
+        buildRescuePrompt(c);
+
+    }
+
+
+    document
+      .getElementById("result")
+      .textContent =
+      prompt;
+
+
+    document
+      .getElementById("resultDescription")
+      .textContent =
+      `已依照你的帳號與今天情境，產生「${modeNames[selectedMode]}」專屬指令。`;
+
+
+    document
+      .getElementById("resultCard")
+      .style.display =
+      "block";
+
+
+    document
+      .getElementById("fullPromptWrap")
+      .style.display =
+      "none";
+
+
+    document
+      .getElementById("viewPromptBtn")
+      .textContent =
+      "查看完整指令";
+
+
+    document
+      .getElementById("resultCard")
+      .scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+      });
 
   }
-}
 
-function fallbackCopy(){
 
-  const text =
-    document.getElementById("result").textContent;
+  function togglePrompt() {
 
-  const textarea =
-    document.createElement("textarea");
+    const wrap =
+      document
+        .getElementById("fullPromptWrap");
 
-  textarea.value = text;
 
-  textarea.style.position = "fixed";
-  textarea.style.opacity = "0";
+    const button =
+      document
+        .getElementById("viewPromptBtn");
 
-  document.body.appendChild(textarea);
 
-  textarea.select();
+    if (wrap.style.display === "block") {
 
-  try{
-    document.execCommand("copy");
-    showCopySuccess();
-  }catch(e){
-    alert("複製失敗，請手動選取文字複製");
+      wrap.style.display =
+        "none";
+
+
+      button.textContent =
+        "查看完整指令";
+
+    }
+
+    else {
+
+      wrap.style.display =
+        "block";
+
+
+      button.textContent =
+        "收起完整指令";
+
+    }
+
   }
 
-  document.body.removeChild(textarea);
-}
 
-function showCopySuccess(){
+  function copyPrompt() {
 
-  const success =
-    document.getElementById("copySuccess");
+    const text =
+      document
+        .getElementById("result")
+        .textContent;
 
-  success.style.display = "block";
 
-  setTimeout(()=>{
-    success.style.display = "none";
-  },2200);
-}
+    if (!text) {
 
-loadProfile();
-updateStrategy();
+      return;
+
+    }
+
+
+    if (
+
+      navigator.clipboard
+
+      &&
+
+      navigator.clipboard.writeText
+
+    ) {
+
+      navigator.clipboard
+
+        .writeText(text)
+
+        .then(showCopySuccess)
+
+        .catch(fallbackCopy);
+
+    }
+
+    else {
+
+      fallbackCopy();
+
+    }
+
+  }
+
+
+  function fallbackCopy() {
+
+    const text =
+      document
+        .getElementById("result")
+        .textContent;
+
+
+    const textarea =
+      document
+        .createElement("textarea");
+
+
+    textarea.value =
+      text;
+
+
+    textarea.style.position =
+      "fixed";
+
+
+    textarea.style.opacity =
+      "0";
+
+
+    document.body
+      .appendChild(textarea);
+
+
+    textarea.select();
+
+
+    try {
+
+      document
+        .execCommand("copy");
+
+
+      showCopySuccess();
+
+    }
+
+    catch {
+
+      alert(
+        "複製失敗，請改用查看完整指令後手動複製"
+      );
+
+    }
+
+
+    document.body
+      .removeChild(textarea);
+
+  }
+
+
+  function showCopySuccess() {
+
+    const success =
+      document
+        .getElementById("copySuccess");
+
+
+    success.style.display =
+      "block";
+
+
+    setTimeout(() => {
+
+      success.style.display =
+        "none";
+
+    }, 2200);
+
+  }
+
+
+  loadProfile();
+
+  updateStrategy();
+
+  updateModeUI();
 
 </script>
 
 </body>
+
 </html>
