@@ -1,406 +1,1085 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IG 限動靈感製造機</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator AI｜內容策略助手</title>
 
   <style>
-    * {
-      box-sizing: border-box;
+    *{
+      box-sizing:border-box;
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
-        "PingFang TC", sans-serif;
-      background: #fff8f9;
-      color: #333;
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+      background:#fff9fa;
+      color:#2f2f2f;
+      padding-bottom:90px;
     }
 
-    .container {
-      max-width: 680px;
-      margin: auto;
-      padding: 28px 18px 60px;
+    .app{
+      max-width:680px;
+      margin:auto;
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 30px;
+    .topbar{
+      padding:24px 20px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .badge {
-      display: inline-block;
-      background: #ffe8ee;
-      color: #c96b82;
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin-bottom: 12px;
+    .logo{
+      font-size:20px;
+      font-weight:800;
     }
 
-    h1 {
-      font-size: 30px;
-      margin: 5px 0 10px;
+    .mini-badge{
+      background:#ffe9ef;
+      color:#c2667e;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
     }
 
-    .subtitle {
-      color: #777;
-      line-height: 1.7;
-      font-size: 15px;
+    .hero{
+      padding:8px 20px 16px;
     }
 
-    .card {
-      background: #fff;
-      border-radius: 22px;
-      padding: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    .hero h1{
+      font-size:30px;
+      line-height:1.25;
+      margin:0 0 8px;
     }
 
-    label.title {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 12px;
-      font-size: 16px;
+    .hero p{
+      color:#777;
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
     }
 
+    .section{
+      padding:0 16px;
+      margin-top:18px;
+    }
+
+    .section-title{
+      font-size:17px;
+      font-weight:800;
+      margin:0 4px 11px;
+    }
+
+    .card{
+      background:white;
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 8px 28px rgba(50,30,35,.055);
+      margin-bottom:14px;
+    }
+
+    .strategy-card{
+      background:linear-gradient(135deg,#fff1f4,#fff);
+    }
+
+    .strategy-label{
+      font-size:12px;
+      color:#b56a7e;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .strategy-main{
+      font-size:20px;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .strategy-desc{
+      color:#777;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .ratio{
+      display:flex;
+      gap:8px;
+      margin-top:15px;
+      flex-wrap:wrap;
+    }
+
+    .ratio span{
+      background:white;
+      border:1px solid #f0dbe0;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+    }
+
+    .mode-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .mode{
+      border:1px solid #f0e3e6;
+      border-radius:18px;
+      padding:16px 13px;
+      background:#fff;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .mode.active{
+      background:#fff0f4;
+      border-color:#dfa0b0;
+    }
+
+    .mode-icon{
+      font-size:22px;
+      margin-bottom:7px;
+    }
+
+    .mode-title{
+      font-weight:800;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .mode-desc{
+      color:#888;
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    label.field-title{
+      display:block;
+      font-size:14px;
+      font-weight:750;
+      margin-bottom:9px;
+      margin-top:14px;
+    }
+
+    label.field-title:first-child{
+      margin-top:0;
+    }
+
+    input,
     select,
-    textarea,
-    input {
-      width: 100%;
-      border: 1px solid #eadfe2;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 16px;
-      background: #fff;
-      outline: none;
+    textarea{
+      width:100%;
+      border:1px solid #eadfe2;
+      border-radius:14px;
+      padding:13px 14px;
+      background:#fff;
+      font-size:15px;
+      color:#333;
+      outline:none;
     }
 
+    input:focus,
     select:focus,
-    textarea:focus,
-    input:focus {
-      border-color: #e5a9b8;
+    textarea:focus{
+      border-color:#dc9daf;
     }
 
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-      line-height: 1.6;
+    textarea{
+      min-height:105px;
+      resize:vertical;
+      line-height:1.6;
     }
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
     }
 
-    .chip input {
-      display: none;
+    .chip{
+      cursor:pointer;
     }
 
-    .chip span {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #f7f2f3;
-      border: 1px solid transparent;
-      font-size: 14px;
-      cursor: pointer;
+    .chip input{
+      display:none;
     }
 
-    .chip input:checked + span {
-      background: #ffe7ed;
-      border-color: #e8a9b8;
-      color: #b95c73;
-      font-weight: 600;
+    .chip span{
+      display:inline-block;
+      padding:9px 12px;
+      border-radius:999px;
+      background:#f8f4f5;
+      border:1px solid transparent;
+      font-size:13px;
     }
 
-    button {
-      width: 100%;
-      border: 0;
-      padding: 16px;
-      border-radius: 16px;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
+    .chip input:checked + span{
+      background:#ffe7ed;
+      border-color:#dfa0b0;
+      color:#b85e76;
+      font-weight:700;
     }
 
-    .generate {
-      background: #dc879c;
-      color: white;
-      margin-top: 6px;
+    .primary-btn{
+      width:100%;
+      border:none;
+      border-radius:17px;
+      padding:16px;
+      background:#d97f97;
+      color:white;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      margin-top:4px;
     }
 
-    .copy {
-      background: #333;
-      color: white;
-      margin-top: 12px;
+    .secondary-btn{
+      width:100%;
+      border:none;
+      border-radius:15px;
+      padding:14px;
+      background:#333;
+      color:white;
+      font-size:15px;
+      font-weight:750;
+      cursor:pointer;
+      margin-top:12px;
     }
 
-    #resultBox {
-      display: none;
+    .save-btn{
+      width:100%;
+      border:1px solid #e5c3cc;
+      background:#fff7f9;
+      color:#b9647a;
+      border-radius:14px;
+      padding:13px;
+      font-weight:750;
+      cursor:pointer;
+      margin-top:15px;
     }
 
-    #result {
-      white-space: pre-wrap;
-      background: #faf7f8;
-      border-radius: 16px;
-      padding: 16px;
-      font-size: 14px;
-      line-height: 1.8;
-      max-height: 420px;
-      overflow-y: auto;
+    #resultCard{
+      display:none;
     }
 
-    .small {
-      font-size: 12px;
-      color: #999;
-      text-align: center;
-      margin-top: 25px;
+    #result{
+      white-space:pre-wrap;
+      line-height:1.8;
+      font-size:14px;
+      background:#faf7f8;
+      padding:16px;
+      border-radius:15px;
+      max-height:450px;
+      overflow:auto;
+    }
+
+    .success{
+      display:none;
+      margin-top:10px;
+      color:#9c5c70;
+      font-size:13px;
+      text-align:center;
+    }
+
+    .page{
+      display:none;
+    }
+
+    .page.active{
+      display:block;
+    }
+
+    .bottom-nav{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(15px);
+      border-top:1px solid #f0e5e8;
+      height:76px;
+      display:flex;
+      justify-content:center;
+      z-index:99;
+    }
+
+    .bottom-inner{
+      max-width:680px;
+      width:100%;
+      display:flex;
+    }
+
+    .nav-item{
+      flex:1;
+      border:none;
+      background:none;
+      font-size:11px;
+      color:#999;
+      cursor:pointer;
+    }
+
+    .nav-item .nav-icon{
+      display:block;
+      font-size:20px;
+      margin-bottom:4px;
+    }
+
+    .nav-item.active{
+      color:#c66b82;
+      font-weight:800;
+    }
+
+    .hint{
+      font-size:12px;
+      color:#999;
+      line-height:1.6;
+      margin-top:7px;
+    }
+
+    .divider{
+      height:1px;
+      background:#f2e8ea;
+      margin:18px 0;
+    }
+
+    @media(max-width:390px){
+      .hero h1{
+        font-size:27px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-  <div class="hero">
-    <div class="badge">♡ Creator Tool</div>
-    <h1>IG 限動靈感製造機</h1>
-    <div class="subtitle">
-      不知道今天限動要發什麼？<br>
-      填入你的情境，幫你產生一份可以直接貼給 ChatGPT 的完整指令。
+  <div class="topbar">
+    <div class="logo">Creator AI ♡</div>
+    <div class="mini-badge">內容策略助手</div>
+  </div>
+
+
+  <!-- 首頁 -->
+  <div id="home" class="page active">
+
+    <div class="hero">
+      <h1>今天也不用煩惱<br>要發什麼。</h1>
+      <p>
+        根據你的帳號、素材與近期曝光狀況，
+        幫你整理今天最適合的內容方向。
+      </p>
     </div>
-  </div>
 
-  <div class="card">
-    <label class="title">① 你的帳號定位</label>
+    <div class="section">
 
-    <select id="accountType">
-      <option>育兒親子</option>
-      <option>美食料理</option>
-      <option>健康減脂</option>
-      <option>美妝保養</option>
-      <option>穿搭生活</option>
-      <option>美業</option>
-      <option>團購／銷售</option>
-      <option>個人品牌</option>
-      <option>其他</option>
-    </select>
-  </div>
+      <div class="section-title">今天的內容建議</div>
 
-  <div class="card">
-    <label class="title">② 今天想發哪一類？</label>
+      <div class="card strategy-card">
+        <div class="strategy-label">TODAY'S STRATEGY</div>
+        <div class="strategy-main" id="strategyMain">
+          今天先建立生活感
+        </div>
 
-    <div class="chips">
+        <div class="strategy-desc" id="strategyDesc">
+          先到「今日內容」填入你今天的素材與近期產品曝光狀況，我會幫你判斷今天適合怎麼安排。
+        </div>
 
-      <label class="chip">
-        <input type="radio" name="contentType" value="日常生活" checked>
-        <span>日常生活</span>
-      </label>
-
-      <label class="chip">
-        <input type="radio" name="contentType" value="共鳴">
-        <span>共鳴</span>
-      </label>
-
-      <label class="chip">
-        <input type="radio" name="contentType" value="互動">
-        <span>互動</span>
-      </label>
-
-      <label class="chip">
-        <input type="radio" name="contentType" value="知識分享">
-        <span>知識分享</span>
-      </label>
-
-      <label class="chip">
-        <input type="radio" name="contentType" value="產品分享">
-        <span>產品分享</span>
-      </label>
-
-      <label class="chip">
-        <input type="radio" name="contentType" value="自然銷售">
-        <span>自然銷售</span>
-      </label>
+        <div class="ratio" id="ratioBox">
+          <span>生活 60%</span>
+          <span>互動 20%</span>
+          <span>產品 20%</span>
+        </div>
+      </div>
 
     </div>
+
+
+    <div class="section">
+
+      <div class="section-title">你今天想做什麼？</div>
+
+      <div class="mode-grid">
+
+        <div class="mode active" data-mode="限動規劃" onclick="selectMode(this)">
+          <div class="mode-icon">📱</div>
+          <div class="mode-title">限動規劃</div>
+          <div class="mode-desc">安排今天 3～7 則完整限動</div>
+        </div>
+
+        <div class="mode" data-mode="Reels腳本" onclick="selectMode(this)">
+          <div class="mode-icon">🎬</div>
+          <div class="mode-title">Reels 腳本</div>
+          <div class="mode-desc">鉤子、畫面、字幕、CTA</div>
+        </div>
+
+        <div class="mode" data-mode="Threads貼文" onclick="selectMode(this)">
+          <div class="mode-icon">✏️</div>
+          <div class="mode-title">Threads</div>
+          <div class="mode-desc">找角度＋完整貼文內容</div>
+        </div>
+
+        <div class="mode" data-mode="產品自然置入" onclick="selectMode(this)">
+          <div class="mode-icon">🛍️</div>
+          <div class="mode-title">自然帶產品</div>
+          <div class="mode-desc">從生活情境自然銜接商品</div>
+        </div>
+
+        <div class="mode" data-mode="一週內容規劃" onclick="selectMode(this)">
+          <div class="mode-icon">🗓️</div>
+          <div class="mode-title">一週規劃</div>
+          <div class="mode-desc">7 天內容比例與主題安排</div>
+        </div>
+
+        <div class="mode" data-mode="內容救援" onclick="selectMode(this)">
+          <div class="mode-icon">💡</div>
+          <div class="mode-title">沒素材救援</div>
+          <div class="mode-desc">今天什麼都沒發生也能用</div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="card">
-    <label class="title">③ 想要幾則限動？</label>
 
-    <select id="storyCount">
-      <option value="3">3 則</option>
-      <option value="5" selected>5 則</option>
-      <option value="7">7 則</option>
-    </select>
+  <!-- 今日內容 -->
+  <div id="today" class="page">
+
+    <div class="hero">
+      <h1>今天有什麼<br>可以拿來發？</h1>
+      <p>
+        不需要想得很厲害，把你今天真實發生的事情告訴我就好。
+      </p>
+    </div>
+
+    <div class="section">
+
+      <div class="card">
+
+        <label class="field-title">今天最主要的目標</label>
+
+        <select id="goal">
+          <option>增加限動觀看</option>
+          <option>提高粉絲互動</option>
+          <option>建立信任感</option>
+          <option>增加新粉絲</option>
+          <option>產品曝光</option>
+          <option>引導私訊詢問</option>
+          <option>促成購買</option>
+        </select>
+
+
+        <label class="field-title">最近兩天產品出現頻率</label>
+
+        <select id="productFrequency" onchange="updateStrategy()">
+          <option value="none">兩天都沒有產品</option>
+          <option value="one">其中一天有產品</option>
+          <option value="two">兩天都有產品</option>
+        </select>
+
+
+        <label class="field-title">今天發生什麼事？</label>
+
+        <textarea id="todayEvent"
+          placeholder="例如：晚上突然想吃宵夜，所以泡了一杯可可奶茶；下午去接小孩的時候下大雨……"></textarea>
+
+
+        <label class="field-title">你今天手上有哪些素材？</label>
+
+        <div class="chips">
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="自拍">
+            <span>自拍</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="生活照片">
+            <span>生活照片</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="生活影片">
+            <span>生活影片</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="產品照片">
+            <span>產品照片</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="家庭素材">
+            <span>家庭素材</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" name="material" value="只有文字">
+            <span>只有文字</span>
+          </label>
+
+        </div>
+
+
+        <label class="field-title">今天想帶什麼產品？</label>
+
+        <input id="todayProduct"
+          placeholder="如果今天不打算帶產品，可以空白">
+
+
+        <label class="field-title">想要幾則限動？</label>
+
+        <select id="storyCount">
+          <option>3</option>
+          <option selected>5</option>
+          <option>7</option>
+        </select>
+
+      </div>
+
+
+      <button class="primary-btn" onclick="generatePrompt()">
+        ✨ 幫我生成今日內容指令
+      </button>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="card" id="resultCard">
+
+        <div class="section-title" style="margin-left:0">
+          你的 AI 專屬指令
+        </div>
+
+        <div id="result"></div>
+
+        <button class="secondary-btn" onclick="copyPrompt()">
+          複製完整指令
+        </button>
+
+        <div class="success" id="copySuccess">
+          ✓ 已複製，可以直接貼到 ChatGPT
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="card">
-    <label class="title">④ 今天發生什麼事？</label>
 
-    <textarea
-      id="todayEvent"
-      placeholder="例如：今天早上送小孩上學，回來之後喝了一杯可可，下午工作很忙……"
-    ></textarea>
-  </div>
+  <!-- 我的設定 -->
+  <div id="profile" class="page">
 
-  <div class="card">
-    <label class="title">⑤ 今天有想帶到什麼產品嗎？</label>
+    <div class="hero">
+      <h1>先讓 AI<br>真正認識你的帳號。</h1>
+      <p>
+        這些資料只會儲存在你目前使用的瀏覽器，下次打開不用重新填。
+      </p>
+    </div>
 
-    <input
-      id="product"
-      placeholder="沒有的話可以空白"
-    >
-  </div>
+    <div class="section">
 
-  <div class="card">
-    <label class="title">⑥ 想要的文案感覺</label>
+      <div class="card">
 
-    <select id="tone">
-      <option>自然日常、不像業配</option>
-      <option>溫柔有共鳴</option>
-      <option>幽默輕鬆</option>
-      <option>簡短直接</option>
-      <option>專業但不要太生硬</option>
-    </select>
-  </div>
+        <label class="field-title">帳號定位</label>
+        <input id="accountType"
+          placeholder="例如：育兒親子、減脂料理、美妝保養">
 
-  <button class="generate" onclick="generatePrompt()">
-    ✨ 產生我的 ChatGPT 指令
-  </button>
 
-  <div class="card" id="resultBox" style="margin-top:20px;">
-    <label class="title">你的專屬指令</label>
+        <label class="field-title">你的主要受眾</label>
+        <input id="audience"
+          placeholder="例如：25～40 歲、有小孩的媽媽">
 
-    <div id="result"></div>
 
-    <button class="copy" onclick="copyPrompt()">
-      複製完整指令
-    </button>
-  </div>
+        <label class="field-title">平常主要分享什麼？</label>
+        <textarea id="topics"
+          placeholder="例如：育兒日常、媽媽生活、料理、保健產品、親子共鳴"></textarea>
 
-  <div class="small">
-    IG Story Tool · Made with ♡
+
+        <label class="field-title">你喜歡的文案語氣</label>
+
+        <select id="tone">
+          <option>自然日常、像真人聊天</option>
+          <option>溫柔有共鳴</option>
+          <option>幽默輕鬆</option>
+          <option>簡短直接</option>
+          <option>專業但生活化</option>
+        </select>
+
+
+        <label class="field-title">你不喜歡哪些文案感覺？</label>
+
+        <textarea id="avoid"
+          placeholder="例如：不要太像 AI、不要太雞湯、不要一直講大道理、不要太像業配"></textarea>
+
+
+        <label class="field-title">平常會分享的產品／服務</label>
+
+        <textarea id="products"
+          placeholder="沒有也可以空白"></textarea>
+
+
+        <button class="save-btn" onclick="saveProfile()">
+          儲存我的帳號設定
+        </button>
+
+        <div class="success" id="saveSuccess">
+          ✓ 已儲存，下次打開會自動帶入
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
 </div>
 
+
+<!-- 底部選單 -->
+
+<div class="bottom-nav">
+
+  <div class="bottom-inner">
+
+    <button class="nav-item active" onclick="showPage('home',this)">
+      <span class="nav-icon">⌂</span>
+      首頁
+    </button>
+
+    <button class="nav-item" onclick="showPage('today',this)">
+      <span class="nav-icon">✦</span>
+      今日內容
+    </button>
+
+    <button class="nav-item" onclick="showPage('profile',this)">
+      <span class="nav-icon">♡</span>
+      我的
+    </button>
+
+  </div>
+
+</div>
+
+
 <script>
 
-function generatePrompt() {
+let selectedMode = "限動規劃";
 
-  const accountType =
-    document.getElementById("accountType").value;
 
-  const contentType =
-    document.querySelector(
-      'input[name="contentType"]:checked'
-    ).value;
+function showPage(pageId,button){
 
-  const storyCount =
-    document.getElementById("storyCount").value;
+  document.querySelectorAll(".page")
+    .forEach(page => page.classList.remove("active"));
+
+  document.getElementById(pageId)
+    .classList.add("active");
+
+  document.querySelectorAll(".nav-item")
+    .forEach(item => item.classList.remove("active"));
+
+  button.classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+function selectMode(element){
+
+  document.querySelectorAll(".mode")
+    .forEach(mode => mode.classList.remove("active"));
+
+  element.classList.add("active");
+
+  selectedMode =
+    element.getAttribute("data-mode");
+}
+
+
+function updateStrategy(){
+
+  const frequency =
+    document.getElementById("productFrequency").value;
+
+  const main =
+    document.getElementById("strategyMain");
+
+  const desc =
+    document.getElementById("strategyDesc");
+
+  const ratio =
+    document.getElementById("ratioBox");
+
+
+  if(frequency === "two"){
+
+    main.textContent =
+      "今天先不要急著賣東西";
+
+    desc.textContent =
+      "最近兩天都有產品曝光，今天建議增加生活感、互動或共鳴內容，先讓觀眾喘口氣，也比較不容易產生一直被銷售的感覺。";
+
+    ratio.innerHTML =
+      "<span>生活 60%</span><span>互動 30%</span><span>產品 10%</span>";
+
+  }
+
+  else if(frequency === "one"){
+
+    main.textContent =
+      "今天可以自然帶一次產品";
+
+    desc.textContent =
+      "近期產品曝光比例適中，可以先從生活情境或需求切入，再安排一則輕產品曝光，不需要一開始就進入銷售。";
+
+    ratio.innerHTML =
+      "<span>生活 50%</span><span>互動 20%</span><span>產品 30%</span>";
+
+  }
+
+  else{
+
+    main.textContent =
+      "今天可以安排產品曝光";
+
+    desc.textContent =
+      "最近兩天都沒有產品內容，今天可以自然安排一個使用情境，讓觀眾重新知道你最近正在用或分享什麼。";
+
+    ratio.innerHTML =
+      "<span>生活 45%</span><span>互動 20%</span><span>產品 35%</span>";
+
+  }
+}
+
+
+function saveProfile(){
+
+  const profile = {
+
+    accountType:
+      document.getElementById("accountType").value,
+
+    audience:
+      document.getElementById("audience").value,
+
+    topics:
+      document.getElementById("topics").value,
+
+    tone:
+      document.getElementById("tone").value,
+
+    avoid:
+      document.getElementById("avoid").value,
+
+    products:
+      document.getElementById("products").value
+
+  };
+
+  localStorage.setItem(
+    "creatorAIProfile",
+    JSON.stringify(profile)
+  );
+
+  const success =
+    document.getElementById("saveSuccess");
+
+  success.style.display = "block";
+
+  setTimeout(()=>{
+    success.style.display = "none";
+  },2000);
+}
+
+
+function loadProfile(){
+
+  const saved =
+    localStorage.getItem("creatorAIProfile");
+
+  if(!saved) return;
+
+  const profile =
+    JSON.parse(saved);
+
+  document.getElementById("accountType").value =
+    profile.accountType || "";
+
+  document.getElementById("audience").value =
+    profile.audience || "";
+
+  document.getElementById("topics").value =
+    profile.topics || "";
+
+  document.getElementById("tone").value =
+    profile.tone || "自然日常、像真人聊天";
+
+  document.getElementById("avoid").value =
+    profile.avoid || "";
+
+  document.getElementById("products").value =
+    profile.products || "";
+
+}
+
+
+function getMaterials(){
+
+  return Array.from(
+    document.querySelectorAll(
+      'input[name="material"]:checked'
+    )
+  )
+  .map(item => item.value)
+  .join("、");
+}
+
+
+function generatePrompt(){
+
+  const saved =
+    JSON.parse(
+      localStorage.getItem("creatorAIProfile")
+      || "{}"
+    );
+
+
+  const goal =
+    document.getElementById("goal").value;
+
+  const frequency =
+    document.getElementById("productFrequency").value;
 
   const todayEvent =
     document.getElementById("todayEvent").value.trim();
 
-  const product =
-    document.getElementById("product").value.trim();
+  const todayProduct =
+    document.getElementById("todayProduct").value.trim();
 
-  const tone =
-    document.getElementById("tone").value;
+  const storyCount =
+    document.getElementById("storyCount").value;
 
-  if (!todayEvent) {
-    alert("先告訴我今天發生什麼事 ♡");
+  const materials =
+    getMaterials() || "沒有特別素材，可以使用純文字限動";
+
+
+  if(!todayEvent && selectedMode !== "內容救援"){
+
+    alert("先寫一下今天發生什麼事 ♡");
+
     return;
   }
 
-  let productText = product
-    ? `今天希望可以自然帶到的產品是：「${product}」。
-請不要突然硬置入產品，要從前面的生活情境自然銜接。`
-    : `今天沒有一定要帶產品，如果內容不適合銷售，就以生活與互動為主。`;
 
-  const prompt =
-`你是一位專業的 Instagram 限時動態內容顧問。
+  let frequencyText = "";
 
-請幫我規劃今天的 IG 限時動態。
+  if(frequency === "two")
+    frequencyText = "最近兩天都有產品曝光";
 
-【我的帳號定位】
-${accountType}
+  if(frequency === "one")
+    frequencyText = "最近兩天其中一天有產品曝光";
 
-【今天主要內容類型】
-${contentType}
+  if(frequency === "none")
+    frequencyText = "最近兩天都沒有產品曝光";
+
+
+  const prompt = `
+你是一位專業的 Instagram 自媒體內容策略顧問。
+
+你的工作不是只幫我寫文案，而是先判斷今天最適合的內容策略，再安排內容。
+
+以下是我的帳號資料：
+
+【帳號定位】
+${saved.accountType || "尚未設定"}
+
+【主要受眾】
+${saved.audience || "尚未設定"}
+
+【平常分享主題】
+${saved.topics || "尚未設定"}
+
+【我的文案風格】
+${saved.tone || "自然日常、像真人聊天"}
+
+【我不喜歡的文案感覺】
+${saved.avoid || "避免過度 AI 感、官方感與業配感"}
+
+【平常分享的產品／服務】
+${saved.products || "沒有特別設定"}
+
+
+——今天的狀況——
+
+【今天使用的內容模式】
+${selectedMode}
+
+【今天最主要的目標】
+${goal}
+
+【近期產品曝光狀況】
+${frequencyText}
 
 【今天發生的事情】
-${todayEvent}
+${todayEvent || "今天沒有特別事件，請幫我從一般生活、觀點或互動方向找素材"}
 
-【限動數量】
-請規劃 ${storyCount} 則。
+【今天手上的素材】
+${materials}
 
-【文案風格】
-${tone}
+【今天想帶到的產品】
+${todayProduct || "沒有一定要帶產品"}
 
-${productText}
+【預計限動數量】
+${storyCount} 則
 
-請遵守以下原則：
 
-1. 不要每一則都像在教學或賣東西。
-2. 文案要像真人平常發 IG 限動的語氣。
-3. 每則不要太長，手機畫面閱讀要舒服。
-4. 前後限動必須有連貫性，不要每一則像不同主題。
-5. 如果適合，可以安排投票、問答或互動，但不要硬塞。
-6. 不要有太濃的 AI 感。
-7. 不要使用太官方、太業配的句子。
-8. 如果有產品，先讓觀眾看到生活情境或需求，再自然帶出。
-9. 文案請使用繁體中文，符合台灣日常用語。
+請你先進行「內容策略判斷」，不要直接開始寫文案。
 
-請按照以下格式輸出：
+第一步，先告訴我：
 
-第1則
-畫面建議：
-文案：
-互動方式（沒有可寫「不用」）：
+1. 今天最適合的內容主軸
+2. 今天建議的生活／互動／價值／產品比例
+3. 今天適不適合銷售
+4. 為什麼
+5. 有沒有什麼內容今天應該避免
 
-第2則
-畫面建議：
-文案：
-互動方式：
 
-依序完成全部 ${storyCount} 則。
+接著依照「${selectedMode}」產出完整內容。
 
-最後再告訴我：
-「今天這組限動的核心目的」是什麼，
-例如互動、建立信任、生活感、產品曝光或轉單。`;
 
-  document.getElementById("result").textContent = prompt;
-  document.getElementById("resultBox").style.display = "block";
+如果是「限動規劃」：
 
-  document.getElementById("resultBox")
-    .scrollIntoView({ behavior: "smooth" });
+請規劃 ${storyCount} 則彼此有連貫性的 IG 限動。
+
+每一則請提供：
+
+第X則
+內容目的：
+建議畫面：
+可以直接使用的限動文案：
+互動貼紙：
+是否需要產品：
+下一則如何銜接：
+
+
+如果是「Reels腳本」：
+
+請提供：
+1. 3 個開頭鉤子
+2. 建議影片長度
+3. 每個畫面的拍攝內容
+4. 畫面字幕
+5. 完整口播／字幕腳本
+6. 貼文 Caption
+7. CTA
+
+
+如果是「Threads貼文」：
+
+請提供：
+1. 3 個切角
+2. 3 個不同開頭
+3. 最推薦的一篇完整 Threads
+4. 不要像教科書或 AI
+5. 保留真人分享感
+
+
+如果是「產品自然置入」：
+
+請不要一開始就介紹產品。
+
+請依照：
+生活情境 → 需求／困擾 → 我的選擇 → 產品出現 → 使用感 → 輕 CTA
+
+設計完整內容。
+
+
+如果是「一週內容規劃」：
+
+請規劃未來 7 天：
+
+每天提供：
+內容目的
+主題
+形式
+生活／價值／互動／產品分類
+產品是否出現
+一句內容方向
+
+
+如果是「內容救援」：
+
+假設我今天沒有任何特別素材。
+
+請依照我的帳號定位提供：
+10 個今天立刻可以發的內容題目，
+並挑出最適合今天的 3 個，
+寫成可以直接使用的內容。
+
+
+所有內容都必須遵守：
+
+1. 使用繁體中文與台灣日常語氣。
+2. 不要像 AI 寫作。
+3. 不要每篇都像在教學。
+4. 不要使用太多空泛雞湯。
+5. 不要為了互動硬塞投票。
+6. 產品必須從生活情境自然出現。
+7. 文案長度要適合手機閱讀。
+8. 不需要每則都有 CTA。
+9. 前後內容必須有故事感與連貫性。
+10. 優先保留真實生活感，而不是追求完美文案。
+`.trim();
+
+
+  document.getElementById("result")
+    .textContent = prompt;
+
+  document.getElementById("resultCard")
+    .style.display = "block";
+
+  document.getElementById("resultCard")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
-function copyPrompt() {
+
+function copyPrompt(){
 
   const text =
     document.getElementById("result").textContent;
 
-  navigator.clipboard.writeText(text).then(() => {
+  navigator.clipboard
+    .writeText(text)
+    .then(()=>{
 
-    const button =
-      document.querySelector(".copy");
+      const success =
+        document.getElementById("copySuccess");
 
-    button.textContent = "✓ 已複製，可以貼到 ChatGPT";
+      success.style.display = "block";
 
-    setTimeout(() => {
-      button.textContent = "複製完整指令";
-    }, 2000);
+      setTimeout(()=>{
+        success.style.display = "none";
+      },2200);
 
-  });
-
+    });
 }
+
+
+loadProfile();
+updateStrategy();
 
 </script>
 
