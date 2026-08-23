@@ -8,7 +8,6 @@
 <title>內容策略助手｜自媒體內容工具</title>
 
 <style>
-
 *{
   box-sizing:border-box;
 }
@@ -291,6 +290,29 @@ textarea{
   font-weight:750;
 }
 
+.value-category-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.value-cat{
+  border:1px solid #eee1e4;
+  background:#f9f5f6;
+  border-radius:999px;
+  padding:9px 13px;
+  font-size:13px;
+  color:#555;
+  cursor:pointer;
+}
+
+.value-cat.active{
+  background:#ffe8ee;
+  border-color:#dda0b0;
+  color:#b45e75;
+  font-weight:800;
+}
+
 .primary-btn{
   width:100%;
   border:none;
@@ -413,8 +435,7 @@ textarea{
   display:none !important;
 }
 
-
-/* 模式選擇彈窗 */
+/* Modal */
 
 .modal-overlay{
   position:fixed;
@@ -438,21 +459,6 @@ textarea{
   padding:12px 18px 28px;
   max-height:82vh;
   overflow-y:auto;
-  animation:sheetUp .2s ease;
-}
-
-@keyframes sheetUp{
-
-  from{
-    transform:translateY(30px);
-    opacity:.5;
-  }
-
-  to{
-    transform:translateY(0);
-    opacity:1;
-  }
-
 }
 
 .sheet-handle{
@@ -523,7 +529,6 @@ textarea{
   line-height:1.45;
 }
 
-
 /* Bottom Nav */
 
 .bottom-nav{
@@ -567,237 +572,115 @@ textarea{
 }
 
 @media(max-width:390px){
-
   .hero h1{
     font-size:27px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-
 <div class="app">
 
-
-<!-- 頂部 -->
-
 <div class="topbar">
-
-  <div class="logo">
-    內容策略助手 ♡
-  </div>
-
-  <div class="badge">
-    自媒體工具
-  </div>
-
+  <div class="logo">內容策略助手 ♡</div>
+  <div class="badge">自媒體工具</div>
 </div>
-
 
 <!-- 首頁 -->
 
 <div id="home" class="page active">
 
   <div class="hero">
-
-    <h1>
-      今天也不用煩惱<br>
-      要發什麼。
-    </h1>
-
-    <p>
-      不只幫你寫文案，
-      而是先判斷今天最適合發什麼。
-    </p>
-
+    <h1>今天也不用煩惱<br>要發什麼。</h1>
+    <p>不只幫你寫文案，而是先判斷今天最適合發什麼。</p>
   </div>
-
 
   <div class="section">
 
-    <div class="section-title">
-      今天的內容建議
-    </div>
+    <div class="section-title">今天的內容建議</div>
 
     <div class="card strategy-card">
 
-      <div class="strategy-label">
-        TODAY'S STRATEGY
-      </div>
+      <div class="strategy-label">TODAY'S STRATEGY</div>
 
-      <div
-        class="strategy-main"
-        id="strategyMain">
-
+      <div class="strategy-main" id="strategyMain">
         今天可以安排產品曝光
-
       </div>
 
-      <div
-        class="strategy-desc"
-        id="strategyDesc">
-
-        最近兩天都沒有產品內容，
-        今天可以自然安排一個使用情境。
-
+      <div class="strategy-desc" id="strategyDesc">
+        最近兩天都沒有產品內容，今天可以自然安排一個使用情境。
       </div>
 
-      <div
-        class="ratio"
-        id="ratioBox">
-
+      <div class="ratio" id="ratioBox">
         <span>生活 45%</span>
         <span>互動 20%</span>
         <span>產品 35%</span>
-
       </div>
 
     </div>
 
   </div>
 
-
   <div class="section">
 
-    <div class="group-title">
-      日常內容
-    </div>
+    <div class="group-title">日常內容</div>
 
     <div class="mode-grid">
 
-      <button
-        class="mode active"
-        data-mode="story"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode active" data-mode="story" onclick="selectHomeMode(this)">
         <div class="mode-icon">📱</div>
-
-        <div class="mode-title">
-          今日限動規劃
-        </div>
-
-        <div class="mode-desc">
-          1～7 則日常限動完整安排
-        </div>
-
+        <div class="mode-title">今日限動規劃</div>
+        <div class="mode-desc">1～7 則日常限動完整安排</div>
       </button>
 
-
-      <button
-        class="mode"
-        data-mode="values"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode" data-mode="values" onclick="selectHomeMode(this)">
         <div class="mode-icon">💭</div>
-
-        <div class="mode-title">
-          價值觀／想法
-        </div>
-
-        <div class="mode-desc">
-          把腦袋裡的想法整理成內容
-        </div>
-
+        <div class="mode-title">價值觀／想法</div>
+        <div class="mode-desc">育兒、家庭、金錢、飲食等觀點整理</div>
       </button>
 
     </div>
 
-
-    <div class="group-title">
-      銷售內容
-    </div>
+    <div class="group-title">銷售內容</div>
 
     <div class="mode-grid">
 
-      <button
-        class="mode"
-        data-mode="productstory"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode" data-mode="productstory" onclick="selectHomeMode(this)">
         <div class="mode-icon">🛍️</div>
-
-        <div class="mode-title">
-          產品限動起承轉合
-        </div>
-
-        <div class="mode-desc">
-          1～7 則自然鋪陳產品
-        </div>
-
+        <div class="mode-title">產品限動起承轉合</div>
+        <div class="mode-desc">1～7 則自然鋪陳產品</div>
       </button>
 
     </div>
 
-
-    <div class="group-title">
-      流量內容
-    </div>
+    <div class="group-title">流量內容</div>
 
     <div class="mode-grid">
 
-      <button
-        class="mode"
-        data-mode="reels"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode" data-mode="reels" onclick="selectHomeMode(this)">
         <div class="mode-icon">🎬</div>
-
-        <div class="mode-title">
-          Reels 腳本
-        </div>
-
-        <div class="mode-desc">
-          鉤子、分鏡、字幕、CTA
-        </div>
-
+        <div class="mode-title">Reels 腳本</div>
+        <div class="mode-desc">鉤子、分鏡、字幕、CTA</div>
       </button>
 
-
-      <button
-        class="mode"
-        data-mode="threads"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode" data-mode="threads" onclick="selectHomeMode(this)">
         <div class="mode-icon">✏️</div>
-
-        <div class="mode-title">
-          Threads
-        </div>
-
-        <div class="mode-desc">
-          找切角＋完整貼文
-        </div>
-
+        <div class="mode-title">Threads</div>
+        <div class="mode-desc">找切角＋完整貼文</div>
       </button>
 
     </div>
 
-
-    <div class="group-title">
-      整體規劃
-    </div>
+    <div class="group-title">整體規劃</div>
 
     <div class="mode-grid">
 
-      <button
-        class="mode"
-        data-mode="week"
-        onclick="selectHomeMode(this)">
-
+      <button class="mode" data-mode="week" onclick="selectHomeMode(this)">
         <div class="mode-icon">🗓️</div>
-
-        <div class="mode-title">
-          一週內容規劃
-        </div>
-
-        <div class="mode-desc">
-          未來 7 天完整內容安排
-        </div>
-
+        <div class="mode-title">一週內容規劃</div>
+        <div class="mode-desc">未來 7 天完整內容安排</div>
       </button>
 
     </div>
@@ -807,132 +690,68 @@ textarea{
 </div>
 
 
-
 <!-- 今日內容 -->
 
 <div id="today" class="page">
 
-
   <div class="hero">
 
     <h1 id="todayTitle">
-      今天有什麼<br>
-      可以拿來發？
+      今天有什麼<br>可以拿來發？
     </h1>
 
     <p id="todaySubtitle">
-      把今天發生的事告訴我，
-      不需要特別精彩。
+      把今天發生的事告訴我，不需要特別精彩。
     </p>
 
   </div>
 
-
   <div class="section">
-
 
     <div class="current-mode">
 
       <div>
-
-        <small>
-          目前內容模式
-        </small>
-
-        <strong id="currentModeText">
-          今日限動規劃
-        </strong>
-
+        <small>目前內容模式</small>
+        <strong id="currentModeText">今日限動規劃</strong>
       </div>
 
-
-      <button
-        class="change-mode"
-        onclick="openModeModal()">
-
+      <button class="change-mode" onclick="openModeModal()">
         換模式
-
       </button>
 
     </div>
 
-
-
     <div class="card">
 
-
-      <label class="field-title">
-        今天最主要的目標
-      </label>
-
+      <label class="field-title">今天最主要的目標</label>
 
       <select id="goal">
-
-        <option>
-          增加限動觀看
-        </option>
-
-        <option>
-          提高粉絲互動
-        </option>
-
-        <option>
-          建立信任感
-        </option>
-
-        <option>
-          增加新粉絲
-        </option>
-
-        <option>
-          產品曝光
-        </option>
-
-        <option>
-          引導私訊詢問
-        </option>
-
-        <option>
-          促成購買
-        </option>
-
+        <option>增加限動觀看</option>
+        <option>提高粉絲互動</option>
+        <option>建立信任感</option>
+        <option>增加新粉絲</option>
+        <option>產品曝光</option>
+        <option>引導私訊詢問</option>
+        <option>促成購買</option>
       </select>
-
 
 
       <div id="productFrequencyWrap">
 
-        <label class="field-title">
-          最近兩天產品曝光
-        </label>
+        <label class="field-title">最近兩天產品曝光</label>
 
-        <select
-          id="productFrequency"
-          onchange="updateStrategy()">
-
-          <option value="none">
-            兩天都沒有產品
-          </option>
-
-          <option value="one">
-            其中一天有產品
-          </option>
-
-          <option value="two">
-            兩天都有產品
-          </option>
-
+        <select id="productFrequency" onchange="updateStrategy()">
+          <option value="none">兩天都沒有產品</option>
+          <option value="one">其中一天有產品</option>
+          <option value="two">兩天都有產品</option>
         </select>
 
       </div>
 
 
-
       <div id="eventWrap">
 
-        <label class="field-title">
-          今天發生什麼事？
-        </label>
+        <label class="field-title">今天發生什麼事？</label>
 
         <textarea
           id="todayEvent"
@@ -941,118 +760,52 @@ textarea{
       </div>
 
 
-
       <div id="rescueWrap">
 
-        <label class="field-title">
-          今天沒什麼素材？
-        </label>
+        <label class="field-title">今天沒什麼素材？</label>
 
         <select id="needRescue">
-
-          <option value="no">
-            有素材，可以直接規劃
-          </option>
-
-          <option value="yes">
-            今天沒素材，請幫我想
-          </option>
-
+          <option value="no">有素材，可以直接規劃</option>
+          <option value="yes">今天沒素材，請幫我想</option>
         </select>
 
       </div>
 
 
-
       <div id="materialsWrap">
 
-        <label class="field-title">
-          今天手上有哪些素材？
-        </label>
+        <label class="field-title">今天手上有哪些素材？</label>
 
         <div class="chips">
 
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="自拍">
-
-            <span>
-              自拍
-            </span>
-
+            <input type="checkbox" name="material" value="自拍">
+            <span>自拍</span>
           </label>
 
-
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="生活照片">
-
-            <span>
-              生活照片
-            </span>
-
+            <input type="checkbox" name="material" value="生活照片">
+            <span>生活照片</span>
           </label>
 
-
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="生活影片">
-
-            <span>
-              生活影片
-            </span>
-
+            <input type="checkbox" name="material" value="生活影片">
+            <span>生活影片</span>
           </label>
 
-
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="產品照片">
-
-            <span>
-              產品照片
-            </span>
-
+            <input type="checkbox" name="material" value="產品照片">
+            <span>產品照片</span>
           </label>
 
-
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="家庭素材">
-
-            <span>
-              家庭素材
-            </span>
-
+            <input type="checkbox" name="material" value="家庭素材">
+            <span>家庭素材</span>
           </label>
 
-
           <label class="chip">
-
-            <input
-              type="checkbox"
-              name="material"
-              value="只有文字">
-
-            <span>
-              只有文字
-            </span>
-
+            <input type="checkbox" name="material" value="只有文字">
+            <span>只有文字</span>
           </label>
 
         </div>
@@ -1060,186 +813,141 @@ textarea{
       </div>
 
 
-
       <div id="productWrap">
 
-        <label class="field-title">
-          今天想帶什麼產品？
-        </label>
+        <label class="field-title">今天想帶什麼產品？</label>
 
-        <input
-          id="todayProduct"
-          placeholder="如果不帶產品可以空白">
+        <input id="todayProduct" placeholder="如果不帶產品可以空白">
 
       </div>
-
 
 
       <div id="storyCountWrap">
 
-        <label class="field-title">
-          想要幾則？
-        </label>
+        <label class="field-title">想要幾則？</label>
 
         <select id="storyCount">
-
           <option value="1">1 則</option>
           <option value="2">2 則</option>
           <option value="3">3 則</option>
           <option value="4">4 則</option>
-
-          <option
-            value="5"
-            selected>
-            5 則
-          </option>
-
+          <option value="5" selected>5 則</option>
           <option value="6">6 則</option>
           <option value="7">7 則</option>
-
         </select>
 
       </div>
 
 
+      <!-- 產品模式 -->
 
-      <!-- 產品限動專用 -->
+      <div id="productGoalWrap" class="hidden">
 
-      <div
-        id="productGoalWrap"
-        class="hidden">
-
-        <label class="field-title">
-          這次產品曝光的目標
-        </label>
+        <label class="field-title">這次產品曝光的目標</label>
 
         <select id="productGoal">
-
-          <option>
-            輕曝光
-          </option>
-
-          <option>
-            建立需求
-          </option>
-
-          <option>
-            引導詢問
-          </option>
-
-          <option>
-            活動轉單
-          </option>
-
+          <option>輕曝光</option>
+          <option>建立需求</option>
+          <option>引導詢問</option>
+          <option>活動轉單</option>
         </select>
 
       </div>
 
 
+      <!-- 價值觀模式 -->
 
-      <!-- 價值觀專用 -->
+      <div id="valueCoreWrap" class="hidden">
 
-      <div
-        id="valueCoreWrap"
-        class="hidden">
+        <label class="field-title">這次想聊哪一類？</label>
+
+        <div class="value-category-grid" id="valueCategoryGrid">
+
+          <button type="button" class="value-cat active" data-value-cat="育兒" onclick="selectValueCategory(this)">育兒</button>
+          <button type="button" class="value-cat" data-value-cat="愛情／伴侶" onclick="selectValueCategory(this)">愛情／伴侶</button>
+          <button type="button" class="value-cat" data-value-cat="婚姻／家庭" onclick="selectValueCategory(this)">婚姻／家庭</button>
+          <button type="button" class="value-cat" data-value-cat="媽媽自己" onclick="selectValueCategory(this)">媽媽自己</button>
+          <button type="button" class="value-cat" data-value-cat="金錢觀" onclick="selectValueCategory(this)">金錢觀</button>
+          <button type="button" class="value-cat" data-value-cat="工作／事業" onclick="selectValueCategory(this)">工作／事業</button>
+          <button type="button" class="value-cat" data-value-cat="人際關係" onclick="selectValueCategory(this)">人際關係</button>
+          <button type="button" class="value-cat" data-value-cat="成長／人生" onclick="selectValueCategory(this)">成長／人生</button>
+          <button type="button" class="value-cat" data-value-cat="減脂／體態" onclick="selectValueCategory(this)">減脂／體態</button>
+          <button type="button" class="value-cat" data-value-cat="飲食觀念" onclick="selectValueCategory(this)">飲食觀念</button>
+          <button type="button" class="value-cat" data-value-cat="健康／保養" onclick="selectValueCategory(this)">健康／保養</button>
+          <button type="button" class="value-cat" data-value-cat="自媒體／經營" onclick="selectValueCategory(this)">自媒體／經營</button>
+          <button type="button" class="value-cat" data-value-cat="消費／購物觀" onclick="selectValueCategory(this)">消費／購物觀</button>
+          <button type="button" class="value-cat" data-value-cat="其他" onclick="selectValueCategory(this)">其他</button>
+
+        </div>
 
 
-        <label class="field-title">
-          你真正想講的那句話
-        </label>
+        <label class="field-title">想從哪個角度聊？</label>
+
+        <select id="valueAngle"></select>
+
+
+        <label class="field-title">這次是哪種分享？</label>
+
+        <select id="valueFormat">
+          <option>我的觀點</option>
+          <option>一個我最近改變的想法</option>
+          <option>一件讓我有感的事</option>
+          <option>我不同意大家常講的一句話</option>
+          <option>我以前以為…後來發現…</option>
+          <option>想提醒大家的一件事</option>
+          <option>知識＋我的看法</option>
+        </select>
+
+
+        <label class="field-title">你真正想講的那句話</label>
 
         <textarea
           id="valueCore"
-          placeholder="例如：我覺得小孩不是不能哭，只是大人常常受不了他哭。"></textarea>
+          placeholder="例如：我覺得減脂不是一直少吃，而是先把吃飯習慣改掉。"></textarea>
 
 
-
-        <label class="field-title">
-          想要的感覺
-        </label>
+        <label class="field-title">想要的感覺</label>
 
         <select id="valueTone">
-
-          <option>
-            純分享想法
-          </option>
-
-          <option>
-            引起共鳴
-          </option>
-
-          <option>
-            引發討論
-          </option>
-
-          <option>
-            溫柔但有觀點
-          </option>
-
-          <option>
-            比較直接一點
-          </option>
-
+          <option>純分享想法</option>
+          <option>引起共鳴</option>
+          <option>引發討論</option>
+          <option>溫柔但有觀點</option>
+          <option>比較直接一點</option>
         </select>
 
 
-
-        <label class="field-title">
-          想發在哪裡
-        </label>
+        <label class="field-title">想發在哪裡</label>
 
         <select id="valuePlatform">
-
-          <option>
-            IG 限動
-          </option>
-
-          <option>
-            Threads
-          </option>
-
-          <option>
-            IG 貼文／輪播
-          </option>
-
+          <option>IG 限動</option>
+          <option>Threads</option>
+          <option>IG 貼文／輪播</option>
         </select>
 
       </div>
-
 
     </div>
 
 
-    <button
-      class="primary-btn"
-      onclick="generatePrompt()">
-
+    <button class="primary-btn" onclick="generatePrompt()">
       ✨ 幫我生成專屬 AI 指令
-
     </button>
 
   </div>
-
 
 
   <!-- 結果 -->
 
   <div class="section">
 
-    <div
-      class="card"
-      id="resultCard">
-
+    <div class="card" id="resultCard">
 
       <div class="result-success">
 
-        <div class="result-icon">
-          ✓
-        </div>
+        <div class="result-icon">✓</div>
 
-        <h3>
-          你的 AI 指令已完成
-        </h3>
+        <h3>你的 AI 指令已完成</h3>
 
         <p id="resultDescription">
           已依照你今天的情況產生專屬指令。
@@ -1248,157 +956,72 @@ textarea{
       </div>
 
 
-
-      <button
-        class="secondary-btn"
-        onclick="copyPrompt()">
-
+      <button class="secondary-btn" onclick="copyPrompt()">
         複製完整指令
-
       </button>
 
 
-
-      <button
-        class="outline-btn"
-        onclick="togglePrompt()"
-        id="viewPromptBtn">
-
+      <button class="outline-btn" onclick="togglePrompt()" id="viewPromptBtn">
         查看完整指令
-
       </button>
 
 
-
-      <div
-        class="success"
-        id="copySuccess">
-
+      <div class="success" id="copySuccess">
         ✓ 已複製，可以直接貼到 ChatGPT
-
       </div>
 
 
-
       <div id="fullPromptWrap">
-
         <div id="result"></div>
-
       </div>
 
     </div>
 
   </div>
 
-
 </div>
-
 
 
 <!-- 我的 -->
 
-<div
-  id="profile"
-  class="page">
-
+<div id="profile" class="page">
 
   <div class="hero">
 
-    <h1>
-      先讓 AI<br>
-      真正認識你的帳號。
-    </h1>
+    <h1>先讓 AI<br>真正認識你的帳號。</h1>
 
-    <p>
-      設定一次後，
-      下次就不用重新輸入。
-    </p>
+    <p>設定一次後，下次就不用重新輸入。</p>
 
   </div>
-
-
 
   <div class="section">
 
     <div class="card">
 
+      <label class="field-title">帳號定位</label>
+      <input id="accountType" placeholder="例如：親子育兒／減脂料理">
 
-      <label class="field-title">
-        帳號定位
-      </label>
+      <label class="field-title">主要受眾</label>
+      <input id="audience" placeholder="例如：媽媽">
 
-      <input
-        id="accountType"
-        placeholder="例如：親子育兒／減脂料理">
+      <label class="field-title">平常分享主題</label>
+      <textarea id="topics" placeholder="例如：育兒生活、育兒觀、減脂料理"></textarea>
 
+      <label class="field-title">喜歡的文案語氣</label>
+      <input id="tone" placeholder="例如：專業但生活化">
 
+      <label class="field-title">不喜歡的文案感覺</label>
+      <textarea id="avoid" placeholder="例如：太 AI、太雞湯、太官方、太業配"></textarea>
 
-      <label class="field-title">
-        主要受眾
-      </label>
+      <label class="field-title">平常分享的產品／服務</label>
+      <textarea id="products" placeholder="沒有也可以空白"></textarea>
 
-      <input
-        id="audience"
-        placeholder="例如：媽媽">
-
-
-
-      <label class="field-title">
-        平常分享主題
-      </label>
-
-      <textarea
-        id="topics"
-        placeholder="例如：育兒生活、育兒觀、減脂料理"></textarea>
-
-
-
-      <label class="field-title">
-        喜歡的文案語氣
-      </label>
-
-      <input
-        id="tone"
-        placeholder="例如：專業但生活化">
-
-
-
-      <label class="field-title">
-        不喜歡的文案感覺
-      </label>
-
-      <textarea
-        id="avoid"
-        placeholder="例如：太 AI、太雞湯、太官方、太業配"></textarea>
-
-
-
-      <label class="field-title">
-        平常分享的產品／服務
-      </label>
-
-      <textarea
-        id="products"
-        placeholder="沒有也可以空白"></textarea>
-
-
-
-      <button
-        class="save-btn"
-        onclick="saveProfile()">
-
+      <button class="save-btn" onclick="saveProfile()">
         儲存我的帳號設定
-
       </button>
 
-
-
-      <div
-        class="success"
-        id="saveSuccess">
-
+      <div class="success" id="saveSuccess">
         ✓ 已儲存
-
       </div>
 
     </div>
@@ -1407,177 +1030,68 @@ textarea{
 
 </div>
 
-
 </div>
-
 
 
 <!-- 換模式 Modal -->
 
-<div
-  id="modeModal"
-  class="modal-overlay"
-  onclick="overlayClose(event)">
-
+<div id="modeModal" class="modal-overlay" onclick="overlayClose(event)">
 
   <div class="mode-sheet">
 
-
     <div class="sheet-handle"></div>
-
 
     <div class="sheet-header">
 
-      <h3>
-        換一個內容模式
-      </h3>
+      <h3>換一個內容模式</h3>
 
-      <button
-        class="sheet-close"
-        onclick="closeModeModal()">
-
-        ×
-
-      </button>
+      <button class="sheet-close" onclick="closeModeModal()">×</button>
 
     </div>
 
-
-
     <div class="sheet-grid">
 
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="story"
-        onclick="changeMode('story')">
-
-        <div class="sheet-icon">
-          📱
-        </div>
-
-        <div class="sheet-title">
-          今日限動規劃
-        </div>
-
-        <div class="sheet-desc">
-          1～7 則日常限動
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="story" onclick="changeMode('story')">
+        <div class="sheet-icon">📱</div>
+        <div class="sheet-title">今日限動規劃</div>
+        <div class="sheet-desc">1～7 則日常限動</div>
       </button>
 
-
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="productstory"
-        onclick="changeMode('productstory')">
-
-        <div class="sheet-icon">
-          🛍️
-        </div>
-
-        <div class="sheet-title">
-          產品限動
-        </div>
-
-        <div class="sheet-desc">
-          起承轉合自然帶產品
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="productstory" onclick="changeMode('productstory')">
+        <div class="sheet-icon">🛍️</div>
+        <div class="sheet-title">產品限動</div>
+        <div class="sheet-desc">起承轉合自然帶產品</div>
       </button>
 
-
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="values"
-        onclick="changeMode('values')">
-
-        <div class="sheet-icon">
-          💭
-        </div>
-
-        <div class="sheet-title">
-          價值觀／想法
-        </div>
-
-        <div class="sheet-desc">
-          整理觀點與生活想法
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="values" onclick="changeMode('values')">
+        <div class="sheet-icon">💭</div>
+        <div class="sheet-title">價值觀／想法</div>
+        <div class="sheet-desc">育兒、家庭、飲食等觀點</div>
       </button>
 
-
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="reels"
-        onclick="changeMode('reels')">
-
-        <div class="sheet-icon">
-          🎬
-        </div>
-
-        <div class="sheet-title">
-          Reels 腳本
-        </div>
-
-        <div class="sheet-desc">
-          鉤子、分鏡、字幕
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="reels" onclick="changeMode('reels')">
+        <div class="sheet-icon">🎬</div>
+        <div class="sheet-title">Reels 腳本</div>
+        <div class="sheet-desc">鉤子、分鏡、字幕</div>
       </button>
 
-
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="threads"
-        onclick="changeMode('threads')">
-
-        <div class="sheet-icon">
-          ✏️
-        </div>
-
-        <div class="sheet-title">
-          Threads
-        </div>
-
-        <div class="sheet-desc">
-          切角＋完整貼文
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="threads" onclick="changeMode('threads')">
+        <div class="sheet-icon">✏️</div>
+        <div class="sheet-title">Threads</div>
+        <div class="sheet-desc">切角＋完整貼文</div>
       </button>
 
-
-
-      <button
-        class="sheet-option"
-        data-sheet-mode="week"
-        onclick="changeMode('week')">
-
-        <div class="sheet-icon">
-          🗓️
-        </div>
-
-        <div class="sheet-title">
-          一週規劃
-        </div>
-
-        <div class="sheet-desc">
-          未來 7 天內容安排
-        </div>
-
+      <button class="sheet-option" data-sheet-mode="week" onclick="changeMode('week')">
+        <div class="sheet-icon">🗓️</div>
+        <div class="sheet-title">一週規劃</div>
+        <div class="sheet-desc">未來 7 天內容安排</div>
       </button>
-
 
     </div>
 
   </div>
 
 </div>
-
 
 
 <!-- Bottom Nav -->
@@ -1586,139 +1100,220 @@ textarea{
 
 <div class="bottom-inner">
 
-
-<button
-  id="navHome"
-  class="nav-item active"
-  onclick="showPage('home')">
-
-  <span class="nav-icon">
-    ⌂
-  </span>
-
+<button id="navHome" class="nav-item active" onclick="showPage('home')">
+  <span class="nav-icon">⌂</span>
   首頁
-
 </button>
 
-
-
-<button
-  id="navToday"
-  class="nav-item"
-  onclick="showPage('today')">
-
-  <span class="nav-icon">
-    ✦
-  </span>
-
+<button id="navToday" class="nav-item" onclick="showPage('today')">
+  <span class="nav-icon">✦</span>
   今日內容
-
 </button>
 
-
-
-<button
-  id="navProfile"
-  class="nav-item"
-  onclick="showPage('profile')">
-
-  <span class="nav-icon">
-    ♡
-  </span>
-
+<button id="navProfile" class="nav-item" onclick="showPage('profile')">
+  <span class="nav-icon">♡</span>
   我的
-
 </button>
 
-
 </div>
 
 </div>
-
 
 
 <script>
 
-
-let selectedMode =
-  "story";
-
+let selectedMode = "story";
+let selectedValueCategory = "育兒";
 
 const modeNames = {
+  story:"今日限動規劃",
+  productstory:"產品限動起承轉合",
+  values:"價值觀／想法分享",
+  reels:"Reels 腳本",
+  threads:"Threads",
+  week:"一週內容規劃"
+};
 
-  story:
-    "今日限動規劃",
+const valueAngles = {
 
-  productstory:
-    "產品限動起承轉合",
+  "育兒":[
+    "情緒與哭鬧",
+    "教養方式",
+    "陪伴",
+    "規矩與界線",
+    "媽媽的內疚",
+    "孩子長大",
+    "親子關係",
+    "學習與教育",
+    "手足相處"
+  ],
 
-  values:
-    "價值觀／想法分享",
+  "愛情／伴侶":[
+    "溝通",
+    "安全感",
+    "儀式感",
+    "相處方式",
+    "吵架",
+    "界線",
+    "信任",
+    "愛的表達"
+  ],
 
-  reels:
-    "Reels 腳本",
+  "婚姻／家庭":[
+    "夫妻分工",
+    "家庭責任",
+    "婆媳／家人相處",
+    "育兒分工",
+    "婚後生活",
+    "家庭界線",
+    "家庭支持"
+  ],
 
-  threads:
-    "Threads",
+  "媽媽自己":[
+    "自我價值",
+    "媽媽也需要自己的生活",
+    "休息",
+    "身分轉換",
+    "情緒",
+    "自由",
+    "照顧自己",
+    "媽媽內耗"
+  ],
 
-  week:
-    "一週內容規劃"
+  "金錢觀":[
+    "存錢",
+    "花錢",
+    "投資",
+    "收入",
+    "消費習慣",
+    "家庭財務",
+    "賺錢觀念",
+    "金錢安全感"
+  ],
+
+  "工作／事業":[
+    "工作選擇",
+    "收入與成就感",
+    "斜槓",
+    "創業",
+    "全職媽媽與工作",
+    "職涯",
+    "努力與結果",
+    "時間管理"
+  ],
+
+  "人際關係":[
+    "朋友",
+    "界線感",
+    "討好",
+    "遠離消耗",
+    "人情壓力",
+    "成熟關係",
+    "社交",
+    "被理解"
+  ],
+
+  "成長／人生":[
+    "選擇",
+    "後悔",
+    "改變",
+    "年齡",
+    "比較",
+    "人生節奏",
+    "自律",
+    "接受自己",
+    "長期主義"
+  ],
+
+  "減脂／體態":[
+    "不要過度節食",
+    "體重停滯",
+    "飲食習慣",
+    "外食",
+    "運動",
+    "身材焦慮",
+    "長期習慣",
+    "體重與體態",
+    "減脂心態"
+  ],
+
+  "飲食觀念":[
+    "碳水",
+    "蛋白質",
+    "熱量",
+    "吃飯順序",
+    "飲水",
+    "外食選擇",
+    "零食",
+    "份量",
+    "飲食平衡"
+  ],
+
+  "健康／保養":[
+    "保健習慣",
+    "保養觀念",
+    "睡眠",
+    "日常營養",
+    "長期保養",
+    "產品選擇",
+    "成分觀念"
+  ],
+
+  "自媒體／經營":[
+    "流量",
+    "真實感",
+    "個人品牌",
+    "內容焦慮",
+    "接業配",
+    "銷售",
+    "粉絲互動",
+    "經營心態",
+    "持續輸出"
+  ],
+
+  "消費／購物觀":[
+    "買東西前做功課",
+    "價格與價值",
+    "跟風",
+    "囤貨",
+    "品牌忠誠",
+    "省錢",
+    "值得買與不值得買"
+  ],
+
+  "其他":[
+    "生活觀察",
+    "最近有感的一件事",
+    "我不同意的一個觀點",
+    "最近改變的想法",
+    "想提醒大家的事"
+  ]
 
 };
 
 
-
 function showPage(pageId){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(page => {
+  document.querySelectorAll(".page")
+    .forEach(page=>page.classList.remove("active"));
 
-      page.classList.remove("active");
-
-    });
-
-
-  document
-    .getElementById(pageId)
+  document.getElementById(pageId)
     .classList.add("active");
 
+  document.querySelectorAll(".nav-item")
+    .forEach(item=>item.classList.remove("active"));
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(item => {
-
-      item.classList.remove("active");
-
-    });
-
-
-  if(pageId === "home"){
-
-    document
-      .getElementById("navHome")
-      .classList.add("active");
-
+  if(pageId==="home"){
+    document.getElementById("navHome").classList.add("active");
   }
 
-
-  if(pageId === "today"){
-
-    document
-      .getElementById("navToday")
-      .classList.add("active");
-
+  if(pageId==="today"){
+    document.getElementById("navToday").classList.add("active");
   }
 
-
-  if(pageId === "profile"){
-
-    document
-      .getElementById("navProfile")
-      .classList.add("active");
-
+  if(pageId==="profile"){
+    document.getElementById("navProfile").classList.add("active");
   }
-
 
   window.scrollTo({
     top:0,
@@ -1728,104 +1323,63 @@ function showPage(pageId){
 }
 
 
-
 function selectHomeMode(element){
 
-  selectedMode =
-    element.getAttribute("data-mode");
+  selectedMode = element.getAttribute("data-mode");
 
-
-  document
-    .querySelectorAll(".mode")
-    .forEach(mode => {
-
-      mode.classList.remove("active");
-
-    });
-
+  document.querySelectorAll(".mode")
+    .forEach(mode=>mode.classList.remove("active"));
 
   element.classList.add("active");
 
-
   updateModeUI();
-
   updateSheetActive();
-
-
   showPage("today");
 
 }
-
 
 
 function openModeModal(){
 
   updateSheetActive();
 
-
-  document
-    .getElementById("modeModal")
+  document.getElementById("modeModal")
     .classList.add("active");
 
-
-  document.body
-    .classList.add("modal-open");
+  document.body.classList.add("modal-open");
 
 }
-
 
 
 function closeModeModal(){
 
-  document
-    .getElementById("modeModal")
+  document.getElementById("modeModal")
     .classList.remove("active");
 
-
-  document.body
-    .classList.remove("modal-open");
+  document.body.classList.remove("modal-open");
 
 }
 
 
-
 function overlayClose(event){
 
-  if(
-    event.target.id === "modeModal"
-  ){
-
+  if(event.target.id==="modeModal"){
     closeModeModal();
-
   }
 
 }
 
 
-
 function changeMode(mode){
 
-  selectedMode =
-    mode;
-
+  selectedMode = mode;
 
   updateModeUI();
-
-
   updateHomeActive();
-
-
   updateSheetActive();
-
-
   closeModeModal();
 
-
-  document
-    .getElementById("resultCard")
-    .style.display =
-    "none";
-
+  document.getElementById("resultCard").style.display="none";
 
   window.scrollTo({
     top:0,
@@ -1835,229 +1389,176 @@ function changeMode(mode){
 }
 
 
-
 function updateHomeActive(){
 
-  document
-    .querySelectorAll(".mode")
-    .forEach(item => {
+  document.querySelectorAll(".mode").forEach(item=>{
 
-      const itemMode =
-        item.getAttribute("data-mode");
+    const itemMode = item.getAttribute("data-mode");
 
+    if(itemMode===selectedMode){
+      item.classList.add("active");
+    }else{
+      item.classList.remove("active");
+    }
 
-      if(itemMode === selectedMode){
-
-        item.classList.add("active");
-
-      }
-
-      else{
-
-        item.classList.remove("active");
-
-      }
-
-    });
+  });
 
 }
-
 
 
 function updateSheetActive(){
 
-  document
-    .querySelectorAll(".sheet-option")
-    .forEach(item => {
+  document.querySelectorAll(".sheet-option").forEach(item=>{
 
-      const itemMode =
-        item.getAttribute("data-sheet-mode");
+    const itemMode = item.getAttribute("data-sheet-mode");
 
+    if(itemMode===selectedMode){
+      item.classList.add("active");
+    }else{
+      item.classList.remove("active");
+    }
 
-      if(itemMode === selectedMode){
-
-        item.classList.add("active");
-
-      }
-
-      else{
-
-        item.classList.remove("active");
-
-      }
-
-    });
+  });
 
 }
 
 
+function selectValueCategory(button){
+
+  selectedValueCategory =
+    button.getAttribute("data-value-cat");
+
+  document.querySelectorAll(".value-cat")
+    .forEach(item=>item.classList.remove("active"));
+
+  button.classList.add("active");
+
+  updateValueAngles();
+
+}
+
+
+function updateValueAngles(){
+
+  const select =
+    document.getElementById("valueAngle");
+
+  const angles =
+    valueAngles[selectedValueCategory]
+    || valueAngles["其他"];
+
+  select.innerHTML="";
+
+  angles.forEach(angle=>{
+
+    const option =
+      document.createElement("option");
+
+    option.value=angle;
+    option.textContent=angle;
+
+    select.appendChild(option);
+
+  });
+
+}
+
 
 function updateModeUI(){
 
-  document
-    .getElementById("currentModeText")
-    .textContent =
-    modeNames[selectedMode];
+  document.getElementById("currentModeText")
+    .textContent=modeNames[selectedMode];
 
-
-  const storyCount =
-    document.getElementById("storyCountWrap");
-
-  const productGoal =
-    document.getElementById("productGoalWrap");
-
-  const valueCore =
-    document.getElementById("valueCoreWrap");
-
-  const rescue =
-    document.getElementById("rescueWrap");
-
-  const product =
-    document.getElementById("productWrap");
-
-  const frequency =
-    document.getElementById("productFrequencyWrap");
-
-  const eventWrap =
-    document.getElementById("eventWrap");
-
-  const materialsWrap =
-    document.getElementById("materialsWrap");
-
+  const storyCount=document.getElementById("storyCountWrap");
+  const productGoal=document.getElementById("productGoalWrap");
+  const valueCore=document.getElementById("valueCoreWrap");
+  const rescue=document.getElementById("rescueWrap");
+  const product=document.getElementById("productWrap");
+  const frequency=document.getElementById("productFrequencyWrap");
+  const eventWrap=document.getElementById("eventWrap");
+  const materialsWrap=document.getElementById("materialsWrap");
 
   storyCount.classList.add("hidden");
   productGoal.classList.add("hidden");
   valueCore.classList.add("hidden");
   rescue.classList.add("hidden");
 
-
   product.classList.remove("hidden");
   frequency.classList.remove("hidden");
   eventWrap.classList.remove("hidden");
   materialsWrap.classList.remove("hidden");
 
-
-
-  if(selectedMode === "story"){
+  if(selectedMode==="story"){
 
     storyCount.classList.remove("hidden");
-
     rescue.classList.remove("hidden");
 
-
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
+    document.getElementById("todayTitle").innerHTML=
       "今天有什麼<br>可以拿來發？";
 
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
+    document.getElementById("todaySubtitle").textContent=
       "日常、互動、產品比例一起幫你安排。";
 
   }
 
-
-
-  if(selectedMode === "productstory"){
+  if(selectedMode==="productstory"){
 
     storyCount.classList.remove("hidden");
-
     productGoal.classList.remove("hidden");
 
-
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
+    document.getElementById("todayTitle").innerHTML=
       "今天怎麼把產品<br>講得更自然？";
 
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
+    document.getElementById("todaySubtitle").textContent=
       "不是硬塞產品，而是依照 1～7 則安排最適合的鋪陳。";
 
   }
 
-
-
-  if(selectedMode === "values"){
+  if(selectedMode==="values"){
 
     valueCore.classList.remove("hidden");
 
     product.classList.add("hidden");
-
     frequency.classList.add("hidden");
 
+    document.getElementById("todayTitle").innerHTML=
+      "今天想聊<br>什麼觀念？";
 
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
-      "你真正想講的<br>是什麼？";
-
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
-      "保留你的觀點，AI 只幫你整理，不把你的想法洗掉。";
+    document.getElementById("todaySubtitle").textContent=
+      "先選主題和角度，再把你真正的想法整理清楚。";
 
   }
 
+  if(selectedMode==="reels"){
 
-
-  if(selectedMode === "reels"){
-
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
+    document.getElementById("todayTitle").innerHTML=
       "今天想拍<br>什麼 Reels？";
 
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
+    document.getElementById("todaySubtitle").textContent=
       "依照今天真的拍得到的素材安排腳本。";
 
   }
 
+  if(selectedMode==="threads"){
 
-
-  if(selectedMode === "threads"){
-
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
+    document.getElementById("todayTitle").innerHTML=
       "今天有什麼<br>值得寫？";
 
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
+    document.getElementById("todaySubtitle").textContent=
       "一件小事也可以變成讓人想留言的內容。";
 
   }
 
-
-
-  if(selectedMode === "week"){
+  if(selectedMode==="week"){
 
     product.classList.add("hidden");
-
     eventWrap.classList.add("hidden");
-
     materialsWrap.classList.add("hidden");
 
-
-    document
-      .getElementById("todayTitle")
-      .innerHTML =
+    document.getElementById("todayTitle").innerHTML=
       "這週要發什麼？";
 
-
-    document
-      .getElementById("todaySubtitle")
-      .textContent =
+    document.getElementById("todaySubtitle").textContent=
       "幫你一次安排未來 7 天的內容節奏。";
 
   }
@@ -2065,73 +1566,47 @@ function updateModeUI(){
 }
 
 
-
 function updateStrategy(){
 
-  const frequency =
-    document
-      .getElementById("productFrequency")
-      .value;
+  const frequency=
+    document.getElementById("productFrequency").value;
 
+  const main=document.getElementById("strategyMain");
+  const desc=document.getElementById("strategyDesc");
+  const ratio=document.getElementById("ratioBox");
 
-  const main =
-    document
-      .getElementById("strategyMain");
+  if(frequency==="two"){
 
+    main.textContent="今天先不要急著賣東西";
 
-  const desc =
-    document
-      .getElementById("strategyDesc");
-
-
-  const ratio =
-    document
-      .getElementById("ratioBox");
-
-
-  if(frequency === "two"){
-
-    main.textContent =
-      "今天先不要急著賣東西";
-
-
-    desc.textContent =
+    desc.textContent=
       "最近兩天都有產品曝光，今天先增加生活、互動或想法內容。";
 
-
-    ratio.innerHTML =
+    ratio.innerHTML=
       "<span>生活 60%</span><span>互動 30%</span><span>產品 10%</span>";
 
   }
 
+  else if(frequency==="one"){
 
-  else if(frequency === "one"){
+    main.textContent="今天可以自然帶一次產品";
 
-    main.textContent =
-      "今天可以自然帶一次產品";
-
-
-    desc.textContent =
+    desc.textContent=
       "近期產品曝光適中，可以先從生活情境切入，再自然出現產品。";
 
-
-    ratio.innerHTML =
+    ratio.innerHTML=
       "<span>生活 50%</span><span>互動 20%</span><span>產品 30%</span>";
 
   }
 
-
   else{
 
-    main.textContent =
-      "今天可以安排產品曝光";
+    main.textContent="今天可以安排產品曝光";
 
-
-    desc.textContent =
+    desc.textContent=
       "最近兩天沒有產品內容，今天可以自然安排一個使用情境。";
 
-
-    ratio.innerHTML =
+    ratio.innerHTML=
       "<span>生活 45%</span><span>互動 20%</span><span>產品 35%</span>";
 
   }
@@ -2139,137 +1614,68 @@ function updateStrategy(){
 }
 
 
-
 function saveProfile(){
 
-  const profile = {
+  const profile={
 
     accountType:
-      document
-        .getElementById("accountType")
-        .value
-        .trim(),
+      document.getElementById("accountType").value.trim(),
 
     audience:
-      document
-        .getElementById("audience")
-        .value
-        .trim(),
+      document.getElementById("audience").value.trim(),
 
     topics:
-      document
-        .getElementById("topics")
-        .value
-        .trim(),
+      document.getElementById("topics").value.trim(),
 
     tone:
-      document
-        .getElementById("tone")
-        .value
-        .trim(),
+      document.getElementById("tone").value.trim(),
 
     avoid:
-      document
-        .getElementById("avoid")
-        .value
-        .trim(),
+      document.getElementById("avoid").value.trim(),
 
     products:
-      document
-        .getElementById("products")
-        .value
-        .trim()
+      document.getElementById("products").value.trim()
 
   };
-
 
   localStorage.setItem(
     "creatorAIProfile",
     JSON.stringify(profile)
   );
 
+  const success=
+    document.getElementById("saveSuccess");
 
-  const success =
-    document
-      .getElementById("saveSuccess");
+  success.style.display="block";
 
-
-  success.style.display =
-    "block";
-
-
-  setTimeout(() => {
-
-    success.style.display =
-      "none";
-
+  setTimeout(()=>{
+    success.style.display="none";
   },2000);
 
 }
 
 
-
 function loadProfile(){
 
-  const saved =
-    localStorage
-      .getItem("creatorAIProfile");
+  const saved=
+    localStorage.getItem("creatorAIProfile");
 
-
-  if(!saved){
-
-    return;
-
-  }
-
+  if(!saved) return;
 
   try{
 
-    const p =
-      JSON.parse(saved);
+    const p=JSON.parse(saved);
 
+    document.getElementById("accountType").value=p.accountType||"";
+    document.getElementById("audience").value=p.audience||"";
+    document.getElementById("topics").value=p.topics||"";
+    document.getElementById("tone").value=p.tone||"";
+    document.getElementById("avoid").value=p.avoid||"";
+    document.getElementById("products").value=p.products||"";
 
-    document
-      .getElementById("accountType")
-      .value =
-      p.accountType || "";
-
-
-    document
-      .getElementById("audience")
-      .value =
-      p.audience || "";
-
-
-    document
-      .getElementById("topics")
-      .value =
-      p.topics || "";
-
-
-    document
-      .getElementById("tone")
-      .value =
-      p.tone || "";
-
-
-    document
-      .getElementById("avoid")
-      .value =
-      p.avoid || "";
-
-
-    document
-      .getElementById("products")
-      .value =
-      p.products || "";
-
-  }
-
-  catch{}
+  }catch{}
 
 }
-
 
 
 function getProfile(){
@@ -2277,17 +1683,11 @@ function getProfile(){
   try{
 
     return JSON.parse(
-
-      localStorage
-        .getItem("creatorAIProfile")
-
+      localStorage.getItem("creatorAIProfile")
       || "{}"
-
     );
 
-  }
-
-  catch{
+  }catch{
 
     return {};
 
@@ -2296,146 +1696,99 @@ function getProfile(){
 }
 
 
-
 function getMaterials(){
 
-  const selected =
+  const selected=
     Array.from(
-
       document.querySelectorAll(
         'input[name="material"]:checked'
       )
-
     );
 
-
-  if(selected.length === 0){
-
+  if(selected.length===0){
     return "沒有特別素材";
-
   }
 
-
   return selected
-    .map(x => x.value)
+    .map(x=>x.value)
     .join("、");
 
 }
 
 
-
 function getFrequency(){
 
-  const v =
-    document
-      .getElementById("productFrequency")
-      .value;
+  const v=
+    document.getElementById("productFrequency").value;
 
-
-  if(v === "two"){
-
+  if(v==="two"){
     return "最近兩天都有產品曝光";
-
   }
 
-
-  if(v === "one"){
-
+  if(v==="one"){
     return "最近兩天其中一天有產品曝光";
-
   }
-
 
   return "最近兩天都沒有產品曝光";
 
 }
 
 
-
 function context(){
 
-  const p =
-    getProfile();
+  const p=getProfile();
 
+  return{
 
-  return {
-
-    account:
-      p.accountType || "尚未設定",
-
-    audience:
-      p.audience || "尚未設定",
-
-    topics:
-      p.topics || "尚未設定",
-
-    tone:
-      p.tone || "自然生活化",
-
-    avoid:
-      p.avoid || "不要太像 AI、不要太官方、不要硬業配",
-
-    products:
-      p.products || "沒有設定",
+    account:p.accountType||"尚未設定",
+    audience:p.audience||"尚未設定",
+    topics:p.topics||"尚未設定",
+    tone:p.tone||"自然生活化",
+    avoid:p.avoid||"不要太像 AI、不要太官方、不要硬業配",
+    products:p.products||"沒有設定",
 
     goal:
-      document
-        .getElementById("goal")
-        .value,
+      document.getElementById("goal").value,
 
-    frequency:
-      getFrequency(),
+    frequency:getFrequency(),
 
     event:
-      document
-        .getElementById("todayEvent")
-        .value
-        .trim(),
+      document.getElementById("todayEvent").value.trim(),
 
-    materials:
-      getMaterials(),
+    materials:getMaterials(),
 
     product:
-      document
-        .getElementById("todayProduct")
-        .value
-        .trim(),
+      document.getElementById("todayProduct").value.trim(),
 
     count:
-      document
-        .getElementById("storyCount")
-        .value,
+      document.getElementById("storyCount").value,
 
     rescue:
-      document
-        .getElementById("needRescue")
-        .value,
+      document.getElementById("needRescue").value,
 
     productGoal:
-      document
-        .getElementById("productGoal")
-        .value,
+      document.getElementById("productGoal").value,
+
+    valueCategory:selectedValueCategory,
+
+    valueAngle:
+      document.getElementById("valueAngle").value,
+
+    valueFormat:
+      document.getElementById("valueFormat").value,
 
     valueCore:
-      document
-        .getElementById("valueCore")
-        .value
-        .trim(),
+      document.getElementById("valueCore").value.trim(),
 
     valueTone:
-      document
-        .getElementById("valueTone")
-        .value,
+      document.getElementById("valueTone").value,
 
     valuePlatform:
-      document
-        .getElementById("valuePlatform")
-        .value
+      document.getElementById("valuePlatform").value
 
   };
 
 }
-
 
 
 function buildStoryPrompt(c){
@@ -2474,8 +1827,8 @@ ${c.avoid}
 
 請幫我規劃 ${c.count} 則 Instagram 限動。
 
-${c.rescue === "yes"
-? "如果今天素材不足，請主動從我的帳號定位延伸簡單、今天立刻可以執行的內容。"
+${c.rescue==="yes"
+? "如果今天素材不足，請主動從我的帳號定位延伸今天立刻可以執行的內容。"
 : ""}
 
 請先判斷今天最適合的節奏，再安排內容。
@@ -2502,7 +1855,6 @@ ${c.rescue === "yes"
 10. 優先讓觀眾願意繼續看下一則。`;
 
 }
-
 
 
 function buildProductStoryPrompt(c){
@@ -2581,12 +1933,11 @@ ${c.tone}
 }
 
 
-
 function buildValuesPrompt(c){
 
-return `你是一位擅長整理個人觀點與生活想法的社群內容顧問。
+return `你是一位擅長整理個人觀點、生活想法與知識觀念的社群內容顧問。
 
-我已經有自己的想法，你的工作不是把它改成雞湯，而是幫我把它說清楚。
+我的重點不是要你憑空寫雞湯，而是幫我把原本腦袋裡的想法說得更清楚、更有共鳴、更像我本人。
 
 【帳號定位】
 ${c.account}
@@ -2594,50 +1945,76 @@ ${c.account}
 【主要受眾】
 ${c.audience}
 
-【今天發生的事情】
+【今天發生的事情／背景】
 ${c.event || "沒有特別事件"}
 
-【我真正想講的那句話】
+【這次主題類別】
+${c.valueCategory}
+
+【這次想聊的角度】
+${c.valueAngle}
+
+【這次分享形式】
+${c.valueFormat}
+
+【我真正想講的核心一句話】
 ${c.valueCore}
 
-【我想要的感覺】
+【我希望產生的感覺】
 ${c.valueTone}
 
 【發布平台】
 ${c.valuePlatform}
 
-【平常語氣】
+【平常文案語氣】
 ${c.tone}
 
-【不要出現】
+【我不喜歡的文案感覺】
 ${c.avoid}
 
-請先抓出我真正的核心觀點。
+請先分析：
 
-再依照「${c.valuePlatform}」整理成適合發布的內容。
+1. 我這句話真正的核心觀點是什麼。
+2. 這個觀點對「${c.audience}」最容易產生共鳴的地方是什麼。
+3. 哪個角度最容易讓人認識我的價值觀，而不是只得到一個知識點。
+4. 有沒有哪一句話很容易寫成 AI 雞湯，需要避開。
 
-可以參考這個脈絡：
+接著依照「${c.valuePlatform}」幫我完成內容。
+
+內容可以從以下脈絡選擇最自然的方式：
 
 生活事件／觀察
-→ 我當下的感受
-→ 我後來想到什麼
-→ 我的真正觀點
-→ 有餘韻的收尾
+→ 我的第一反應
+→ 我以前怎麼想
+→ 我現在怎麼看
+→ 我的核心觀點
+→ 一句有餘韻的收尾
 
-但不要硬套格式。
+如果這次是「知識＋我的看法」：
 
-要求：
+請把知識講得簡單、正確、生活化，
+再補上我自己的觀點，
+不要整篇變成百科或教科書。
 
-1. 必須保留「${c.valueCore}」的核心意思。
-2. 不要把我的觀點改成另一套大道理。
+如果這次主題是減脂、飲食、健康：
+
+請區分「個人經驗」與「一般知識」，
+不要把個人感受寫成醫療或絕對性結論。
+
+請遵守：
+
+1. 必須保留「${c.valueCore}」的真正意思。
+2. 不要擅自把我的觀點洗成正能量。
 3. 不要使用空泛雞湯。
-4. 避免制式 AI 句型。
-5. 要像真人真的有感而發。
-6. 適合時可以留一個自然問題，但不要硬 CTA。
-7. 使用繁體中文與台灣日常語氣。`;
+4. 不要使用「成為媽媽後我才明白」「我們都在學習成為更好的人」這類制式 AI 句。
+5. 不要每篇最後都問「你也是嗎？」
+6. 要像一個真人真的有這個想法，而不是為了做內容硬想出來。
+7. 可以有觀點，但不要刻意製造爭議。
+8. 使用繁體中文與台灣自然用語。
+9. 如果我的核心句子本身已經很好，不要過度改寫。
+10. 最後額外提供 2 個不同強度的收尾句，讓我選擇。`;
 
 }
-
 
 
 function buildReelsPrompt(c){
@@ -2689,7 +2066,6 @@ ${c.tone}
 }
 
 
-
 function buildThreadsPrompt(c){
 
 return `你是一位擅長 Threads 的內容顧問。
@@ -2732,7 +2108,6 @@ ${c.avoid}
 7. 使用繁體中文與台灣日常語氣。`;
 
 }
-
 
 
 function buildWeekPrompt(c){
@@ -2782,9 +2157,7 @@ Day X
 - 產品曝光
 
 不要連續幾天都在賣產品。
-
 不要每天都做知識型內容。
-
 同一週不要一直重複類似主題。
 
 最後整理：
@@ -2800,214 +2173,119 @@ Day X
 }
 
 
-
 function generatePrompt(){
 
-  const c =
-    context();
-
+  const c=context();
 
   if(
-    selectedMode !== "week"
+    selectedMode!=="week"
     &&
-    selectedMode !== "values"
+    selectedMode!=="values"
     &&
-    c.event === ""
+    c.event===""
     &&
-    c.rescue !== "yes"
+    c.rescue!=="yes"
   ){
 
-    alert(
-      "先簡單寫一下今天發生什麼事 ♡"
-    );
-
+    alert("先簡單寫一下今天發生什麼事 ♡");
     return;
 
   }
 
-
   if(
-    selectedMode === "values"
+    selectedMode==="values"
     &&
-    c.valueCore === ""
+    c.valueCore===""
   ){
 
-    alert(
-      "先寫下你真正想講的那句話 ♡"
-    );
-
+    alert("先寫下你真正想講的那句話 ♡");
     return;
 
   }
 
-
   if(
-    selectedMode === "productstory"
+    selectedMode==="productstory"
     &&
-    c.product === ""
+    c.product===""
     &&
-    c.products === "沒有設定"
+    c.products==="沒有設定"
   ){
 
-    alert(
-      "先填一下今天想分享的產品 ♡"
-    );
-
+    alert("先填一下今天想分享的產品 ♡");
     return;
 
   }
 
+  let prompt="";
 
-  let prompt =
-    "";
-
-
-  if(selectedMode === "story"){
-
-    prompt =
-      buildStoryPrompt(c);
-
+  if(selectedMode==="story"){
+    prompt=buildStoryPrompt(c);
   }
 
-
-  if(selectedMode === "productstory"){
-
-    prompt =
-      buildProductStoryPrompt(c);
-
+  if(selectedMode==="productstory"){
+    prompt=buildProductStoryPrompt(c);
   }
 
-
-  if(selectedMode === "values"){
-
-    prompt =
-      buildValuesPrompt(c);
-
+  if(selectedMode==="values"){
+    prompt=buildValuesPrompt(c);
   }
 
-
-  if(selectedMode === "reels"){
-
-    prompt =
-      buildReelsPrompt(c);
-
+  if(selectedMode==="reels"){
+    prompt=buildReelsPrompt(c);
   }
 
-
-  if(selectedMode === "threads"){
-
-    prompt =
-      buildThreadsPrompt(c);
-
+  if(selectedMode==="threads"){
+    prompt=buildThreadsPrompt(c);
   }
 
-
-  if(selectedMode === "week"){
-
-    prompt =
-      buildWeekPrompt(c);
-
+  if(selectedMode==="week"){
+    prompt=buildWeekPrompt(c);
   }
 
+  document.getElementById("result").textContent=prompt;
 
-  document
-    .getElementById("result")
-    .textContent =
-    prompt;
-
-
-  document
-    .getElementById("resultDescription")
-    .textContent =
+  document.getElementById("resultDescription").textContent=
     `已產生「${modeNames[selectedMode]}」專屬指令。`;
 
+  document.getElementById("resultCard").style.display="block";
 
-  document
-    .getElementById("resultCard")
-    .style.display =
-    "block";
+  document.getElementById("fullPromptWrap").style.display="none";
 
+  document.getElementById("viewPromptBtn").textContent="查看完整指令";
 
-  document
-    .getElementById("fullPromptWrap")
-    .style.display =
-    "none";
-
-
-  document
-    .getElementById("viewPromptBtn")
-    .textContent =
-    "查看完整指令";
-
-
-  document
-    .getElementById("resultCard")
-    .scrollIntoView({
-
-      behavior:"smooth",
-
-      block:"start"
-
-    });
+  document.getElementById("resultCard").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
 
 }
-
 
 
 function togglePrompt(){
 
-  const wrap =
-    document
-      .getElementById("fullPromptWrap");
+  const wrap=document.getElementById("fullPromptWrap");
+  const btn=document.getElementById("viewPromptBtn");
 
+  if(wrap.style.display==="block"){
 
-  const btn =
-    document
-      .getElementById("viewPromptBtn");
+    wrap.style.display="none";
+    btn.textContent="查看完整指令";
 
+  }else{
 
-  if(
-    wrap.style.display === "block"
-  ){
-
-    wrap.style.display =
-      "none";
-
-
-    btn.textContent =
-      "查看完整指令";
-
-  }
-
-  else{
-
-    wrap.style.display =
-      "block";
-
-
-    btn.textContent =
-      "收起完整指令";
+    wrap.style.display="block";
+    btn.textContent="收起完整指令";
 
   }
 
 }
 
 
-
 function copyPrompt(){
 
-  const text =
-    document
-      .getElementById("result")
-      .textContent;
+  const text=document.getElementById("result").textContent;
 
-
-  if(!text){
-
-    return;
-
-  }
-
+  if(!text) return;
 
   if(
     navigator.clipboard
@@ -3020,9 +2298,7 @@ function copyPrompt(){
       .then(showCopySuccess)
       .catch(fallbackCopy);
 
-  }
-
-  else{
+  }else{
 
     fallbackCopy();
 
@@ -3031,97 +2307,56 @@ function copyPrompt(){
 }
 
 
-
 function fallbackCopy(){
 
-  const text =
-    document
-      .getElementById("result")
-      .textContent;
+  const text=document.getElementById("result").textContent;
 
+  const textarea=document.createElement("textarea");
 
-  const textarea =
-    document
-      .createElement("textarea");
+  textarea.value=text;
+  textarea.style.position="fixed";
+  textarea.style.opacity="0";
 
-
-  textarea.value =
-    text;
-
-
-  textarea.style.position =
-    "fixed";
-
-
-  textarea.style.opacity =
-    "0";
-
-
-  document.body
-    .appendChild(textarea);
-
+  document.body.appendChild(textarea);
 
   textarea.select();
 
-
   try{
 
-    document
-      .execCommand("copy");
-
-
+    document.execCommand("copy");
     showCopySuccess();
 
-  }
+  }catch{
 
-  catch{
-
-    alert(
-      "複製失敗，請展開完整指令後手動複製"
-    );
+    alert("複製失敗，請展開完整指令後手動複製");
 
   }
 
-
-  document.body
-    .removeChild(textarea);
+  document.body.removeChild(textarea);
 
 }
 
 
-
 function showCopySuccess(){
 
-  const success =
-    document
-      .getElementById("copySuccess");
+  const success=document.getElementById("copySuccess");
 
+  success.style.display="block";
 
-  success.style.display =
-    "block";
-
-
-  setTimeout(() => {
-
-    success.style.display =
-      "none";
-
+  setTimeout(()=>{
+    success.style.display="none";
   },2200);
 
 }
 
 
-
 loadProfile();
-
 updateStrategy();
-
+updateValueAngles();
 updateModeUI();
-
 updateSheetActive();
 
 </script>
-
 
 </body>
 </html>
