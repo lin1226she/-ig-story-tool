@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -110,44 +111,6 @@ body.modal-open{
   box-shadow:0 8px 30px rgba(80,40,50,.055);
 }
 
-.strategy-card{
-  background:linear-gradient(135deg,#fff0f4,#fffafa);
-}
-
-.strategy-label{
-  font-size:12px;
-  font-weight:800;
-  color:#b6677c;
-  margin-bottom:8px;
-}
-
-.strategy-main{
-  font-size:21px;
-  font-weight:850;
-  margin-bottom:10px;
-}
-
-.strategy-desc{
-  color:#777;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.ratio{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-
-.ratio span{
-  border:1px solid #efd4db;
-  background:#fff;
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:12px;
-}
-
 .mode-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -155,7 +118,6 @@ body.modal-open{
 }
 
 .mode{
-  appearance:none;
   width:100%;
   text-align:left;
   background:#fff;
@@ -164,10 +126,6 @@ body.modal-open{
   padding:17px 14px;
   cursor:pointer;
   color:#292929;
-}
-
-.mode:active{
-  transform:scale(.98);
 }
 
 .mode.active{
@@ -231,7 +189,7 @@ body.modal-open{
   display:block;
   font-size:14px;
   font-weight:800;
-  margin:17px 0 9px;
+  margin:18px 0 9px;
 }
 
 .field-title:first-child{
@@ -241,7 +199,7 @@ body.modal-open{
 .field-note{
   font-size:12px;
   color:#999;
-  line-height:1.55;
+  line-height:1.6;
   margin-top:6px;
 }
 
@@ -321,7 +279,6 @@ textarea{
 }
 
 .special-box{
-  margin-top:16px;
   padding:16px;
   background:#fff8fa;
   border:1px solid #f0dfe4;
@@ -453,6 +410,14 @@ textarea{
   display:block;
 }
 
+.tool-form{
+  display:none;
+}
+
+.tool-form.active{
+  display:block;
+}
+
 .hidden{
   display:none !important;
 }
@@ -551,7 +516,7 @@ textarea{
   line-height:1.45;
 }
 
-/* Bottom Nav */
+/* Bottom */
 
 .bottom-nav{
   position:fixed;
@@ -593,14 +558,6 @@ textarea{
   font-weight:850;
 }
 
-@media(max-width:390px){
-
-  .hero h1{
-    font-size:27px;
-  }
-
-}
-
 </style>
 
 </head>
@@ -628,15 +585,16 @@ textarea{
 
 <div id="home" class="page active">
 
+
   <div class="hero">
 
     <h1>
-      今天也不用煩惱<br>
-      要發什麼。
+      今天不用再想<br>
+      到底要發什麼。
     </h1>
 
     <p>
-      不只幫你寫文案，而是先判斷今天最適合發什麼。
+      依照你現在要做的內容，直接選一個工具開始。
     </p>
 
   </div>
@@ -644,68 +602,42 @@ textarea{
 
   <div class="section">
 
-    <div class="section-title">
-      今天的內容建議
-    </div>
-
-    <div class="card strategy-card">
-
-      <div class="strategy-label">
-        TODAY'S STRATEGY
-      </div>
-
-      <div class="strategy-main" id="strategyMain">
-        今天可以安排產品曝光
-      </div>
-
-      <div class="strategy-desc" id="strategyDesc">
-        最近兩天都沒有產品內容，今天可以自然安排一個使用情境。
-      </div>
-
-      <div class="ratio" id="ratioBox">
-        <span>生活 45%</span>
-        <span>互動 20%</span>
-        <span>產品 35%</span>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="section">
 
     <div class="group-title">
-      日常內容
+      限時動態
     </div>
 
     <div class="mode-grid">
 
       <button class="mode active" data-mode="story" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">📱</div>
+        <div class="mode-icon">
+          📱
+        </div>
 
         <div class="mode-title">
-          今日限動規劃
+          今日限動排程
         </div>
 
         <div class="mode-desc">
-          1～7 則日常限動完整安排
+          把生活、互動、觀點、產品排成一整天
         </div>
 
       </button>
 
 
-      <button class="mode" data-mode="values" onclick="selectHomeMode(this)">
+      <button class="mode" data-mode="productstory" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">💭</div>
+        <div class="mode-icon">
+          🛍️
+        </div>
 
         <div class="mode-title">
-          價值觀／想法
+          產品限動起承轉合
         </div>
 
         <div class="mode-desc">
-          育兒、家庭、金錢、飲食等觀點整理
+          專門規劃一組產品銷售限動
         </div>
 
       </button>
@@ -714,21 +646,23 @@ textarea{
 
 
     <div class="group-title">
-      銷售內容
+      個人品牌
     </div>
 
     <div class="mode-grid">
 
-      <button class="mode" data-mode="productstory" onclick="selectHomeMode(this)">
+      <button class="mode" data-mode="values" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">🛍️</div>
+        <div class="mode-icon">
+          💭
+        </div>
 
         <div class="mode-title">
-          產品限動起承轉合
+          價值觀／想法
         </div>
 
         <div class="mode-desc">
-          1～7 則自然鋪陳產品
+          把腦中的觀念整理成有共鳴的內容
         </div>
 
       </button>
@@ -744,7 +678,9 @@ textarea{
 
       <button class="mode" data-mode="reels" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">🎬</div>
+        <div class="mode-icon">
+          🎬
+        </div>
 
         <div class="mode-title">
           Reels 爆款腳本
@@ -759,14 +695,16 @@ textarea{
 
       <button class="mode" data-mode="threads" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">✏️</div>
+        <div class="mode-icon">
+          ✏️
+        </div>
 
         <div class="mode-title">
           Threads
         </div>
 
         <div class="mode-desc">
-          找切角＋完整貼文
+          找切角、開頭、共鳴與討論點
         </div>
 
       </button>
@@ -782,21 +720,25 @@ textarea{
 
       <button class="mode" data-mode="week" onclick="selectHomeMode(this)">
 
-        <div class="mode-icon">🗓️</div>
+        <div class="mode-icon">
+          🗓️
+        </div>
 
         <div class="mode-title">
           7 天內容規劃
         </div>
 
         <div class="mode-desc">
-          限動、Reels、Threads 或全平台
+          限動、Reels、Threads 或全平台排程
         </div>
 
       </button>
 
     </div>
 
+
   </div>
+
 
 </div>
 
@@ -805,15 +747,16 @@ textarea{
 
 <div id="today" class="page">
 
+
   <div class="hero">
 
     <h1 id="todayTitle">
-      今天有什麼<br>
-      可以拿來發？
+      今天的限動<br>
+      怎麼排比較順？
     </h1>
 
     <p id="todaySubtitle">
-      把今天發生的事告訴我，不需要特別精彩。
+      把今天手上的內容丟進來，幫你排成一整天。
     </p>
 
   </div>
@@ -821,397 +764,536 @@ textarea{
 
   <div class="section">
 
+
     <div class="current-mode">
 
       <div>
 
         <small>
-          目前內容模式
+          目前工具
         </small>
 
         <strong id="currentModeText">
-          今日限動規劃
+          今日限動排程
         </strong>
 
       </div>
 
       <button class="change-mode" onclick="openModeModal()">
-        換模式
+        換工具
       </button>
 
     </div>
 
 
-    <div class="card">
+    <!-- 今日限動排程 -->
+
+    <div id="form-story" class="tool-form active">
+
+      <div class="card">
+
+        <div class="special-box">
+
+          <div class="special-title">
+            📱 今天整天的限動
+          </div>
 
 
-      <div id="generalGoalWrap">
-
-        <label class="field-title">
-          今天最主要的目標
-        </label>
-
-        <select id="goal">
-
-          <option>
-            增加限動觀看
-          </option>
-
-          <option>
-            提高粉絲互動
-          </option>
-
-          <option>
-            建立信任感
-          </option>
-
-          <option>
-            增加新粉絲
-          </option>
-
-          <option>
-            產品曝光
-          </option>
-
-          <option>
-            引導私訊詢問
-          </option>
-
-          <option>
-            促成購買
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div id="productFrequencyWrap">
-
-        <label class="field-title">
-          最近兩天產品曝光
-        </label>
-
-        <select id="productFrequency" onchange="updateStrategy()">
-
-          <option value="none">
-            兩天都沒有產品
-          </option>
-
-          <option value="one">
-            其中一天有產品
-          </option>
-
-          <option value="two">
-            兩天都有產品
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div id="eventWrap">
-
-        <label class="field-title" id="eventLabel">
-          今天發生什麼事？
-        </label>
-
-        <textarea
-          id="todayEvent"
-          placeholder="例如：早上泡可可、送小孩上學、晚上突然很想吃甜的……"></textarea>
-
-      </div>
-
-
-      <div id="rescueWrap">
-
-        <label class="field-title">
-          今天沒什麼素材？
-        </label>
-
-        <select id="needRescue">
-
-          <option value="no">
-            有素材，可以直接規劃
-          </option>
-
-          <option value="yes">
-            今天沒素材，請幫我想
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div id="materialsWrap">
-
-        <label class="field-title">
-          今天手上有哪些素材？
-        </label>
-
-        <div class="chips">
-
-          <label class="chip">
-            <input type="checkbox" name="material" value="自拍">
-            <span>自拍</span>
+          <label class="field-title">
+            今天有哪些事情可以發？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="生活照片">
-            <span>生活照片</span>
+          <textarea
+            id="storyLife"
+            placeholder="例如：早上送小孩、吃早餐、下午去買東西、晚上在家陪小孩。"></textarea>
+
+
+          <label class="field-title">
+            今天有沒有想分享的觀點／小知識？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="生活影片">
-            <span>生活影片</span>
+          <textarea
+            id="storyIdea"
+            placeholder="例如：最近很有感的一個育兒想法、飲食小知識。沒有可以空白。"></textarea>
+
+
+          <label class="field-title">
+            今天想帶什麼產品？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="產品照片">
-            <span>產品照片</span>
+          <input
+            id="storyProduct"
+            placeholder="例如：益生菌、可可、水光錠。">
+
+
+          <label class="field-title">
+            今天產品想怎麼出現？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="料理過程">
-            <span>料理過程</span>
+          <select id="storyProductStyle">
+
+            <option>
+              AI 幫我判斷
+            </option>
+
+            <option>
+              輕輕露出就好
+            </option>
+
+            <option>
+              日常使用情境
+            </option>
+
+            <option>
+              分享小知識後帶到
+            </option>
+
+            <option>
+              建立需求
+            </option>
+
+            <option>
+              引導詢問
+            </option>
+
+            <option>
+              今天有活動，要明確銷售
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            今天要不要安排互動？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="Before／After">
-            <span>Before／After</span>
+          <select id="storyInteraction">
+
+            <option>
+              AI 幫我判斷
+            </option>
+
+            <option>
+              不用
+            </option>
+
+            <option>
+              投票
+            </option>
+
+            <option>
+              問答
+            </option>
+
+            <option>
+              滑桿
+            </option>
+
+            <option>
+              表情回覆
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            今天想發幾則？
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="家庭／親子素材">
-            <span>家庭／親子</span>
+          <select id="storyCount">
+
+            <option value="3">
+              3 則
+            </option>
+
+            <option value="4">
+              4 則
+            </option>
+
+            <option value="5" selected>
+              5 則
+            </option>
+
+            <option value="6">
+              6 則
+            </option>
+
+            <option value="7">
+              7 則
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            今天手上的素材
           </label>
 
-          <label class="chip">
-            <input type="checkbox" name="material" value="只有文字">
-            <span>只有文字</span>
-          </label>
+          <div class="chips">
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="自拍">
+              <span>自拍</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="生活照片">
+              <span>生活照片</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="生活影片">
+              <span>生活影片</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="產品照片">
+              <span>產品照片</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="料理">
+              <span>料理</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="親子素材">
+              <span>親子素材</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="storyMaterial" value="只有文字">
+              <span>只有文字</span>
+            </label>
+
+          </div>
 
         </div>
 
       </div>
 
-
-      <div id="productWrap">
-
-        <label class="field-title">
-          今天想帶什麼產品？
-        </label>
-
-        <input
-          id="todayProduct"
-          placeholder="如果不帶產品可以空白">
-
-      </div>
+    </div>
 
 
-      <div id="storyCountWrap">
+    <!-- 產品限動 -->
 
-        <label class="field-title">
-          想要幾則？
-        </label>
+    <div id="form-productstory" class="tool-form">
 
-        <select id="storyCount">
+      <div class="card">
 
-          <option value="1">1 則</option>
-          <option value="2">2 則</option>
-          <option value="3">3 則</option>
-          <option value="4">4 則</option>
-          <option value="5" selected>5 則</option>
-          <option value="6">6 則</option>
-          <option value="7">7 則</option>
+        <div class="special-box">
 
-        </select>
-
-      </div>
+          <div class="special-title">
+            🛍️ 一組產品限動
+          </div>
 
 
-      <!-- 產品限動 -->
+          <label class="field-title">
+            今天想分享什麼產品？
+          </label>
 
-      <div id="productGoalWrap" class="hidden">
-
-        <label class="field-title">
-          這次產品曝光的目標
-        </label>
-
-        <select id="productGoal">
-
-          <option>
-            輕曝光
-          </option>
-
-          <option>
-            建立需求
-          </option>
-
-          <option>
-            引導詢問
-          </option>
-
-          <option>
-            活動轉單
-          </option>
-
-        </select>
-
-      </div>
+          <input
+            id="productStoryProduct"
+            placeholder="例如：益生菌">
 
 
-      <!-- 價值觀 -->
+          <label class="field-title">
+            今天有沒有可以當開場的生活情境？
+          </label>
 
-      <div id="valueCoreWrap" class="hidden">
+          <textarea
+            id="productStorySituation"
+            placeholder="例如：小孩最近外食比較多、早上準備保健品。沒有也可以空白。"></textarea>
 
-        <label class="field-title">
-          這次想聊哪一類？
-        </label>
 
-        <div class="value-category-grid">
+          <label class="field-title">
+            這組限動主要目標
+          </label>
 
-          <button type="button" class="value-cat active" data-value-cat="育兒" onclick="selectValueCategory(this)">育兒</button>
+          <select id="productStoryGoal">
 
-          <button type="button" class="value-cat" data-value-cat="愛情／伴侶" onclick="selectValueCategory(this)">愛情／伴侶</button>
+            <option>
+              輕曝光
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="婚姻／家庭" onclick="selectValueCategory(this)">婚姻／家庭</button>
+            <option>
+              建立需求
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="媽媽自己" onclick="selectValueCategory(this)">媽媽自己</button>
+            <option>
+              分享使用感受
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="金錢觀" onclick="selectValueCategory(this)">金錢觀</button>
+            <option>
+              增加信任
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="工作／事業" onclick="selectValueCategory(this)">工作／事業</button>
+            <option>
+              引導私訊詢問
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="人際關係" onclick="selectValueCategory(this)">人際關係</button>
+            <option>
+              活動轉單
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="成長／人生" onclick="selectValueCategory(this)">成長／人生</button>
+          </select>
 
-          <button type="button" class="value-cat" data-value-cat="減脂／體態" onclick="selectValueCategory(this)">減脂／體態</button>
 
-          <button type="button" class="value-cat" data-value-cat="飲食觀念" onclick="selectValueCategory(this)">飲食觀念</button>
+          <label class="field-title">
+            想做幾則？
+          </label>
 
-          <button type="button" class="value-cat" data-value-cat="健康／保養" onclick="selectValueCategory(this)">健康／保養</button>
+          <select id="productStoryCount">
 
-          <button type="button" class="value-cat" data-value-cat="自媒體／經營" onclick="selectValueCategory(this)">自媒體／經營</button>
+            <option>
+              1 則
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="消費／購物觀" onclick="selectValueCategory(this)">消費／購物觀</button>
+            <option>
+              2 則
+            </option>
 
-          <button type="button" class="value-cat" data-value-cat="其他" onclick="selectValueCategory(this)">其他</button>
+            <option selected>
+              3 則
+            </option>
+
+            <option>
+              4 則
+            </option>
+
+            <option>
+              5 則
+            </option>
+
+            <option>
+              6 則
+            </option>
+
+            <option>
+              7 則
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            你手上有什麼素材？
+          </label>
+
+          <div class="chips">
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="產品本人照">
+              <span>產品本人照</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="使用中的畫面">
+              <span>使用畫面</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="生活情境照">
+              <span>生活情境</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="成分圖">
+              <span>成分圖</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="對話截圖">
+              <span>對話截圖</span>
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" name="productMaterial" value="只有文字">
+              <span>只有文字</span>
+            </label>
+
+          </div>
 
         </div>
 
+      </div>
 
-        <label class="field-title">
-          想從哪個角度聊？
-        </label>
-
-        <select id="valueAngle"></select>
+    </div>
 
 
-        <label class="field-title">
-          這次是哪種分享？
-        </label>
+    <!-- 價值觀 -->
 
-        <select id="valueFormat">
+    <div id="form-values" class="tool-form">
 
-          <option>
-            我的觀點
-          </option>
+      <div class="card">
 
-          <option>
-            一個我最近改變的想法
-          </option>
+        <div class="special-box">
 
-          <option>
-            一件讓我有感的事
-          </option>
-
-          <option>
-            我不同意大家常講的一句話
-          </option>
-
-          <option>
-            我以前以為…後來發現…
-          </option>
-
-          <option>
-            想提醒大家的一件事
-          </option>
-
-          <option>
-            知識＋我的看法
-          </option>
-
-        </select>
+          <div class="special-title">
+            💭 把你的觀念整理成內容
+          </div>
 
 
-        <label class="field-title">
-          你真正想講的那句話
-        </label>
+          <label class="field-title">
+            這次想聊哪一類？
+          </label>
 
-        <textarea
-          id="valueCore"
-          placeholder="例如：我覺得減脂不是一直少吃，而是先把吃飯習慣改掉。"></textarea>
+          <div class="value-category-grid">
+
+            <button type="button" class="value-cat active" data-value-cat="育兒" onclick="selectValueCategory(this)">育兒</button>
+
+            <button type="button" class="value-cat" data-value-cat="愛情／伴侶" onclick="selectValueCategory(this)">愛情／伴侶</button>
+
+            <button type="button" class="value-cat" data-value-cat="婚姻／家庭" onclick="selectValueCategory(this)">婚姻／家庭</button>
+
+            <button type="button" class="value-cat" data-value-cat="媽媽自己" onclick="selectValueCategory(this)">媽媽自己</button>
+
+            <button type="button" class="value-cat" data-value-cat="金錢觀" onclick="selectValueCategory(this)">金錢觀</button>
+
+            <button type="button" class="value-cat" data-value-cat="工作／事業" onclick="selectValueCategory(this)">工作／事業</button>
+
+            <button type="button" class="value-cat" data-value-cat="人際關係" onclick="selectValueCategory(this)">人際關係</button>
+
+            <button type="button" class="value-cat" data-value-cat="成長／人生" onclick="selectValueCategory(this)">成長／人生</button>
+
+            <button type="button" class="value-cat" data-value-cat="減脂／體態" onclick="selectValueCategory(this)">減脂／體態</button>
+
+            <button type="button" class="value-cat" data-value-cat="飲食觀念" onclick="selectValueCategory(this)">飲食觀念</button>
+
+            <button type="button" class="value-cat" data-value-cat="健康／保養" onclick="selectValueCategory(this)">健康／保養</button>
+
+            <button type="button" class="value-cat" data-value-cat="自媒體／經營" onclick="selectValueCategory(this)">自媒體／經營</button>
+
+            <button type="button" class="value-cat" data-value-cat="消費／購物觀" onclick="selectValueCategory(this)">消費／購物觀</button>
+
+            <button type="button" class="value-cat" data-value-cat="其他" onclick="selectValueCategory(this)">其他</button>
+
+          </div>
 
 
-        <label class="field-title">
-          想要的感覺
-        </label>
+          <label class="field-title">
+            想從哪個角度聊？
+          </label>
 
-        <select id="valueTone">
-
-          <option>
-            純分享想法
-          </option>
-
-          <option>
-            引起共鳴
-          </option>
-
-          <option>
-            引發討論
-          </option>
-
-          <option>
-            溫柔但有觀點
-          </option>
-
-          <option>
-            比較直接一點
-          </option>
-
-        </select>
+          <select id="valueAngle"></select>
 
 
-        <label class="field-title">
-          想發在哪裡
-        </label>
+          <label class="field-title">
+            這個想法是從哪裡來的？
+          </label>
 
-        <select id="valuePlatform">
+          <select id="valueSource">
 
-          <option>
-            IG 限動
-          </option>
+            <option>
+              最近發生的一件事
+            </option>
 
-          <option>
-            Threads
-          </option>
+            <option>
+              最近一直在想
+            </option>
 
-          <option>
-            IG 貼文／輪播
-          </option>
+            <option>
+              看別人的內容有感
+            </option>
 
-        </select>
+            <option>
+              自己以前跟現在想法不同
+            </option>
+
+            <option>
+              一個常被大家誤會的觀念
+            </option>
+
+            <option>
+              純粹想分享我的看法
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            如果有背景，可以簡單寫
+          </label>
+
+          <textarea
+            id="valueBackground"
+            placeholder="例如：最近女兒說了一句話讓我很有感。沒有也可以空白。"></textarea>
+
+
+          <label class="field-title">
+            我真正想講的那句話
+          </label>
+
+          <textarea
+            id="valueCore"
+            placeholder="例如：我覺得減脂不是一直少吃，而是先把飲食習慣改掉。"></textarea>
+
+
+          <label class="field-title">
+            想要的感覺
+          </label>
+
+          <select id="valueTone">
+
+            <option>
+              純分享想法
+            </option>
+
+            <option>
+              引起共鳴
+            </option>
+
+            <option>
+              引發討論
+            </option>
+
+            <option>
+              溫柔但有觀點
+            </option>
+
+            <option>
+              比較直接一點
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            想發在哪裡？
+          </label>
+
+          <select id="valuePlatform">
+
+            <option>
+              IG 限動
+            </option>
+
+            <option>
+              Threads
+            </option>
+
+            <option>
+              IG 貼文
+            </option>
+
+            <option>
+              IG 輪播
+            </option>
+
+          </select>
+
+        </div>
 
       </div>
 
+    </div>
 
-      <!-- Reels -->
 
-      <div id="reelsWrap" class="hidden">
+    <!-- Reels -->
+
+    <div id="form-reels" class="tool-form">
+
+      <div class="card">
 
         <div class="special-box">
 
@@ -1221,7 +1303,16 @@ textarea{
 
 
           <label class="field-title">
-            這支影片最主要想要什麼結果？
+            這支影片想拍什麼題材？
+          </label>
+
+          <textarea
+            id="reelsTopic"
+            placeholder="例如：香蕉蛋鬆餅、減脂外食怎麼選、小孩情緒來的時候怎麼說。"></textarea>
+
+
+          <label class="field-title">
+            這支最主要想要什麼結果？
           </label>
 
           <select id="reelsGoal">
@@ -1251,7 +1342,7 @@ textarea{
             </option>
 
             <option>
-              建立信任感
+              建立信任
             </option>
 
             <option>
@@ -1266,13 +1357,13 @@ textarea{
 
 
           <label class="field-title">
-            想做哪種內容？
+            內容類型
           </label>
 
           <select id="reelsType">
 
             <option>
-              讓 AI 判斷最適合的
+              AI 幫我判斷
             </option>
 
             <option>
@@ -1312,32 +1403,32 @@ textarea{
             </option>
 
             <option>
-              生活跟拍型
+              生活跟拍
             </option>
 
             <option>
-              食譜／步驟型
+              食譜／步驟
             </option>
 
           </select>
 
 
           <label class="field-title">
-            鉤子想走哪種方向？
+            鉤子方向
           </label>
 
           <select id="reelsHook">
 
             <option>
-              讓 AI 挑最有潛力的
-            </option>
-
-            <option>
-              直接講結果
+              AI 幫我挑最有潛力的
             </option>
 
             <option>
               戳痛點
+            </option>
+
+            <option>
+              直接講結果
             </option>
 
             <option>
@@ -1353,19 +1444,11 @@ textarea{
             </option>
 
             <option>
-              不要再…
-            </option>
-
-            <option>
-              原來很多人都…
+              一句有觀點的話
             </option>
 
             <option>
               我以前也以為…
-            </option>
-
-            <option>
-              一句有觀點的話
             </option>
 
           </select>
@@ -1378,7 +1461,7 @@ textarea{
           <select id="reelsFormat">
 
             <option>
-              讓 AI 依素材判斷
+              AI 依題材判斷
             </option>
 
             <option>
@@ -1398,11 +1481,7 @@ textarea{
             </option>
 
             <option>
-              料理／操作過程＋字幕
-            </option>
-
-            <option>
-              Before & After
+              料理／操作過程
             </option>
 
           </select>
@@ -1415,7 +1494,7 @@ textarea{
           <select id="reelsLength">
 
             <option>
-              讓 AI 判斷
+              AI 判斷
             </option>
 
             <option>
@@ -1438,17 +1517,21 @@ textarea{
 
 
           <label class="field-title">
-            這支影片最想講的核心是什麼？
+            你最想講的核心
           </label>
 
           <textarea
             id="reelsCore"
-            placeholder="例如：只用香蕉和蛋也可以做出軟嫩鬆餅。"></textarea>
+            placeholder="一句話就可以。AI 會幫你找更有流量潛力的切角。"></textarea>
 
 
-          <div class="field-note">
-            一句話就可以，AI 會先幫你找更有流量潛力的切角。
-          </div>
+          <label class="field-title">
+            有沒有一定想帶的產品？
+          </label>
+
+          <input
+            id="reelsProduct"
+            placeholder="沒有可以空白">
 
 
           <label class="field-title">
@@ -1458,7 +1541,7 @@ textarea{
           <select id="reelsCTA" onchange="updateCTAUI()">
 
             <option value="ai">
-              讓 AI 判斷
+              AI 幫我判斷
             </option>
 
             <option value="yes">
@@ -1472,16 +1555,16 @@ textarea{
           </select>
 
 
-          <div id="ctaGoalWrap">
+          <div id="reelsCTAGoalWrap">
 
             <label class="field-title">
-              如果要 CTA，希望觀眾做什麼？
+              希望 CTA 做什麼？
             </label>
 
             <select id="reelsCTAGoal">
 
               <option>
-                讓 AI 選最適合的
+                AI 選最適合的
               </option>
 
               <option>
@@ -1509,11 +1592,7 @@ textarea{
               </option>
 
               <option>
-                點連結
-              </option>
-
-              <option>
-                看下一篇／Part 2
+                看 Part 2
               </option>
 
             </select>
@@ -1524,10 +1603,174 @@ textarea{
 
       </div>
 
+    </div>
 
-      <!-- 7天內容規劃 -->
 
-      <div id="weekWrap" class="hidden">
+    <!-- Threads -->
+
+    <div id="form-threads" class="tool-form">
+
+      <div class="card">
+
+        <div class="special-box">
+
+          <div class="special-title">
+            ✏️ Threads 內容
+          </div>
+
+
+          <label class="field-title">
+            最近有什麼想講的？
+          </label>
+
+          <textarea
+            id="threadsTopic"
+            placeholder="例如：最近發現很多媽媽其實不是不想工作，而是很難找到適合現在生活的工作方式。"></textarea>
+
+
+          <label class="field-title">
+            想走哪一種 Threads？
+          </label>
+
+          <select id="threadsType">
+
+            <option>
+              AI 幫我判斷
+            </option>
+
+            <option>
+              生活碎念
+            </option>
+
+            <option>
+              共鳴型
+            </option>
+
+            <option>
+              價值觀
+            </option>
+
+            <option>
+              觀察型
+            </option>
+
+            <option>
+              故事型
+            </option>
+
+            <option>
+              知識型
+            </option>
+
+            <option>
+              討論型
+            </option>
+
+            <option>
+              有點犀利但不吵架
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            希望看完的人有什麼反應？
+          </label>
+
+          <select id="threadsReaction">
+
+            <option>
+              覺得「我也是」
+            </option>
+
+            <option>
+              想留言分享經驗
+            </option>
+
+            <option>
+              想轉發
+            </option>
+
+            <option>
+              覺得我很有想法
+            </option>
+
+            <option>
+              想追蹤我
+            </option>
+
+            <option>
+              單純看到就好
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            要長還是短？
+          </label>
+
+          <select id="threadsLength">
+
+            <option>
+              AI 判斷
+            </option>
+
+            <option>
+              一兩句短文
+            </option>
+
+            <option>
+              中等長度
+            </option>
+
+            <option>
+              完整故事型
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            要不要 CTA？
+          </label>
+
+          <select id="threadsCTA">
+
+            <option>
+              AI 判斷
+            </option>
+
+            <option>
+              不要
+            </option>
+
+            <option>
+              自然問一個問題
+            </option>
+
+            <option>
+              引導留言
+            </option>
+
+            <option>
+              引導追蹤
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- 一週 -->
+
+    <div id="form-week" class="tool-form">
+
+      <div class="card">
 
         <div class="special-box">
 
@@ -1540,29 +1783,29 @@ textarea{
             這 7 天想規劃什麼？
           </label>
 
-          <select id="weekPlanType" onchange="updateWeekUI()">
+          <select id="weekType" onchange="updateWeekUI()">
 
             <option value="stories">
-              7 天限動規劃
+              7 天限動
             </option>
 
             <option value="reels">
-              7 天 Reels 規劃
+              7 天 Reels
             </option>
 
             <option value="threads">
-              7 天 Threads 規劃
+              7 天 Threads
             </option>
 
             <option value="all">
-              全平台內容規劃
+              全平台
             </option>
 
           </select>
 
 
           <label class="field-title">
-            這週最主要的目標
+            這週最主要目標
           </label>
 
           <select id="weekGoal">
@@ -1572,7 +1815,7 @@ textarea{
             </option>
 
             <option>
-              提高互動
+              增加互動
             </option>
 
             <option>
@@ -1580,23 +1823,19 @@ textarea{
             </option>
 
             <option>
-              建立信任感
+              建立信任
             </option>
 
             <option>
-              建立專業感
+              建立個人品牌
             </option>
 
             <option>
-              自然增加產品曝光
+              增加產品詢問
             </option>
 
             <option>
-              增加私訊詢問
-            </option>
-
-            <option>
-              銷售轉單
+              銷售
             </option>
 
           </select>
@@ -1605,7 +1844,7 @@ textarea{
           <div id="weekStoryOptions">
 
             <label class="field-title">
-              每天大約想發幾則限動？
+              每天限動大約幾則？
             </label>
 
             <select id="weekStoryCount">
@@ -1623,7 +1862,7 @@ textarea{
               </option>
 
               <option>
-                不固定，AI 幫我安排
+                AI 幫我安排
               </option>
 
             </select>
@@ -1634,7 +1873,7 @@ textarea{
           <div id="weekReelsOptions" class="hidden">
 
             <label class="field-title">
-              這週預計發幾支 Reels？
+              這週想發幾支 Reels？
             </label>
 
             <select id="weekReelsCount">
@@ -1667,7 +1906,7 @@ textarea{
           <div id="weekThreadsOptions" class="hidden">
 
             <label class="field-title">
-              這週預計發幾篇 Threads？
+              這週想發幾篇 Threads？
             </label>
 
             <select id="weekThreadsCount">
@@ -1685,44 +1924,7 @@ textarea{
               </option>
 
               <option>
-                每天都發
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div id="weekProductOptions">
-
-            <label class="field-title">
-              這週想安排幾天產品曝光？
-            </label>
-
-            <select id="weekProductDays">
-
-              <option>
-                0 天
-              </option>
-
-              <option>
-                1 天
-              </option>
-
-              <option selected>
-                2 天
-              </option>
-
-              <option>
-                3 天
-              </option>
-
-              <option>
-                4 天以上
-              </option>
-
-              <option>
-                AI 判斷最適合的比例
+                每天
               </option>
 
             </select>
@@ -1731,26 +1933,54 @@ textarea{
 
 
           <label class="field-title">
-            這週有什麼一定想分享的主題？
+            產品在這週怎麼安排？
+          </label>
+
+          <select id="weekProductStyle">
+
+            <option>
+              每天限動都要自然出現
+            </option>
+
+            <option>
+              只有部分天數出現
+            </option>
+
+            <option>
+              這週以建立信任為主，少賣
+            </option>
+
+            <option>
+              這週有活動，需要多一點銷售
+            </option>
+
+            <option>
+              AI 依整體內容比例安排
+            </option>
+
+          </select>
+
+
+          <label class="field-title">
+            這週有什麼一定想分享的？
           </label>
 
           <textarea
             id="weekTopics"
-            placeholder="例如：育兒情緒、減脂料理、最近的媽媽生活、產品使用日常。沒有也可以空白。"></textarea>
+            placeholder="例如：育兒情緒、減脂料理、媽媽生活、產品使用日常。"></textarea>
 
 
           <label class="field-title">
-            這週有沒有固定事件或素材？
+            這週有什麼固定事件？
           </label>
 
           <textarea
             id="weekEvents"
-            placeholder="例如：週三聚餐、週五帶小孩出遊、週末會做一支食譜影片。沒有也可以空白。"></textarea>
+            placeholder="例如：週三聚餐、週五出遊、週末拍食譜。沒有可以空白。"></textarea>
 
         </div>
 
       </div>
-
 
     </div>
 
@@ -1759,14 +1989,16 @@ textarea{
       ✨ 幫我生成專屬 AI 指令
     </button>
 
+
   </div>
 
 
-  <!-- Result -->
+  <!-- 結果 -->
 
   <div class="section">
 
     <div class="card" id="resultCard">
+
 
       <div class="result-success">
 
@@ -1775,11 +2007,11 @@ textarea{
         </div>
 
         <h3>
-          你的 AI 指令已完成
+          AI 指令完成
         </h3>
 
         <p id="resultDescription">
-          已依照你的情況產生專屬指令。
+          已依照你的設定產生專屬指令。
         </p>
 
       </div>
@@ -1796,7 +2028,7 @@ textarea{
 
 
       <div class="success" id="copySuccess">
-        ✓ 已複製，可以直接貼到 ChatGPT
+        ✓ 已複製，可以貼到 ChatGPT
       </div>
 
 
@@ -1804,9 +2036,11 @@ textarea{
         <div id="result"></div>
       </div>
 
+
     </div>
 
   </div>
+
 
 </div>
 
@@ -1815,15 +2049,16 @@ textarea{
 
 <div id="profile" class="page">
 
+
   <div class="hero">
 
     <h1>
       先讓 AI<br>
-      真正認識你的帳號。
+      認識你的帳號。
     </h1>
 
     <p>
-      設定一次後，下次就不用重新輸入。
+      設定一次，之後每個工具都會自動帶入。
     </p>
 
   </div>
@@ -1832,6 +2067,7 @@ textarea{
   <div class="section">
 
     <div class="card">
+
 
       <label class="field-title">
         帳號定位
@@ -1861,7 +2097,7 @@ textarea{
 
 
       <label class="field-title">
-        喜歡的文案語氣
+        喜歡的語氣
       </label>
 
       <input
@@ -1884,7 +2120,7 @@ textarea{
 
       <textarea
         id="products"
-        placeholder="沒有也可以空白"></textarea>
+        placeholder="沒有可以空白"></textarea>
 
 
       <button class="save-btn" onclick="saveProfile()">
@@ -1896,21 +2132,25 @@ textarea{
         ✓ 已儲存
       </div>
 
+
     </div>
 
   </div>
 
-</div>
-
 
 </div>
 
 
-<!-- Mode Modal -->
+</div>
+
+
+<!-- Modal -->
 
 <div id="modeModal" class="modal-overlay" onclick="overlayClose(event)">
 
+
   <div class="mode-sheet">
+
 
     <div class="sheet-handle"></div>
 
@@ -1918,7 +2158,7 @@ textarea{
     <div class="sheet-header">
 
       <h3>
-        換一個內容模式
+        換一個工具
       </h3>
 
       <button class="sheet-close" onclick="closeModeModal()">
@@ -1930,16 +2170,17 @@ textarea{
 
     <div class="sheet-grid">
 
+
       <button class="sheet-option" data-sheet-mode="story" onclick="changeMode('story')">
 
         <div class="sheet-icon">📱</div>
 
         <div class="sheet-title">
-          今日限動規劃
+          今日限動排程
         </div>
 
         <div class="sheet-desc">
-          1～7 則日常限動
+          排整天限動
         </div>
 
       </button>
@@ -1954,7 +2195,7 @@ textarea{
         </div>
 
         <div class="sheet-desc">
-          起承轉合自然帶產品
+          一組產品起承轉合
         </div>
 
       </button>
@@ -1965,11 +2206,11 @@ textarea{
         <div class="sheet-icon">💭</div>
 
         <div class="sheet-title">
-          價值觀／想法
+          價值觀
         </div>
 
         <div class="sheet-desc">
-          育兒、家庭、飲食等觀點
+          觀念與想法
         </div>
 
       </button>
@@ -1984,7 +2225,7 @@ textarea{
         </div>
 
         <div class="sheet-desc">
-          爆點、鉤子、節奏、CTA
+          鉤子、節奏、CTA
         </div>
 
       </button>
@@ -1999,7 +2240,7 @@ textarea{
         </div>
 
         <div class="sheet-desc">
-          切角＋完整貼文
+          共鳴與討論
         </div>
 
       </button>
@@ -2010,27 +2251,31 @@ textarea{
         <div class="sheet-icon">🗓️</div>
 
         <div class="sheet-title">
-          7 天內容規劃
+          7 天規劃
         </div>
 
         <div class="sheet-desc">
-          限動、Reels、Threads 或全平台
+          一整週內容
         </div>
 
       </button>
 
+
     </div>
 
+
   </div>
+
 
 </div>
 
 
-<!-- Bottom Nav -->
+<!-- Bottom -->
 
 <div class="bottom-nav">
 
 <div class="bottom-inner">
+
 
 <button id="navHome" class="nav-item active" onclick="showPage('home')">
 
@@ -2049,7 +2294,7 @@ textarea{
     ✦
   </span>
 
-  今日內容
+  工具
 
 </button>
 
@@ -2064,6 +2309,7 @@ textarea{
 
 </button>
 
+
 </div>
 
 </div>
@@ -2071,23 +2317,60 @@ textarea{
 
 <script>
 
+
 let selectedMode="story";
+
 let selectedValueCategory="育兒";
 
 
 const modeNames={
 
-  story:"今日限動規劃",
+  story:"今日限動排程",
 
   productstory:"產品限動起承轉合",
 
-  values:"價值觀／想法分享",
+  values:"價值觀／想法",
 
   reels:"Reels 爆款腳本",
 
   threads:"Threads",
 
   week:"7 天內容規劃"
+
+};
+
+
+const pageTexts={
+
+  story:{
+    title:"今天的限動<br>怎麼排比較順？",
+    subtitle:"把生活、互動、觀點和產品排成一整天。"
+  },
+
+  productstory:{
+    title:"這組產品限動<br>怎麼講才不硬？",
+    subtitle:"專門幫你安排產品限動的起承轉合。"
+  },
+
+  values:{
+    title:"你最近有什麼<br>真的想講的？",
+    subtitle:"把觀念整理清楚，而不是硬寫雞湯。"
+  },
+
+  reels:{
+    title:"這支 Reels<br>怎麼更有爆點？",
+    subtitle:"先找流量切角，再做鉤子、節奏、腳本和 CTA。"
+  },
+
+  threads:{
+    title:"最近有什麼<br>值得寫成 Threads？",
+    subtitle:"從想法出發，找共鳴、討論和自然開頭。"
+  },
+
+  week:{
+    title:"這 7 天<br>到底要發什麼？",
+    subtitle:"限動、Reels、Threads 或全平台一次排好。"
+  }
 
 };
 
@@ -2099,11 +2382,10 @@ const valueAngles={
     "教養方式",
     "陪伴",
     "規矩與界線",
-    "媽媽的內疚",
-    "孩子長大",
+    "媽媽內疚",
     "親子關係",
-    "學習與教育",
-    "手足相處"
+    "孩子長大",
+    "教育"
   ],
 
   "愛情／伴侶":[
@@ -2113,18 +2395,16 @@ const valueAngles={
     "相處方式",
     "吵架",
     "界線",
-    "信任",
-    "愛的表達"
+    "信任"
   ],
 
   "婚姻／家庭":[
     "夫妻分工",
     "家庭責任",
-    "婆媳／家人相處",
     "育兒分工",
     "婚後生活",
-    "家庭界線",
-    "家庭支持"
+    "家人相處",
+    "家庭界線"
   ],
 
   "媽媽自己":[
@@ -2134,19 +2414,17 @@ const valueAngles={
     "身分轉換",
     "情緒",
     "自由",
-    "照顧自己",
-    "媽媽內耗"
+    "照顧自己"
   ],
 
   "金錢觀":[
     "存錢",
     "花錢",
-    "投資",
     "收入",
-    "消費習慣",
     "家庭財務",
+    "消費習慣",
     "賺錢觀念",
-    "金錢安全感"
+    "安全感"
   ],
 
   "工作／事業":[
@@ -2154,21 +2432,17 @@ const valueAngles={
     "收入與成就感",
     "斜槓",
     "創業",
-    "全職媽媽與工作",
     "職涯",
-    "努力與結果",
     "時間管理"
   ],
 
   "人際關係":[
     "朋友",
-    "界線感",
+    "界線",
     "討好",
-    "遠離消耗",
     "人情壓力",
     "成熟關係",
-    "社交",
-    "被理解"
+    "社交"
   ],
 
   "成長／人生":[
@@ -2178,20 +2452,16 @@ const valueAngles={
     "年齡",
     "比較",
     "人生節奏",
-    "自律",
-    "接受自己",
-    "長期主義"
+    "自律"
   ],
 
   "減脂／體態":[
-    "不要過度節食",
+    "節食",
     "體重停滯",
     "飲食習慣",
     "外食",
     "運動",
     "身材焦慮",
-    "長期習慣",
-    "體重與體態",
     "減脂心態"
   ],
 
@@ -2201,9 +2471,8 @@ const valueAngles={
     "熱量",
     "吃飯順序",
     "飲水",
-    "外食選擇",
+    "外食",
     "零食",
-    "份量",
     "飲食平衡"
   ],
 
@@ -2211,40 +2480,34 @@ const valueAngles={
     "保健習慣",
     "保養觀念",
     "睡眠",
-    "日常營養",
-    "長期保養",
+    "營養",
     "產品選擇",
     "成分觀念"
   ],
 
   "自媒體／經營":[
     "流量",
-    "真實感",
     "個人品牌",
     "內容焦慮",
-    "接業配",
     "銷售",
     "粉絲互動",
-    "經營心態",
-    "持續輸出"
+    "經營心態"
   ],
 
   "消費／購物觀":[
-    "買東西前做功課",
+    "買東西做功課",
     "價格與價值",
     "跟風",
     "囤貨",
-    "品牌忠誠",
     "省錢",
-    "值得買與不值得買"
+    "值得買"
   ],
 
   "其他":[
     "生活觀察",
-    "最近有感的一件事",
-    "我不同意的一個觀點",
-    "最近改變的想法",
-    "想提醒大家的事"
+    "最近有感",
+    "不同意的一個觀點",
+    "改變的想法"
   ]
 
 };
@@ -2303,7 +2566,7 @@ function selectHomeMode(element){
 
 
   document.querySelectorAll(".mode")
-    .forEach(mode=>mode.classList.remove("active"));
+    .forEach(item=>item.classList.remove("active"));
 
 
   element.classList.add("active");
@@ -2318,44 +2581,6 @@ function selectHomeMode(element){
 }
 
 
-function openModeModal(){
-
-  updateSheetActive();
-
-
-  document.getElementById("modeModal")
-    .classList.add("active");
-
-
-  document.body
-    .classList.add("modal-open");
-
-}
-
-
-function closeModeModal(){
-
-  document.getElementById("modeModal")
-    .classList.remove("active");
-
-
-  document.body
-    .classList.remove("modal-open");
-
-}
-
-
-function overlayClose(event){
-
-  if(event.target.id==="modeModal"){
-
-    closeModeModal();
-
-  }
-
-}
-
-
 function changeMode(mode){
 
   selectedMode=mode;
@@ -2363,9 +2588,9 @@ function changeMode(mode){
 
   updateModeUI();
 
-  updateHomeActive();
-
   updateSheetActive();
+
+  updateHomeActive();
 
   closeModeModal();
 
@@ -2382,16 +2607,44 @@ function changeMode(mode){
 }
 
 
+function updateModeUI(){
+
+  document.getElementById("currentModeText")
+    .textContent=
+    modeNames[selectedMode];
+
+
+  document.getElementById("todayTitle")
+    .innerHTML=
+    pageTexts[selectedMode].title;
+
+
+  document.getElementById("todaySubtitle")
+    .textContent=
+    pageTexts[selectedMode].subtitle;
+
+
+  document.querySelectorAll(".tool-form")
+    .forEach(form=>form.classList.remove("active"));
+
+
+  document.getElementById(
+    "form-"+selectedMode
+  ).classList.add("active");
+
+}
+
+
 function updateHomeActive(){
 
   document.querySelectorAll(".mode")
     .forEach(item=>{
 
-      const mode=
-        item.getAttribute("data-mode");
-
-
-      if(mode===selectedMode){
+      if(
+        item.getAttribute("data-mode")
+        ===
+        selectedMode
+      ){
 
         item.classList.add("active");
 
@@ -2408,16 +2661,52 @@ function updateHomeActive(){
 }
 
 
+function openModeModal(){
+
+  updateSheetActive();
+
+
+  document.getElementById("modeModal")
+    .classList.add("active");
+
+
+  document.body.classList.add("modal-open");
+
+}
+
+
+function closeModeModal(){
+
+  document.getElementById("modeModal")
+    .classList.remove("active");
+
+
+  document.body.classList.remove("modal-open");
+
+}
+
+
+function overlayClose(event){
+
+  if(event.target.id==="modeModal"){
+
+    closeModeModal();
+
+  }
+
+}
+
+
 function updateSheetActive(){
 
   document.querySelectorAll(".sheet-option")
     .forEach(item=>{
 
-      const mode=
-        item.getAttribute("data-sheet-mode");
-
-
-      if(mode===selectedMode){
+      if(
+        item.getAttribute("data-sheet-mode")
+        ===
+        selectedMode
+      ){
 
         item.classList.add("active");
 
@@ -2491,7 +2780,7 @@ function updateCTAUI(){
 
 
   const wrap=
-    document.getElementById("ctaGoalWrap");
+    document.getElementById("reelsCTAGoalWrap");
 
 
   if(value==="no"){
@@ -2512,327 +2801,57 @@ function updateCTAUI(){
 function updateWeekUI(){
 
   const type=
-    document.getElementById("weekPlanType").value;
+    document.getElementById("weekType").value;
 
 
-  const storyOptions=
-    document.getElementById("weekStoryOptions");
+  document.getElementById("weekStoryOptions")
+    .classList.add("hidden");
 
 
-  const reelsOptions=
-    document.getElementById("weekReelsOptions");
+  document.getElementById("weekReelsOptions")
+    .classList.add("hidden");
 
 
-  const threadsOptions=
-    document.getElementById("weekThreadsOptions");
-
-
-  const productOptions=
-    document.getElementById("weekProductOptions");
-
-
-  storyOptions.classList.add("hidden");
-
-  reelsOptions.classList.add("hidden");
-
-  threadsOptions.classList.add("hidden");
-
-  productOptions.classList.remove("hidden");
+  document.getElementById("weekThreadsOptions")
+    .classList.add("hidden");
 
 
   if(type==="stories"){
 
-    storyOptions.classList.remove("hidden");
+    document.getElementById("weekStoryOptions")
+      .classList.remove("hidden");
 
   }
 
 
   if(type==="reels"){
 
-    reelsOptions.classList.remove("hidden");
+    document.getElementById("weekReelsOptions")
+      .classList.remove("hidden");
 
   }
 
 
   if(type==="threads"){
 
-    threadsOptions.classList.remove("hidden");
+    document.getElementById("weekThreadsOptions")
+      .classList.remove("hidden");
 
   }
 
 
   if(type==="all"){
 
-    storyOptions.classList.remove("hidden");
+    document.getElementById("weekStoryOptions")
+      .classList.remove("hidden");
 
-    reelsOptions.classList.remove("hidden");
 
-    threadsOptions.classList.remove("hidden");
+    document.getElementById("weekReelsOptions")
+      .classList.remove("hidden");
 
-  }
 
-}
-
-
-function updateModeUI(){
-
-  document.getElementById("currentModeText")
-    .textContent=modeNames[selectedMode];
-
-
-  const storyCount=
-    document.getElementById("storyCountWrap");
-
-  const productGoal=
-    document.getElementById("productGoalWrap");
-
-  const valueCore=
-    document.getElementById("valueCoreWrap");
-
-  const reelsWrap=
-    document.getElementById("reelsWrap");
-
-  const weekWrap=
-    document.getElementById("weekWrap");
-
-  const rescue=
-    document.getElementById("rescueWrap");
-
-  const product=
-    document.getElementById("productWrap");
-
-  const frequency=
-    document.getElementById("productFrequencyWrap");
-
-  const eventWrap=
-    document.getElementById("eventWrap");
-
-  const materialsWrap=
-    document.getElementById("materialsWrap");
-
-  const generalGoalWrap=
-    document.getElementById("generalGoalWrap");
-
-
-  storyCount.classList.add("hidden");
-
-  productGoal.classList.add("hidden");
-
-  valueCore.classList.add("hidden");
-
-  reelsWrap.classList.add("hidden");
-
-  weekWrap.classList.add("hidden");
-
-  rescue.classList.add("hidden");
-
-
-  product.classList.remove("hidden");
-
-  frequency.classList.remove("hidden");
-
-  eventWrap.classList.remove("hidden");
-
-  materialsWrap.classList.remove("hidden");
-
-  generalGoalWrap.classList.remove("hidden");
-
-
-  document.getElementById("eventLabel")
-    .textContent="今天發生什麼事？";
-
-
-  if(selectedMode==="story"){
-
-    storyCount.classList.remove("hidden");
-
-    rescue.classList.remove("hidden");
-
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "今天有什麼<br>可以拿來發？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "日常、互動、產品比例一起幫你安排。";
-
-  }
-
-
-  if(selectedMode==="productstory"){
-
-    storyCount.classList.remove("hidden");
-
-    productGoal.classList.remove("hidden");
-
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "今天怎麼把產品<br>講得更自然？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "依照 1～7 則自動安排起承轉合與銷售節奏。";
-
-  }
-
-
-  if(selectedMode==="values"){
-
-    valueCore.classList.remove("hidden");
-
-    product.classList.add("hidden");
-
-    frequency.classList.add("hidden");
-
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "今天想聊<br>什麼觀念？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "從育兒、家庭、事業、飲食到人生觀，都可以整理成內容。";
-
-  }
-
-
-  if(selectedMode==="reels"){
-
-    reelsWrap.classList.remove("hidden");
-
-    generalGoalWrap.classList.add("hidden");
-
-
-    document.getElementById("eventLabel")
-      .textContent=
-      "今天有哪些題材／事情可以拿來拍？";
-
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "這支 Reels<br>怎麼更有爆點？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "先找流量切角，再決定鉤子、節奏、腳本和 CTA。";
-
-  }
-
-
-  if(selectedMode==="threads"){
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "今天有什麼<br>值得寫？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "一件小事也可以變成讓人想留言的內容。";
-
-  }
-
-
-  if(selectedMode==="week"){
-
-    generalGoalWrap.classList.add("hidden");
-
-    product.classList.add("hidden");
-
-    frequency.classList.add("hidden");
-
-    eventWrap.classList.add("hidden");
-
-    materialsWrap.classList.add("hidden");
-
-    weekWrap.classList.remove("hidden");
-
-
-    document.getElementById("todayTitle")
-      .innerHTML=
-      "這 7 天<br>到底要發什麼？";
-
-
-    document.getElementById("todaySubtitle")
-      .textContent=
-      "先選限動、Reels、Threads 或全平台，再幫你排完整內容。";
-
-
-    updateWeekUI();
-
-  }
-
-}
-
-
-function updateStrategy(){
-
-  const frequency=
-    document.getElementById("productFrequency").value;
-
-
-  const main=
-    document.getElementById("strategyMain");
-
-
-  const desc=
-    document.getElementById("strategyDesc");
-
-
-  const ratio=
-    document.getElementById("ratioBox");
-
-
-  if(frequency==="two"){
-
-    main.textContent=
-      "今天先不要急著賣東西";
-
-
-    desc.textContent=
-      "最近兩天都有產品曝光，今天先增加生活、互動或想法內容。";
-
-
-    ratio.innerHTML=
-      "<span>生活 60%</span><span>互動 30%</span><span>產品 10%</span>";
-
-  }
-
-
-  else if(frequency==="one"){
-
-    main.textContent=
-      "今天可以自然帶一次產品";
-
-
-    desc.textContent=
-      "近期產品曝光適中，可以先從生活情境切入，再自然出現產品。";
-
-
-    ratio.innerHTML=
-      "<span>生活 50%</span><span>互動 20%</span><span>產品 30%</span>";
-
-  }
-
-
-  else{
-
-    main.textContent=
-      "今天可以安排產品曝光";
-
-
-    desc.textContent=
-      "最近兩天沒有產品內容，今天可以自然安排一個使用情境。";
-
-
-    ratio.innerHTML=
-      "<span>生活 45%</span><span>互動 20%</span><span>產品 35%</span>";
+    document.getElementById("weekThreadsOptions")
+      .classList.remove("hidden");
 
   }
 
@@ -2892,7 +2911,11 @@ function loadProfile(){
     localStorage.getItem("creatorAIProfile");
 
 
-  if(!saved) return;
+  if(!saved){
+
+    return;
+
+  }
 
 
   try{
@@ -2951,56 +2974,31 @@ function getProfile(){
 }
 
 
-function getMaterials(){
+function getChecked(name){
 
-  const selected=
+  const items=
     Array.from(
       document.querySelectorAll(
-        'input[name="material"]:checked'
+        `input[name="${name}"]:checked`
       )
     );
 
 
-  if(selected.length===0){
+  if(items.length===0){
 
     return "沒有特別素材";
 
   }
 
 
-  return selected
+  return items
     .map(x=>x.value)
     .join("、");
 
 }
 
 
-function getFrequency(){
-
-  const v=
-    document.getElementById("productFrequency").value;
-
-
-  if(v==="two"){
-
-    return "最近兩天都有產品曝光";
-
-  }
-
-
-  if(v==="one"){
-
-    return "最近兩天其中一天有產品曝光";
-
-  }
-
-
-  return "最近兩天都沒有產品曝光";
-
-}
-
-
-function context(){
+function getBase(){
 
   const p=
     getProfile();
@@ -3024,460 +3022,321 @@ function context(){
       p.avoid||"不要太像 AI、不要太官方、不要硬業配",
 
     products:
-      p.products||"沒有設定",
-
-    goal:
-      document.getElementById("goal").value,
-
-    frequency:
-      getFrequency(),
-
-    event:
-      document.getElementById("todayEvent").value.trim(),
-
-    materials:
-      getMaterials(),
-
-    product:
-      document.getElementById("todayProduct").value.trim(),
-
-    count:
-      document.getElementById("storyCount").value,
-
-    rescue:
-      document.getElementById("needRescue").value,
-
-    productGoal:
-      document.getElementById("productGoal").value,
-
-    valueCategory:
-      selectedValueCategory,
-
-    valueAngle:
-      document.getElementById("valueAngle").value,
-
-    valueFormat:
-      document.getElementById("valueFormat").value,
-
-    valueCore:
-      document.getElementById("valueCore").value.trim(),
-
-    valueTone:
-      document.getElementById("valueTone").value,
-
-    valuePlatform:
-      document.getElementById("valuePlatform").value,
-
-    reelsGoal:
-      document.getElementById("reelsGoal").value,
-
-    reelsType:
-      document.getElementById("reelsType").value,
-
-    reelsHook:
-      document.getElementById("reelsHook").value,
-
-    reelsFormat:
-      document.getElementById("reelsFormat").value,
-
-    reelsLength:
-      document.getElementById("reelsLength").value,
-
-    reelsCore:
-      document.getElementById("reelsCore").value.trim(),
-
-    reelsCTA:
-      document.getElementById("reelsCTA").value,
-
-    reelsCTAGoal:
-      document.getElementById("reelsCTAGoal").value,
-
-    weekPlanType:
-      document.getElementById("weekPlanType").value,
-
-    weekGoal:
-      document.getElementById("weekGoal").value,
-
-    weekStoryCount:
-      document.getElementById("weekStoryCount").value,
-
-    weekReelsCount:
-      document.getElementById("weekReelsCount").value,
-
-    weekThreadsCount:
-      document.getElementById("weekThreadsCount").value,
-
-    weekProductDays:
-      document.getElementById("weekProductDays").value,
-
-    weekTopics:
-      document.getElementById("weekTopics").value.trim(),
-
-    weekEvents:
-      document.getElementById("weekEvents").value.trim()
+      p.products||"沒有設定"
 
   };
 
 }
 
 
-function buildStoryPrompt(c){
+function buildStoryPrompt(){
 
-return `你是一位專業的 Instagram 限時動態內容策略顧問。
+  const b=getBase();
+
+
+  return `你是一位專業的 Instagram 限時動態內容策略顧問。
+
+我要你幫我安排的是「今天整天的限動節奏」，不是單獨寫一組產品限動。
 
 【帳號定位】
-${c.account}
+${b.account}
 
 【主要受眾】
-${c.audience}
+${b.audience}
 
 【平常分享】
-${c.topics}
+${b.topics}
 
-【今天目標】
-${c.goal}
+【今天可以發的生活內容】
+${document.getElementById("storyLife").value.trim() || "沒有特別事件"}
 
-【近期產品曝光】
-${c.frequency}
+【今天想分享的觀點／知識】
+${document.getElementById("storyIdea").value.trim() || "沒有指定"}
 
-【今天發生】
-${c.event || "今天沒有特別事件"}
+【今天想帶的產品】
+${document.getElementById("storyProduct").value.trim() || b.products}
+
+【產品出現方式】
+${document.getElementById("storyProductStyle").value}
+
+【互動】
+${document.getElementById("storyInteraction").value}
+
+【限動數量】
+${document.getElementById("storyCount").value} 則
 
 【素材】
-${c.materials}
+${getChecked("storyMaterial")}
 
-【產品】
-${c.product || "今天沒有一定要帶產品"}
-
-【文案語氣】
-${c.tone}
+【語氣】
+${b.tone}
 
 【不要出現】
-${c.avoid}
+${b.avoid}
 
-請幫我規劃 ${c.count} 則 Instagram 限動。
+請先判斷今天最自然的內容節奏。
 
-${c.rescue==="yes"
-? "如果今天素材不足，請主動從我的帳號定位延伸今天立刻可以執行的內容。"
-: ""}
+不要因為有產品，就把整天變成產品限動。
 
-請先判斷今天最適合的節奏，再安排內容。
+請把以下元素依照今天情況自然排列：
 
-每一則提供：
+生活
+互動
+觀點／知識
+產品
+收尾
 
-第 X 則
-畫面：
-可以直接使用的限動文字：
-是否需要互動：
-是否帶產品：
+不要求每一種都一定出現。
+
+請提供：
+
+第 1 則
+角色：生活／互動／觀點／產品／收尾
+建議畫面：
+可以直接發的文字：
+這一則的目的：
+下一則怎麼接：
+
+依序規劃到 ${document.getElementById("storyCount").value} 則。
+
+額外回答：
+
+1. 今天產品放在哪一則最自然？
+2. 今天互動貼紙要不要放？
+3. 如果有一則可以刪，最先刪哪則？
+4. 如果今天素材太少，可以補拍什麼？
 
 要求：
 
-1. 前後限動要有連貫性。
-2. 不要每一則都像知識教學。
-3. 不要每一則都有 CTA。
-4. 產品不要硬塞。
-5. 如果今天不適合賣，就不要安排產品。
-6. 每則文字不要太長。
-7. 像真人日常分享。
-8. 不要有明顯 AI 感。
-9. 使用繁體中文與台灣日常用語。
-10. 優先讓觀眾願意繼續看下一則。`;
+- 一整天要有連貫性。
+- 不要每則都像教學。
+- 不要每則都有 CTA。
+- 產品每天可以出現，但不要每天都用同一種賣法。
+- 文案簡短自然。
+- 使用繁體中文與台灣日常語氣。
+- 像真人發限動。`;
 
 }
 
 
-function buildProductStoryPrompt(c){
+function buildProductStoryPrompt(){
 
-return `你是一位專門規劃 Instagram 產品限動的內容策略顧問。
+  const b=getBase();
 
-請幫我安排一組有起承轉合、但不硬賣的產品限動。
+
+  return `你是一位專門規劃 Instagram 產品限動的內容策略顧問。
+
+這次我要的是「一組產品限動」，不是整天限動排程。
 
 【帳號定位】
-${c.account}
+${b.account}
 
 【主要受眾】
-${c.audience}
-
-【今天發生】
-${c.event}
-
-【素材】
-${c.materials}
+${b.audience}
 
 【產品】
-${c.product || c.products}
+${document.getElementById("productStoryProduct").value.trim() || b.products}
 
-【產品曝光目標】
-${c.productGoal}
+【生活開場情境】
+${document.getElementById("productStorySituation").value.trim() || "沒有指定生活情境"}
 
-【近期產品曝光】
-${c.frequency}
+【這組限動目標】
+${document.getElementById("productStoryGoal").value}
 
 【限動數量】
-${c.count} 則
+${document.getElementById("productStoryCount").value}
+
+【素材】
+${getChecked("productMaterial")}
 
 【語氣】
-${c.tone}
+${b.tone}
 
-請依照限動數量調整：
+請依照目標與限動數量，自動安排最自然的起承轉合。
 
-1 則：
-自然單點曝光。
+可能節奏：
 
-2 則：
-生活／需求 → 產品。
+生活情境
+→ 問題／需求
+→ 我的選擇
+→ 產品
+→ 使用感受／知識
+→ 信任
+→ CTA
 
-3 則：
-情境 → 需求 → 產品。
+但不要硬套。
 
-4 則：
-起 → 承 → 轉 → 合。
-
-5～7 則：
-生活 → 需求 → 產品 → 使用方式／感受 → 信任 → CTA 或互動。
-
-每一則提供：
+每則提供：
 
 第 X 則
-目的：
+這一則的作用：
 畫面：
-可以直接使用的文字：
+可以直接發的文字：
 產品出現程度：
-互動：
 下一則怎麼接：
+
+最後回答：
+
+- 這組限動最重要的是哪一則？
+- 哪一則最容易太業配？
+- CTA 應該多強？
+- CTA 建議 3 個。
 
 要求：
 
 1. 第一則不要直接像廣告。
 2. 不一直重複產品名稱。
-3. 不要每句都誇產品。
-4. 不堆疊功效。
-5. CTA 根據「${c.productGoal}」決定強弱。
-6. 近期曝光高時降低銷售感。
-7. 使用繁體中文與台灣日常語氣。
-8. 像真人平常發限動。`;
+3. 不堆疊功效。
+4. 不把每句都寫成銷售文案。
+5. 使用繁體中文與自然台灣口吻。`;
 
 }
 
 
-function buildValuesPrompt(c){
+function buildValuesPrompt(){
 
-return `你是一位擅長整理個人觀點、生活想法與知識觀念的社群內容顧問。
+  const b=getBase();
+
+
+  return `你是一位擅長整理個人觀點與生活想法的社群內容顧問。
+
+我已經有自己的想法。
+
+你的工作不是幫我寫雞湯，而是幫我把它說清楚。
 
 【帳號定位】
-${c.account}
+${b.account}
 
 【主要受眾】
-${c.audience}
-
-【背景／今天發生】
-${c.event || "沒有特別事件"}
+${b.audience}
 
 【主題類別】
-${c.valueCategory}
+${selectedValueCategory}
 
-【內容角度】
-${c.valueAngle}
+【角度】
+${document.getElementById("valueAngle").value}
 
-【分享形式】
-${c.valueFormat}
+【想法來源】
+${document.getElementById("valueSource").value}
 
-【真正想講的核心一句話】
-${c.valueCore}
+【背景】
+${document.getElementById("valueBackground").value.trim() || "沒有特別背景"}
 
-【希望感覺】
-${c.valueTone}
+【我真正想講的核心】
+${document.getElementById("valueCore").value.trim()}
+
+【想要的感覺】
+${document.getElementById("valueTone").value}
 
 【發布平台】
-${c.valuePlatform}
+${document.getElementById("valuePlatform").value}
 
-【平常語氣】
-${c.tone}
+【語氣】
+${b.tone}
 
 【不要出現】
-${c.avoid}
+${b.avoid}
 
-請先分析：
+先分析：
 
-1. 我的真正核心觀點。
-2. 對 ${c.audience} 最容易產生共鳴的地方。
-3. 怎麼讓人認識我的價值觀，而不是只得到知識。
-4. 哪些句子容易變成 AI 雞湯，要避開。
+1. 我真正想表達的是什麼？
+2. 最容易讓受眾有感的是哪個點？
+3. 哪些地方容易寫成雞湯？
+4. 這個題材比較適合共鳴、觀點、知識還是故事？
 
-接著完成適合 ${c.valuePlatform} 的內容。
-
-可參考：
-
-生活事件／觀察
-→ 我的感受
-→ 我以前怎麼想
-→ 我現在怎麼看
-→ 核心觀點
-→ 有餘韻的收尾
-
-不要硬套格式。
+再寫成適合「${document.getElementById("valuePlatform").value}」的內容。
 
 要求：
 
-1. 保留「${c.valueCore}」真正意思。
-2. 不把觀點洗成正能量。
-3. 不空泛雞湯。
-4. 不使用制式 AI 句型。
-5. 不要每篇最後都問「你也是嗎？」
-6. 像真人真的有這個想法。
-7. 可以有觀點，但不要刻意製造爭議。
-8. 使用繁體中文與台灣自然用語。
-9. 如果核心句子已經很好，不過度改寫。
-10. 最後額外提供兩個不同強度的收尾。`;
+- 保留我的核心意思。
+- 不擅自幫我正能量化。
+- 不寫成講道理。
+- 不使用制式 AI 句型。
+- 不要每次最後都問「你也是嗎？」
+- 像真人真的有這個想法。
+- 使用繁體中文與台灣自然語氣。
+- 最後提供 3 個不同收尾。`;
 
 }
 
 
-function buildReelsPrompt(c){
+function buildReelsPrompt(){
 
-let ctaInstruction="";
+  const b=getBase();
+
+  const cta=
+    document.getElementById("reelsCTA").value;
 
 
-if(c.reelsCTA==="no"){
+  return `你是一位非常擅長 Instagram Reels 流量策略、短影音腳本與完播率優化的內容企劃。
 
-  ctaInstruction=`
+我要你先找「爆點」，不是直接寫普通腳本。
+
+【帳號定位】
+${b.account}
+
+【受眾】
+${b.audience}
+
+【題材】
+${document.getElementById("reelsTopic").value.trim()}
+
+【影片主要目標】
+${document.getElementById("reelsGoal").value}
+
+【內容類型】
+${document.getElementById("reelsType").value}
+
+【鉤子方向】
+${document.getElementById("reelsHook").value}
+
+【影片形式】
+${document.getElementById("reelsFormat").value}
+
+【影片長度】
+${document.getElementById("reelsLength").value}
+
+【最想講的核心】
+${document.getElementById("reelsCore").value.trim() || "請根據題材判斷"}
+
+【產品】
+${document.getElementById("reelsProduct").value.trim() || "沒有一定要帶產品"}
+
 【CTA】
-這支影片不要安排 CTA。
-不要硬塞按讚、收藏、追蹤。
-如果內容自然結束比較好，就直接結束。`;
+${cta==="no"
+? "不要 CTA"
+: cta==="yes"
+? "需要 CTA，目標："+document.getElementById("reelsCTAGoal").value
+: "請 AI 判斷要不要 CTA"}
 
-}
-
-
-else if(c.reelsCTA==="yes"){
-
-  ctaInstruction=`
-【CTA】
-這支影片需要 CTA。
-
-CTA 目的：
-${c.reelsCTAGoal}
-
-請分析最適合把 CTA 放在哪裡，
-並提供 3 個自然、不像制式行銷的 CTA。`;
-
-}
-
-
-else{
-
-  ctaInstruction=`
-【CTA】
-請先判斷這支影片需不需要 CTA。
-
-如果 CTA 會破壞完播率或自然感，可以直接建議不要放。
-
-如果適合放，優先目的：
-${c.reelsCTAGoal}
-
-請說明判斷原因。`;
-
-}
-
-
-return `你是一位非常擅長 Instagram Reels 流量策略、短影音腳本與完播率優化的內容企劃。
-
-你的工作不是直接寫普通腳本。
-
-你必須先找出：
-
-「這個題材真正值得被看的爆點是什麼？」
-
-再決定切角、鉤子、影片結構與 CTA。
-
-【帳號】
-
-帳號定位：
-${c.account}
-
-主要受眾：
-${c.audience}
-
-平常分享：
-${c.topics}
-
-文案語氣：
-${c.tone}
-
-不要出現：
-${c.avoid}
-
-【這支 Reels】
-
-題材／事件：
-${c.event || "沒有特別事件"}
-
-素材：
-${c.materials}
-
-核心：
-${c.reelsCore || "請根據題材找最有潛力的核心"}
-
-主要目標：
-${c.reelsGoal}
-
-內容類型：
-${c.reelsType}
-
-鉤子方向：
-${c.reelsHook}
-
-影片形式：
-${c.reelsFormat}
-
-影片長度：
-${c.reelsLength}
-
-產品：
-${c.product || "沒有一定要帶產品"}
-
-${ctaInstruction}
+【語氣】
+${b.tone}
 
 請完成：
 
-一、爆款角度判斷
+第一步｜找 5 個流量角度
 
-先分析受眾真正會在意什麼。
-
-提供 5 個不同流量角度：
-
-1. 痛點型
-2. 反差／反常識
-3. 好奇型
-4. 結果導向
-5. 真人生活／故事
+至少包含：
+痛點
+反差
+好奇
+結果
+生活／故事
 
 每個提供：
-
-角度：
-核心：
-可能的開頭：
-為什麼會讓人停下來：
-比較適合觀看／收藏／留言／分享／漲粉哪種結果：
-
-最後選出最推薦角度。
+角度
+開頭
+為什麼可能讓人停下來
+比較適合觀看／收藏／分享／留言／漲粉哪種結果
 
 
-二、鉤子測試
-
-提供 5 個前三秒鉤子：
-
-痛點型
-好奇型
-結果型
-反差型
-最推薦版本
-
-並選出最推薦。
+第二步｜選最推薦角度
 
 
-三、前三秒設計
+第三步｜提供 5 個前三秒鉤子
+
+
+第四步｜設計 0～3 秒畫面
 
 0～1 秒：
 畫面：
@@ -3487,17 +3346,8 @@ ${ctaInstruction}
 畫面：
 字幕：
 
-並判斷：
 
-要不要藏答案？
-要不要直接秀結果？
-要不要 Before／After？
-需不需要露臉？
-
-
-四、完整時間軸
-
-依照影片長度安排：
+第五步｜完整時間軸
 
 時間：
 畫面：
@@ -3506,615 +3356,390 @@ ${ctaInstruction}
 目的：
 
 
-五、完整可拍腳本
-
-鏡頭 1
-畫面：
-字幕：
-口播：
-
-鏡頭 2
-畫面：
-字幕：
-口播：
-
-依序完成。
-
-素材不足時，告訴我最簡單可以補拍哪 2～3 個畫面。
+第六步｜完整可拍腳本
 
 
-六、封面
-
-提供 5 個封面標題。
-
-最後選最推薦版本。
+第七步｜5 個封面標題
 
 
-七、Caption
-
-寫一版自然 Caption。
-
-不要把影片字幕整段重複。
+第八步｜Caption
 
 
-八、CTA 策略
+第九步｜CTA 分析
 
-判斷：
+如果不適合 CTA，直接說不要。
 
-適不適合 CTA？
-放影片還是 Caption？
-放在哪裡最自然？
-
-提供 3 個 CTA。
+如果適合：
+CTA 放哪裡？
+CTA 文案 3 個。
 
 
-九、掉觀看檢查
+第十步｜掉觀看檢查
 
-請告訴我：
-
-1. 最容易滑走在哪？
-2. 哪裡太拖？
-3. 哪句可以刪？
-4. 哪個畫面可以更有變化？
-5. 答案會不會講太早？
-6. 最可能得到哪種互動？
-7. 影片長度是否適合？
+1. 最容易滑走的位置
+2. 哪裡太拖
+3. 哪句可刪
+4. 哪個畫面要換
+5. 影片是否太長
 
 
-十、延伸題材
+第十一步｜延伸題材
 
-提供 5 個下一支可以拍的題材：
-
-Part 2
-反方向
-粉絲追問
-更細教學
-更生活化版本
-
+提供 5 支下一支影片題材。
 
 要求：
 
-1. 繁體中文。
-2. 台灣自然用語。
-3. 不要 AI 味。
-4. 不要標題黨。
-5. 不保證爆款。
-6. 不刻意製造假資訊。
-7. 如果原題材不夠吸引人，直接換切角。
-8. 產品不適合就不要硬塞。
-9. 優先讓陌生觀眾看懂。
-10. 重點是提高停留、完播、收藏、分享或互動機會。`;
+- 不標題黨。
+- 不誇大。
+- 不保證爆款。
+- 不要 AI 味。
+- 陌生觀眾也看得懂。
+- 如果原題材太普通，直接換更好的切角。
+- 使用繁體中文與台灣自然語氣。`;
 
 }
 
 
-function buildThreadsPrompt(c){
+function buildThreadsPrompt(){
 
-return `你是一位擅長 Threads 的內容顧問。
+  const b=getBase();
+
+
+  return `你是一位熟悉 Threads 使用習慣與社群共鳴感的內容顧問。
 
 【帳號定位】
-${c.account}
+${b.account}
 
 【主要受眾】
-${c.audience}
+${b.audience}
 
-【今天發生】
-${c.event}
+【我最近想講的事】
+${document.getElementById("threadsTopic").value.trim()}
 
-【目標】
-${c.goal}
+【內容類型】
+${document.getElementById("threadsType").value}
 
-【文案語氣】
-${c.tone}
+【希望讀者反應】
+${document.getElementById("threadsReaction").value}
+
+【長度】
+${document.getElementById("threadsLength").value}
+
+【CTA】
+${document.getElementById("threadsCTA").value}
+
+【語氣】
+${b.tone}
 
 【不要出現】
-${c.avoid}
+${b.avoid}
 
-請先提供 3 個不同切角。
+先給我 5 個不同切角。
 
-每個包含：
+至少包含：
 
-開頭一句：
-核心觀點：
-為什麼適合：
+生活感
+共鳴
+觀點
+故事
+討論型
 
-再選出最推薦的一個，寫成完整 Threads。
+每個提供：
+
+開頭：
+核心：
+可能引起什麼反應：
+
+再選出最適合的一個。
+
+接著寫：
+
+1. 完整 Threads
+2. 另一個比較短的版本
+3. 另一個比較直接的版本
+4. 3 個不同開頭
+5. 是否適合 CTA
+6. 如果適合，CTA 建議
 
 要求：
 
-1. 像真人突然想到而發。
-2. 不要像文章。
-3. 不要太工整。
-4. 不要過度說教。
-5. 不用硬 CTA。
-6. 不為流量刻意製造爭議。
-7. 使用繁體中文與台灣日常語氣。`;
+- 不要像文章。
+- 不要過度工整。
+- 不要為了流量硬製造爭議。
+- 不要每篇最後都問問題。
+- 可以有碎念感。
+- 可以有個人觀點。
+- 使用繁體中文與台灣自然語氣。`;
 
 }
 
 
-function buildWeekPrompt(c){
+function buildWeekPrompt(){
 
-  const common=`
-你是一位專業的自媒體內容策略顧問。
+  const b=getBase();
 
-我要你幫我規劃未來 7 天內容。
-
-【帳號定位】
-${c.account}
-
-【主要受眾】
-${c.audience}
-
-【平常分享】
-${c.topics}
-
-【產品／服務】
-${c.products}
-
-【這週主要目標】
-${c.weekGoal}
-
-【這週想分享的主題】
-${c.weekTopics || "沒有指定，請依帳號定位安排"}
-
-【這週固定事件／素材】
-${c.weekEvents || "沒有固定事件"}
-
-【這週產品曝光】
-${c.weekProductDays}
-
-【文案語氣】
-${c.tone}
-
-【不要出現】
-${c.avoid}
-`;
+  const type=
+    document.getElementById("weekType").value;
 
 
-  if(c.weekPlanType==="stories"){
+  let detail="";
 
-return `${common}
 
-這次我要的是：
+  if(type==="stories"){
 
-【7 天 Instagram 限動規劃】
+    detail=`
+這次只規劃 Instagram 限動。
 
-每天大約：
-${c.weekStoryCount}
+每天約：
+${document.getElementById("weekStoryCount").value}
 
-請不要只是列 7 個主題。
-
-我要的是一整週真的可以照著發的限動節奏。
-
-請先規劃這週內容比例：
-
-生活 %
-互動 %
-價值觀 %
-知識 %
-產品 %
-
-再安排 Day 1～Day 7。
-
-每天請提供：
+每天要提供：
 
 Day X
-
-今天的內容目的：
+今天目的：
 今天主題：
-為什麼今天適合發這個：
+建議限動數量：
 
-第 1 則
-畫面：
-可以直接使用的文字：
-
-第 2 則
-畫面：
-可以直接使用的文字：
-
-依照當天需要安排適合數量。
+第 1 則：
+第 2 則：
+依序安排。
 
 另外標示：
 
-今天需不需要互動貼紙：
-適合什麼互動：
+互動：
+觀點：
+產品：
+收尾：
 
-今天要不要帶產品：
-如果帶，怎麼自然接：
+產品安排請依照：
+${document.getElementById("weekProductStyle").value}
 
-今天內容的收尾：
-
-要求：
-
-1. 7 天不要每天都很像。
-2. 不要每天都是知識。
-3. 不要天天產品。
-4. 產品日前後要有鋪陳。
-5. 一週中安排至少一個價值觀內容。
-6. 至少安排一個純生活日。
-7. 至少安排一個互動日。
-8. 限動之間要有連貫性。
-9. 文案不要太長。
-10. 像真人每天自然分享。`;
+如果產品每天都會出現，也不要每天同一種方式。`;
 
   }
 
 
-  if(c.weekPlanType==="reels"){
+  if(type==="reels"){
 
-return `${common}
+    detail=`
+這次只規劃 Reels。
 
-這次我要的是：
+這週數量：
+${document.getElementById("weekReelsCount").value}
 
-【7 天 Reels 內容規劃】
+每支提供：
 
-這週預計發布：
-${c.weekReelsCount}
-
-不是每天都一定要發 Reels。
-
-請先幫我判斷這週應該安排哪些不同目的的影片，例如：
-
-流量型
-高收藏型
-共鳴型
-建立信任型
-產品型
-
-避免全部做成同一種。
-
-每一支 Reels 請提供：
-
-第 X 支
-
-建議發布日：
-這支目的：
-題目：
-最適合的內容類型：
-受眾痛點／好奇點：
-
-推薦爆款角度：
-前三秒鉤子 3 個：
-
-最推薦鉤子：
-
-建議影片形式：
-建議長度：
-
-內容結構：
-
-0～3 秒：
-中段：
-結尾：
-
-CTA：
-要／不要／AI 建議：
-
-封面標題：
-
-為什麼這支值得拍：
-
-最後請告訴我：
-
-這幾支影片彼此如何搭配，
-以及哪一支最值得優先拍。
-
-要求：
-
-1. 不要全部是教學。
-2. 不要全部追求高觀看。
-3. 要兼顧收藏、分享、共鳴與漲粉。
-4. 同類題材不要重複。
-5. 產品型內容不要硬塞。
-6. 題目要符合我的帳號定位。
-7. 不要只給空泛方向，要給具體可拍的題目。`;
-
-  }
-
-
-  if(c.weekPlanType==="threads"){
-
-return `${common}
-
-這次我要的是：
-
-【7 天 Threads 內容規劃】
-
-這週預計發布：
-${c.weekThreadsCount}
-
-請幫我混合不同 Threads 類型：
-
-生活碎念
-共鳴
-價值觀
-觀察
-知識
-故事
-討論型
-偶爾產品／工作相關
-
-不要全部像長文章。
-
-每篇請提供：
-
-建議發布日：
-
-內容類型：
-
-主題：
-
-為什麼這個主題適合我的受眾：
-
-開頭一句 3 個：
-
-最推薦開頭：
-
-核心內容方向：
-
-完整 Threads：
-
-適不適合 CTA：
-
-如果適合，CTA：
-
-留言區可以延伸什麼：
-
-要求：
-
-1. 像真人在 Threads 說話。
-2. 不要每篇都有大道理。
-3. 不要每篇都問「你也是嗎？」
-4. 不要為了流量硬做爭議。
-5. 長短要有變化。
-6. 可以有一句話短文，也可以有較完整內容。
-7. 一週內容不要一直重複同一種情緒。`;
-
-  }
-
-
-return `${common}
-
-這次我要的是：
-
-【7 天全平台內容規劃】
-
-我不想每天亂發。
-
-我要你幫我安排 Instagram 限動、Reels、Threads 的整體節奏。
-
-這週限動：
-每天約 ${c.weekStoryCount}
-
-這週 Reels：
-${c.weekReelsCount}
-
-這週 Threads：
-${c.weekThreadsCount}
-
-請先規劃整週策略。
-
-回答：
-
-這週核心主題：
-這週內容目的：
-這週最重要的 3 個內容支柱：
-
-內容比例：
-
-生活 %
-價值觀 %
-知識 %
-流量 %
-互動 %
-產品 %
-
-接著安排 Day 1～Day 7。
-
-每天提供：
-
-Day X
-
-今天主要目的：
-
-今天要發哪些平台：
-IG 限動／Reels／Threads
-
-＝＝＝＝
-IG 限動
-＝＝＝＝
-
-如果今天適合發限動：
-
-限動主題：
-建議幾則：
-每則方向：
-是否互動：
-是否產品：
-
-如果今天不需要特別安排，寫「維持簡單生活更新」。
-
-
-＝＝＝＝
-Reels
-＝＝＝＝
-
-如果今天適合 Reels：
-
-題目：
-內容類型：
-前三秒鉤子：
+發布日：
 影片目的：
+題目：
+受眾痛點：
+流量角度：
+前三秒鉤子：
+影片形式：
+建議長度：
 CTA：
+封面：
 
-如果今天不用發，寫「今天不發 Reels」。
+請混合觀看型、收藏型、共鳴型、分享型，不要全部同一種。`;
+
+  }
 
 
-＝＝＝＝
-Threads
-＝＝＝＝
+  if(type==="threads"){
 
-如果今天適合 Threads：
+    detail=`
+這次只規劃 Threads。
 
+這週數量：
+${document.getElementById("weekThreadsCount").value}
+
+每篇提供：
+
+發布日：
+類型：
 主題：
-開頭：
-內容方向：
-CTA：
+開頭 3 個：
+最推薦開頭：
+核心內容：
+完整 Threads：
+CTA 建議：
 
-如果不用發，寫「今天不發 Threads」。
+長短要有變化，不要全部是大道理。`;
+
+  }
 
 
-最後再整理：
+  if(type==="all"){
 
-哪一天最重要：
-哪一天適合產品：
-哪一天適合做流量：
-哪一天適合做價值觀：
-哪一天適合單純生活：
+    detail=`
+這次規劃全平台。
 
-並告訴我：
+限動：
+每天 ${document.getElementById("weekStoryCount").value}
 
-如果這週很忙，
-最不能省掉的 3 個內容是什麼？
+Reels：
+${document.getElementById("weekReelsCount").value}
+
+Threads：
+${document.getElementById("weekThreadsCount").value}
+
+請安排 Day 1～Day 7。
+
+每天標示：
+
+Instagram 限動：
+Reels：
+Threads：
+
+不要求每天三個平台全發。
+
+要有輕內容日、流量日、價值觀日、產品日。
+
+不同平台不要只是同一份內容複製貼上。`;
+
+  }
+
+
+  return `你是一位專業的自媒體內容策略顧問。
+
+請幫我規劃未來 7 天。
+
+【帳號定位】
+${b.account}
+
+【受眾】
+${b.audience}
+
+【平常分享】
+${b.topics}
+
+【主要目標】
+${document.getElementById("weekGoal").value}
+
+【產品安排】
+${document.getElementById("weekProductStyle").value}
+
+【這週一定想分享】
+${document.getElementById("weekTopics").value.trim() || "沒有指定"}
+
+【這週固定事件】
+${document.getElementById("weekEvents").value.trim() || "沒有"}
+
+【語氣】
+${b.tone}
+
+${detail}
+
+最後請再整理：
+
+1. 這週核心策略
+2. 最重要的 3 個內容
+3. 哪一天最值得做流量
+4. 哪一天最適合銷售
+5. 哪一天適合純生活
+6. 如果這週很忙，最少要留下哪 3 個內容
 
 要求：
 
-1. 不需要每天三個平台全發。
-2. 要有休息與輕內容。
-3. Reels 前後可以用限動承接。
-4. Threads 不要只是 Reels 文案複製貼上。
-5. 產品內容前後要有生活與信任內容。
-6. 整週要看起來像同一個人的生活，不是排班表。
-7. 每個平台各自發揮優勢。
-8. 規劃要實際可執行。`;
+- 一週不要全部同一類。
+- 不要每天教學。
+- 不要每天強銷。
+- 內容要像同一個真人在經營。
+- 要能實際執行。
+- 使用繁體中文與台灣自然語氣。`;
 
 }
 
 
 function generatePrompt(){
 
-  const c=
-    context();
-
-
-  if(
-    selectedMode!=="week"
-    &&
-    selectedMode!=="values"
-    &&
-    selectedMode!=="reels"
-    &&
-    c.event===""
-    &&
-    c.rescue!=="yes"
-  ){
-
-    alert(
-      "先簡單寫一下今天發生什麼事 ♡"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    selectedMode==="values"
-    &&
-    c.valueCore===""
-  ){
-
-    alert(
-      "先寫下你真正想講的那句話 ♡"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    selectedMode==="productstory"
-    &&
-    c.product===""
-    &&
-    c.products==="沒有設定"
-  ){
-
-    alert(
-      "先填一下今天想分享的產品 ♡"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    selectedMode==="reels"
-    &&
-    c.event===""
-    &&
-    c.reelsCore===""
-  ){
-
-    alert(
-      "至少告訴我一個題材，或這支 Reels 最想講什麼 ♡"
-    );
-
-    return;
-
-  }
-
-
   let prompt="";
 
 
   if(selectedMode==="story"){
 
-    prompt=
-      buildStoryPrompt(c);
+    prompt=buildStoryPrompt();
 
   }
 
 
   if(selectedMode==="productstory"){
 
-    prompt=
-      buildProductStoryPrompt(c);
+    if(
+      document.getElementById("productStoryProduct").value.trim()===""
+      &&
+      getBase().products==="沒有設定"
+    ){
+
+      alert("先填一下今天想分享的產品 ♡");
+
+      return;
+
+    }
+
+
+    prompt=buildProductStoryPrompt();
 
   }
 
 
   if(selectedMode==="values"){
 
-    prompt=
-      buildValuesPrompt(c);
+    if(
+      document.getElementById("valueCore").value.trim()===""
+    ){
+
+      alert("先寫下你真正想講的那句話 ♡");
+
+      return;
+
+    }
+
+
+    prompt=buildValuesPrompt();
 
   }
 
 
   if(selectedMode==="reels"){
 
-    prompt=
-      buildReelsPrompt(c);
+    if(
+      document.getElementById("reelsTopic").value.trim()===""
+    ){
+
+      alert("先寫一下這支 Reels 想拍什麼題材 ♡");
+
+      return;
+
+    }
+
+
+    prompt=buildReelsPrompt();
 
   }
 
 
   if(selectedMode==="threads"){
 
-    prompt=
-      buildThreadsPrompt(c);
+    if(
+      document.getElementById("threadsTopic").value.trim()===""
+    ){
+
+      alert("先寫一下最近有什麼想講的 ♡");
+
+      return;
+
+    }
+
+
+    prompt=buildThreadsPrompt();
 
   }
 
 
   if(selectedMode==="week"){
 
-    prompt=
-      buildWeekPrompt(c);
+    prompt=buildWeekPrompt();
 
   }
 
@@ -4163,8 +3788,7 @@ function togglePrompt(){
 
     wrap.style.display="none";
 
-    btn.textContent=
-      "查看完整指令";
+    btn.textContent="查看完整指令";
 
   }
 
@@ -4172,8 +3796,7 @@ function togglePrompt(){
 
     wrap.style.display="block";
 
-    btn.textContent=
-      "收起完整指令";
+    btn.textContent="收起完整指令";
 
   }
 
@@ -4186,27 +3809,17 @@ function copyPrompt(){
     document.getElementById("result").textContent;
 
 
-  if(!text) return;
+  if(!text){
 
-
-  if(
-    navigator.clipboard
-    &&
-    navigator.clipboard.writeText
-  ){
-
-    navigator.clipboard
-      .writeText(text)
-      .then(showCopySuccess)
-      .catch(fallbackCopy);
+    return;
 
   }
 
-  else{
 
-    fallbackCopy();
-
-  }
+  navigator.clipboard
+    .writeText(text)
+    .then(showCopySuccess)
+    .catch(fallbackCopy);
 
 }
 
@@ -4234,24 +3847,13 @@ function fallbackCopy(){
   textarea.select();
 
 
-  try{
-
-    document.execCommand("copy");
-
-    showCopySuccess();
-
-  }
-
-  catch{
-
-    alert(
-      "複製失敗，請展開完整指令後手動複製"
-    );
-
-  }
+  document.execCommand("copy");
 
 
   document.body.removeChild(textarea);
+
+
+  showCopySuccess();
 
 }
 
@@ -4269,14 +3871,12 @@ function showCopySuccess(){
 
     success.style.display="none";
 
-  },2200);
+  },2000);
 
 }
 
 
 loadProfile();
-
-updateStrategy();
 
 updateValueAngles();
 
@@ -4288,8 +3888,10 @@ updateCTAUI();
 
 updateWeekUI();
 
+
 </script>
 
 
 </body>
+
 </html>
