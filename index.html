@@ -17,9 +17,7 @@ body{
   padding-bottom:92px;
 }
 
-button,input,select,textarea{
-  font-family:inherit;
-}
+button,input,select,textarea{font-family:inherit}
 
 button{
   cursor:pointer;
@@ -31,17 +29,10 @@ button{
   margin:auto;
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 .topbar{
   padding:22px 18px 10px;
@@ -125,15 +116,13 @@ button{
 }
 
 .quick-grid,
-.mode-grid,
 .stat-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
 }
 
-.quick-btn,
-.mode{
+.quick-btn{
   width:100%;
   text-align:left;
   background:#fff;
@@ -143,26 +132,22 @@ button{
   color:#292929;
 }
 
-.quick-btn:active,
-.mode:active{
+.quick-btn:active{
   transform:scale(.98);
 }
 
-.quick-icon,
-.mode-icon{
+.quick-icon{
   font-size:22px;
   margin-bottom:7px;
 }
 
-.quick-title,
-.mode-title{
+.quick-title{
   font-size:15px;
   font-weight:850;
   margin-bottom:4px;
 }
 
-.quick-desc,
-.mode-desc{
+.quick-desc{
   font-size:12px;
   color:#8a8588;
   line-height:1.5;
@@ -272,13 +257,8 @@ button{
   font-weight:800;
 }
 
-.tool-form{
-  display:none;
-}
-
-.tool-form.active{
-  display:block;
-}
+.tool-form{display:none}
+.tool-form.active{display:block}
 
 .special-box{
   padding:15px;
@@ -303,13 +283,6 @@ button{
 
 .field-title:first-child{
   margin-top:0;
-}
-
-.field-note{
-  font-size:12px;
-  color:#999;
-  line-height:1.6;
-  margin-top:6px;
 }
 
 input,
@@ -344,9 +317,7 @@ textarea:focus{
   gap:8px;
 }
 
-.chip input{
-  display:none;
-}
+.chip input{display:none}
 
 .chip span,
 .pill-button{
@@ -498,9 +469,7 @@ textarea:focus{
   margin-top:3px;
 }
 
-.task-main{
-  flex:1;
-}
+.task-main{flex:1}
 
 .task-title{
   font-size:13px;
@@ -830,9 +799,7 @@ textarea:focus{
 }
 
 @media(max-width:390px){
-  .hero h1{
-    font-size:26px;
-  }
+  .hero h1{font-size:26px}
 }
 </style>
 </head>
@@ -846,6 +813,7 @@ textarea:focus{
   <div class="badge">內容工作台</div>
 </div>
 
+
 <!-- HOME -->
 <div id="home" class="page active">
 
@@ -855,6 +823,7 @@ textarea:focus{
   </div>
 
   <div class="section">
+
     <div class="card focus-card">
 
       <div class="eyebrow">TODAY'S FOCUS</div>
@@ -875,7 +844,9 @@ textarea:focus{
       </div>
 
     </div>
+
   </div>
+
 
   <div class="section">
 
@@ -898,7 +869,7 @@ textarea:focus{
       <button class="quick-btn" onclick="goTool('carousel')">
         <div class="quick-icon">▤</div>
         <div class="quick-title">輪播貼文</div>
-        <div class="quick-desc">爆點標題＋完整頁面</div>
+        <div class="quick-desc">沒想法也能直接開始</div>
       </button>
 
       <button class="quick-btn" onclick="goTool('threads')">
@@ -920,7 +891,9 @@ textarea:focus{
       </button>
 
     </div>
+
   </div>
+
 
   <div class="section">
 
@@ -929,7 +902,7 @@ textarea:focus{
     <div class="card">
 
       <div class="muted" style="margin-bottom:12px">
-        每次都會重新組合題材，最近看過的會盡量避開。
+        每次重新組合題材，最近看過的會盡量避開。
       </div>
 
       <div id="radarWrap" class="radar-wrap"></div>
@@ -939,7 +912,9 @@ textarea:focus{
       </button>
 
     </div>
+
   </div>
+
 
   <div class="section">
 
@@ -954,7 +929,9 @@ textarea:focus{
       </div>
 
     </div>
+
   </div>
+
 
   <div class="section">
 
@@ -983,6 +960,7 @@ textarea:focus{
       </div>
 
     </div>
+
   </div>
 
 </div>
@@ -995,6 +973,7 @@ textarea:focus{
     <h1>不要每次都<br>重新想一次。</h1>
     <p>一句靈感先收著；重要主題可以一路延伸很多篇。</p>
   </div>
+
 
   <div class="section">
 
@@ -1037,7 +1016,9 @@ textarea:focus{
       </button>
 
     </div>
+
   </div>
+
 
   <div class="section">
 
@@ -1046,27 +1027,22 @@ textarea:focus{
     <div class="card">
 
       <div class="muted" style="margin-bottom:14px">
-        一個主題可以持續做輪播、Reels、Threads、限動，不用每次重新說明。
+        一個主題可以繼續做輪播、Reels、Threads、限動，不用每次重新解釋背景。
       </div>
 
       <label class="field-title">主題名稱</label>
-
-      <input id="topicTitle" placeholder="例如：媽媽不要兇我">
+      <input id="topicTitle" placeholder="例如：孩子情緒">
 
       <label class="field-title">這個主題真正想講什麼？</label>
-
       <textarea id="topicCore"></textarea>
 
       <label class="field-title">受眾最有感的點</label>
-
       <textarea id="topicPain"></textarea>
 
       <label class="field-title">已經講過哪些角度？</label>
-
       <textarea id="topicUsed"></textarea>
 
-      <label class="field-title">下一篇還想延伸什麼？</label>
-
+      <label class="field-title">接下來還能延伸什麼？</label>
       <textarea id="topicNext"></textarea>
 
       <button class="save-btn" onclick="saveTopic()">
@@ -1075,11 +1051,13 @@ textarea:focus{
 
     </div>
 
+
     <div class="card">
       <div id="topicList"></div>
     </div>
 
   </div>
+
 
   <div class="section">
 
@@ -1101,6 +1079,7 @@ textarea:focus{
     <h1>這週不要亂發，<br>先抓內容節奏。</h1>
     <p>本週排程、節奏模板和文案公式都放這裡。</p>
   </div>
+
 
   <div class="section">
 
@@ -1144,6 +1123,7 @@ textarea:focus{
 
   </div>
 
+
   <div class="section">
 
     <div class="section-title">內容節奏模板</div>
@@ -1151,6 +1131,7 @@ textarea:focus{
     <div class="card" id="templateList"></div>
 
   </div>
+
 
   <div class="section">
 
@@ -1167,9 +1148,17 @@ textarea:focus{
 <div id="today" class="page">
 
   <div class="hero">
-    <h1 id="todayTitle">今天的限動<br>怎麼排比較順？</h1>
-    <p id="todaySubtitle">把今天內容排順。</p>
+
+    <h1 id="todayTitle">
+      今天的限動<br>怎麼排比較順？
+    </h1>
+
+    <p id="todaySubtitle">
+      把今天內容排順。
+    </p>
+
   </div>
+
 
   <div class="section">
 
@@ -1194,18 +1183,33 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">📱 今日限動排程</div>
+          <div class="special-title">
+            📱 今日限動排程
+          </div>
 
-          <label class="field-title">今天有哪些事情可以發？</label>
+          <label class="field-title">
+            今天有哪些事情可以發？
+          </label>
+
           <textarea id="storyLife"></textarea>
 
-          <label class="field-title">今天有沒有想分享的觀點／知識？</label>
+          <label class="field-title">
+            今天有沒有想分享的觀點／知識？
+          </label>
+
           <textarea id="storyIdea"></textarea>
 
-          <label class="field-title">今天想帶什麼產品？</label>
-          <input id="storyProduct" placeholder="沒有可空白">
+          <label class="field-title">
+            今天想帶什麼產品？
+          </label>
 
-          <label class="field-title">產品怎麼出現？</label>
+          <input id="storyProduct"
+          placeholder="沒有可空白">
+
+          <label class="field-title">
+            產品怎麼出現？
+          </label>
+
           <select id="storyProductStyle">
             <option>AI 幫我判斷</option>
             <option>輕輕露出</option>
@@ -1216,7 +1220,10 @@ textarea:focus{
             <option>活動銷售</option>
           </select>
 
-          <label class="field-title">互動</label>
+          <label class="field-title">
+            互動
+          </label>
+
           <select id="storyInteraction">
             <option>AI 幫我判斷</option>
             <option>不需要</option>
@@ -1226,7 +1233,10 @@ textarea:focus{
             <option>表情回覆</option>
           </select>
 
-          <label class="field-title">想發幾則？</label>
+          <label class="field-title">
+            想發幾則？
+          </label>
+
           <select id="storyCount">
             <option>1 則</option>
             <option>2 則</option>
@@ -1251,7 +1261,9 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">🛍️ 銷售限動</div>
+          <div class="special-title">
+            🛍️ 銷售限動
+          </div>
 
           <div class="segment">
 
@@ -1268,12 +1280,14 @@ textarea:focus{
 
           </div>
 
+
           <div id="retailFields">
 
             <label class="field-title">產品</label>
             <input id="retailProduct">
 
             <label class="field-title">目標</label>
+
             <select id="retailGoal">
               <option>輕曝光</option>
               <option>製造需求</option>
@@ -1285,6 +1299,7 @@ textarea:focus{
             </select>
 
             <label class="field-title">鋪陳方式</label>
+
             <select id="retailStoryType">
               <option>AI 幫我判斷</option>
               <option>痛點／需求型</option>
@@ -1307,6 +1322,7 @@ textarea:focus{
             <textarea id="retailMustSay"></textarea>
 
             <label class="field-title">數量</label>
+
             <select id="retailCount">
               <option>1 則</option>
               <option>2 則</option>
@@ -1318,12 +1334,19 @@ textarea:focus{
 
           </div>
 
+
           <div id="recruitFields" class="hidden">
 
-            <label class="field-title">這次想講什麼？</label>
+            <label class="field-title">
+              這次想講什麼？
+            </label>
+
             <textarea id="recruitTopic"></textarea>
 
-            <label class="field-title">目的</label>
+            <label class="field-title">
+              目標
+            </label>
+
             <select id="recruitGoal">
               <option>輕輕讓人知道我在做這份事業</option>
               <option>建立事業信任</option>
@@ -1333,10 +1356,16 @@ textarea:focus{
               <option>招募新夥伴</option>
             </select>
 
-            <label class="field-title">真實事件</label>
+            <label class="field-title">
+              真實事件
+            </label>
+
             <textarea id="recruitSituation"></textarea>
 
-            <label class="field-title">一定要講</label>
+            <label class="field-title">
+              一定要講
+            </label>
+
             <textarea id="recruitMustSay"></textarea>
 
           </div>
@@ -1355,21 +1384,38 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">💭 價值觀／想法</div>
+          <div class="special-title">
+            💭 價值觀／想法
+          </div>
 
-          <label class="field-title">想聊哪一類？</label>
+          <label class="field-title">
+            想聊哪一類？
+          </label>
+
           <div class="pill-grid" id="valueCats"></div>
 
-          <label class="field-title">角度</label>
+          <label class="field-title">
+            角度
+          </label>
+
           <select id="valueAngle"></select>
 
-          <label class="field-title">背景</label>
+          <label class="field-title">
+            背景
+          </label>
+
           <textarea id="valueBackground"></textarea>
 
-          <label class="field-title">我真正想講的那句話</label>
+          <label class="field-title">
+            我真正想講的那句話
+          </label>
+
           <textarea id="valueCore"></textarea>
 
-          <label class="field-title">平台</label>
+          <label class="field-title">
+            平台
+          </label>
+
           <select id="valuePlatform">
             <option>IG 限動</option>
             <option>Threads</option>
@@ -1391,20 +1437,41 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">🎬 Reels 企劃中心</div>
+          <div class="special-title">
+            🎬 Reels 企劃中心
+          </div>
 
-          <label class="field-title">你現在需要什麼？</label>
+          <label class="field-title">
+            你現在需要什麼？
+          </label>
 
-          <select id="reelsPath" onchange="updateReelsUI()">
-            <option value="ideas">我不知道要拍什麼</option>
-            <option value="script">我有題材，要做爆點＋腳本</option>
-            <option value="recipe">我要做料理／食譜</option>
-            <option value="other">知識／觀點／生活／產品</option>
+          <select id="reelsPath"
+          onchange="updateReelsUI()">
+
+            <option value="ideas">
+              我不知道要拍什麼
+            </option>
+
+            <option value="script">
+              我有題材，要做爆點＋腳本
+            </option>
+
+            <option value="recipe">
+              我要做料理／食譜
+            </option>
+
+            <option value="other">
+              知識／觀點／生活／產品
+            </option>
+
           </select>
+
 
           <div id="reelsIdeasFields">
 
-            <label class="field-title">想找哪一類題材？</label>
+            <label class="field-title">
+              想找哪一類題材？
+            </label>
 
             <select id="reelsIdeaCategory">
               <option>AI 依帳號判斷</option>
@@ -1417,33 +1484,63 @@ textarea:focus{
               <option>事業</option>
             </select>
 
-            <label class="field-title">最近不想再拍什麼？</label>
+            <label class="field-title">
+              最近不想再拍什麼？
+            </label>
+
             <textarea id="reelsIdeaAvoid"></textarea>
 
           </div>
 
+
           <div id="reelsScriptFields" class="hidden">
 
-            <label class="field-title">題材</label>
+            <label class="field-title">
+              題材
+            </label>
+
             <textarea id="reelsTopic"></textarea>
 
           </div>
 
+
           <div id="reelsRecipeFields" class="hidden">
 
-            <label class="field-title">目前到哪一步？</label>
+            <label class="field-title">
+              目前到哪一步？
+            </label>
 
-            <select id="recipeTask" onchange="updateRecipeUI()">
-              <option value="brainstorm">完全沒想法，幫我想食譜</option>
-              <option value="direction">只有料理方向，幫我設計食譜＋腳本</option>
-              <option value="full">已有完整食譜，只做爆點＋腳本</option>
-              <option value="hook">已有食譜，但不知道爆點</option>
-              <option value="optimize">優化現有料理 Reels</option>
+            <select id="recipeTask"
+            onchange="updateRecipeUI()">
+
+              <option value="brainstorm">
+                完全沒想法，幫我想食譜
+              </option>
+
+              <option value="direction">
+                只有料理方向，幫我設計食譜＋腳本
+              </option>
+
+              <option value="full">
+                已有完整食譜，只做爆點＋腳本
+              </option>
+
+              <option value="hook">
+                已有食譜，但不知道爆點
+              </option>
+
+              <option value="optimize">
+                優化現有料理 Reels
+              </option>
+
             </select>
+
 
             <div id="recipeBrainstormFields">
 
-              <label class="field-title">食譜方向</label>
+              <label class="field-title">
+                食譜方向
+              </label>
 
               <select id="recipeCategory">
                 <option>AI 判斷</option>
@@ -1455,30 +1552,49 @@ textarea:focus{
                 <option>少材料</option>
                 <option>高蛋白</option>
                 <option>低卡</option>
+                <option>無麵粉</option>
                 <option>免烤</option>
+                <option>小孩也能吃</option>
               </select>
+
+              <label class="field-title">
+                不要用什麼？
+              </label>
+
+              <textarea id="recipeAvoid"></textarea>
 
             </div>
 
+
             <div id="recipeTopicFields" class="hidden">
 
-              <label class="field-title">料理方向</label>
+              <label class="field-title">
+                料理方向
+              </label>
+
               <input id="recipeTopic">
 
             </div>
 
+
             <div id="recipeExistingFields" class="hidden">
 
-              <label class="field-title">已有食譜</label>
+              <label class="field-title">
+                已有食譜
+              </label>
+
               <textarea id="recipeDetails"></textarea>
 
             </div>
 
           </div>
 
+
           <div id="reelsOtherFields" class="hidden">
 
-            <label class="field-title">類型</label>
+            <label class="field-title">
+              類型
+            </label>
 
             <select id="reelsOtherType">
               <option>知識型</option>
@@ -1487,12 +1603,18 @@ textarea:focus{
               <option>產品 Reels</option>
             </select>
 
-            <label class="field-title">題材</label>
+            <label class="field-title">
+              題材
+            </label>
+
             <textarea id="reelsOtherTopic"></textarea>
 
           </div>
 
-          <label class="field-title">主要目標</label>
+
+          <label class="field-title">
+            主要目標
+          </label>
 
           <select id="reelsGoal">
             <option>高觀看</option>
@@ -1502,7 +1624,59 @@ textarea:focus{
             <option>高留言</option>
             <option>建立信任</option>
             <option>產品曝光</option>
+            <option>引導私訊</option>
           </select>
+
+
+          <label class="field-title">
+            鉤子方向
+          </label>
+
+          <select id="reelsHook">
+            <option>AI 幫我判斷</option>
+            <option>痛點型</option>
+            <option>結果型</option>
+            <option>反差型</option>
+            <option>好奇型</option>
+            <option>數字型</option>
+            <option>觀點型</option>
+            <option>我以前也以為…</option>
+          </select>
+
+
+          <label class="field-title">
+            影片形式
+          </label>
+
+          <select id="reelsFormat">
+            <option>AI 幫我判斷</option>
+            <option>露臉口播</option>
+            <option>畫面＋字幕</option>
+            <option>生活 B-roll＋字幕</option>
+            <option>畫面＋口播</option>
+            <option>料理／操作過程</option>
+            <option>Before & After</option>
+          </select>
+
+
+          <label class="field-title">
+            影片長度
+          </label>
+
+          <select id="reelsLength">
+            <option>AI 幫我判斷</option>
+            <option>15 秒左右</option>
+            <option>30 秒左右</option>
+            <option>45 秒左右</option>
+            <option>60 秒左右</option>
+          </select>
+
+
+          <label class="field-title">
+            最想講的核心
+          </label>
+
+          <textarea id="reelsCore"></textarea>
 
         </div>
 
@@ -1518,101 +1692,300 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">▤ 爆款輪播企劃</div>
+          <div class="special-title">
+            ▤ 爆款輪播企劃
+          </div>
 
-          <label class="field-title">主題從哪裡來？</label>
 
-          <select id="carouselSource" onchange="updateCarouselSource()">
-            <option value="new">我要做新主題</option>
-            <option value="topic">從我的主題庫挑</option>
-          </select>
+          <label class="field-title">
+            你現在在哪一步？
+          </label>
 
-          <div id="carouselNewWrap">
 
-            <label class="field-title">這篇想講什麼？</label>
+          <div class="choice-grid">
 
-            <textarea id="carouselTopic"
+            <button
+            type="button"
+            class="choice-card active"
+            data-carousel-path="ideas"
+            onclick="setCarouselPath('ideas',this)">
+
+              <div class="choice-title">
+                我完全沒想法
+              </div>
+
+              <div class="choice-desc">
+                依帳號、受眾與近期內容幫我找輪播題材
+              </div>
+
+            </button>
+
+
+            <button
+            type="button"
+            class="choice-card"
+            data-carousel-path="direction"
+            onclick="setCarouselPath('direction',this)">
+
+              <div class="choice-title">
+                我只有一個方向
+              </div>
+
+              <div class="choice-desc">
+                例如育兒、媽媽自己、減脂，再幫我細化
+              </div>
+
+            </button>
+
+
+            <button
+            type="button"
+            class="choice-card"
+            data-carousel-path="topic"
+            onclick="setCarouselPath('topic',this)">
+
+              <div class="choice-title">
+                從主題庫繼續
+              </div>
+
+              <div class="choice-desc">
+                延伸以前做過的主題，避開重複
+              </div>
+
+            </button>
+
+
+            <button
+            type="button"
+            class="choice-card"
+            data-carousel-path="new"
+            onclick="setCarouselPath('new',this)">
+
+              <div class="choice-title">
+                我已經有主題
+              </div>
+
+              <div class="choice-desc">
+                直接找爆點標題＋做完整輪播
+              </div>
+
+            </button>
+
+          </div>
+
+
+          <!-- 完全沒想法 -->
+          <div id="carouselIdeasFields">
+
+            <label class="field-title">
+              想做哪一類？
+            </label>
+
+            <select id="carouselIdeaCategory">
+              <option>AI 依我的帳號判斷</option>
+              <option>育兒</option>
+              <option>媽媽自己</option>
+              <option>減脂／飲食</option>
+              <option>料理</option>
+              <option>生活觀點</option>
+              <option>自媒體</option>
+              <option>產品</option>
+              <option>事業／工作</option>
+            </select>
+
+
+            <label class="field-title">
+              最主要想帶什麼結果？
+            </label>
+
+            <select id="carouselIdeaGoal">
+              <option>AI 幫我判斷</option>
+              <option>高共鳴</option>
+              <option>高收藏</option>
+              <option>高分享</option>
+              <option>高留言</option>
+              <option>增加粉絲</option>
+              <option>建立信任</option>
+            </select>
+
+
+            <label class="field-title">
+              最近不想再做什麼？
+            </label>
+
+            <textarea
+            id="carouselIdeaAvoid"
+            placeholder="例如：最近已經做過孩子情緒、媽媽內疚"></textarea>
+
+          </div>
+
+
+          <!-- 只有方向 -->
+          <div id="carouselDirectionFields" class="hidden">
+
+            <label class="field-title">
+              你目前只有什麼方向？
+            </label>
+
+            <input
+            id="carouselDirection"
+            placeholder="例如：育兒、媽媽自己、減脂甜點">
+
+            <label class="field-title">
+              想偏哪種？
+            </label>
+
+            <select id="carouselDirectionGoal">
+              <option>AI 幫我判斷</option>
+              <option>共鳴</option>
+              <option>收藏</option>
+              <option>分享</option>
+              <option>討論</option>
+              <option>漲粉</option>
+              <option>建立信任</option>
+            </select>
+
+          </div>
+
+
+          <!-- 主題庫 -->
+          <div id="carouselTopicFields" class="hidden">
+
+            <label class="field-title">
+              選一個以前存過的主題
+            </label>
+
+            <select
+            id="carouselTopicSelect"
+            onchange="loadCarouselTopic()"></select>
+
+
+            <div
+            class="info-strip"
+            id="carouselTopicMemory"
+            style="margin-top:10px"></div>
+
+
+            <div id="carouselEmptyTopicAction"
+            class="hidden">
+
+              <button
+              class="outline-btn"
+              onclick="showPage('brain')">
+
+                ＋ 去建立第一個主題
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- 已有主題 -->
+          <div id="carouselNewFields" class="hidden">
+
+            <label class="field-title">
+              這篇想講什麼？
+            </label>
+
+            <textarea
+            id="carouselTopic"
             placeholder="例如：孩子情緒來了，可以怎麼說"></textarea>
 
           </div>
 
-          <div id="carouselTopicWrap" class="hidden">
 
-            <label class="field-title">選一個以前存過的主題</label>
+          <!-- 完整輪播設定 -->
+          <div id="carouselBuildFields" class="hidden">
 
-            <select id="carouselTopicSelect"
-            onchange="loadCarouselTopic()"></select>
+            <label class="field-title">
+              這篇最主要想達成什麼？
+            </label>
 
-            <div class="info-strip"
-            id="carouselTopicMemory"
-            style="margin-top:10px"></div>
+            <select id="carouselGoal">
+              <option>共鳴型｜讓人覺得「這就是我」</option>
+              <option>收藏型｜實用到想存起來</option>
+              <option>分享型｜想傳給朋友／另一半</option>
+              <option>討論型｜讓人想留言說看法</option>
+              <option>漲粉型｜陌生人看完想追蹤</option>
+              <option>信任型｜建立專業與可信度</option>
+              <option>故事型｜用真實經歷帶觀點</option>
+              <option>產品轉換型｜最後自然帶產品</option>
+            </select>
+
+
+            <label class="field-title">
+              受眾現在卡在哪？
+            </label>
+
+            <textarea id="carouselPain"></textarea>
+
+
+            <label class="field-title">
+              你真正想講的核心
+            </label>
+
+            <textarea id="carouselCore"></textarea>
+
+
+            <label class="field-title">
+              標題方向
+            </label>
+
+            <select id="carouselHook">
+              <option>AI 幫我判斷</option>
+              <option>痛點型</option>
+              <option>反差型</option>
+              <option>結果型</option>
+              <option>數字型</option>
+              <option>一句話故事</option>
+              <option>反常識型</option>
+              <option>問題型</option>
+              <option>「我以前也以為…」型</option>
+            </select>
+
+
+            <label class="field-title">
+              想做幾頁？
+            </label>
+
+            <select id="carouselPages">
+              <option>5 頁</option>
+              <option>6 頁</option>
+              <option selected>7 頁</option>
+              <option>8 頁</option>
+              <option>9 頁</option>
+              <option>10 頁</option>
+              <option>AI 幫我判斷</option>
+            </select>
+
+
+            <label class="field-title">
+              CTA
+            </label>
+
+            <select id="carouselCTA">
+              <option>AI 判斷需不需要</option>
+              <option>不要 CTA</option>
+              <option>引導收藏</option>
+              <option>引導分享</option>
+              <option>引導留言</option>
+              <option>引導追蹤</option>
+              <option>留言關鍵字</option>
+              <option>引導私訊</option>
+            </select>
+
+
+            <button
+            class="outline-btn"
+            onclick="saveCarouselAsTopic()">
+
+              ♡ 把這個主題存進主題庫
+
+            </button>
 
           </div>
-
-          <label class="field-title">這篇最主要想達成什麼？</label>
-
-          <select id="carouselGoal">
-            <option>共鳴型｜讓人覺得「這就是我」</option>
-            <option>收藏型｜實用到想存起來</option>
-            <option>分享型｜想傳給朋友／另一半</option>
-            <option>討論型｜讓人想留言說看法</option>
-            <option>漲粉型｜陌生人看完想追蹤</option>
-            <option>信任型｜建立專業與可信度</option>
-            <option>故事型｜用真實經歷帶觀點</option>
-            <option>產品轉換型｜最後自然帶產品</option>
-          </select>
-
-          <label class="field-title">受眾現在卡在哪？</label>
-
-          <textarea id="carouselPain"></textarea>
-
-          <label class="field-title">你真正想講的核心</label>
-
-          <textarea id="carouselCore"></textarea>
-
-          <label class="field-title">標題方向</label>
-
-          <select id="carouselHook">
-            <option>AI 幫我判斷</option>
-            <option>痛點型</option>
-            <option>反差型</option>
-            <option>結果型</option>
-            <option>數字型</option>
-            <option>一句話故事</option>
-            <option>反常識型</option>
-            <option>問題型</option>
-            <option>「我以前也以為…」型</option>
-          </select>
-
-          <label class="field-title">想做幾頁？</label>
-
-          <select id="carouselPages">
-            <option>5 頁</option>
-            <option>6 頁</option>
-            <option selected>7 頁</option>
-            <option>8 頁</option>
-            <option>9 頁</option>
-            <option>10 頁</option>
-            <option>AI 幫我判斷</option>
-          </select>
-
-          <label class="field-title">CTA</label>
-
-          <select id="carouselCTA">
-            <option>AI 判斷需不需要</option>
-            <option>不要 CTA</option>
-            <option>引導收藏</option>
-            <option>引導分享</option>
-            <option>引導留言</option>
-            <option>引導追蹤</option>
-            <option>留言關鍵字</option>
-            <option>引導私訊</option>
-          </select>
-
-          <button class="outline-btn"
-          onclick="saveCarouselAsTopic()">
-            ♡ 把這個主題存進主題庫
-          </button>
 
         </div>
 
@@ -1628,12 +2001,19 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">✏️ Threads</div>
+          <div class="special-title">
+            ✏️ Threads
+          </div>
 
-          <label class="field-title">最近想講什麼？</label>
+          <label class="field-title">
+            最近想講什麼？
+          </label>
+
           <textarea id="threadsTopic"></textarea>
 
-          <label class="field-title">類型</label>
+          <label class="field-title">
+            類型
+          </label>
 
           <select id="threadsType">
             <option>AI 幫我判斷</option>
@@ -1660,9 +2040,13 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">🗓️ 7 天內容規劃</div>
+          <div class="special-title">
+            🗓️ 7 天內容規劃
+          </div>
 
-          <label class="field-title">這週目標</label>
+          <label class="field-title">
+            這週目標
+          </label>
 
           <select id="weekGoal">
             <option>增加觀看</option>
@@ -1674,10 +2058,16 @@ textarea:focus{
             <option>增加招商詢問</option>
           </select>
 
-          <label class="field-title">這週一定想分享</label>
+          <label class="field-title">
+            這週一定想分享
+          </label>
+
           <textarea id="weekTopics"></textarea>
 
-          <label class="field-title">固定事件</label>
+          <label class="field-title">
+            固定事件
+          </label>
+
           <textarea id="weekEvents"></textarea>
 
         </div>
@@ -1686,27 +2076,40 @@ textarea:focus{
 
     </div>
 
-    <button class="primary-btn"
+
+    <button
+    class="primary-btn"
     onclick="generatePrompt()">
+
       ✨ 幫我生成專屬 AI 指令
+
     </button>
 
   </div>
+
 
   <div class="section">
 
     <div class="card" id="resultCard">
 
-      <div class="eyebrow">AI PROMPT</div>
+      <div class="eyebrow">
+        AI PROMPT
+      </div>
 
-      <button class="secondary-btn"
+      <button
+      class="secondary-btn"
       onclick="copyPrompt()">
+
         複製完整指令
+
       </button>
 
-      <button class="outline-btn"
+      <button
+      class="outline-btn"
       onclick="togglePrompt()">
+
         查看／收起完整指令
+
       </button>
 
       <div id="fullPromptWrap">
@@ -1732,10 +2135,16 @@ textarea:focus{
 
     <div class="card">
 
-      <label class="field-title">今天發了什麼？</label>
+      <label class="field-title">
+        今天發了什麼？
+      </label>
+
       <textarea id="reviewPosted"></textarea>
 
-      <label class="field-title">類型</label>
+      <label class="field-title">
+        類型
+      </label>
+
       <select id="reviewType">
         <option>限動</option>
         <option>Reels</option>
@@ -1745,7 +2154,9 @@ textarea:focus{
         <option>招商</option>
       </select>
 
-      <label class="field-title">表現</label>
+      <label class="field-title">
+        表現
+      </label>
 
       <select id="reviewPerformance">
         <option>普通</option>
@@ -1757,18 +2168,30 @@ textarea:focus{
         <option>表現較差</option>
       </select>
 
-      <label class="field-title">哪裡有效？</label>
+      <label class="field-title">
+        哪裡有效？
+      </label>
+
       <textarea id="reviewBest"></textarea>
 
-      <label class="field-title">哪裡不順？</label>
+      <label class="field-title">
+        哪裡不順？
+      </label>
+
       <textarea id="reviewProblem"></textarea>
 
-      <label class="field-title">之後可以延伸什麼？</label>
+      <label class="field-title">
+        之後可以延伸什麼？
+      </label>
+
       <textarea id="reviewNext"></textarea>
 
-      <button class="save-btn"
+      <button
+      class="save-btn"
       onclick="saveDailyReview()">
+
         儲存今日回顧
+
       </button>
 
     </div>
@@ -1796,91 +2219,147 @@ textarea:focus{
 
       <div class="profile-block">
 
-        <div class="profile-step">01｜我是誰</div>
+        <div class="profile-step">
+          01｜我是誰
+        </div>
 
-        <div class="profile-heading">創作者類型</div>
+        <div class="profile-heading">
+          創作者類型
+        </div>
 
-        <div class="chips" id="creatorTypeChips"></div>
-
-      </div>
-
-      <div class="profile-block">
-
-        <div class="profile-step">02｜我主要分享什麼</div>
-
-        <div class="profile-heading">內容支柱</div>
-
-        <div class="chips" id="contentPillarChips"></div>
+        <div
+        class="chips"
+        id="creatorTypeChips"></div>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">03｜我想吸引誰</div>
+        <div class="profile-step">
+          02｜我主要分享什麼
+        </div>
 
-        <div class="profile-heading">主要受眾</div>
+        <div class="profile-heading">
+          內容支柱
+        </div>
 
-        <div class="chips" id="audienceTypeChips"></div>
+        <div
+        class="chips"
+        id="contentPillarChips"></div>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">04｜她現在在意什麼</div>
+        <div class="profile-step">
+          03｜我想吸引誰
+        </div>
 
-        <div class="profile-heading">需求／困擾</div>
+        <div class="profile-heading">
+          主要受眾
+        </div>
 
-        <div class="chips" id="audiencePainChips"></div>
+        <div
+        class="chips"
+        id="audienceTypeChips"></div>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">05｜為什麼追蹤我</div>
+        <div class="profile-step">
+          04｜她現在在意什麼
+        </div>
 
-        <div class="chips" id="followReasonChips"></div>
+        <div class="profile-heading">
+          需求／困擾
+        </div>
+
+        <div
+        class="chips"
+        id="audiencePainChips"></div>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">06｜我想給人的感覺</div>
+        <div class="profile-step">
+          05｜為什麼追蹤我
+        </div>
 
-        <div class="chips" id="brandImageChips"></div>
+        <div
+        class="chips"
+        id="followReasonChips"></div>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">07｜文字感</div>
+        <div class="profile-step">
+          06｜我想給人的感覺
+        </div>
 
-        <label class="field-title">喜歡的語氣</label>
+        <div
+        class="chips"
+        id="brandImageChips"></div>
+
+      </div>
+
+
+      <div class="profile-block">
+
+        <div class="profile-step">
+          07｜文字感
+        </div>
+
+        <label class="field-title">
+          喜歡的語氣
+        </label>
+
         <input id="tone">
 
-        <label class="field-title">不喜歡的感覺</label>
+        <label class="field-title">
+          不喜歡的感覺
+        </label>
+
         <textarea id="avoid"></textarea>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">08｜產品／服務</div>
+        <div class="profile-step">
+          08｜產品／服務
+        </div>
 
         <textarea id="products"></textarea>
 
       </div>
 
+
       <div class="profile-block">
 
-        <div class="profile-step">09｜事業／招商</div>
+        <div class="profile-step">
+          09｜事業／招商
+        </div>
 
         <textarea id="business"></textarea>
 
       </div>
 
-      <button class="save-btn"
+
+      <button
+      class="save-btn"
       onclick="saveProfile()">
+
         儲存我的帳號設定
+
       </button>
 
     </div>
@@ -1892,8 +2371,9 @@ textarea:focus{
 </div>
 
 
-<!-- MODAL -->
-<div id="modeModal"
+<!-- TOOL MODAL -->
+<div
+id="modeModal"
 class="modal-overlay"
 onclick="overlayClose(event)">
 
@@ -1905,7 +2385,8 @@ onclick="overlayClose(event)">
 
       <h3>換一個工具</h3>
 
-      <button class="sheet-close"
+      <button
+      class="sheet-close"
       onclick="closeModeModal()">
         ×
       </button>
@@ -1914,46 +2395,73 @@ onclick="overlayClose(event)">
 
     <div class="sheet-grid">
 
-      <button class="sheet-option"
+      <button
+      class="sheet-option"
       onclick="changeMode('story')">
+
         <div class="sheet-icon">📱</div>
         <div class="sheet-title">今日限動</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('sales')">
+
         <div class="sheet-icon">🛍️</div>
         <div class="sheet-title">銷售限動</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('reels')">
+
         <div class="sheet-icon">🎬</div>
         <div class="sheet-title">Reels</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('carousel')">
+
         <div class="sheet-icon">▤</div>
         <div class="sheet-title">輪播貼文</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('threads')">
+
         <div class="sheet-icon">✏️</div>
         <div class="sheet-title">Threads</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('values')">
+
         <div class="sheet-icon">💭</div>
         <div class="sheet-title">價值觀</div>
+
       </button>
 
-      <button class="sheet-option"
+
+      <button
+      class="sheet-option"
       onclick="changeMode('week')">
+
         <div class="sheet-icon">🗓️</div>
         <div class="sheet-title">7 天規劃</div>
+
       </button>
 
     </div>
@@ -1968,7 +2476,8 @@ onclick="overlayClose(event)">
 
   <div class="bottom-inner">
 
-    <button id="navHome"
+    <button
+    id="navHome"
     class="nav-item active"
     onclick="showPage('home')">
 
@@ -1977,7 +2486,9 @@ onclick="overlayClose(event)">
 
     </button>
 
-    <button id="navBrain"
+
+    <button
+    id="navBrain"
     class="nav-item"
     onclick="showPage('brain')">
 
@@ -1986,7 +2497,9 @@ onclick="overlayClose(event)">
 
     </button>
 
-    <button id="navPlanning"
+
+    <button
+    id="navPlanning"
     class="nav-item"
     onclick="showPage('planning')">
 
@@ -1995,7 +2508,9 @@ onclick="overlayClose(event)">
 
     </button>
 
-    <button id="navToday"
+
+    <button
+    id="navToday"
     class="nav-item"
     onclick="showPage('today')">
 
@@ -2004,7 +2519,9 @@ onclick="overlayClose(event)">
 
     </button>
 
-    <button id="navProfile"
+
+    <button
+    id="navProfile"
     class="nav-item"
     onclick="showPage('profile')">
 
@@ -2025,9 +2542,11 @@ const $ = id => document.getElementById(id);
 let selectedMode = "story";
 let saleType = "retail";
 let selectedValueCategory = "育兒";
+let carouselPath = "ideas";
 
 
 const modeNames = {
+
   story:"今日限動排程",
   sales:"銷售限動企劃",
   values:"價值觀／想法",
@@ -2035,6 +2554,7 @@ const modeNames = {
   carousel:"爆款輪播企劃",
   threads:"Threads",
   week:"7 天內容規劃"
+
 };
 
 
@@ -2062,7 +2582,7 @@ const pageTexts = {
 
   carousel:{
     title:"這篇輪播<br>怎麼讓人滑下去？",
-    subtitle:"先找爆點標題，再設計整篇節奏。"
+    subtitle:"沒想法也可以，先找題材，再找爆點標題。"
   },
 
   threads:{
@@ -2196,6 +2716,15 @@ const valueAngles = {
     "身材焦慮"
   ],
 
+  "飲食觀念":[
+    "碳水",
+    "蛋白質",
+    "熱量",
+    "外食",
+    "零食",
+    "飲食平衡"
+  ],
+
   "工作／事業":[
     "工作選擇",
     "收入與成就感",
@@ -2225,11 +2754,13 @@ function escapeHtml(str){
 
   return String(str||"")
   .replace(/[&<>"']/g,c=>({
+
     "&":"&amp;",
     "<":"&lt;",
     ">":"&gt;",
     '"':"&quot;",
     "'":"&#39;"
+
   }[c]));
 
 }
@@ -2250,11 +2781,13 @@ function showPage(id){
 
 
   const map = {
+
     home:"navHome",
     brain:"navBrain",
     planning:"navPlanning",
     today:"navToday",
     profile:"navProfile"
+
   };
 
 
@@ -2264,18 +2797,25 @@ function showPage(id){
 
 
   if(id==="home"){
+
     refreshDashboard();
     renderBalance();
+
   }
 
+
   if(id==="brain"){
+
     renderBrain();
     renderTopics();
+
   }
+
 
   if(id==="planning"){
     renderBoard();
   }
+
 
   if(id==="review"){
     renderReviewHistory();
@@ -2309,7 +2849,8 @@ function changeMode(mode){
 
   closeModeModal();
 
-  $("resultCard").style.display = "none";
+  $("resultCard").style.display =
+  "none";
 
 }
 
@@ -2319,8 +2860,10 @@ function updateModeUI(){
   $("currentModeText").textContent =
   modeNames[selectedMode];
 
+
   $("todayTitle").innerHTML =
   pageTexts[selectedMode].title;
+
 
   $("todaySubtitle").textContent =
   pageTexts[selectedMode].subtitle;
@@ -2329,6 +2872,7 @@ function updateModeUI(){
   document.querySelectorAll(".tool-form")
   .forEach(x=>x.classList.remove("active"));
 
+
   $("form-"+selectedMode)
   .classList.add("active");
 
@@ -2336,12 +2880,20 @@ function updateModeUI(){
 
 
 function openModeModal(){
-  $("modeModal").classList.add("active");
+
+  $("modeModal")
+  .classList.add("active");
+
 }
 
+
 function closeModeModal(){
-  $("modeModal").classList.remove("active");
+
+  $("modeModal")
+  .classList.remove("active");
+
 }
+
 
 function overlayClose(e){
 
@@ -2412,9 +2964,11 @@ function getChecked(name){
 
 function setChecked(name,str){
 
-  if(!str) return;
+  if(!str)return;
 
-  const values = String(str).split("、");
+
+  const values =
+  String(str).split("、");
 
 
   document.querySelectorAll(
@@ -2475,6 +3029,7 @@ function saveProfile(){
 
   alert("已儲存 ♡");
 
+
   renderRadar();
 
 }
@@ -2484,29 +3039,56 @@ function loadProfile(){
 
   try{
 
-    const p = JSON.parse(
+    const p =
+    JSON.parse(
       localStorage.getItem(
         "contentStrategyProfile"
       ) || "{}"
     );
 
 
-    setChecked("creatorType",p.creatorType);
-    setChecked("contentPillar",p.contentPillars);
-    setChecked("audienceType",p.audience);
-    setChecked("audiencePain",p.audiencePain);
-    setChecked("followReason",p.followReason);
-    setChecked("brandImage",p.brandImage);
+    setChecked(
+      "creatorType",
+      p.creatorType
+    );
+
+    setChecked(
+      "contentPillar",
+      p.contentPillars
+    );
+
+    setChecked(
+      "audienceType",
+      p.audience
+    );
+
+    setChecked(
+      "audiencePain",
+      p.audiencePain
+    );
+
+    setChecked(
+      "followReason",
+      p.followReason
+    );
+
+    setChecked(
+      "brandImage",
+      p.brandImage
+    );
 
 
     $("tone").value =
     p.tone || "";
 
+
     $("avoid").value =
     p.avoid || "";
 
+
     $("products").value =
     p.products || "";
+
 
     $("business").value =
     p.business || "";
@@ -2520,9 +3102,11 @@ function getBase(){
 
   let p = {};
 
+
   try{
 
-    p = JSON.parse(
+    p =
+    JSON.parse(
       localStorage.getItem(
         "contentStrategyProfile"
       ) || "{}"
@@ -2555,7 +3139,8 @@ function getBase(){
     p.tone || "自然、像真人",
 
     avoid:
-    p.avoid || "太 AI、太雞湯、太官方、太業配",
+    p.avoid ||
+    "太 AI、太雞湯、太官方、太業配",
 
     products:
     p.products || "沒有設定",
@@ -2616,7 +3201,9 @@ function selectValueCategory(btn){
   document.querySelectorAll(
     "#valueCats .pill-button"
   )
-  .forEach(x=>x.classList.remove("active"));
+  .forEach(
+    x=>x.classList.remove("active")
+  );
 
 
   btn.classList.add("active");
@@ -2738,6 +3325,72 @@ function updateRecipeUI(){
 }
 
 
+/* CAROUSEL UI */
+
+function setCarouselPath(path,btn){
+
+  carouselPath = path;
+
+
+  document.querySelectorAll(
+    "[data-carousel-path]"
+  )
+  .forEach(
+    x=>x.classList.remove("active")
+  );
+
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+
+  $("carouselIdeasFields")
+  .classList.toggle(
+    "hidden",
+    path!=="ideas"
+  );
+
+
+  $("carouselDirectionFields")
+  .classList.toggle(
+    "hidden",
+    path!=="direction"
+  );
+
+
+  $("carouselTopicFields")
+  .classList.toggle(
+    "hidden",
+    path!=="topic"
+  );
+
+
+  $("carouselNewFields")
+  .classList.toggle(
+    "hidden",
+    path!=="new"
+  );
+
+
+  $("carouselBuildFields")
+  .classList.toggle(
+    "hidden",
+    ["ideas","direction"]
+    .includes(path)
+  );
+
+
+  if(path==="topic"){
+
+    updateCarouselTopicSelect();
+    loadCarouselTopic();
+
+  }
+
+}
+
+
 /* BRAIN */
 
 function getBrain(){
@@ -2828,7 +3481,9 @@ function updateBrainStage(id,stage){
 
 
   const item =
-  arr.find(x=>x.id===id);
+  arr.find(
+    x=>x.id===id
+  );
 
 
   if(item){
@@ -2851,7 +3506,9 @@ function deleteBrain(id){
 
   saveBrain(
     getBrain()
-    .filter(x=>x.id!==id)
+    .filter(
+      x=>x.id!==id
+    )
   );
 
 
@@ -2868,15 +3525,33 @@ function useBrain(id,target){
 
   const item =
   getBrain()
-  .find(x=>x.id===id);
+  .find(
+    x=>x.id===id
+  );
 
 
-  if(!item) return;
+  if(!item)return;
 
 
   if(target==="carousel"){
 
     goTool("carousel");
+
+
+    carouselPath = "new";
+
+
+    const btn =
+    document.querySelector(
+      '[data-carousel-path="new"]'
+    );
+
+
+    setCarouselPath(
+      "new",
+      btn
+    );
+
 
     $("carouselTopic").value =
     item.text;
@@ -2888,10 +3563,13 @@ function useBrain(id,target){
 
     goTool("reels");
 
+
     $("reelsPath").value =
     "script";
 
+
     updateReelsUI();
+
 
     $("reelsTopic").value =
     item.text;
@@ -2903,6 +3581,7 @@ function useBrain(id,target){
 
     goTool("threads");
 
+
     $("threadsTopic").value =
     item.text;
 
@@ -2912,6 +3591,7 @@ function useBrain(id,target){
   if(target==="story"){
 
     goTool("values");
+
 
     $("valueCore").value =
     item.text;
@@ -2930,7 +3610,7 @@ function renderBrain(){
   $("brainList").innerHTML =
   arr.length
 
-  ? arr.map(x=>`
+  ?arr.map(x=>`
 
     <div class="list-item">
 
@@ -2939,21 +3619,28 @@ function renderBrain(){
       </span>
 
       <span class="stage-tag">
-        ${x.stage==="published"
-        ?"已發布"
-        :x.stage==="ready"
-        ?"待發布"
-        :x.stage==="draft"
-        ?"草稿"
-        :"原始想法"}
+
+        ${
+          x.stage==="published"
+          ?"已發布"
+          :x.stage==="ready"
+          ?"待發布"
+          :x.stage==="draft"
+          ?"草稿"
+          :"原始想法"
+        }
+
       </span>
 
-      <div class="list-title"
+
+      <div
+      class="list-title"
       style="margin-top:8px">
 
         ${escapeHtml(x.text)}
 
       </div>
+
 
       <div class="list-meta">
         ${escapeHtml(x.nature)}
@@ -2962,22 +3649,26 @@ function renderBrain(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="useBrain(${x.id},'carousel')">
           輪播
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="useBrain(${x.id},'reels')">
           Reels
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="useBrain(${x.id},'threads')">
           Threads
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="useBrain(${x.id},'story')">
           限動
         </button>
@@ -2987,22 +3678,26 @@ function renderBrain(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="updateBrainStage(${x.id},'draft')">
           草稿
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="updateBrainStage(${x.id},'ready')">
           待發
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="updateBrainStage(${x.id},'published')">
           已發
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="deleteBrain(${x.id})">
           刪除
         </button>
@@ -3073,8 +3768,8 @@ function saveTopic(){
 
 
   const existing =
-  arr.find(x=>
-    x.title===title
+  arr.find(
+    x=>x.title===title
   );
 
 
@@ -3111,6 +3806,7 @@ function saveTopic(){
     arr.findIndex(
       x=>x.id===existing.id
     );
+
 
     arr[index] = data;
 
@@ -3151,23 +3847,29 @@ function editTopic(id){
 
   const t =
   getTopics()
-  .find(x=>x.id===id);
+  .find(
+    x=>x.id===id
+  );
 
 
-  if(!t) return;
+  if(!t)return;
 
 
   $("topicTitle").value =
   t.title;
 
+
   $("topicCore").value =
   t.core || "";
+
 
   $("topicPain").value =
   t.pain || "";
 
+
   $("topicUsed").value =
   t.used || "";
+
 
   $("topicNext").value =
   t.next || "";
@@ -3185,7 +3887,9 @@ function deleteTopic(id){
 
   saveTopics(
     getTopics()
-    .filter(x=>x.id!==id)
+    .filter(
+      x=>x.id!==id
+    )
   );
 
 
@@ -3200,23 +3904,34 @@ function topicToTool(id,target){
 
   const t =
   getTopics()
-  .find(x=>x.id===id);
+  .find(
+    x=>x.id===id
+  );
 
 
-  if(!t) return;
+  if(!t)return;
 
 
   if(target==="carousel"){
 
     goTool("carousel");
 
-    $("carouselSource").value =
-    "topic";
 
-    updateCarouselSource();
+    const btn =
+    document.querySelector(
+      '[data-carousel-path="topic"]'
+    );
+
+
+    setCarouselPath(
+      "topic",
+      btn
+    );
+
 
     $("carouselTopicSelect").value =
     id;
+
 
     loadCarouselTopic();
 
@@ -3227,10 +3942,13 @@ function topicToTool(id,target){
 
     goTool("reels");
 
+
     $("reelsPath").value =
     "script";
 
+
     updateReelsUI();
+
 
     $("reelsTopic").value =
     `${t.title}
@@ -3250,6 +3968,7 @@ ${t.next}`;
   if(target==="threads"){
 
     goTool("threads");
+
 
     $("threadsTopic").value =
     `${t.title}
@@ -3284,25 +4003,30 @@ function renderTopics(){
         ${escapeHtml(t.title)}
       </div>
 
+
       <div class="topic-desc">
         ${escapeHtml(t.core)}
       </div>
+
 
       ${
         t.used
         ?`
         <div class="list-meta">
-          已講過：${escapeHtml(t.used)}
+          已講過：
+          ${escapeHtml(t.used)}
         </div>
         `
         :""
       }
 
+
       ${
         t.next
         ?`
         <div class="list-meta">
-          下一步：${escapeHtml(t.next)}
+          下一步：
+          ${escapeHtml(t.next)}
         </div>
         `
         :""
@@ -3311,27 +4035,32 @@ function renderTopics(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="topicToTool(${t.id},'carousel')">
           做輪播
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="topicToTool(${t.id},'reels')">
           做 Reels
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="topicToTool(${t.id},'threads')">
           做 Threads
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="editTopic(${t.id})">
           編輯
         </button>
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="deleteTopic(${t.id})">
           刪除
         </button>
@@ -3345,14 +4074,14 @@ function renderTopics(){
   :`
     <div class="empty">
       還沒有主題。<br>
-      有些內容值得持續講，不需要每次重新開始。
+      做過的內容可以留在這裡，之後繼續延伸。
     </div>
   `;
 
 }
 
 
-/* CAROUSEL */
+/* CAROUSEL TOPICS */
 
 function updateCarouselTopicSelect(){
 
@@ -3364,9 +4093,11 @@ function updateCarouselTopicSelect(){
   arr.length
 
   ?arr.map(t=>`
+
     <option value="${t.id}">
       ${escapeHtml(t.title)}
     </option>
+
   `).join("")
 
   :`
@@ -3376,34 +4107,14 @@ function updateCarouselTopicSelect(){
   `;
 
 
+  $("carouselEmptyTopicAction")
+  .classList.toggle(
+    "hidden",
+    arr.length>0
+  );
+
+
   loadCarouselTopic();
-
-}
-
-
-function updateCarouselSource(){
-
-  const source =
-  $("carouselSource").value;
-
-
-  $("carouselNewWrap")
-  .classList.toggle(
-    "hidden",
-    source!=="new"
-  );
-
-
-  $("carouselTopicWrap")
-  .classList.toggle(
-    "hidden",
-    source!=="topic"
-  );
-
-
-  if(source==="topic"){
-    loadCarouselTopic();
-  }
 
 }
 
@@ -3418,75 +4129,101 @@ function loadCarouselTopic(){
 
   const t =
   getTopics()
-  .find(x=>x.id===id);
+  .find(
+    x=>x.id===id
+  );
 
 
   if(!t){
 
-    $("carouselTopicMemory").textContent =
-    "目前主題庫沒有內容。";
+    $("carouselTopicMemory").innerHTML =
+    `
+      <strong>你還沒有建立主題 🤍</strong>
+      <br><br>
+      之後把想長期延伸的內容存進主題庫，
+      做輪播、Reels、Threads 就不用每次重新輸入。
+    `;
 
     return;
 
   }
 
 
-  $("carouselTopicMemory").innerHTML = `
+  $("carouselTopicMemory").innerHTML =
+  `
 
-    <strong>${escapeHtml(t.title)}</strong>
+    <strong>
+      ${escapeHtml(t.title)}
+    </strong>
 
     <br><br>
 
     核心：
-    ${escapeHtml(t.core||"尚未記錄")}
+    ${escapeHtml(
+      t.core || "尚未記錄"
+    )}
 
     <br>
 
     已講過：
-    ${escapeHtml(t.used||"尚未記錄")}
+    ${escapeHtml(
+      t.used || "尚未記錄"
+    )}
 
     <br>
 
     下一步：
-    ${escapeHtml(t.next||"尚未記錄")}
+    ${escapeHtml(
+      t.next || "尚未記錄"
+    )}
 
   `;
 
 
-  if(!$("carouselPain").value.trim()){
-    $("carouselPain").value =
-    t.pain || "";
-  }
+  $("carouselPain").value =
+  t.pain || "";
 
 
-  if(!$("carouselCore").value.trim()){
-    $("carouselCore").value =
-    t.core || "";
-  }
+  $("carouselCore").value =
+  t.core || "";
 
 }
 
 
 function saveCarouselAsTopic(){
 
-  const title =
-  $("carouselSource").value==="topic"
+  let title = "";
 
-  ?(
-    getTopics().find(
+
+  if(carouselPath==="topic"){
+
+    const t =
+    getTopics()
+    .find(
       x=>x.id===
       Number(
         $("carouselTopicSelect").value
       )
-    )?.title || ""
-  )
+    );
 
-  :$("carouselTopic").value.trim();
+
+    title =
+    t?.title || "";
+
+  }
+
+
+  if(carouselPath==="new"){
+
+    title =
+    $("carouselTopic").value.trim();
+
+  }
 
 
   if(!title){
 
-    alert("先填輪播主題 ♡");
+    alert("目前還沒有可以儲存的主題 ♡");
 
     return;
 
@@ -3509,9 +4246,11 @@ function saveCarouselAsTopic(){
     $("carouselCore").value.trim()
     ||existing.core;
 
+
     existing.pain =
     $("carouselPain").value.trim()
     ||existing.pain;
+
 
     existing.updated =
     new Date().toISOString();
@@ -3544,7 +4283,9 @@ function saveCarouselAsTopic(){
 
   saveTopics(arr);
 
+
   updateCarouselTopicSelect();
+
 
   alert("已存進主題庫 ♡");
 
@@ -3649,6 +4390,28 @@ const inspirationData = {
   },
 
 
+  "事業／工作":{
+
+    situations:[
+      "陪新人",
+      "上課",
+      "回訊息",
+      "帶小孩的空檔",
+      "晚上工作",
+      "回頭看以前"
+    ],
+
+    topics:[
+      "為什麼想保留自己的事情",
+      "工作除了收入還代表什麼",
+      "以前對經營的一個誤會",
+      "最希望新人不用自己摸索的事",
+      "現在更喜歡哪一種生活方式"
+    ]
+
+  },
+
+
   "生活／觀點":{
 
     situations:[
@@ -3748,9 +4511,7 @@ function rememberRadar(text){
 function generateOneIdea(){
 
   const categories =
-  Object.keys(
-    inspirationData
-  );
+  Object.keys(inspirationData);
 
 
   const recent =
@@ -3794,8 +4555,12 @@ function generateOneIdea(){
 
 
   return{
+
     category:"生活／觀點",
-    text:"今天有沒有一件很小，但你其實很有感的事？"
+
+    text:
+    "今天有沒有一件很小，但你其實很有感的事？"
+
   };
 
 }
@@ -3840,9 +4605,12 @@ function renderRadar(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn"
+        <button
+        class="mini-btn"
         onclick="saveRadarIdea(${i})">
+
           ♡ 存靈感
+
         </button>
 
       </div>
@@ -3884,7 +4652,9 @@ function saveRadarIdea(index){
 
   saveBrain(arr);
 
+
   refreshDashboard();
+
 
   alert("已存進靈感庫 ♡");
 
@@ -3904,14 +4674,17 @@ function renderBalance(){
 
   if(!arr.length){
 
-    $("balanceRadar").innerHTML = `
+    $("balanceRadar").innerHTML =
+    `
       <div class="empty">
         還沒有已發布紀錄。
       </div>
     `;
 
+
     $("balanceAdvice").textContent =
     "把發過的內容標成「已發」，之後會自動看到比例。";
+
 
     return;
 
@@ -3954,14 +4727,25 @@ function renderBalance(){
       <div class="balance-row">
 
         <div class="balance-head">
-          <span>${escapeHtml(name)}</span>
-          <span>${p}%</span>
+
+          <span>
+            ${escapeHtml(name)}
+          </span>
+
+          <span>
+            ${p}%
+          </span>
+
         </div>
 
+
         <div class="balance-bar">
+
           <div
           class="balance-fill"
-          style="width:${p}%"></div>
+          style="width:${p}%">
+          </div>
+
         </div>
 
       </div>
@@ -4071,7 +4855,9 @@ function deleteBoard(id){
 
   saveBoard(
     getBoard()
-    .filter(x=>x.id!==id)
+    .filter(
+      x=>x.id!==id
+    )
   );
 
 
@@ -4083,6 +4869,7 @@ function deleteBoard(id){
 function renderBoard(){
 
   const days = [
+
     "週一",
     "週二",
     "週三",
@@ -4090,6 +4877,7 @@ function renderBoard(){
     "週五",
     "週六",
     "週日"
+
   ];
 
 
@@ -4113,6 +4901,7 @@ function renderBoard(){
         <div class="day-name">
           ${day}
         </div>
+
 
         ${
           items.length
@@ -4149,9 +4938,11 @@ function renderBoard(){
           `).join("")
 
           :`
+
             <div class="list-meta">
               尚未安排
             </div>
+
           `
         }
 
@@ -4290,14 +5081,18 @@ function localDateKey(){
   new Date();
 
 
-  return [
+  return[
+
     d.getFullYear(),
+
     String(
       d.getMonth()+1
     ).padStart(2,"0"),
+
     String(
       d.getDate()
     ).padStart(2,"0")
+
   ].join("-");
 
 }
@@ -4338,7 +5133,7 @@ function addTodayTask(){
   $("todayTaskInput").value.trim();
 
 
-  if(!text) return;
+  if(!text)return;
 
 
   const arr =
@@ -4359,7 +5154,8 @@ function addTodayTask(){
   saveTodayTasks(arr);
 
 
-  $("todayTaskInput").value = "";
+  $("todayTaskInput").value =
+  "";
 
 
   refreshDashboard();
@@ -4374,7 +5170,9 @@ function toggleTodayTask(id){
 
 
   const item =
-  arr.find(x=>x.id===id);
+  arr.find(
+    x=>x.id===id
+  );
 
 
   if(item){
@@ -4383,6 +5181,7 @@ function toggleTodayTask(id){
 
 
   saveTodayTasks(arr);
+
 
   refreshDashboard();
 
@@ -4428,9 +5227,11 @@ function renderTodayTasks(){
   `).join("")
 
   :`
+
     <div class="muted">
       今天還沒有任務。
     </div>
+
   `;
 
 }
@@ -4524,22 +5325,34 @@ function renderReviewHistory(){
       </div>
 
       <div class="history-text">
+
         ${escapeHtml(x.type)}
+
         ・
+
         ${escapeHtml(x.performance)}
+
       </div>
 
       <div class="history-text">
         ${escapeHtml(x.posted)}
       </div>
 
+
       ${
         x.best
         ?`
+
         <div class="history-text">
-          <strong>有效：</strong>
+
+          <strong>
+            有效：
+          </strong>
+
           ${escapeHtml(x.best)}
+
         </div>
+
         `
         :""
       }
@@ -4549,9 +5362,11 @@ function renderReviewHistory(){
   `).join("")
 
   :`
+
     <div class="empty">
       還沒有回顧。
     </div>
+
   `;
 
 }
@@ -4568,38 +5383,50 @@ function buildStoryPrompt(){
 return `
 你是一位專業的 Instagram 限時動態內容策略顧問。
 
+我要你安排的是「今天整天的限動」，不是單獨一組產品限動。
+
 ${profileContext(b)}
 
-【今天可以發】
-${$("storyLife").value.trim()}
+【今天可以發的生活內容】
+${$("storyLife").value.trim()||"沒有"}
 
-【觀點／知識】
-${$("storyIdea").value.trim()}
+【今天想分享的觀點／知識】
+${$("storyIdea").value.trim()||"沒有"}
 
-【產品】
-${$("storyProduct").value.trim()||b.products}
+【今天想帶的產品】
+${$("storyProduct").value.trim()||"沒有"}
 
-【產品方式】
+【產品出現方式】
 ${$("storyProductStyle").value}
 
 【互動】
 ${$("storyInteraction").value}
 
-【數量】
+【限動數量】
 ${$("storyCount").value}
 
-請安排今天整天限動。
+請先分析今天最自然的內容節奏。
+
+不要把每則限動都做成獨立文章。
+
+我要看起來像一個真人今天一路在分享生活。
 
 每則提供：
-內容角色
-策略目的
-畫面
-可直接發布文字
-互動
-下一則怎麼接
+
+1. 這則的角色
+2. 為什麼現在發
+3. 建議素材／畫面
+4. 可直接發布的文字
+5. 是否需要互動
+6. 下一則怎麼自然接
+
+要求：
 
 不要為了湊數硬拆。
-不要每則都賣產品。
+不要每則都有 CTA。
+產品不需要一出現就介紹功能。
+不要每一則意思都重複。
+不要太 AI、太官方、太業配。
 `;
 }
 
@@ -4611,41 +5438,66 @@ function buildRetailPrompt(){
 
 
 return `
-你是一位 Instagram 產品零售限動策略顧問。
+你是一位專門規劃 Instagram 產品限動的內容策略顧問。
+
+這次我要的是「一組產品限動」，不是整天限動。
 
 ${profileContext(b)}
 
 【產品】
 ${$("retailProduct").value.trim()||b.products}
 
-【目標】
+【主要目標】
 ${$("retailGoal").value}
 
-【鋪陳】
+【內容切角】
 ${$("retailStoryType").value}
 
-【生活情境】
-${$("retailSituation").value.trim()}
+【生活開場情境】
+${$("retailSituation").value.trim()||"沒有設定"}
 
-【困擾】
-${$("retailPain").value.trim()}
+【受眾需求／困擾】
+${$("retailPain").value.trim()||b.pains}
 
-【一定要講】
-${$("retailMustSay").value.trim()}
+【一定要講的資訊】
+${$("retailMustSay").value.trim()||"沒有"}
 
-【數量】
+【限動數量】
 ${$("retailCount").value}
 
-請依：
+請先分析：
 
-起：情境／共鳴
-承：深化需求
-轉：產品自然出現
-合：信任／FAQ／CTA
+這次真正要建立的是需求、信任、使用情境、產品理解，還是購買動機？
 
-設計完整限動。
+再安排起承轉合。
 
-不要突然硬介紹產品。
+起：
+生活情境／問題／共鳴
+
+承：
+讓觀眾開始意識到自己的需求
+
+轉：
+產品自然出現，解釋為什麼我會用它
+
+合：
+使用感受／資訊補充／FAQ／CTA
+
+每則提供：
+
+1. 這則的功能
+2. 畫面
+3. 可以直接發布的文字
+4. 產品曝光程度
+5. 下一則怎麼接
+
+最後檢查：
+
+哪一句最像業配？
+哪一句太硬？
+有沒有重複講同一件事？
+
+幫我修自然。
 `;
 }
 
@@ -4657,27 +5509,46 @@ function buildRecruitPrompt(){
 
 
 return `
-你是一位 Instagram 事業／招商內容顧問。
+你是一位擅長 Instagram 事業／招商內容的策略顧問。
 
 ${profileContext(b)}
 
-【這次想講】
+【這次想講的主題】
 ${$("recruitTopic").value.trim()}
 
 【目標】
 ${$("recruitGoal").value}
 
-【真實事件】
+【真實事件／生活背景】
 ${$("recruitSituation").value.trim()}
 
 【一定要講】
 ${$("recruitMustSay").value.trim()}
 
-請先從生活、工作選擇、價值觀與真實經歷出發。
+請從「生活、選擇、工作方式、價值觀、真實經歷」出發。
 
-不要一開始直接招募。
+不要第一則就直接招人。
+
+請先讓觀眾理解：
+
+我為什麼會選擇這件事、
+它跟我的生活有什麼關係、
+我真正喜歡的是什麼。
+
+再自然帶到：
+
+可以自用、
+可以經營、
+有哪些資源／陪伴，
+以及有興趣的人可以了解。
+
+要求：
+
 不要保證收入。
-不要寫成成功學。
+不要寫「輕鬆賺錢」。
+不要成功學。
+不要貶低全職媽媽或任何工作。
+不要把每一則都寫得像招募文。
 `;
 }
 
@@ -4689,31 +5560,43 @@ function buildValuesPrompt(){
 
 
 return `
-你是一位擅長整理個人觀點的內容顧問。
+你是一位擅長整理個人觀點與生活想法的社群內容顧問。
+
+我已經有自己的想法，你的工作不是把它改成雞湯，而是幫我說清楚。
 
 ${profileContext(b)}
 
-【類別】
+【主題分類】
 ${selectedValueCategory}
 
 【角度】
 ${$("valueAngle").value}
 
 【背景】
-${$("valueBackground").value.trim()}
+${$("valueBackground").value.trim()||"沒有特別背景"}
 
-【我真正想講】
+【我真正想講的那句話】
 ${$("valueCore").value.trim()}
 
 【平台】
 ${$("valuePlatform").value}
 
-幫我把想法說清楚。
+請先分析：
 
+1. 我真正的觀點是什麼
+2. 哪個地方最容易引起共鳴
+3. 哪個地方可能太像說教
+4. 最適合從故事、觀察、反差還是一句話切入
+
+再寫內容。
+
+要求：
+
+不要幫我硬升華人生。
 不要雞湯。
-不要硬升華。
 不要像作文。
-保留我的原意。
+不要每篇最後都「所以我們要好好愛自己」。
+保留我的個性與原意。
 `;
 }
 
@@ -4734,16 +5617,29 @@ function buildReelsPrompt(){
   if(path==="ideas"){
 
 task = `
-我不知道要拍什麼。
+我完全不知道要拍什麼。
 
 【題材方向】
 ${$("reelsIdeaCategory").value}
 
 【最近不想再拍】
-${$("reelsIdeaAvoid").value.trim()}
+${$("reelsIdeaAvoid").value.trim()||"沒有"}
 
-請給 12 個具體 Reels 題材，
-並選出最值得拍的 3 個。
+請先給我 12 個具體到可以直接拍的 Reels 題材。
+
+每個提供：
+
+1. 題材名稱
+2. 屬於哪一類內容
+3. 為什麼受眾會停下來
+4. 真正爆點
+5. 前 3 秒方向
+6. 適合畫面
+7. 最可能帶來：
+   觀看／收藏／分享／留言／追蹤
+8. 拍攝難度
+
+最後選最值得先拍的 3 個。
 `;
 
   }
@@ -4756,8 +5652,19 @@ task = `
 
 ${$("reelsTopic").value.trim()}
 
-先找真正爆點，
 不要直接寫普通腳本。
+
+先幫我找這個題材真正有流量潛力的爆點。
+
+至少分析：
+
+痛點角度
+結果角度
+反差角度
+好奇角度
+故事角度
+
+再選最推薦的一個。
 `;
 
   }
@@ -4773,13 +5680,31 @@ ${$("reelsTopic").value.trim()}
 
 task = `
 我要做料理 Reels，
-但完全沒想法。
+但完全沒有食譜想法。
 
 【方向】
 ${$("recipeCategory").value}
 
-請想 10 個具體食譜，
-每個提供爆點、主要食材、前三秒與收藏理由。
+【不要使用】
+${$("recipeAvoid").value.trim()||"沒有"}
+
+請想 10 個具體食譜。
+
+每個提供：
+
+1. 食譜名稱
+2. 為什麼受眾會想看
+3. 主要食材
+4. 做法概念
+5. 真正爆點
+6. 前 3 秒畫面
+7. 為什麼值得收藏
+8. 適合主打什麼特色
+9. 難度
+
+最後選最值得拍的 3 個。
+
+不要為了吸睛亂宣稱低卡、高蛋白。
 `;
 
     }
@@ -4788,11 +5713,24 @@ ${$("recipeCategory").value}
     if(r==="direction"){
 
 task = `
-【料理方向】
+我目前只有料理方向：
+
 ${$("recipeTopic").value.trim()}
 
-請先設計合理食譜，
-再做 Reels 爆點與腳本。
+請先設計一個合理、可實際操作的食譜。
+
+提供：
+
+食材
+合理比例
+作法
+口感
+容易失敗的地方
+
+再找這支料理 Reels 的爆點。
+
+不要亂編熱量。
+不要沒有依據就說低卡、高蛋白。
 `;
 
     }
@@ -4804,16 +5742,24 @@ ${$("recipeTopic").value.trim()}
     ){
 
 task = `
-【已有食譜】
+我已經有完整食譜：
 
 ${$("recipeDetails").value.trim()}
 
-不要擅自改比例。
+請保留我的食譜比例。
 
-先分析爆點、
-哪些步驟可以刪、
-前三秒要放什麼，
-再做腳本。
+除非你是在提出「可選的優化建議」，
+否則不要直接更改我的材料與比例。
+
+先分析：
+
+1. 這個食譜最吸引人的地方
+2. 哪些步驟不用全部講
+3. 哪一個畫面最適合放前 3 秒
+4. 標題可以主打什麼
+5. 哪些說法不應該亂宣稱
+
+再設計 Reels。
 `;
 
     }
@@ -4824,18 +5770,32 @@ ${$("recipeDetails").value.trim()}
   if(path==="other"){
 
 task = `
-【類型】
+【內容類型】
 ${$("reelsOtherType").value}
 
 【題材】
 ${$("reelsOtherTopic").value.trim()}
+
+請依內容類型找最適合的短影音結構。
+
+如果是知識型：
+不要像上課。
+
+如果是觀點型：
+不要硬變成教學。
+
+如果是生活 Vlog：
+不要硬塞人生大道理。
+
+如果是產品：
+不要一開始就像廣告。
 `;
 
   }
 
 
 return `
-你是一位非常擅長 Instagram Reels 流量策略、短影音腳本與完播率的內容企劃。
+你是一位非常擅長 Instagram Reels 流量策略、短影音腳本與完播率優化的內容企劃。
 
 ${profileContext(b)}
 
@@ -4844,26 +5804,42 @@ ${task}
 【主要目標】
 ${$("reelsGoal").value}
 
+【鉤子方向】
+${$("reelsHook").value}
+
+【影片形式】
+${$("reelsFormat").value}
+
+【影片長度】
+${$("reelsLength").value}
+
+【最想講的核心】
+${$("reelsCore").value.trim()||"請依題材判斷"}
+
 請完成：
 
 1. 爆點分析
-2. 5 個不同切角
-3. 選最推薦切角
+2. 5 個完全不同的內容切角
+3. 選最推薦的一個切角
 4. 5 個前三秒鉤子
 5. 0～3 秒畫面
-6. 完整時間軸
-7. 完整腳本
+6. 完整影片時間軸
+7. 可直接拍攝的完整腳本
 8. 5 個封面標題
 9. Caption
-10. CTA 判斷
-11. 掉觀看檢查
-12. 延伸 5 個下一支題材
+10. CTA 是否需要
+11. 哪一段最容易掉觀看
+12. 如何縮短／改善完播率
+13. 延伸 5 個下一支題材
 
 不要保證爆款。
-不要每支都長一樣。
+不要每支腳本都長一樣。
+不要為了塞資訊讓影片變很滿。
 `;
 }
 
+
+/* CAROUSEL PROMPT */
 
 function buildCarouselPrompt(){
 
@@ -4871,14 +5847,150 @@ function buildCarouselPrompt(){
   getBase();
 
 
-  let topic = "";
+  /* 完全沒想法 */
 
+  if(carouselPath==="ideas"){
+
+    const existingTopics =
+    getTopics();
+
+
+    const recentMemory =
+    existingTopics.length
+
+    ?existingTopics
+      .slice(0,10)
+      .map(t=>`
+
+- ${t.title}
+已講過：${t.used||"未記錄"}
+
+`)
+      .join("\n")
+
+    :"目前沒有主題紀錄";
+
+
+return `
+你是一位非常擅長 Instagram 輪播貼文、社群流量、收藏率、分享率、滑頁率與漲粉策略的內容企劃。
+
+我現在完全不知道要做什麼輪播。
+
+不要叫我自己想主題。
+
+${profileContext(b)}
+
+【想做的方向】
+${$("carouselIdeaCategory").value}
+
+【最主要想帶的結果】
+${$("carouselIdeaGoal").value}
+
+【最近不想再做】
+${$("carouselIdeaAvoid").value.trim()||"沒有特別限制"}
+
+【我過去存過的主題】
+${recentMemory}
+
+請先不要寫完整輪播。
+
+先幫我想 10 個「具體到可以立刻做」的輪播題材。
+
+不能只給：
+
+育兒
+媽媽生活
+減脂
+飲食觀念
+
+這種太大的分類。
+
+我要像：
+
+「孩子情緒來了，媽媽最容易說錯的 6 句話」
+
+這種可以直接拿去做一篇內容的題材。
+
+每個主題請提供：
+
+1. 主題名稱
+2. 最適合做：
+   共鳴／收藏／分享／討論／漲粉／信任
+3. 真正爆點
+4. 封面標題方向
+5. 為什麼受眾會願意滑下去
+6. 最可能帶來：
+   收藏／分享／留言／追蹤
+7. 是否符合我的帳號定位
+8. 拍／做這篇的難度
+
+請避開：
+
+最近不想再做的內容
+主題庫已經重複很多次的角度
+太泛的知識題
+沒有情緒或需求的普通題目
+
+最後選出最推薦的 3 個。
+
+第一名要說明：
+
+為什麼最值得現在先做？
+它主要打中哪一種受眾？
+比較有共鳴、收藏、分享還是漲粉潛力？
+
+使用繁體中文、自然台灣語氣。
+`;
+  }
+
+
+  /* 只有方向 */
+
+  if(carouselPath==="direction"){
+
+return `
+你是一位非常擅長 Instagram 輪播貼文與爆點企劃的內容策略顧問。
+
+${profileContext(b)}
+
+我目前只有一個很大的內容方向：
+
+【方向】
+${$("carouselDirection").value.trim()}
+
+【我想偏向的效果】
+${$("carouselDirectionGoal").value}
+
+不要叫我自己再細想主題。
+
+請把這個大方向拆成 10 個具體、可以直接做成輪播的題材。
+
+每個題材提供：
+
+1. 具體主題
+2. 受眾目前卡在哪
+3. 真正爆點
+4. 最適合：
+   共鳴／收藏／分享／討論／漲粉／信任
+5. 3 個封面標題方向
+6. 為什麼這篇值得做
+7. 是否容易和一般內容撞題
+8. 要怎麼做出差異
+
+最後選最推薦的 3 個。
+
+不要只是把同一個題目換 10 種說法。
+`;
+  }
+
+
+  let topic = "";
   let memory = "";
 
 
-  if(
-    $("carouselSource").value==="topic"
-  ){
+  /* 主題庫 */
+
+  if(carouselPath==="topic"){
 
     const t =
     getTopics()
@@ -4890,13 +6002,30 @@ function buildCarouselPrompt(){
     );
 
 
-    if(t){
+    if(!t){
 
-      topic =
-      t.title;
+      return `
+目前主題庫沒有內容。
+
+請根據我的帳號定位，直接幫我想 10 個適合做成 Instagram 輪播的具體題材。
+
+${profileContext(b)}
+
+每題提供：
+主題
+爆點
+適合共鳴／收藏／分享／討論／漲粉哪一型
+封面方向
+為什麼值得做
+`;
+    }
 
 
-      memory = `
+    topic =
+    t.title;
+
+
+    memory = `
 【這個主題以前的紀錄】
 
 核心：
@@ -4908,17 +6037,27 @@ ${t.pain||"未記錄"}
 已經講過：
 ${t.used||"未記錄"}
 
-下一篇可延伸：
+下一篇可以延伸：
 ${t.next||"未記錄"}
 
 重要：
-請避免只是把「已經講過」的角度重新換句話說。
-優先延伸新角度。
+
+請不要只是把「已經講過」的內容換句話說。
+
+先找出：
+
+這個主題還有哪些新的切角、
+新的情境、
+新的問題、
+新的實用內容可以延伸。
 `;
 
-    }
+  }
 
-  }else{
+
+  /* 已經有主題 */
+
+  if(carouselPath==="new"){
 
     topic =
     $("carouselTopic").value.trim();
@@ -4931,7 +6070,7 @@ return `
 
 這次不要直接寫普通知識圖卡。
 
-要先找「為什麼陌生人會停下來看這篇」。
+先找出「為什麼陌生人會停下來看這篇」。
 
 ${profileContext(b)}
 
@@ -4940,14 +6079,14 @@ ${topic}
 
 ${memory}
 
-【這篇主要目標】
+【這篇最主要想達成】
 ${$("carouselGoal").value}
 
-【受眾目前卡在哪】
+【受眾現在卡在哪】
 ${$("carouselPain").value.trim()||b.pains}
 
 【我真正想講的核心】
-${$("carouselCore").value.trim()||"請先幫我找"}
+${$("carouselCore").value.trim()||"請先幫我判斷"}
 
 【標題方向】
 ${$("carouselHook").value}
@@ -4958,63 +6097,73 @@ ${$("carouselPages").value}
 【CTA】
 ${$("carouselCTA").value}
 
-請照以下順序完成：
+請依以下順序完成：
 
-一、先找爆點
+一、先做爆點分析
 
 分析：
 
 1. 這個主題真正最有吸引力的是什麼？
-2. 受眾為什麼會停下來？
-3. 這篇最適合靠「共鳴、收藏、分享、討論、漲粉」哪一個帶動？
+2. 觀眾看到什麼會覺得「這跟我有關」？
+3. 這篇最適合靠：
+   共鳴／收藏／分享／討論／漲粉
+   哪一個帶動？
 4. 最普通、最容易被滑掉的講法是什麼？
+5. 哪個角度最值得放大？
 
 二、提供 10 個封面標題
 
 10 個標題不能只是同一句換詞。
 
-要涵蓋：
+至少涵蓋：
 
 痛點型
 反差型
 結果型
 數字型
-故事型
+一句話故事型
 問題型
-反常識
+反常識型
 共鳴型
 
-每個標題後面標示：
+每個標題請標示：
 
 停留力：1～5
 共鳴力：1～5
 收藏力：1～5
 分享力：1～5
 
-三、選最推薦封面標題
+三、選最推薦的一個封面標題
 
 說明：
 
-為什麼？
-最適合哪種受眾？
-會吸引什麼人點？
+為什麼最推薦？
+會吸引哪一種人？
+為什麼比其他標題強？
 
-避免：
+不要使用：
 
 假性標題黨
 過度煽動
-承諾內文做不到的結果
+正文無法支撐的誇張承諾
 
 四、完整輪播架構
 
 封面：
-標題
-副標題（如果需要）
+
+主標題
+副標題（真的需要才加）
 
 第 2 頁：
 
-一定要負責「留住人」，
-不能只是開始解釋背景。
+一定要負責「留住人」。
+
+不能只是：
+
+「今天來跟大家聊聊……」
+「很多媽媽都會遇到……」
+
+要讓使用者想繼續往下滑。
 
 第 3 頁開始：
 
@@ -5023,12 +6172,18 @@ ${$("carouselCTA").value}
 每頁請提供：
 
 第 X 頁
+
 這頁目的：
+
 主標：
+
 內文：
+
 建議視覺：
-上一頁如何接：
-下一頁為什麼想繼續滑：
+
+上一頁怎麼接：
+
+下一頁為什麼會讓人想繼續滑：
 
 五、最後一頁
 
@@ -5036,8 +6191,9 @@ ${$("carouselCTA").value}
 
 「你也是嗎？」
 「記得收藏」
+「留言告訴我」
 
-請依內容判斷最適合：
+請依內容真正判斷最適合：
 
 共鳴收尾
 一句觀點
@@ -5050,29 +6206,31 @@ ${$("carouselCTA").value}
 
 六、Caption
 
-不要把整篇輪播重新複製一次。
+不要把輪播全文重新貼一次。
 
 Caption 可以補：
 
 故事
 背景
-個人想法
+個人觀點
+輪播沒有講完的部分
 延伸觀點
 
-七、輪播掉頁檢查
+七、掉頁檢查
 
 請指出：
 
-哪一頁最容易被滑掉？
-哪一頁文字太多？
-哪一頁資訊重複？
-哪一頁最應該縮短？
+哪一頁最容易掉人？
+哪一頁字太多？
+哪一頁內容重複？
+哪一頁應該縮短？
 第 2 頁夠不夠留人？
-封面是否太普通？
+封面有沒有太普通？
+有沒有某頁只是為了湊頁數？
 
-八、最後判斷
+八、最後評估
 
-這篇最有潛力的是：
+這篇最大的潛力是：
 
 共鳴
 收藏
@@ -5080,13 +6238,13 @@ Caption 可以補：
 留言
 漲粉
 
-選 1～2 個即可。
+選最主要的 1～2 個。
 
 九、再提供
 
 3 個備用封面標題
 3 個不同 CTA
-5 個下一篇延伸主題
+5 個下一篇延伸題材
 
 要求：
 
@@ -5096,10 +6254,13 @@ Caption 可以補：
 不要雞湯。
 不要過度工整。
 不要為了頁數硬拆。
-每頁字數要適合手機閱讀。
+每頁文字要適合手機閱讀。
+標題要吸引，但不能假性標題黨。
 `;
 }
 
+
+/* THREADS */
 
 function buildThreadsPrompt(){
 
@@ -5108,30 +6269,39 @@ function buildThreadsPrompt(){
 
 
 return `
-你是一位熟悉 Threads 使用習慣的內容顧問。
+你是一位熟悉 Threads 使用習慣與社群共鳴的內容顧問。
 
 ${profileContext(b)}
 
-【想講】
+【想講的主題】
 ${$("threadsTopic").value.trim()}
 
 【類型】
 ${$("threadsType").value}
 
-先找 5 個不同切角，
+請先提供 5 個不同切角。
+
+不要只是同一句話換說法。
+
 再選最自然的一個。
 
 最後提供：
 
-完整 Threads
-短版
-3 個不同開頭
+1. 完整 Threads
+2. 比較短的版本
+3. 3 個不同開頭
+
+要求：
 
 不要像作文。
 不要過度工整。
+不要硬做爭議。
+不要每篇都用大道理結尾。
 `;
 }
 
+
+/* WEEK */
 
 function buildWeekPrompt(){
 
@@ -5146,35 +6316,69 @@ function buildWeekPrompt(){
   const topicMemory =
   topics.length
 
-  ?topics.slice(0,8)
+  ?topics.slice(0,10)
   .map(t=>`
+
 - ${t.title}
-已講過：${t.used||"無"}
-下一步：${t.next||"無"}
+已講過：
+${t.used||"無"}
+
+下一步：
+${t.next||"無"}
+
 `)
   .join("\n")
 
   :"目前沒有主題紀錄";
 
 
+  const reviews =
+  getReviews();
+
+
+  const reviewMemory =
+  reviews.length
+
+  ?reviews.slice(0,5)
+  .map(r=>`
+
+${r.date}
+${r.type}
+${r.performance}
+
+有效：
+${r.best||"無"}
+
+之後可以延伸：
+${r.next||"無"}
+
+`)
+  .join("\n")
+
+  :"目前沒有回顧紀錄";
+
+
 return `
-你是一位自媒體一週內容策略顧問。
+你是一位專業的自媒體一週內容策略顧問。
 
 ${profileContext(b)}
 
-【這週目標】
+【這週主要目標】
 ${$("weekGoal").value}
 
 【這週一定想分享】
-${$("weekTopics").value.trim()}
+${$("weekTopics").value.trim()||"沒有"}
 
-【固定事件】
-${$("weekEvents").value.trim()}
+【這週固定事件】
+${$("weekEvents").value.trim()||"沒有"}
 
 【最近主題紀錄】
 ${topicMemory}
 
-請安排 Day1～Day7。
+【最近內容回顧】
+${reviewMemory}
+
+請規劃 Day1～Day7。
 
 可以包含：
 
@@ -5187,28 +6391,40 @@ Threads
 產品
 招商
 
-但不需要每天全部發。
+但不要每天全部都出現。
 
-請避免一直重複主題庫已經講過的角度。
+請根據：
+
+我的帳號定位
+受眾
+這週目標
+最近已經講過的主題
+最近表現好的內容
+最近表現較差的內容
+
+安排真正合理的節奏。
 
 同一個核心主題可以跨平台延伸，
-但不同平台要用不同切法。
+但不要每個平台都講完全一樣的東西。
 
 最後整理：
 
-這週主軸
-流量內容
-信任內容
-生活內容
-產品內容
-招商內容
-最值得做的輪播
-最值得做的 Reels
+1. 這週核心主軸
+2. 流量內容
+3. 信任內容
+4. 生活內容
+5. 產品內容
+6. 招商內容
+7. 本週最值得做的 Reels
+8. 本週最值得做的輪播
+9. 哪一天不需要硬發內容
 
 不要排得像制式行銷表。
 `;
 }
 
+
+/* GENERATE */
 
 function generatePrompt(){
 
@@ -5216,7 +6432,10 @@ function generatePrompt(){
 
 
   if(selectedMode==="story"){
-    prompt = buildStoryPrompt();
+
+    prompt =
+    buildStoryPrompt();
+
   }
 
 
@@ -5231,19 +6450,38 @@ function generatePrompt(){
 
 
   if(selectedMode==="values"){
-    prompt = buildValuesPrompt();
+
+    prompt =
+    buildValuesPrompt();
+
   }
 
 
   if(selectedMode==="reels"){
-    prompt = buildReelsPrompt();
+
+    prompt =
+    buildReelsPrompt();
+
   }
 
 
   if(selectedMode==="carousel"){
 
     if(
-      $("carouselSource").value==="new"
+      carouselPath==="direction"
+      &&
+      !$("carouselDirection").value.trim()
+    ){
+
+      alert("先選一個大方向 ♡");
+
+      return;
+
+    }
+
+
+    if(
+      carouselPath==="new"
       &&
       !$("carouselTopic").value.trim()
     ){
@@ -5262,12 +6500,18 @@ function generatePrompt(){
 
 
   if(selectedMode==="threads"){
-    prompt = buildThreadsPrompt();
+
+    prompt =
+    buildThreadsPrompt();
+
   }
 
 
   if(selectedMode==="week"){
-    prompt = buildWeekPrompt();
+
+    prompt =
+    buildWeekPrompt();
+
   }
 
 
@@ -5283,7 +6527,8 @@ function generatePrompt(){
   "none";
 
 
-  $("resultCard").scrollIntoView({
+  $("resultCard")
+  .scrollIntoView({
     behavior:"smooth"
   });
 
@@ -5323,15 +6568,23 @@ function copyPrompt(){
     const ta =
     document.createElement("textarea");
 
-    ta.value = text;
 
-    document.body.appendChild(ta);
+    ta.value =
+    text;
+
+
+    document.body
+    .appendChild(ta);
+
 
     ta.select();
 
+
     document.execCommand("copy");
 
+
     ta.remove();
+
 
     alert("已複製 ♡");
 
@@ -5377,13 +6630,16 @@ function refreshDashboard(){
 
   const open =
   getTodayTasks()
-  .filter(x=>!x.done)
-  .length;
+  .filter(
+    x=>!x.done
+  ).length;
 
 
   $("homeFocusTitle").textContent =
   open
+
   ?`今天還有 ${open} 件重要的事`
+
   :"今天先完成一個內容";
 
 }
@@ -5413,7 +6669,12 @@ renderTopics();
 
 updateCarouselTopicSelect();
 
-updateCarouselSource();
+setCarouselPath(
+  "ideas",
+  document.querySelector(
+    '[data-carousel-path="ideas"]'
+  )
+);
 
 renderRadar();
 
