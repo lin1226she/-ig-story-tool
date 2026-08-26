@@ -371,6 +371,31 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
   .hero h1{font-size:26px}
   .two-col,.product-toolbar{grid-template-columns:1fr}
 }
+
+/* ===== COMPLETE WORKBENCH ADDITIONS ===== */
+.daily-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.daily-item{border:1px solid #eedfe3;background:#fff;border-radius:16px;padding:13px}
+.daily-item strong{display:block;font-size:14px;margin-bottom:6px}
+.counter-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.counter-actions{display:flex;gap:6px}
+.counter-btn{width:34px;height:34px;border:none;border-radius:10px;background:#f7eef1;color:#ad5d73;font-weight:900}
+.check-row{display:flex;align-items:center;gap:10px;border:1px solid #eee2e5;border-radius:14px;padding:11px;margin-top:8px;background:#fff}
+.check-row input{width:auto}
+.progress-track{height:10px;background:#f2e8eb;border-radius:999px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:#d77d96;border-radius:999px}
+.plan-menu{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plan-menu .quick-btn:last-child{grid-column:1/-1}
+.speaking-topic{background:#fff7f9;border:1px solid #efd9df;border-radius:16px;padding:14px;margin-top:10px}
+.speaking-topic-title{font-size:15px;font-weight:850;line-height:1.55}
+.sticky-score{font-size:34px;font-weight:900;color:#b85f78}
+.simple-product-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+.simple-product-item{border:1px solid #eee1e4;border-radius:14px;padding:11px;background:#fff}
+.simple-product-item label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:750}
+.simple-product-item input{width:auto}
+.simple-role{margin-top:8px}
+.advanced-toggle{margin-top:12px}
+@media(max-width:390px){.daily-grid,.plan-menu{grid-template-columns:1fr}.plan-menu .quick-btn:last-child{grid-column:auto}}
+
 </style>
 </head>
 
@@ -389,147 +414,118 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
 <div id="home" class="page active">
 
   <div class="hero">
-    <h1>今天要發什麼，<br>來這裡想。</h1>
-    <p>靈感、主題、內容、產品曝光與排程，一次整理。</p>
+    <h1>今天開店了嗎？</h1>
+    <p>先把每天最重要的內容節奏做完，再去想更多。</p>
   </div>
 
   <div class="section">
     <div class="card focus-card">
+      <div class="eyebrow">DAILY OPEN</div>
+      <div class="focus-title">今天的固定行動</div>
+      <div class="muted">系統規劃原則：整體約 80% 生活／內容、20% 產品。這不是每天硬切比例，而是避免整天看起來都在賣東西。</div>
 
-      <div class="eyebrow">TODAY'S FOCUS</div>
+      <div class="daily-grid">
+        <div class="daily-item">
+          <strong>📱 限動至少 7 則</strong>
+          <div class="counter-row">
+            <span><b id="dailyStoryCount">0</b> / 7</span>
+            <div class="counter-actions">
+              <button class="counter-btn" onclick="changeDailyStories(-1)">−</button>
+              <button class="counter-btn" onclick="changeDailyStories(1)">＋</button>
+            </div>
+          </div>
+          <div class="progress-track"><div id="dailyStoryBar" class="progress-fill" style="width:0%"></div></div>
+        </div>
 
-      <div class="focus-title" id="homeFocusTitle">
-        今天先完成一個內容
+        <div class="daily-item">
+          <strong>本週 Reels</strong>
+          <div class="counter-row">
+            <span><b id="weeklyReelsCount">0</b> / 3</span>
+            <div class="counter-actions">
+              <button class="counter-btn" onclick="changeWeeklyProgress('reels',-1)">−</button>
+              <button class="counter-btn" onclick="changeWeeklyProgress('reels',1)">＋</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="daily-item">
+          <strong>本週輪播</strong>
+          <div class="counter-row">
+            <span><b id="weeklyCarouselCount">0</b> / 3</span>
+            <div class="counter-actions">
+              <button class="counter-btn" onclick="changeWeeklyProgress('carousel',-1)">−</button>
+              <button class="counter-btn" onclick="changeWeeklyProgress('carousel',1)">＋</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="daily-item">
+          <strong>今天兩件不能漏</strong>
+          <label class="check-row"><input id="dailySpeakingCheck" type="checkbox" onchange="toggleDailyFlag('speaking',this.checked)"> 至少 1 則口播</label>
+          <label class="check-row"><input id="dailyProductCheck" type="checkbox" onchange="toggleDailyFlag('product',this.checked)"> 至少 1 次產品曝光</label>
+        </div>
       </div>
-
-      <div class="muted">
-        不需要一次做很多，先完成今天最重要的一件。
-      </div>
-
-      <div class="task-list" id="todayTaskList"></div>
-
-      <div class="task-add">
-        <input id="todayTaskInput" placeholder="例如：完成一篇育兒輪播">
-        <button onclick="addTodayTask()">＋</button>
-      </div>
-
     </div>
   </div>
 
+  <div class="section">
+    <div class="section-title">今天的口播題目</div>
+    <div class="card">
+      <div class="muted">不要只叫自己「練口播」，每天直接拿一題講。</div>
+      <div class="speaking-topic">
+        <div class="eyebrow">TODAY'S SPEAKING</div>
+        <div id="homeSpeakingTopic" class="speaking-topic-title"></div>
+      </div>
+      <button class="outline-btn" onclick="changeHomeSpeakingTopic()">換一題</button>
+      <button class="primary-btn" style="margin-top:8px" onclick="goTool('speaking')">幫我把這題整理成口播</button>
+    </div>
+  </div>
 
   <div class="section">
-
     <div class="section-title">今天直接做內容</div>
-
     <div class="quick-grid">
-
-      <button class="quick-btn" onclick="goTool('story')">
-        <div class="quick-icon">📱</div>
-        <div class="quick-title">限動</div>
-        <div class="quick-desc">今天整天怎麼排</div>
-      </button>
-
-      <button class="quick-btn" onclick="goTool('reels')">
-        <div class="quick-icon">🎬</div>
-        <div class="quick-title">Reels</div>
-        <div class="quick-desc">題材、食譜、爆點、腳本</div>
-      </button>
-
-      <button class="quick-btn" onclick="goTool('carousel')">
-        <div class="quick-icon">▤</div>
-        <div class="quick-title">輪播貼文</div>
-        <div class="quick-desc">沒想法也能直接開始</div>
-      </button>
-
-      <button class="quick-btn" onclick="goTool('threads')">
-        <div class="quick-icon">✏️</div>
-        <div class="quick-title">Threads</div>
-        <div class="quick-desc">共鳴、觀點、討論</div>
-      </button>
-
-      <button class="quick-btn" onclick="goTool('sales')">
-        <div class="quick-icon">🛍️</div>
-        <div class="quick-title">銷售限動</div>
-        <div class="quick-desc">單一產品完整鋪陳</div>
-      </button>
-
-      <button class="quick-btn" onclick="openProductPlanner()">
-        <div class="quick-icon">🗓️</div>
-        <div class="quick-title">產品排程</div>
-        <div class="quick-desc">一週／一個月曝光節奏</div>
-      </button>
-
+      <button class="quick-btn" onclick="goTool('story')"><div class="quick-icon">📱</div><div class="quick-title">限動</div><div class="quick-desc">今天整天怎麼排</div></button>
+      <button class="quick-btn" onclick="goTool('speaking')"><div class="quick-icon">🎤</div><div class="quick-title">口播</div><div class="quick-desc">題目、開頭、講法、鏡頭練習</div></button>
+      <button class="quick-btn" onclick="goTool('reels')"><div class="quick-icon">🎬</div><div class="quick-title">Reels</div><div class="quick-desc">題材、食譜、爆點、腳本</div></button>
+      <button class="quick-btn" onclick="goTool('carousel')"><div class="quick-icon">▤</div><div class="quick-title">輪播貼文</div><div class="quick-desc">沒想法也能直接開始</div></button>
+      <button class="quick-btn" onclick="goTool('threads')"><div class="quick-icon">✏️</div><div class="quick-title">Threads</div><div class="quick-desc">共鳴、觀點、討論</div></button>
+      <button class="quick-btn" onclick="openProductPlanner()"><div class="quick-icon">🗓️</div><div class="quick-title">產品排程</div><div class="quick-desc">一週／一個月曝光節奏</div></button>
     </div>
-
   </div>
 
+  <div class="section">
+    <div class="section-title">今天其他任務</div>
+    <div class="card">
+      <div class="task-list" id="todayTaskList"></div>
+      <div class="task-add"><input id="todayTaskInput" placeholder="例如：完成一篇育兒輪播"><button onclick="addTodayTask()">＋</button></div>
+    </div>
+  </div>
 
   <div class="section">
-
     <div class="section-title">今天可以延伸的靈感</div>
-
     <div class="card">
-
-      <div class="muted" style="margin-bottom:12px">
-        每次重新組合題材，最近看過的會盡量避開。
-      </div>
-
+      <div class="muted" style="margin-bottom:12px">每次重新組合題材，最近看過的會盡量避開。</div>
       <div id="radarWrap" class="radar-wrap"></div>
-
-      <button class="outline-btn" onclick="renderRadar()">
-        ✦ 換一批靈感
-      </button>
-
+      <button class="outline-btn" onclick="renderRadar()">✦ 換一批靈感</button>
     </div>
-
   </div>
 
-
   <div class="section">
-
     <div class="section-title">最近內容雷達</div>
-
     <div class="card">
-
       <div id="balanceRadar"></div>
-
-      <div class="info-strip" id="balanceAdvice">
-        發過幾篇之後，這裡會幫你看內容比例。
-      </div>
-
+      <div class="info-strip" id="balanceAdvice">發過幾篇之後，這裡會幫你看內容比例。</div>
     </div>
-
   </div>
 
-
   <div class="section">
-
     <div class="section-title">我的內容庫</div>
-
     <div class="stat-grid">
-
-      <div class="stat">
-        <div class="stat-num" id="statIdea">0</div>
-        <div class="stat-label">原始想法</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-num" id="statDraft">0</div>
-        <div class="stat-label">草稿</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-num" id="statReady">0</div>
-        <div class="stat-label">待發布</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-num" id="statPublished">0</div>
-        <div class="stat-label">已發布</div>
-      </div>
-
+      <div class="stat"><div class="stat-num" id="statIdea">0</div><div class="stat-label">原始想法</div></div>
+      <div class="stat"><div class="stat-num" id="statDraft">0</div><div class="stat-label">草稿</div></div>
+      <div class="stat"><div class="stat-num" id="statReady">0</div><div class="stat-label">待發布</div></div>
+      <div class="stat"><div class="stat-num" id="statPublished">0</div><div class="stat-label">已發布</div></div>
     </div>
-
   </div>
 
 </div>
@@ -651,6 +647,20 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
   </div>
 
 
+  <div class="section">
+    <div class="section-title">今天想規劃哪一塊？</div>
+    <div class="plan-menu">
+      <button class="quick-btn" onclick="scrollPlanningTo('weekPlanAnchor')"><div class="quick-icon">🗓️</div><div class="quick-title">一週內容</div><div class="quick-desc">整週主線與平台安排</div></button>
+      <button class="quick-btn" onclick="scrollPlanningTo('productPlanSection')"><div class="quick-icon">🛍️</div><div class="quick-title">產品曝光</div><div class="quick-desc">主推、平常露出、偶爾帶過</div></button>
+      <button class="quick-btn" onclick="scrollPlanningTo('rhythmAnchor')"><div class="quick-icon">〰️</div><div class="quick-title">經營節奏</div><div class="quick-desc">依最近狀態調整內容</div></button>
+      <button class="quick-btn" onclick="scrollPlanningTo('formulaAnchor')"><div class="quick-icon">✏️</div><div class="quick-title">文案公式</div><div class="quick-desc">挑結構再做內容</div></button>
+      <button class="quick-btn" onclick="scrollPlanningTo('stickinessAnchor')"><div class="quick-icon">♡</div><div class="quick-title">粉絲黏著度</div><div class="quick-desc">看觀眾有沒有越來越認識你</div></button>
+    </div>
+  </div>
+
+
+  <div id="weekPlanAnchor"></div>
+
   <!-- WEEK BOARD -->
 
   <div class="section">
@@ -671,6 +681,7 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
 
       <select id="boardType" style="margin-top:8px">
         <option>限動</option>
+        <option>口播</option>
         <option>Reels</option>
         <option>輪播</option>
         <option>Threads</option>
@@ -806,7 +817,7 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
       class="product-library hidden">
 
         <div class="muted" style="margin-bottom:8px">
-          這裡會讀取「我的 → 產品／服務」。
+          已內建婕樂纖產品庫，也會一起讀取「我的 → 產品／服務」。
         </div>
 
         <div id="productLibraryChecks"></div>
@@ -864,6 +875,8 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
   </div>
 
 
+  <div id="rhythmAnchor"></div>
+
   <!-- RHYTHM -->
 
   <div class="section">
@@ -882,6 +895,8 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
 
   </div>
 
+
+  <div id="formulaAnchor"></div>
 
   <!-- FORMULAS -->
 
@@ -929,6 +944,32 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
   </div>
 
 </div>
+
+
+  <div class="section" id="stickinessAnchor">
+    <div class="section-title">粉絲黏著度</div>
+    <div class="card">
+      <div class="eyebrow">AUDIENCE STICKINESS</div>
+      <div class="focus-title" style="font-size:19px">粉絲有沒有越來越「認識你」？</div>
+      <div class="muted">不是只看互動數，而是檢查生活熟悉感、個人觀點、互動、固定系列、期待感與產品感是不是失衡。</div>
+
+      <label class="field-title">最近 7 天你的內容狀況</label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" class="sticky-check" value="有固定生活日常"><span>有固定生活日常</span></label>
+        <label class="chip"><input type="checkbox" class="sticky-check" value="有個人觀點"><span>有個人觀點</span></label>
+        <label class="chip"><input type="checkbox" class="sticky-check" value="有互動"><span>有互動</span></label>
+        <label class="chip"><input type="checkbox" class="sticky-check" value="有固定系列／記憶點"><span>有固定系列／記憶點</span></label>
+        <label class="chip"><input type="checkbox" class="sticky-check" value="有 Part2／後續期待"><span>有後續期待</span></label>
+        <label class="chip"><input type="checkbox" class="sticky-check" value="產品沒有太重"><span>產品沒有太重</span></label>
+      </div>
+
+      <label class="field-title">最近自己最有感的問題</label>
+      <textarea id="stickinessProblem" placeholder="例如：大家只看料理，不太認識我的個性；產品一出現觀看就掉"></textarea>
+
+      <button class="primary-btn" style="margin-top:12px" onclick="generateStickinessPrompt()">✨ 幫我做粉絲黏著度檢查</button>
+    </div>
+  </div>
+
 
 
 <!-- TOOLS -->
@@ -1006,9 +1047,12 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
             <option>2 則</option>
             <option>3 則</option>
             <option>4 則</option>
-            <option selected>5 則</option>
+            <option>5 則</option>
             <option>6 則</option>
-            <option>7 則</option>
+            <option selected>7 則</option>
+            <option>8 則</option>
+            <option>9 則</option>
+            <option>10 則</option>
           </select>
 
         </div>
@@ -1161,6 +1205,61 @@ input:focus,select:focus,textarea:focus{border-color:#d997aa}
 
         </div>
 
+      </div>
+
+    </div>
+
+
+
+    <!-- SPEAKING -->
+
+    <div id="form-speaking" class="tool-form">
+
+      <div class="card">
+        <div class="special-box">
+          <div class="special-title">🎤 口播練習室</div>
+
+          <label class="field-title">你現在是哪一種狀態？</label>
+          <select id="speakingPath" onchange="updateSpeakingUI()">
+            <option value="ideas">完全沒想法</option>
+            <option value="direction">只有一個方向</option>
+            <option value="topic">已經有主題</option>
+            <option value="rewrite">有稿，但講起來像背稿</option>
+          </select>
+
+          <label class="field-title">類型</label>
+          <select id="speakingCategory">
+            <option>AI 幫我判斷</option>
+            <option>生活口播</option>
+            <option>觀點口播</option>
+            <option>知識口播</option>
+            <option>故事口播</option>
+            <option>產品口播</option>
+            <option>Reels 口播</option>
+          </select>
+
+          <div id="speakingDirectionFields" class="hidden">
+            <label class="field-title">你只有什麼方向？</label>
+            <input id="speakingDirection" placeholder="例如：育兒、減脂、媽媽自己">
+          </div>
+
+          <div id="speakingTopicFields" class="hidden">
+            <label class="field-title">你想講的主題</label>
+            <textarea id="speakingTopic"></textarea>
+          </div>
+
+          <div id="speakingRewriteFields" class="hidden">
+            <label class="field-title">把現在的稿貼進來</label>
+            <textarea id="speakingDraft"></textarea>
+          </div>
+
+          <label class="field-title">希望講多久？</label>
+          <select id="speakingLength">
+            <option>15～30 秒</option>
+            <option selected>30～60 秒</option>
+            <option>1～2 分鐘</option>
+          </select>
+        </div>
       </div>
 
     </div>
@@ -1803,6 +1902,12 @@ onclick="overlayClose(event)">
       </button>
 
       <button class="sheet-option"
+      onclick="changeMode('speaking')">
+        <div class="sheet-icon">🎤</div>
+        <div class="sheet-title">口播</div>
+      </button>
+
+      <button class="sheet-option"
       onclick="changeMode('reels')">
         <div class="sheet-icon">🎬</div>
         <div class="sheet-title">Reels</div>
@@ -1979,6 +2084,7 @@ const modeNames = {
   story:"今日限動排程",
   sales:"銷售限動企劃",
   values:"價值觀／想法",
+  speaking:"口播練習室",
   reels:"Reels 企劃中心",
   carousel:"輪播貼文企劃",
   threads:"Threads",
@@ -2001,6 +2107,11 @@ const pageTexts = {
   values:{
     title:"最近有什麼<br>真的想講的？",
     subtitle:"把自己的觀點講清楚。"
+  },
+
+  speaking:{
+    title:"今天想講什麼？<br>不要再對鏡頭發呆。",
+    subtitle:"從題目、開頭、講法到鏡頭練習一次整理。"
   },
 
   reels:{
@@ -3605,20 +3716,22 @@ function saveCarouselAsTopic(){
 
 function parseProfileProducts(){
 
-  const b =
-  getBase();
+  const b = getBase();
 
+  const builtIn = [
+    "纖飄錠","纖纖輕鬆飲X","雪花紫纖飲","水光錠","水光繃帶面膜",
+    "J70 婕肌零洗卸凝膠","高機能益生菌","輕卡肽纖飲歐式可可",
+    "輕卡肽纖飲厚焙奶茶","雪聚露雙效導入精華","小白瓶身體精華油",
+    "積雪草護手霜","法樂蓬洗髮露","法樂蓬養髮原液","爆纖錠",
+    "植萃纖酵宿","複方金盞花葉黃素EX飲","金盞花葉黃素高鈣晶亮凍",
+    "固樂纖 DKKflex","精純玻尿酸保濕原液","療肺草正冠茶","9國英雄 TURBO 極速錠"
+  ];
 
-  if(!b.products ||
-     b.products==="沒有設定"){
-    return [];
-  }
+  const custom = (!b.products || b.products==="沒有設定")
+    ? []
+    : String(b.products).split(/[\\n、，,;；]+/).map(x=>x.trim()).filter(Boolean);
 
-
-  return String(b.products)
-  .split(/[\n、，,;；]+/)
-  .map(x=>x.trim())
-  .filter(Boolean);
+  return [...new Set([...builtIn,...custom])];
 
 }
 
@@ -5623,6 +5736,167 @@ function renderBalance(){
 }
 
 
+
+/* DAILY OPEN + SPEAKING + STICKINESS */
+
+function scrollPlanningTo(id){
+  const el=$(id);
+  if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function weekStartKey(){
+  const d=new Date();
+  const day=d.getDay()||7;
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate()-day+1);
+  return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");
+}
+
+function getDailyOpen(){
+  try{return JSON.parse(localStorage.getItem("dailyOpen_"+localDateKey())||'{"stories":0,"speaking":false,"product":false}')}catch{return {stories:0,speaking:false,product:false}}
+}
+function saveDailyOpen(v){localStorage.setItem("dailyOpen_"+localDateKey(),JSON.stringify(v))}
+function changeDailyStories(delta){
+  const v=getDailyOpen(); v.stories=Math.max(0,Math.min(20,(Number(v.stories)||0)+delta)); saveDailyOpen(v); renderDailyOpen();
+}
+function toggleDailyFlag(key,checked){
+  const v=getDailyOpen(); v[key]=!!checked; saveDailyOpen(v); renderDailyOpen();
+}
+function getWeeklyProgress(){
+  try{return JSON.parse(localStorage.getItem("weeklyContent_"+weekStartKey())||'{"reels":0,"carousel":0}')}catch{return {reels:0,carousel:0}}
+}
+function changeWeeklyProgress(key,delta){
+  const v=getWeeklyProgress(); v[key]=Math.max(0,Math.min(20,(Number(v[key])||0)+delta));
+  localStorage.setItem("weeklyContent_"+weekStartKey(),JSON.stringify(v)); renderDailyOpen();
+}
+function renderDailyOpen(){
+  const d=getDailyOpen(), w=getWeeklyProgress();
+  if($("dailyStoryCount"))$("dailyStoryCount").textContent=d.stories||0;
+  if($("dailyStoryBar"))$("dailyStoryBar").style.width=Math.min(100,((d.stories||0)/7)*100)+"%";
+  if($("dailySpeakingCheck"))$("dailySpeakingCheck").checked=!!d.speaking;
+  if($("dailyProductCheck"))$("dailyProductCheck").checked=!!d.product;
+  if($("weeklyReelsCount"))$("weeklyReelsCount").textContent=w.reels||0;
+  if($("weeklyCarouselCount"))$("weeklyCarouselCount").textContent=w.carousel||0;
+}
+
+const speakingTopics=[
+  "你以前最容易因為孩子哪一個行為生氣，現在反而比較能理解？",
+  "當媽媽後，有哪件事你以前覺得很簡單，現在才知道根本不是？",
+  "你減脂後最不想再相信的一個飲食迷思是什麼？",
+  "最近有哪一個小習慣，真的讓你的生活變得比較輕鬆？",
+  "有沒有一件事，你以前很在意別人怎麼看，現在比較不想管了？",
+  "如果只能跟剛開始經營社群的自己說一句話，你會說什麼？",
+  "最近哪一個育兒瞬間，讓你突然覺得孩子真的長大了？",
+  "你現在選產品時最先看的到底是什麼？價格、成分，還是自己會不會真的用？",
+  "全職媽媽最容易被低估的工作，到底是哪一件？",
+  "你外食減脂時最常做的一個選擇是什麼？"
+];
+
+function getSpeakingTopicIndex(){
+  const key="speakingTopic_"+localDateKey();
+  let i=Number(localStorage.getItem(key));
+  if(!Number.isFinite(i)||i<0)i=new Date().getDate()%speakingTopics.length;
+  return i%speakingTopics.length;
+}
+function renderHomeSpeaking(){
+  if($("homeSpeakingTopic"))$("homeSpeakingTopic").textContent=speakingTopics[getSpeakingTopicIndex()];
+}
+function changeHomeSpeakingTopic(){
+  let i=(getSpeakingTopicIndex()+1)%speakingTopics.length;
+  localStorage.setItem("speakingTopic_"+localDateKey(),String(i)); renderHomeSpeaking();
+}
+function updateSpeakingUI(){
+  const path=$("speakingPath").value;
+  $("speakingDirectionFields").classList.toggle("hidden",path!=="direction");
+  $("speakingTopicFields").classList.toggle("hidden",path!=="topic");
+  $("speakingRewriteFields").classList.toggle("hidden",path!=="rewrite");
+}
+
+function buildSpeakingPrompt(){
+  const b=getBase(), path=$("speakingPath").value, category=$("speakingCategory").value;
+  let task="";
+  if(path==="ideas"){
+    task=`我現在完全沒想法。\n請依我的帳號直接給 7 個「今天真的可以對鏡頭講」的具體題目，不要只給大方向。\n每題提供：題目、類型、為什麼觀眾會在意、第一句、3 個可以講的重點。`;
+  }else if(path==="direction"){
+    task=`我只有一個方向：${$("speakingDirection").value.trim()||"未填"}\n請把它拆成 7 個具體口播題目，再選最值得今天講的一題。`;
+  }else if(path==="topic"){
+    task=`我已經有主題：\n${$("speakingTopic").value.trim()||speakingTopics[getSpeakingTopicIndex()]}\n請直接幫我整理成可以自然講出口的口播。`;
+  }else{
+    task=`這是我現在的稿：\n${$("speakingDraft").value.trim()}\n請保留原意，但改掉書面感、背稿感與太工整的句子。`;
+  }
+  return `
+你是一位非常懂短影音口播、自然表達與鏡頭感的內容教練。
+
+${profileContext(b)}
+
+【口播類型】
+${category}
+
+【希望長度】
+${$("speakingLength").value}
+
+${task}
+
+如果最後有一個明確主題，請完成：
+1. 這段真正核心
+2. 5 個不同開頭
+3. 最推薦開頭
+4. 只看提綱也能講的「口播骨架」
+5. 自然口播完整版本
+6. 逐句版本
+7. 哪裡停頓、哪裡重音、哪裡可以笑／皺眉／看鏡頭
+8. 給我 ONE 個跟這支稿直接相關的鏡頭練習，不要只說「練 15 秒」
+9. 找出像文章、像背稿的句子並改掉
+10. 贅字／填充詞檢查
+11. 可直接上字幕的精簡版
+
+不要把自然口播寫成演講稿。
+不要每句都完整到不像真人講話。
+`;
+}
+
+function generateStickinessPrompt(){
+  const b=getBase();
+  const checks=Array.from(document.querySelectorAll(".sticky-check:checked")).map(x=>x.value);
+  const prompt=`
+你是一位 Instagram 個人品牌與粉絲黏著度策略顧問。
+
+${profileContext(b)}
+
+【最近 7 天已做到】
+${checks.length?checks.join("、"):"目前沒有特別勾選"}
+
+【我自己最有感的問題】
+${$("stickinessProblem").value.trim()||"請依帳號判斷"}
+
+請檢查：
+1. 粉絲是否看得到「固定生活」而不只看到知識
+2. 是否有足夠個人觀點
+3. 是否有自然互動
+4. 是否有固定系列、口頭禪、習慣、生活角色等記憶點
+5. 是否有 Part2、後續、明天再講、連續系列等期待感
+6. 產品內容是否太重，或反過來完全沒有商業記憶
+7. 新粉進來後，7 天內能不能知道我是誰、我在意什麼、為什麼值得繼續看
+
+不要只說「多互動」「多分享生活」。
+
+請直接給：
+- 目前最弱的 3 個黏著點
+- 每個問題對應 2 個這週可直接做的內容
+- 3 個適合我的固定系列
+- 3 個可以讓粉絲期待下一則／下一篇的方法
+- 這週生活／觀點／實用／產品的大方向比例
+- 明天可以立刻開始的一件事
+`;
+  $("result").textContent=prompt;
+  $("resultCard").style.display="block";
+  $("fullPromptWrap").style.display="none";
+  showPage("today");
+  $("resultCard").scrollIntoView({behavior:"smooth"});
+}
+
+
+
 /* PROMPTS */
 
 function buildStoryPrompt(){
@@ -6362,6 +6636,10 @@ function generatePrompt(){
   }
 
 
+  if(selectedMode==="speaking"){
+    prompt=buildSpeakingPrompt();
+  }
+
   if(selectedMode==="reels"){
     prompt=buildReelsPrompt();
   }
@@ -6489,10 +6767,16 @@ function refreshDashboard(){
   .length;
 
 
-  $("homeFocusTitle").textContent =
-  open
-  ?`今天還有 ${open} 件重要的事`
-  :"今天先完成一個內容";
+  const focus=$("homeFocusTitle");
+  if(focus){
+    focus.textContent =
+    open
+    ?`今天還有 ${open} 件重要的事`
+    :"今天先完成一個內容";
+  }
+
+  renderDailyOpen();
+  renderHomeSpeaking();
 
 }
 
@@ -6514,6 +6798,8 @@ setSaleType("retail");
 updateReelsUI();
 
 updateRecipeUI();
+
+updateSpeakingUI();
 
 renderBrain();
 
