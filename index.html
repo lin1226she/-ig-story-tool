@@ -8,7 +8,6 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
@@ -16,15 +15,9 @@ body{
   color:#292929;
   padding-bottom:92px;
 }
-
 button,input,select,textarea{font-family:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
-
-.app{
-  max-width:700px;
-  margin:auto;
-}
-
+.app{max-width:700px;margin:auto}
 .hidden{display:none!important}
 .page{display:none}
 .page.active{display:block}
@@ -35,813 +28,348 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
   justify-content:space-between;
   align-items:center;
 }
-
-.logo{
-  font-size:20px;
-  font-weight:850;
-}
-
+.logo{font-size:20px;font-weight:850}
 .badge{
-  font-size:12px;
-  font-weight:800;
-  color:#b9637a;
-  background:#ffeaf0;
-  padding:7px 11px;
-  border-radius:999px;
+  font-size:12px;font-weight:800;color:#b9637a;
+  background:#ffeaf0;padding:7px 11px;border-radius:999px;
 }
 
-.hero{
-  padding:10px 18px 14px;
-}
+.hero{padding:10px 18px 14px}
+.hero h1{margin:0 0 8px;font-size:29px;line-height:1.25}
+.hero p{margin:0;color:#858085;line-height:1.7;font-size:14px}
 
-.hero h1{
-  margin:0 0 8px;
-  font-size:29px;
-  line-height:1.25;
-}
-
-.hero p{
-  margin:0;
-  color:#858085;
-  line-height:1.7;
-  font-size:14px;
-}
-
-.section{
-  padding:0 14px;
-  margin-top:18px;
-}
-
-.section-title{
-  font-size:18px;
-  font-weight:850;
-  margin:0 5px 10px;
-}
+.section{padding:0 14px;margin-top:18px}
+.section-title{font-size:18px;font-weight:850;margin:0 5px 10px}
 
 .card{
-  background:#fff;
-  border-radius:22px;
-  padding:18px;
-  margin-bottom:14px;
+  background:#fff;border-radius:22px;padding:18px;margin-bottom:14px;
   box-shadow:0 8px 30px rgba(80,40,50,.055);
 }
-
-.focus-card{
-  background:linear-gradient(135deg,#fff0f4,#fffafa);
-}
-
+.focus-card{background:linear-gradient(135deg,#fff0f4,#fffafa)}
 .eyebrow{
-  font-size:11px;
-  color:#b7687d;
-  font-weight:850;
-  letter-spacing:.5px;
+  font-size:11px;color:#b7687d;font-weight:850;letter-spacing:.5px;
   margin-bottom:8px;
 }
+.focus-title{font-size:21px;font-weight:850;margin-bottom:8px}
+.muted{font-size:13px;color:#8c878a;line-height:1.65}
 
-.focus-title{
-  font-size:21px;
-  font-weight:850;
-  margin-bottom:8px;
+.quick-grid,.stat-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
 }
-
-.muted{
-  font-size:13px;
-  color:#8c878a;
-  line-height:1.65;
-}
-
-.quick-grid,
-.stat-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
 .quick-btn{
-  width:100%;
-  text-align:left;
-  background:#fff;
-  border:1px solid #eedfe3;
-  border-radius:18px;
-  padding:15px 13px;
-  color:#292929;
+  width:100%;text-align:left;background:#fff;border:1px solid #eedfe3;
+  border-radius:18px;padding:15px 13px;color:#292929;
 }
-
 .quick-btn:active{transform:scale(.98)}
+.quick-icon{font-size:22px;margin-bottom:7px}
+.quick-title{font-size:15px;font-weight:850;margin-bottom:4px}
+.quick-desc{font-size:12px;color:#8a8588;line-height:1.5}
 
-.quick-icon{
-  font-size:22px;
-  margin-bottom:7px;
-}
-
-.quick-title{
-  font-size:15px;
-  font-weight:850;
-  margin-bottom:4px;
-}
-
-.quick-desc{
-  font-size:12px;
-  color:#8a8588;
-  line-height:1.5;
-}
-
-.stat{
-  background:#faf6f7;
-  border-radius:16px;
-  padding:14px;
-}
-
-.stat-num{
-  font-size:22px;
-  font-weight:900;
-}
-
-.stat-label{
-  font-size:11px;
-  color:#999;
-  margin-top:3px;
-}
-
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
+.stat{background:#faf6f7;border-radius:16px;padding:14px}
+.stat-num{font-size:22px;font-weight:900}
+.stat-label{font-size:11px;color:#999;margin-top:3px}
 
 .list-item{
-  background:#faf7f8;
-  border:1px solid #f0e4e7;
-  border-radius:15px;
-  padding:13px;
+  background:#faf7f8;border:1px solid #f0e4e7;border-radius:15px;
+  padding:13px;margin-bottom:9px;
 }
-
 .tag{
-  display:inline-block;
-  font-size:11px;
-  padding:5px 8px;
-  border-radius:999px;
-  background:#ffe8ee;
-  color:#b45e75;
-  font-weight:800;
+  display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;
+  background:#ffe8ee;color:#b45e75;font-weight:800;
 }
-
 .stage-tag{
-  display:inline-block;
-  font-size:10px;
-  padding:4px 7px;
-  border-radius:999px;
-  background:#f2edef;
-  color:#777;
-  margin-left:4px;
+  display:inline-block;font-size:10px;padding:4px 7px;border-radius:999px;
+  background:#f2edef;color:#777;margin-left:4px;
 }
-
-.list-title{
-  font-size:14px;
-  font-weight:800;
-  line-height:1.5;
-}
-
-.list-meta{
-  font-size:11px;
-  color:#999;
-  margin-top:5px;
-  line-height:1.55;
-}
-
-.empty{
-  padding:18px 6px;
-  text-align:center;
-  color:#aaa;
-  font-size:13px;
-}
+.list-title{font-size:14px;font-weight:800;line-height:1.5}
+.list-meta{font-size:11px;color:#999;margin-top:5px;line-height:1.55}
+.empty{padding:18px 6px;text-align:center;color:#aaa;font-size:13px}
 
 .current-mode{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  background:#fff0f4;
-  border:1px solid #efd2da;
-  border-radius:17px;
-  padding:13px 15px;
-  margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:#fff0f4;border:1px solid #efd2da;border-radius:17px;
+  padding:13px 15px;margin-bottom:14px;
 }
-
 .current-mode small{
-  display:block;
-  color:#a47a85;
-  font-size:11px;
-  margin-bottom:4px;
+  display:block;color:#a47a85;font-size:11px;margin-bottom:4px;
 }
-
-.current-mode strong{
-  font-size:15px;
-  color:#ad5d73;
-}
-
+.current-mode strong{font-size:15px;color:#ad5d73}
 .change-mode{
-  border:none;
-  background:#fff;
-  color:#b45e76;
-  border-radius:999px;
-  padding:8px 12px;
-  font-size:12px;
-  font-weight:800;
+  border:none;background:#fff;color:#b45e76;border-radius:999px;
+  padding:8px 12px;font-size:12px;font-weight:800;
 }
 
 .tool-form{display:none}
 .tool-form.active{display:block}
 
 .special-box{
-  padding:15px;
-  background:#fff8fa;
-  border:1px solid #f0dfe4;
+  padding:15px;background:#fff8fa;border:1px solid #f0dfe4;
   border-radius:17px;
 }
-
 .special-title{
-  font-size:13px;
-  font-weight:850;
-  color:#b7657b;
-  margin-bottom:12px;
+  font-size:13px;font-weight:850;color:#b7657b;margin-bottom:12px;
 }
-
 .field-title{
-  display:block;
-  font-size:14px;
-  font-weight:800;
-  margin:17px 0 8px;
+  display:block;font-size:14px;font-weight:800;margin:17px 0 8px;
 }
-
 .field-title:first-child{margin-top:0}
-
 .field-note{
-  font-size:12px;
-  color:#999;
-  line-height:1.6;
-  margin-top:6px;
+  font-size:12px;color:#999;line-height:1.6;margin-top:6px;
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  border:1px solid #ebdfe2;
-  background:#fff;
-  color:#333;
-  border-radius:13px;
-  padding:12px 13px;
-  font-size:14px;
-  outline:none;
+input,select,textarea{
+  width:100%;border:1px solid #ebdfe2;background:#fff;color:#333;
+  border-radius:13px;padding:12px 13px;font-size:14px;outline:none;
 }
+textarea{min-height:100px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{border-color:#d997aa}
 
-textarea{
-  min-height:100px;
-  resize:vertical;
-  line-height:1.6;
+.chips,.pill-grid{
+  display:flex;flex-wrap:wrap;gap:8px;
 }
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#d997aa;
-}
-
-.chips,
-.pill-grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
 .chip input{display:none}
-
-.chip span,
-.pill-button{
-  display:inline-block;
-  background:#f8f4f5;
-  border:1px solid transparent;
-  border-radius:999px;
-  padding:8px 11px;
-  font-size:12px;
-  color:#555;
+.chip span,.pill-button{
+  display:inline-block;background:#f8f4f5;border:1px solid transparent;
+  border-radius:999px;padding:8px 11px;font-size:12px;color:#555;
 }
-
-.chip input:checked+span,
-.pill-button.active{
-  background:#ffe8ee;
-  border-color:#dda0b0;
-  color:#b45e75;
-  font-weight:800;
+.chip input:checked+span,.pill-button.active{
+  background:#ffe8ee;border-color:#dda0b0;color:#b45e75;font-weight:800;
 }
 
 .segment{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-bottom:17px;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:17px;
 }
-
 .segment button{
-  border:1px solid #eadce0;
-  background:#faf7f8;
-  color:#777;
-  border-radius:13px;
-  padding:11px 7px;
-  font-size:13px;
-  font-weight:800;
+  border:1px solid #eadce0;background:#faf7f8;color:#777;border-radius:13px;
+  padding:11px 7px;font-size:13px;font-weight:800;
 }
-
 .segment button.active{
-  background:#ffe8ee;
-  color:#ad5d73;
-  border-color:#da9bae;
+  background:#ffe8ee;color:#ad5d73;border-color:#da9bae;
 }
 
-.choice-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:9px;
-}
-
+.choice-grid{display:grid;grid-template-columns:1fr;gap:9px}
 .choice-card{
-  border:1px solid #eadfe2;
-  background:#fff;
-  border-radius:16px;
-  padding:14px;
-  text-align:left;
+  border:1px solid #eadfe2;background:#fff;border-radius:16px;
+  padding:14px;text-align:left;
 }
-
 .choice-card.active{
-  background:#fff0f4;
-  border-color:#db97aa;
+  background:#fff0f4;border-color:#db97aa;
 }
+.choice-title{font-size:14px;font-weight:850;margin-bottom:4px}
+.choice-desc{font-size:11px;color:#90888b;line-height:1.5}
 
-.choice-title{
-  font-size:14px;
-  font-weight:850;
-  margin-bottom:4px;
+.primary-btn,.secondary-btn,.outline-btn,.save-btn{
+  width:100%;border-radius:15px;padding:14px;font-size:14px;font-weight:850;
 }
-
-.choice-desc{
-  font-size:11px;
-  color:#90888b;
-  line-height:1.5;
-}
-
-.primary-btn,
-.secondary-btn,
-.outline-btn,
-.save-btn{
-  width:100%;
-  border-radius:15px;
-  padding:14px;
-  font-size:14px;
-  font-weight:850;
-}
-
-.primary-btn{
-  border:none;
-  background:#d77d96;
-  color:#fff;
-}
-
-.secondary-btn{
-  border:none;
-  background:#303030;
-  color:#fff;
-  margin-top:10px;
-}
-
+.primary-btn{border:none;background:#d77d96;color:#fff}
+.secondary-btn{border:none;background:#303030;color:#fff;margin-top:10px}
 .outline-btn{
-  border:1px solid #e5c7cf;
-  background:#fff;
-  color:#ad6176;
-  margin-top:8px;
+  border:1px solid #e5c7cf;background:#fff;color:#ad6176;margin-top:8px;
 }
-
 .save-btn{
-  border:1px solid #e4bdc8;
-  background:#fff5f8;
-  color:#ad5c73;
-  margin-top:14px;
+  border:1px solid #e4bdc8;background:#fff5f8;color:#ad5c73;margin-top:14px;
 }
 
 .inline-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:9px;
+  display:flex;gap:7px;flex-wrap:wrap;margin-top:9px;
 }
-
 .mini-btn{
-  border:1px solid #eadde1;
-  background:#fff;
-  color:#8c6f78;
-  border-radius:999px;
-  padding:7px 10px;
-  font-size:11px;
-  font-weight:800;
+  border:1px solid #eadde1;background:#fff;color:#8c6f78;
+  border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800;
 }
 
-.task-list{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  margin-top:12px;
-}
-
+.task-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 .task-row{
-  display:flex;
-  align-items:flex-start;
-  gap:9px;
-  background:#fff;
-  border:1px solid #eee3e6;
-  border-radius:13px;
-  padding:10px;
+  display:flex;align-items:flex-start;gap:9px;background:#fff;
+  border:1px solid #eee3e6;border-radius:13px;padding:10px;
 }
-
-.task-row input{
-  width:auto;
-  margin-top:3px;
-}
-
+.task-row input{width:auto;margin-top:3px}
 .task-main{flex:1}
-
-.task-title{
-  font-size:13px;
-  font-weight:750;
-  line-height:1.45;
-}
-
+.task-title{font-size:13px;font-weight:750;line-height:1.45}
 .task-add{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:8px;
-  margin-top:10px;
+  display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px;
 }
-
 .task-add button{
-  border:none;
-  background:#d77d96;
-  color:#fff;
-  border-radius:13px;
-  padding:0 15px;
-  font-weight:850;
+  border:none;background:#d77d96;color:#fff;border-radius:13px;
+  padding:0 15px;font-weight:850;
 }
 
-.radar-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-
+.radar-wrap{display:flex;flex-direction:column;gap:9px}
 .radar-card{
-  border:1px solid #eee1e4;
-  background:#fff;
-  border-radius:15px;
-  padding:13px;
+  border:1px solid #eee1e4;background:#fff;border-radius:15px;padding:13px;
 }
-
 .radar-category{
-  font-size:10px;
-  font-weight:850;
-  color:#bd7286;
-  margin-bottom:6px;
+  font-size:10px;font-weight:850;color:#bd7286;margin-bottom:6px;
 }
-
-.radar-text{
-  font-size:13px;
-  line-height:1.55;
-  font-weight:700;
-}
+.radar-text{font-size:13px;line-height:1.55;font-weight:700}
 
 .info-strip{
-  background:#f7f2f3;
-  border:1px dashed #e2ced4;
-  border-radius:14px;
-  padding:12px;
-  font-size:12px;
-  line-height:1.65;
-  color:#7b7074;
+  background:#f7f2f3;border:1px dashed #e2ced4;border-radius:14px;
+  padding:12px;font-size:12px;line-height:1.65;color:#7b7074;
 }
 
-.balance-row{
-  margin-bottom:12px;
-}
-
+.balance-row{margin-bottom:12px}
 .balance-head{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  margin-bottom:5px;
+  display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;
 }
-
 .balance-bar{
-  height:9px;
-  background:#f0e8eb;
-  border-radius:999px;
-  overflow:hidden;
+  height:9px;background:#f0e8eb;border-radius:999px;overflow:hidden;
 }
+.balance-fill{height:100%;background:#d77d96;border-radius:999px}
 
-.balance-fill{
-  height:100%;
-  background:#d77d96;
-  border-radius:999px;
+.template-card,.formula-card,.topic-card{
+  border:1px solid #eee1e4;border-radius:16px;padding:14px;
+  background:#fff;margin-bottom:9px;
 }
-
-.template-card,
-.formula-card,
-.topic-card{
-  border:1px solid #eee1e4;
-  border-radius:16px;
-  padding:14px;
-  background:#fff;
-  margin-bottom:9px;
+.clickable-card{cursor:pointer}
+.clickable-card:active{transform:scale(.99)}
+.template-title,.topic-title{
+  font-size:14px;font-weight:850;margin-bottom:4px;
 }
-
-.template-title,
-.topic-title{
-  font-size:14px;
-  font-weight:850;
-  margin-bottom:4px;
+.template-desc,.topic-desc{
+  font-size:12px;color:#8f898c;line-height:1.55;
 }
-
-.template-desc,
-.topic-desc{
-  font-size:12px;
-  color:#8f898c;
-  line-height:1.55;
-}
-
 .formula-name{
-  font-size:13px;
-  font-weight:850;
-  color:#b55f77;
-  margin-bottom:5px;
+  font-size:13px;font-weight:850;color:#b55f77;margin-bottom:5px;
 }
-
 .formula-example{
-  font-size:12px;
-  color:#6e6669;
-  line-height:1.55;
+  font-size:12px;color:#6e6669;line-height:1.55;
 }
 
 .week-board{
-  display:grid;
-  grid-template-columns:repeat(7,minmax(110px,1fr));
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:5px;
+  display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));
+  gap:8px;overflow-x:auto;padding-bottom:5px;
 }
-
 .day-col{
-  background:#faf7f8;
-  border:1px solid #f0e4e7;
-  border-radius:14px;
-  padding:10px;
-  min-height:130px;
+  background:#faf7f8;border:1px solid #f0e4e7;border-radius:14px;
+  padding:10px;min-height:130px;
 }
-
 .day-name{
-  font-size:12px;
-  font-weight:850;
-  color:#b45e75;
-  margin-bottom:8px;
+  font-size:12px;font-weight:850;color:#b45e75;margin-bottom:8px;
 }
-
 .day-item{
-  font-size:11px;
-  line-height:1.45;
-  background:#fff;
-  border-radius:10px;
-  padding:8px;
-  margin-bottom:6px;
-  border:1px solid #eee;
+  font-size:11px;line-height:1.45;background:#fff;border-radius:10px;
+  padding:8px;margin-bottom:6px;border:1px solid #eee;
 }
 
-.profile-block{
-  margin-bottom:24px;
-}
-
+.profile-block{margin-bottom:24px}
 .profile-step{
-  font-size:11px;
-  color:#b9687e;
-  font-weight:850;
-  margin-bottom:5px;
+  font-size:11px;color:#b9687e;font-weight:850;margin-bottom:5px;
 }
-
 .profile-heading{
-  font-size:17px;
-  font-weight:850;
-  margin-bottom:6px;
-}
-
-.history-item{
-  border-bottom:1px solid #f0e5e7;
-  padding:12px 0;
-}
-
-.history-item:last-child{border-bottom:none}
-
-.history-date{
-  font-size:11px;
-  color:#b36b80;
-  font-weight:850;
-}
-
-.history-text{
-  font-size:13px;
-  line-height:1.55;
-  margin-top:5px;
+  font-size:17px;font-weight:850;margin-bottom:6px;
 }
 
 /* PRODUCT PLAN */
 
+.product-toolbar{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;
+}
+
 .product-row{
-  border:1px solid #eedfe3;
-  background:#fff;
-  border-radius:17px;
-  padding:14px;
-  margin-bottom:10px;
+  border:1px solid #eedfe3;background:#fff;border-radius:17px;
+  padding:14px;margin-bottom:10px;
 }
-
 .product-row-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:10px;
 }
-
 .product-row-title strong{
-  font-size:13px;
-  color:#a65d72;
+  font-size:14px;color:#a65d72;
 }
-
 .product-delete{
-  border:none;
-  background:#fff4f6;
-  color:#b36b80;
-  border-radius:999px;
-  padding:6px 9px;
-  font-size:10px;
-  font-weight:800;
+  border:none;background:#fff4f6;color:#b36b80;border-radius:999px;
+  padding:6px 9px;font-size:10px;font-weight:800;
+}
+.two-col{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
 }
 
-.two-col{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
+.product-library{
+  background:#fff7f9;border:1px dashed #e3c8d0;border-radius:16px;
+  padding:13px;margin-top:10px;
+}
+
+.product-check{
+  display:flex;align-items:center;gap:8px;padding:8px 2px;font-size:13px;
+}
+.product-check input{
+  width:auto;
 }
 
 .plan-summary{
-  border:1px solid #eedfe3;
-  background:#fffafb;
-  border-radius:16px;
-  padding:13px;
-  margin-top:12px;
-  font-size:12px;
-  line-height:1.65;
+  border:1px solid #eedfe3;background:#fffafb;border-radius:16px;
+  padding:13px;margin-top:12px;font-size:12px;line-height:1.65;
 }
 
-#resultCard{display:none}
-
-#fullPromptWrap{
-  display:none;
-  margin-top:12px;
-}
-
-#result{
-  white-space:pre-wrap;
-  background:#faf6f7;
-  border-radius:14px;
-  padding:14px;
-  font-size:12px;
-  line-height:1.75;
-  max-height:540px;
-  overflow-y:auto;
-}
+/* MODALS */
 
 .modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(40,30,34,.28);
-  z-index:300;
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
+  position:fixed;inset:0;background:rgba(40,30,34,.28);z-index:300;
+  display:none;align-items:flex-end;justify-content:center;
 }
-
 .modal-overlay.active{display:flex}
 
 .mode-sheet{
-  width:100%;
-  max-width:700px;
-  background:#fff;
-  border-radius:25px 25px 0 0;
-  padding:12px 16px 26px;
-  max-height:82vh;
-  overflow-y:auto;
+  width:100%;max-width:700px;background:#fff;border-radius:25px 25px 0 0;
+  padding:12px 16px 26px;max-height:82vh;overflow-y:auto;
 }
-
 .sheet-handle{
-  width:40px;
-  height:5px;
-  border-radius:999px;
-  background:#ded7da;
+  width:40px;height:5px;border-radius:999px;background:#ded7da;
   margin:0 auto 16px;
 }
-
 .sheet-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;justify-content:space-between;align-items:center;
   margin-bottom:13px;
 }
-
-.sheet-header h3{
-  margin:0;
-  font-size:19px;
-}
-
+.sheet-header h3{margin:0;font-size:19px}
 .sheet-close{
-  width:34px;
-  height:34px;
-  border:none;
-  background:#f6f2f3;
-  border-radius:50%;
-  font-size:18px;
+  width:34px;height:34px;border:none;background:#f6f2f3;
+  border-radius:50%;font-size:18px;
 }
-
 .sheet-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
+  display:grid;grid-template-columns:1fr 1fr;gap:9px;
 }
-
 .sheet-option{
-  border:1px solid #eee1e4;
-  border-radius:16px;
-  padding:13px 12px;
-  background:#fff;
-  text-align:left;
-  color:#292929;
+  border:1px solid #eee1e4;border-radius:16px;padding:13px 12px;
+  background:#fff;text-align:left;color:#292929;
+}
+.sheet-icon{font-size:20px;margin-bottom:6px}
+.sheet-title{font-size:14px;font-weight:850}
+
+/* RESULTS */
+
+#resultCard,#formulaResultCard,#productPlanResultCard{
+  display:none;
 }
 
-.sheet-icon{
-  font-size:20px;
-  margin-bottom:6px;
+#fullPromptWrap,#formulaPromptWrap,#productPlanPromptWrap{
+  display:none;margin-top:12px;
 }
 
-.sheet-title{
-  font-size:14px;
-  font-weight:850;
+.prompt-box{
+  white-space:pre-wrap;background:#faf6f7;border-radius:14px;
+  padding:14px;font-size:12px;line-height:1.75;
+  max-height:540px;overflow-y:auto;
 }
+
+/* NAV */
 
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:76px;
-  z-index:100;
-  background:rgba(255,255,255,.96);
-  border-top:1px solid #f0e4e7;
-  backdrop-filter:blur(14px);
-  display:flex;
-  justify-content:center;
+  position:fixed;bottom:0;left:0;right:0;height:76px;z-index:100;
+  background:rgba(255,255,255,.96);border-top:1px solid #f0e4e7;
+  backdrop-filter:blur(14px);display:flex;justify-content:center;
 }
-
-.bottom-inner{
-  max-width:700px;
-  width:100%;
-  display:flex;
-}
-
+.bottom-inner{max-width:700px;width:100%;display:flex}
 .nav-item{
-  flex:1;
-  border:none;
-  background:transparent;
-  color:#9a9698;
-  font-size:11px;
+  flex:1;border:none;background:transparent;color:#9a9698;font-size:11px;
 }
-
-.nav-icon{
-  display:block;
-  font-size:19px;
-  margin-bottom:4px;
-}
-
-.nav-item.active{
-  color:#be6c82;
-  font-weight:850;
-}
+.nav-icon{display:block;font-size:19px;margin-bottom:4px}
+.nav-item.active{color:#be6c82;font-weight:850}
 
 @media(max-width:390px){
   .hero h1{font-size:26px}
-  .two-col{grid-template-columns:1fr}
+  .two-col,.product-toolbar{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -862,11 +390,10 @@ textarea:focus{
 
   <div class="hero">
     <h1>今天要發什麼，<br>來這裡想。</h1>
-    <p>靈感、主題、內容、產品曝光、排程與回顧，一次整理。</p>
+    <p>靈感、主題、內容、產品曝光與排程，一次整理。</p>
   </div>
 
   <div class="section">
-
     <div class="card focus-card">
 
       <div class="eyebrow">TODAY'S FOCUS</div>
@@ -887,7 +414,6 @@ textarea:focus{
       </div>
 
     </div>
-
   </div>
 
 
@@ -924,10 +450,10 @@ textarea:focus{
       <button class="quick-btn" onclick="goTool('sales')">
         <div class="quick-icon">🛍️</div>
         <div class="quick-title">銷售限動</div>
-        <div class="quick-desc">產品零售／招商</div>
+        <div class="quick-desc">單一產品完整鋪陳</div>
       </button>
 
-      <button class="quick-btn" onclick="showPage('planning');scrollToProductPlan()">
+      <button class="quick-btn" onclick="openProductPlanner()">
         <div class="quick-icon">🗓️</div>
         <div class="quick-title">產品排程</div>
         <div class="quick-desc">一週／一個月曝光節奏</div>
@@ -1017,6 +543,7 @@ textarea:focus{
     <h1>不要每次都<br>重新想一次。</h1>
     <p>一句靈感先收著；重要主題可以一路延伸很多篇。</p>
   </div>
+
 
   <div class="section">
 
@@ -1119,10 +646,12 @@ textarea:focus{
 <div id="planning" class="page">
 
   <div class="hero">
-    <h1>這週不要亂發，<br>先抓內容節奏。</h1>
-    <p>內容排程、產品曝光、節奏模板都放在這裡。</p>
+    <h1>不是只有想內容，<br>還要知道怎麼排。</h1>
+    <p>本週內容、產品曝光、內容節奏與文案公式都在這裡。</p>
   </div>
 
+
+  <!-- WEEK BOARD -->
 
   <div class="section">
 
@@ -1152,7 +681,7 @@ textarea:focus{
 
       <input id="boardTitle"
       style="margin-top:8px"
-      placeholder="例如：益生菌生活曝光">
+      placeholder="例如：育兒共鳴輪播">
 
       <button class="save-btn" onclick="addBoardItem()">
         ＋ 加到本週
@@ -1178,11 +707,11 @@ textarea:focus{
       <div class="eyebrow">PRODUCT PLAN</div>
 
       <div class="focus-title" style="font-size:19px">
-        這陣子到底要主打什麼？
+        這陣子要主打誰？
       </div>
 
       <div class="muted">
-        一天可以有多個產品，但不需要每個都講很重。先分配誰是主角、誰只是自然出現。
+        一天可以有多個產品，但不需要每個都講很重。先決定誰是主角、誰只是順便出現。
       </div>
 
 
@@ -1190,15 +719,13 @@ textarea:focus{
 
       <div class="segment">
 
-        <button
-        id="productWeekBtn"
+        <button id="productWeekBtn"
         class="active"
         onclick="setProductPlanPeriod('week')">
           一週
         </button>
 
-        <button
-        id="productMonthBtn"
+        <button id="productMonthBtn"
         onclick="setProductPlanPeriod('month')">
           一個月
         </button>
@@ -1232,7 +759,7 @@ textarea:focus{
       </select>
 
 
-      <label class="field-title">一天最多幾個「主打產品」？</label>
+      <label class="field-title">一天最多幾個產品當主角？</label>
 
       <select id="productMaxHero">
         <option selected>1 個</option>
@@ -1241,7 +768,7 @@ textarea:focus{
       </select>
 
 
-      <label class="field-title">希望有完全不帶產品的日子嗎？</label>
+      <label class="field-title">需要安排完全不帶產品的日子嗎？</label>
 
       <select id="productRestDays">
         <option>AI 幫我判斷</option>
@@ -1252,42 +779,66 @@ textarea:focus{
       </select>
 
 
-      <label class="field-title">這段時間有什麼活動／重要日期？</label>
+      <label class="field-title">活動／重要日期</label>
 
       <textarea id="productPlanEvents"
-      placeholder="例如：週五開始買三送一、月底活動結束、某產品剛補貨"></textarea>
+      placeholder="例如：週五活動開始、月底活動結束、某產品新品上市"></textarea>
 
 
-      <label class="field-title">產品安排</label>
+      <label class="field-title">這次要安排哪些產品？</label>
 
-      <div class="field-note">
-        「主打」＝可以完整講；「次主打」＝有資訊但不用講很重；「輕曝光」＝日常自然出現；「帶過」＝照片或一句話順便帶到。
+      <div class="product-toolbar">
+
+        <button class="outline-btn" style="margin-top:0"
+        onclick="toggleProductLibrary()">
+          ＋ 從我的產品庫加入
+        </button>
+
+        <button class="outline-btn" style="margin-top:0"
+        onclick="addProductRow()">
+          ＋ 自己新增產品
+        </button>
+
+      </div>
+
+
+      <div id="productLibraryPicker"
+      class="product-library hidden">
+
+        <div class="muted" style="margin-bottom:8px">
+          這裡會讀取「我的 → 產品／服務」。
+        </div>
+
+        <div id="productLibraryChecks"></div>
+
+        <button class="save-btn"
+        onclick="addSelectedProfileProducts()">
+          加入勾選產品
+        </button>
+
       </div>
 
 
       <div id="productRows" style="margin-top:12px"></div>
 
 
-      <button class="outline-btn" onclick="addProductRow()">
-        ＋ 加一個產品
+      <button class="outline-btn" onclick="generateProductAllocationPrompt()">
+        ✦ AI 幫我分配角色與頻率
       </button>
-
 
       <button class="save-btn" onclick="saveProductPlan()">
         儲存產品排程設定
       </button>
 
-
-      <button class="primary-btn"
-      style="margin-top:10px"
+      <button class="primary-btn" style="margin-top:10px"
       onclick="generateProductPlanPrompt()">
-        ✨ 幫我規劃產品曝光
+        ✨ 幫我規劃完整產品曝光
       </button>
 
     </div>
 
 
-    <div class="card" id="productPlanResultCard" style="display:none">
+    <div class="card" id="productPlanResultCard">
 
       <div class="eyebrow">PRODUCT PLAN PROMPT</div>
 
@@ -1301,8 +852,11 @@ textarea:focus{
         查看／收起完整指令
       </button>
 
-      <div id="productPlanPromptWrap" style="display:none;margin-top:12px">
-        <div id="productPlanPrompt" class="info-strip" style="white-space:pre-wrap"></div>
+      <div id="productPlanPromptWrap">
+
+        <div id="productPlanPrompt"
+        class="prompt-box"></div>
+
       </div>
 
     </div>
@@ -1310,20 +864,67 @@ textarea:focus{
   </div>
 
 
+  <!-- RHYTHM -->
+
   <div class="section">
 
     <div class="section-title">內容節奏模板</div>
 
-    <div class="card" id="templateList"></div>
+    <div class="card">
+
+      <div class="muted" style="margin-bottom:12px">
+        直接點一個情境，會帶你進入 7 天規劃。
+      </div>
+
+      <div id="templateList"></div>
+
+    </div>
 
   </div>
 
+
+  <!-- FORMULAS -->
 
   <div class="section">
 
     <div class="section-title">文案公式庫</div>
 
-    <div class="card" id="formulaList"></div>
+    <div class="card">
+
+      <button class="outline-btn"
+      style="margin-top:0;margin-bottom:12px"
+      onclick="openFormulaModal(-1)">
+        ✦ AI 幫我選最適合的公式
+      </button>
+
+      <div id="formulaList"></div>
+
+    </div>
+
+
+    <div class="card" id="formulaResultCard">
+
+      <div class="eyebrow">FORMULA PROMPT</div>
+
+      <div id="formulaResultTitle"
+      class="focus-title"
+      style="font-size:17px"></div>
+
+      <button class="secondary-btn"
+      onclick="copyFormulaPrompt()">
+        複製公式指令
+      </button>
+
+      <button class="outline-btn"
+      onclick="toggleFormulaPrompt()">
+        查看／收起完整指令
+      </button>
+
+      <div id="formulaPromptWrap">
+        <div id="formulaPrompt" class="prompt-box"></div>
+      </div>
+
+    </div>
 
   </div>
 
@@ -1339,7 +940,6 @@ textarea:focus{
     <p id="todaySubtitle">把今天內容排順。</p>
   </div>
 
-
   <div class="section">
 
     <div class="current-mode">
@@ -1349,7 +949,8 @@ textarea:focus{
         <strong id="currentModeText">今日限動排程</strong>
       </div>
 
-      <button class="change-mode" onclick="openModeModal()">
+      <button class="change-mode"
+      onclick="openModeModal()">
         換工具
       </button>
 
@@ -1577,11 +1178,14 @@ textarea:focus{
 
           <label class="field-title">你現在需要什麼？</label>
 
-          <select id="reelsPath" onchange="updateReelsUI()">
+          <select id="reelsPath"
+          onchange="updateReelsUI()">
+
             <option value="ideas">我不知道要拍什麼</option>
             <option value="script">我有題材，要做爆點＋腳本</option>
             <option value="recipe">我要做料理／食譜</option>
             <option value="other">知識／觀點／生活／產品</option>
+
           </select>
 
 
@@ -1593,11 +1197,12 @@ textarea:focus{
               <option>AI 依帳號判斷</option>
               <option>育兒</option>
               <option>減脂／飲食</option>
-              <option>料理</option>
+              <option>料理食譜</option>
               <option>生活</option>
-              <option>觀點</option>
+              <option>個人觀點</option>
+              <option>知識</option>
               <option>產品</option>
-              <option>事業</option>
+              <option>事業／工作</option>
             </select>
 
             <label class="field-title">最近不想再拍什麼？</label>
@@ -1618,12 +1223,15 @@ textarea:focus{
 
             <label class="field-title">目前到哪一步？</label>
 
-            <select id="recipeTask" onchange="updateRecipeUI()">
+            <select id="recipeTask"
+            onchange="updateRecipeUI()">
+
               <option value="brainstorm">完全沒想法，幫我想食譜</option>
-              <option value="direction">只有料理方向，幫我設計食譜＋腳本</option>
+              <option value="direction">只有料理方向，幫我設計食譜＋Reels</option>
               <option value="full">已有完整食譜，只做爆點＋腳本</option>
               <option value="hook">已有食譜，但不知道爆點</option>
               <option value="optimize">優化現有料理 Reels</option>
+
             </select>
 
 
@@ -1636,7 +1244,7 @@ textarea:focus{
                 <option>早餐</option>
                 <option>甜點</option>
                 <option>正餐</option>
-                <option>宵夜／嘴饞替代</option>
+                <option>宵夜／嘴饞</option>
                 <option>氣炸鍋</option>
                 <option>少材料</option>
                 <option>高蛋白</option>
@@ -1646,7 +1254,7 @@ textarea:focus{
                 <option>小孩也能吃</option>
               </select>
 
-              <label class="field-title">不要用什麼？</label>
+              <label class="field-title">不要用什麼食材／器具？</label>
               <textarea id="recipeAvoid"></textarea>
 
             </div>
@@ -1662,7 +1270,7 @@ textarea:focus{
 
             <div id="recipeExistingFields" class="hidden">
 
-              <label class="field-title">已有食譜</label>
+              <label class="field-title">已有食譜／現有內容</label>
               <textarea id="recipeDetails"></textarea>
 
             </div>
@@ -1724,6 +1332,7 @@ textarea:focus{
             <option>生活 B-roll＋字幕</option>
             <option>畫面＋口播</option>
             <option>料理／操作過程</option>
+            <option>Before & After</option>
           </select>
 
 
@@ -1756,68 +1365,59 @@ textarea:focus{
 
         <div class="special-box">
 
-          <div class="special-title">▤ 爆款輪播企劃</div>
+          <div class="special-title">▤ 輪播貼文企劃</div>
 
           <label class="field-title">你現在在哪一步？</label>
 
-
           <div class="choice-grid">
 
-            <button
-            type="button"
+            <button type="button"
             class="choice-card active"
             data-carousel-path="ideas"
             onclick="setCarouselPath('ideas',this)">
 
               <div class="choice-title">我完全沒想法</div>
-
               <div class="choice-desc">
-                依帳號、受眾與近期內容幫我找輪播題材
+                依帳號與受眾幫我找具體輪播題材
               </div>
 
             </button>
 
 
-            <button
-            type="button"
+            <button type="button"
             class="choice-card"
             data-carousel-path="direction"
             onclick="setCarouselPath('direction',this)">
 
               <div class="choice-title">我只有一個方向</div>
-
               <div class="choice-desc">
-                例如育兒、媽媽自己、減脂，再幫我細化
+                例如育兒、減脂、媽媽自己，再幫我細化
               </div>
 
             </button>
 
 
-            <button
-            type="button"
+            <button type="button"
             class="choice-card"
             data-carousel-path="topic"
             onclick="setCarouselPath('topic',this)">
 
               <div class="choice-title">從主題庫繼續</div>
-
               <div class="choice-desc">
-                延伸以前做過的主題，避開重複
+                延伸以前講過的主題，避開重複
               </div>
 
             </button>
 
 
-            <button
-            type="button"
+            <button type="button"
             class="choice-card"
             data-carousel-path="new"
             onclick="setCarouselPath('new',this)">
 
               <div class="choice-title">我已經有主題</div>
-
               <div class="choice-desc">
-                直接找爆點標題＋做完整輪播
+                直接找爆點標題＋完整頁面
               </div>
 
             </button>
@@ -1862,7 +1462,8 @@ textarea:focus{
           <div id="carouselDirectionFields" class="hidden">
 
             <label class="field-title">你目前只有什麼方向？</label>
-            <input id="carouselDirection">
+            <input id="carouselDirection"
+            placeholder="例如：育兒、媽媽自己、減脂甜點">
 
             <label class="field-title">想偏哪種？</label>
 
@@ -1883,13 +1484,11 @@ textarea:focus{
 
             <label class="field-title">選一個以前存過的主題</label>
 
-            <select
-            id="carouselTopicSelect"
+            <select id="carouselTopicSelect"
             onchange="loadCarouselTopic()"></select>
 
-            <div
+            <div id="carouselTopicMemory"
             class="info-strip"
-            id="carouselTopicMemory"
             style="margin-top:10px"></div>
 
           </div>
@@ -1908,20 +1507,20 @@ textarea:focus{
             <label class="field-title">這篇最主要想達成什麼？</label>
 
             <select id="carouselGoal">
-              <option>共鳴型｜讓人覺得「這就是我」</option>
+              <option>共鳴型｜讓人覺得這就是我</option>
               <option>收藏型｜實用到想存起來</option>
               <option>分享型｜想傳給朋友／另一半</option>
               <option>討論型｜讓人想留言說看法</option>
               <option>漲粉型｜陌生人看完想追蹤</option>
               <option>信任型｜建立專業與可信度</option>
-              <option>故事型｜用真實經歷帶觀點</option>
+              <option>故事型｜真實經歷帶觀點</option>
               <option>產品轉換型｜最後自然帶產品</option>
             </select>
 
             <label class="field-title">受眾現在卡在哪？</label>
             <textarea id="carouselPain"></textarea>
 
-            <label class="field-title">你真正想講的核心</label>
+            <label class="field-title">真正想講的核心</label>
             <textarea id="carouselCore"></textarea>
 
             <label class="field-title">標題方向</label>
@@ -1935,7 +1534,7 @@ textarea:focus{
               <option>一句話故事</option>
               <option>反常識型</option>
               <option>問題型</option>
-              <option>「我以前也以為…」型</option>
+              <option>我以前也以為…</option>
             </select>
 
             <label class="field-title">想做幾頁？</label>
@@ -1963,7 +1562,8 @@ textarea:focus{
               <option>引導私訊</option>
             </select>
 
-            <button class="outline-btn" onclick="saveCarouselAsTopic()">
+            <button class="outline-btn"
+            onclick="saveCarouselAsTopic()">
               ♡ 把這個主題存進主題庫
             </button>
 
@@ -2044,7 +1644,8 @@ textarea:focus{
     </div>
 
 
-    <button class="primary-btn" onclick="generatePrompt()">
+    <button class="primary-btn"
+    onclick="generatePrompt()">
       ✨ 幫我生成專屬 AI 指令
     </button>
 
@@ -2057,16 +1658,18 @@ textarea:focus{
 
       <div class="eyebrow">AI PROMPT</div>
 
-      <button class="secondary-btn" onclick="copyPrompt()">
+      <button class="secondary-btn"
+      onclick="copyPrompt()">
         複製完整指令
       </button>
 
-      <button class="outline-btn" onclick="togglePrompt()">
+      <button class="outline-btn"
+      onclick="togglePrompt()">
         查看／收起完整指令
       </button>
 
       <div id="fullPromptWrap">
-        <div id="result"></div>
+        <div id="result" class="prompt-box"></div>
       </div>
 
     </div>
@@ -2138,7 +1741,13 @@ textarea:focus{
       <div class="profile-block">
 
         <div class="profile-step">08｜產品／服務</div>
-        <textarea id="products"></textarea>
+
+        <textarea id="products"
+        placeholder="例如：可可奶茶、益生菌、紫纖飲、水光錠"></textarea>
+
+        <div class="field-note">
+          可以用「、」「，」「逗號」或換行分開。產品曝光排程會自動讀這裡。
+        </div>
 
       </div>
 
@@ -2149,7 +1758,8 @@ textarea:focus{
 
       </div>
 
-      <button class="save-btn" onclick="saveProfile()">
+      <button class="save-btn"
+      onclick="saveProfile()">
         儲存我的帳號設定
       </button>
 
@@ -2162,9 +1772,11 @@ textarea:focus{
 </div>
 
 
-<!-- MODAL -->
+<!-- TOOL MODAL -->
 
-<div id="modeModal" class="modal-overlay" onclick="overlayClose(event)">
+<div id="modeModal"
+class="modal-overlay"
+onclick="overlayClose(event)">
 
   <div class="mode-sheet">
 
@@ -2172,47 +1784,121 @@ textarea:focus{
 
     <div class="sheet-header">
       <h3>換一個工具</h3>
-      <button class="sheet-close" onclick="closeModeModal()">×</button>
+      <button class="sheet-close"
+      onclick="closeModeModal()">×</button>
     </div>
 
     <div class="sheet-grid">
 
-      <button class="sheet-option" onclick="changeMode('story')">
+      <button class="sheet-option"
+      onclick="changeMode('story')">
         <div class="sheet-icon">📱</div>
         <div class="sheet-title">今日限動</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('sales')">
+      <button class="sheet-option"
+      onclick="changeMode('sales')">
         <div class="sheet-icon">🛍️</div>
         <div class="sheet-title">銷售限動</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('reels')">
+      <button class="sheet-option"
+      onclick="changeMode('reels')">
         <div class="sheet-icon">🎬</div>
         <div class="sheet-title">Reels</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('carousel')">
+      <button class="sheet-option"
+      onclick="changeMode('carousel')">
         <div class="sheet-icon">▤</div>
         <div class="sheet-title">輪播貼文</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('threads')">
+      <button class="sheet-option"
+      onclick="changeMode('threads')">
         <div class="sheet-icon">✏️</div>
         <div class="sheet-title">Threads</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('values')">
+      <button class="sheet-option"
+      onclick="changeMode('values')">
         <div class="sheet-icon">💭</div>
         <div class="sheet-title">價值觀</div>
       </button>
 
-      <button class="sheet-option" onclick="changeMode('week')">
+      <button class="sheet-option"
+      onclick="changeMode('week')">
         <div class="sheet-icon">🗓️</div>
         <div class="sheet-title">7 天規劃</div>
       </button>
 
     </div>
+
+  </div>
+
+</div>
+
+
+<!-- FORMULA MODAL -->
+
+<div id="formulaModal"
+class="modal-overlay"
+onclick="formulaOverlayClose(event)">
+
+  <div class="mode-sheet">
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-header">
+
+      <h3 id="formulaModalTitle">
+        使用文案公式
+      </h3>
+
+      <button class="sheet-close"
+      onclick="closeFormulaModal()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="info-strip"
+    id="formulaSelectedInfo"></div>
+
+
+    <label class="field-title">
+      要做在哪個平台？
+    </label>
+
+    <select id="formulaPlatform">
+      <option>IG 限動</option>
+      <option>Reels</option>
+      <option>IG 輪播</option>
+      <option>Threads</option>
+      <option>產品限動</option>
+    </select>
+
+
+    <label class="field-title">
+      想講什麼？
+    </label>
+
+    <textarea id="formulaTopic"
+    placeholder="例如：減脂不是不能吃澱粉"></textarea>
+
+
+    <label class="field-title">
+      有沒有一定想保留的意思？
+    </label>
+
+    <textarea id="formulaCore"></textarea>
+
+
+    <button class="primary-btn"
+    onclick="generateFormulaPrompt()">
+      ✨ 產生公式指令
+    </button>
 
   </div>
 
@@ -2225,29 +1911,49 @@ textarea:focus{
 
   <div class="bottom-inner">
 
-    <button id="navHome" class="nav-item active" onclick="showPage('home')">
+    <button id="navHome"
+    class="nav-item active"
+    onclick="showPage('home')">
+
       <span class="nav-icon">⌂</span>
       首頁
+
     </button>
 
-    <button id="navBrain" class="nav-item" onclick="showPage('brain')">
+    <button id="navBrain"
+    class="nav-item"
+    onclick="showPage('brain')">
+
       <span class="nav-icon">✦</span>
       靈感
+
     </button>
 
-    <button id="navPlanning" class="nav-item" onclick="showPage('planning')">
+    <button id="navPlanning"
+    class="nav-item"
+    onclick="showPage('planning')">
+
       <span class="nav-icon">▦</span>
       規劃
+
     </button>
 
-    <button id="navToday" class="nav-item" onclick="showPage('today')">
+    <button id="navToday"
+    class="nav-item"
+    onclick="showPage('today')">
+
       <span class="nav-icon">⚡</span>
       工具
+
     </button>
 
-    <button id="navProfile" class="nav-item" onclick="showPage('profile')">
+    <button id="navProfile"
+    class="nav-item"
+    onclick="showPage('profile')">
+
       <span class="nav-icon">♡</span>
       我的
+
     </button>
 
   </div>
@@ -2264,14 +1970,17 @@ let saleType = "retail";
 let selectedValueCategory = "育兒";
 let carouselPath = "ideas";
 let productPlanPeriod = "week";
+let selectedFormulaIndex = -1;
 
+
+/* DATA */
 
 const modeNames = {
   story:"今日限動排程",
   sales:"銷售限動企劃",
   values:"價值觀／想法",
   reels:"Reels 企劃中心",
-  carousel:"爆款輪播企劃",
+  carousel:"輪播貼文企劃",
   threads:"Threads",
   week:"7 天內容規劃"
 };
@@ -2286,7 +1995,7 @@ const pageTexts = {
 
   sales:{
     title:"今天這組銷售限動<br>要怎麼鋪？",
-    subtitle:"產品零售和招商分開思考。"
+    subtitle:"這裡處理單一產品或招商內容。"
   },
 
   values:{
@@ -2435,15 +2144,6 @@ const valueAngles = {
     "身材焦慮"
   ],
 
-  "飲食觀念":[
-    "碳水",
-    "蛋白質",
-    "熱量",
-    "外食",
-    "零食",
-    "飲食平衡"
-  ],
-
   "工作／事業":[
     "工作選擇",
     "收入與成就感",
@@ -2469,6 +2169,173 @@ const valueAngles = {
 };
 
 
+const rhythmTemplates = [
+
+  {
+    title:"最近限動觀看偏低",
+    desc:"生活與互動先回來，再慢慢接產品。",
+    goal:"增加觀看",
+    prompt:
+`最近限動觀看偏低。
+
+這週請優先安排：
+生活日常
+育兒／個人故事
+容易回覆的互動
+少量觀點
+產品以輕曝光為主
+
+不要每天都完整介紹產品。
+
+先把觀看與熟悉感養回來。`
+  },
+
+  {
+    title:"最近產品內容太多",
+    desc:"降低商品感，補生活、觀點與信任。",
+    goal:"建立信任",
+    prompt:
+`最近產品內容偏多。
+
+這週請主動降低完整銷售內容。
+
+增加：
+生活
+個人想法
+實用內容
+共鳴內容
+
+產品可以繼續自然出現，
+但不要每次出現都介紹功能或 CTA。`
+  },
+
+  {
+    title:"這週想增加粉絲",
+    desc:"優先安排有陌生流量潛力的 Reels 與輪播。",
+    goal:"增加粉絲",
+    prompt:
+`這週主要目標是增加新粉絲。
+
+請增加：
+Reels 流量題
+收藏型／分享型輪播
+陌生人也看得懂的題材
+
+同時保留生活內容，
+讓新進來的人可以快速認識我。`
+  },
+
+  {
+    title:"這週主推產品",
+    desc:"需求、生活使用、信任、FAQ、轉換分開安排。",
+    goal:"增加產品詢問",
+    prompt:
+`這週有主推產品。
+
+不要每天都硬賣。
+
+請分散安排：
+需求
+生活使用
+選擇理由
+知識
+FAQ
+使用感受
+活動／CTA
+
+讓觀眾先熟悉再轉換。`
+  },
+
+  {
+    title:"這週想帶招商",
+    desc:"先建立生活與工作價值觀，再自然帶到事業。",
+    goal:"增加招商詢問",
+    prompt:
+`這週想增加事業／招商內容。
+
+不要每天招募。
+
+請先安排：
+生活
+媽媽自己的想法
+工作選擇
+經營日常
+新人陪伴
+公司資源
+
+再自然出現招商內容。`
+  },
+
+  {
+    title:"這週真的很忙",
+    desc:"只留下最不能省的內容，做最低限度版本。",
+    goal:"建立個人品牌",
+    prompt:
+`這週時間很少。
+
+請做最低限度內容版本。
+
+不用每天做大型內容。
+
+優先保留：
+簡單生活限動
+1 支最值得拍的 Reels 或 1 篇輪播
+少量產品曝光
+1 次個人觀點
+
+讓帳號不中斷，但不要排太滿。`
+  }
+
+];
+
+
+const formulas = [
+
+  {
+    name:"A 不是 B，而是 C",
+    example:"你不是沒有自制力，而是一直用不適合自己的方法。"
+  },
+
+  {
+    name:"很多人不是 A，是 B",
+    example:"很多人不是沒有方向，是太習慣先看別人怎麼走。"
+  },
+
+  {
+    name:"我以前也以為…直到…",
+    example:"我以前也以為減脂就是一直少吃，直到我真的開始觀察自己的飲食。"
+  },
+
+  {
+    name:"你以為 X，其實 Y",
+    example:"你以為孩子只是故意鬧，其實他可能只是不知道怎麼表達。"
+  },
+
+  {
+    name:"如果你也常常…",
+    example:"如果你也常常下午突然很想吃甜的，先別急著怪自己。"
+  },
+
+  {
+    name:"我後來才發現…",
+    example:"我後來才發現，當媽媽最容易忘記的，是自己也有想做的事情。"
+  },
+
+  {
+    name:"真正讓人卡住的不是 X，而是 Y",
+    example:"真正讓人減脂卡住的不是偶爾吃甜食，而是覺得吃了一次就全部失敗。"
+  },
+
+  {
+    name:"有些事情不是做不到，是你一直用錯方法",
+    example:"有些內容不是沒人看，是開頭根本沒有讓人停下來的理由。"
+  }
+
+];
+
+
+/* HELPERS */
+
 function escapeHtml(str){
 
   return String(str||"")
@@ -2479,6 +2346,39 @@ function escapeHtml(str){
     '"':"&quot;",
     "'":"&#39;"
   }[c]));
+
+}
+
+
+function copyText(text){
+
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
+
+    navigator.clipboard
+    .writeText(text)
+    .then(()=>alert("已複製 ♡"));
+
+  }else{
+
+    const ta =
+    document.createElement("textarea");
+
+    ta.value = text;
+
+    document.body.appendChild(ta);
+
+    ta.select();
+
+    document.execCommand("copy");
+
+    ta.remove();
+
+    alert("已複製 ♡");
+
+  }
 
 }
 
@@ -2526,6 +2426,7 @@ function showPage(id){
   if(id==="planning"){
     renderBoard();
     renderProductRows();
+    renderProductLibrary();
   }
 
 
@@ -2537,7 +2438,9 @@ function showPage(id){
 }
 
 
-function scrollToProductPlan(){
+function openProductPlanner(){
+
+  showPage("planning");
 
   setTimeout(()=>{
 
@@ -2554,7 +2457,9 @@ function scrollToProductPlan(){
 function goTool(mode){
 
   selectedMode = mode;
+
   updateModeUI();
+
   showPage("today");
 
 }
@@ -2563,10 +2468,13 @@ function goTool(mode){
 function changeMode(mode){
 
   selectedMode = mode;
+
   updateModeUI();
+
   closeModeModal();
 
-  $("resultCard").style.display="none";
+  $("resultCard").style.display =
+  "none";
 
 }
 
@@ -2596,11 +2504,9 @@ function openModeModal(){
   $("modeModal").classList.add("active");
 }
 
-
 function closeModeModal(){
   $("modeModal").classList.remove("active");
 }
-
 
 function overlayClose(e){
 
@@ -2694,35 +2600,16 @@ function saveProfile(){
 
   const p = {
 
-    creatorType:
-    getChecked("creatorType"),
-
-    contentPillars:
-    getChecked("contentPillar"),
-
-    audience:
-    getChecked("audienceType"),
-
-    audiencePain:
-    getChecked("audiencePain"),
-
-    followReason:
-    getChecked("followReason"),
-
-    brandImage:
-    getChecked("brandImage"),
-
-    tone:
-    $("tone").value.trim(),
-
-    avoid:
-    $("avoid").value.trim(),
-
-    products:
-    $("products").value.trim(),
-
-    business:
-    $("business").value.trim()
+    creatorType:getChecked("creatorType"),
+    contentPillars:getChecked("contentPillar"),
+    audience:getChecked("audienceType"),
+    audiencePain:getChecked("audiencePain"),
+    followReason:getChecked("followReason"),
+    brandImage:getChecked("brandImage"),
+    tone:$("tone").value.trim(),
+    avoid:$("avoid").value.trim(),
+    products:$("products").value.trim(),
+    business:$("business").value.trim()
 
   };
 
@@ -2735,7 +2622,7 @@ function saveProfile(){
 
   alert("已儲存 ♡");
 
-  renderRadar();
+  renderProductLibrary();
 
 }
 
@@ -2781,7 +2668,6 @@ function getBase(){
 
   let p = {};
 
-
   try{
 
     p =
@@ -2796,35 +2682,16 @@ function getBase(){
 
   return {
 
-    creator:
-    p.creatorType || "尚未設定",
-
-    pillars:
-    p.contentPillars || "尚未設定",
-
-    audience:
-    p.audience || "尚未設定",
-
-    pains:
-    p.audiencePain || "尚未設定",
-
-    followReason:
-    p.followReason || "尚未設定",
-
-    brandImage:
-    p.brandImage || "尚未設定",
-
-    tone:
-    p.tone || "自然、像真人",
-
-    avoid:
-    p.avoid || "太 AI、太雞湯、太官方、太業配",
-
-    products:
-    p.products || "沒有設定",
-
-    business:
-    p.business || "沒有設定"
+    creator:p.creatorType || "尚未設定",
+    pillars:p.contentPillars || "尚未設定",
+    audience:p.audience || "尚未設定",
+    pains:p.audiencePain || "尚未設定",
+    followReason:p.followReason || "尚未設定",
+    brandImage:p.brandImage || "尚未設定",
+    tone:p.tone || "自然、像真人",
+    avoid:p.avoid || "太 AI、太雞湯、太官方、太業配",
+    products:p.products || "沒有設定",
+    business:p.business || "沒有設定"
 
   };
 
@@ -2868,7 +2735,7 @@ ${b.business}
 }
 
 
-/* VALUES */
+/* VALUE */
 
 function selectValueCategory(btn){
 
@@ -2941,31 +2808,16 @@ function updateReelsUI(){
 
 
   $("reelsIdeasFields")
-  .classList.toggle(
-    "hidden",
-    path!=="ideas"
-  );
-
+  .classList.toggle("hidden",path!=="ideas");
 
   $("reelsScriptFields")
-  .classList.toggle(
-    "hidden",
-    path!=="script"
-  );
-
+  .classList.toggle("hidden",path!=="script");
 
   $("reelsRecipeFields")
-  .classList.toggle(
-    "hidden",
-    path!=="recipe"
-  );
-
+  .classList.toggle("hidden",path!=="recipe");
 
   $("reelsOtherFields")
-  .classList.toggle(
-    "hidden",
-    path!=="other"
-  );
+  .classList.toggle("hidden",path!=="other");
 
 
   updateRecipeUI();
@@ -3054,16 +2906,13 @@ function setCarouselPath(path,btn){
   $("carouselBuildFields")
   .classList.toggle(
     "hidden",
-    ["ideas","direction"]
-    .includes(path)
+    ["ideas","direction"].includes(path)
   );
 
 
   if(path==="topic"){
-
     updateCarouselTopicSelect();
     loadCarouselTopic();
-
   }
 
 }
@@ -3122,28 +2971,21 @@ function addBrainItem(){
   arr.unshift({
 
     id:Date.now(),
-
     text,
-
-    category:
-    $("brainCategory").value,
-
-    nature:
-    $("brainNature").value,
-
+    category:$("brainCategory").value,
+    nature:$("brainNature").value,
     stage:"idea",
-
-    created:
-    new Date().toISOString()
+    created:new Date().toISOString()
 
   });
 
 
   saveBrain(arr);
 
-  $("brainText").value="";
+  $("brainText").value = "";
 
   renderBrain();
+
   refreshDashboard();
 
 }
@@ -3156,9 +2998,7 @@ function updateBrainStage(id,stage){
 
 
   const item =
-  arr.find(
-    x=>x.id===id
-  );
+  arr.find(x=>x.id===id);
 
 
   if(item){
@@ -3169,7 +3009,9 @@ function updateBrainStage(id,stage){
   saveBrain(arr);
 
   renderBrain();
+
   refreshDashboard();
+
   renderBalance();
 
 }
@@ -3179,14 +3021,14 @@ function deleteBrain(id){
 
   saveBrain(
     getBrain()
-    .filter(
-      x=>x.id!==id
-    )
+    .filter(x=>x.id!==id)
   );
 
 
   renderBrain();
+
   refreshDashboard();
+
   renderBalance();
 
 }
@@ -3196,9 +3038,7 @@ function useBrain(id,target){
 
   const item =
   getBrain()
-  .find(
-    x=>x.id===id
-  );
+  .find(x=>x.id===id);
 
 
   if(!item)return;
@@ -3213,10 +3053,7 @@ function useBrain(id,target){
       '[data-carousel-path="new"]'
     );
 
-    setCarouselPath(
-      "new",
-      btn
-    );
+    setCarouselPath("new",btn);
 
     $("carouselTopic").value =
     item.text;
@@ -3292,11 +3129,12 @@ function renderBrain(){
 
       </span>
 
+      <div class="list-title"
+      style="margin-top:8px">
 
-      <div class="list-title" style="margin-top:8px">
         ${escapeHtml(x.text)}
-      </div>
 
+      </div>
 
       <div class="list-meta">
         ${escapeHtml(x.nature)}
@@ -3305,19 +3143,23 @@ function renderBrain(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn" onclick="useBrain(${x.id},'carousel')">
+        <button class="mini-btn"
+        onclick="useBrain(${x.id},'carousel')">
           輪播
         </button>
 
-        <button class="mini-btn" onclick="useBrain(${x.id},'reels')">
+        <button class="mini-btn"
+        onclick="useBrain(${x.id},'reels')">
           Reels
         </button>
 
-        <button class="mini-btn" onclick="useBrain(${x.id},'threads')">
+        <button class="mini-btn"
+        onclick="useBrain(${x.id},'threads')">
           Threads
         </button>
 
-        <button class="mini-btn" onclick="useBrain(${x.id},'story')">
+        <button class="mini-btn"
+        onclick="useBrain(${x.id},'story')">
           限動
         </button>
 
@@ -3326,19 +3168,23 @@ function renderBrain(){
 
       <div class="inline-actions">
 
-        <button class="mini-btn" onclick="updateBrainStage(${x.id},'draft')">
+        <button class="mini-btn"
+        onclick="updateBrainStage(${x.id},'draft')">
           草稿
         </button>
 
-        <button class="mini-btn" onclick="updateBrainStage(${x.id},'ready')">
+        <button class="mini-btn"
+        onclick="updateBrainStage(${x.id},'ready')">
           待發
         </button>
 
-        <button class="mini-btn" onclick="updateBrainStage(${x.id},'published')">
+        <button class="mini-btn"
+        onclick="updateBrainStage(${x.id},'published')">
           已發
         </button>
 
-        <button class="mini-btn" onclick="deleteBrain(${x.id})">
+        <button class="mini-btn"
+        onclick="deleteBrain(${x.id})">
           刪除
         </button>
 
@@ -3408,34 +3254,18 @@ function saveTopic(){
 
 
   const existing =
-  arr.find(
-    x=>x.title===title
-  );
+  arr.find(x=>x.title===title);
 
 
   const data = {
 
-    id:
-    existing
-    ?existing.id
-    :Date.now(),
-
+    id:existing ? existing.id : Date.now(),
     title,
-
-    core:
-    $("topicCore").value.trim(),
-
-    pain:
-    $("topicPain").value.trim(),
-
-    used:
-    $("topicUsed").value.trim(),
-
-    next:
-    $("topicNext").value.trim(),
-
-    updated:
-    new Date().toISOString()
+    core:$("topicCore").value.trim(),
+    pain:$("topicPain").value.trim(),
+    used:$("topicUsed").value.trim(),
+    next:$("topicNext").value.trim(),
+    updated:new Date().toISOString()
 
   };
 
@@ -3443,9 +3273,7 @@ function saveTopic(){
   if(existing){
 
     const index =
-    arr.findIndex(
-      x=>x.id===existing.id
-    );
+    arr.findIndex(x=>x.id===existing.id);
 
     arr[index] = data;
 
@@ -3458,13 +3286,16 @@ function saveTopic(){
 
   saveTopics(arr);
 
+
   $("topicTitle").value="";
   $("topicCore").value="";
   $("topicPain").value="";
   $("topicUsed").value="";
   $("topicNext").value="";
 
+
   renderTopics();
+
   updateCarouselTopicSelect();
 
   alert("主題已記住 ♡");
@@ -3476,12 +3307,11 @@ function deleteTopic(id){
 
   saveTopics(
     getTopics()
-    .filter(
-      x=>x.id!==id
-    )
+    .filter(x=>x.id!==id)
   );
 
   renderTopics();
+
   updateCarouselTopicSelect();
 
 }
@@ -3491,9 +3321,7 @@ function topicToTool(id,target){
 
   const t =
   getTopics()
-  .find(
-    x=>x.id===id
-  );
+  .find(x=>x.id===id);
 
 
   if(!t)return;
@@ -3508,10 +3336,7 @@ function topicToTool(id,target){
       '[data-carousel-path="topic"]'
     );
 
-    setCarouselPath(
-      "topic",
-      btn
-    );
+    setCarouselPath("topic",btn);
 
     $("carouselTopicSelect").value =
     id;
@@ -3531,7 +3356,7 @@ function topicToTool(id,target){
     updateReelsUI();
 
     $("reelsTopic").value =
-    `${t.title}
+`${t.title}
 
 核心：
 ${t.core}
@@ -3550,7 +3375,7 @@ ${t.next}`;
     goTool("threads");
 
     $("threadsTopic").value =
-    `${t.title}
+`${t.title}
 
 ${t.core}
 
@@ -3606,21 +3431,26 @@ function renderTopics(){
         :""
       }
 
+
       <div class="inline-actions">
 
-        <button class="mini-btn" onclick="topicToTool(${t.id},'carousel')">
+        <button class="mini-btn"
+        onclick="topicToTool(${t.id},'carousel')">
           做輪播
         </button>
 
-        <button class="mini-btn" onclick="topicToTool(${t.id},'reels')">
+        <button class="mini-btn"
+        onclick="topicToTool(${t.id},'reels')">
           做 Reels
         </button>
 
-        <button class="mini-btn" onclick="topicToTool(${t.id},'threads')">
+        <button class="mini-btn"
+        onclick="topicToTool(${t.id},'threads')">
           做 Threads
         </button>
 
-        <button class="mini-btn" onclick="deleteTopic(${t.id})">
+        <button class="mini-btn"
+        onclick="deleteTopic(${t.id})">
           刪除
         </button>
 
@@ -3678,15 +3508,13 @@ function loadCarouselTopic(){
 
   const t =
   getTopics()
-  .find(
-    x=>x.id===id
-  );
+  .find(x=>x.id===id);
 
 
   if(!t){
 
     $("carouselTopicMemory").innerHTML =
-    `你目前還沒有主題紀錄。`;
+    `目前還沒有主題紀錄。`;
 
     return;
 
@@ -3694,24 +3522,24 @@ function loadCarouselTopic(){
 
 
   $("carouselTopicMemory").innerHTML =
-  `
-  <strong>${escapeHtml(t.title)}</strong>
+`
+<strong>${escapeHtml(t.title)}</strong>
 
-  <br><br>
+<br><br>
 
-  核心：
-  ${escapeHtml(t.core||"尚未記錄")}
+核心：
+${escapeHtml(t.core||"尚未記錄")}
 
-  <br>
+<br>
 
-  已講過：
-  ${escapeHtml(t.used||"尚未記錄")}
+已講過：
+${escapeHtml(t.used||"尚未記錄")}
 
-  <br>
+<br>
 
-  下一步：
-  ${escapeHtml(t.next||"尚未記錄")}
-  `;
+下一步：
+${escapeHtml(t.next||"尚未記錄")}
+`;
 
 
   $("carouselPain").value =
@@ -3747,30 +3575,17 @@ function saveCarouselAsTopic(){
   getTopics();
 
 
-  if(
-    !arr.some(
-      x=>x.title===title
-    )
-  ){
+  if(!arr.some(x=>x.title===title)){
 
     arr.unshift({
 
       id:Date.now(),
-
       title,
-
-      core:
-      $("carouselCore").value.trim(),
-
-      pain:
-      $("carouselPain").value.trim(),
-
+      core:$("carouselCore").value.trim(),
+      pain:$("carouselPain").value.trim(),
       used:"",
-
       next:"",
-
-      updated:
-      new Date().toISOString()
+      updated:new Date().toISOString()
 
     });
 
@@ -3782,6 +3597,129 @@ function saveCarouselAsTopic(){
   updateCarouselTopicSelect();
 
   alert("已存進主題庫 ♡");
+
+}
+
+
+/* PRODUCT LIBRARY */
+
+function parseProfileProducts(){
+
+  const b =
+  getBase();
+
+
+  if(!b.products ||
+     b.products==="沒有設定"){
+    return [];
+  }
+
+
+  return String(b.products)
+  .split(/[\n、，,;；]+/)
+  .map(x=>x.trim())
+  .filter(Boolean);
+
+}
+
+
+function toggleProductLibrary(){
+
+  renderProductLibrary();
+
+  $("productLibraryPicker")
+  .classList.toggle("hidden");
+
+}
+
+
+function renderProductLibrary(){
+
+  const products =
+  parseProfileProducts();
+
+
+  $("productLibraryChecks").innerHTML =
+  products.length
+
+  ?products.map((name,i)=>`
+
+    <label class="product-check">
+
+      <input
+      type="checkbox"
+      class="profile-product-check"
+      value="${escapeHtml(name)}">
+
+      <span>
+        ${escapeHtml(name)}
+      </span>
+
+    </label>
+
+  `).join("")
+
+  :`
+    <div class="empty">
+      「我的 → 產品／服務」目前沒有可以辨識的產品名稱。
+    </div>
+  `;
+
+}
+
+
+function addSelectedProfileProducts(){
+
+  const selected =
+  Array.from(
+    document.querySelectorAll(
+      ".profile-product-check:checked"
+    )
+  )
+  .map(x=>x.value);
+
+
+  if(!selected.length){
+
+    alert("先勾產品 ♡");
+
+    return;
+
+  }
+
+
+  const current =
+  getCurrentProductRows();
+
+
+  selected.forEach(name=>{
+
+    if(
+      !current.some(
+        p=>p.name===name
+      )
+    ){
+
+      current.push({
+        id:Date.now()+Math.random(),
+        name,
+        role:"輕曝光",
+        frequency:"",
+        fullCount:"",
+        lightCount:"",
+        angle:"AI 幫我判斷",
+        note:""
+      });
+
+    }
+
+  });
+
+
+  renderProductRows(current);
+
+  $("productLibraryPicker")
+  .classList.add("hidden");
 
 }
 
@@ -3819,16 +3757,16 @@ function saveProductPlanData(data){
 
 function defaultProductRows(){
 
-  return[
-    {
-      id:Date.now(),
-      name:"",
-      role:"主打",
-      frequency:"",
-      angle:"AI 幫我判斷",
-      note:""
-    }
-  ];
+  return [{
+    id:Date.now(),
+    name:"",
+    role:"主打",
+    frequency:"",
+    fullCount:"",
+    lightCount:"",
+    angle:"AI 幫我判斷",
+    note:""
+  }];
 
 }
 
@@ -3849,19 +3787,39 @@ function getCurrentProductRows(){
       Number(row.dataset.id),
 
       name:
-      row.querySelector(".product-name").value.trim(),
+      row.querySelector(
+        ".product-name"
+      ).value.trim(),
 
       role:
-      row.querySelector(".product-role").value,
+      row.querySelector(
+        ".product-role"
+      ).value,
 
       frequency:
-      row.querySelector(".product-frequency").value.trim(),
+      row.querySelector(
+        ".product-frequency"
+      ).value.trim(),
+
+      fullCount:
+      row.querySelector(
+        ".product-full-count"
+      ).value.trim(),
+
+      lightCount:
+      row.querySelector(
+        ".product-light-count"
+      ).value.trim(),
 
       angle:
-      row.querySelector(".product-angle").value,
+      row.querySelector(
+        ".product-angle"
+      ).value,
 
       note:
-      row.querySelector(".product-note").value.trim()
+      row.querySelector(
+        ".product-note"
+      ).value.trim()
 
     });
 
@@ -3885,6 +3843,8 @@ function addProductRow(data=null){
       name:"",
       role:"輕曝光",
       frequency:"",
+      fullCount:"",
+      lightCount:"",
       angle:"AI 幫我判斷",
       note:""
     }
@@ -3900,9 +3860,7 @@ function deleteProductRow(id){
 
   const current =
   getCurrentProductRows()
-  .filter(
-    x=>x.id!==id
-  );
+  .filter(x=>x.id!==id);
 
 
   renderProductRows(
@@ -3931,16 +3889,21 @@ function renderProductRows(rows=null){
 
 
   $("productRows").innerHTML =
-  rows.map((p,i)=>`
+  rows.map((p,i)=>{
 
-    <div
-    class="product-row"
-    data-id="${p.id||Date.now()+i}">
+    const rowId =
+    p.id || Date.now()+i;
+
+
+    return`
+
+    <div class="product-row"
+    data-id="${rowId}">
 
       <div class="product-row-title">
 
         <strong>
-          產品 ${i+1}
+          ${p.name ? escapeHtml(p.name) : `產品 ${i+1}`}
         </strong>
 
         ${
@@ -3948,7 +3911,7 @@ function renderProductRows(rows=null){
           ?`
           <button
           class="product-delete"
-          onclick="deleteProductRow(${p.id})">
+          onclick="deleteProductRow(${rowId})">
             刪除
           </button>
           `
@@ -3978,34 +3941,32 @@ function renderProductRows(rows=null){
 
           <select class="product-role">
 
-            <option
-            ${p.role==="主打"?"selected":""}>
+            <option ${p.role==="主打"?"selected":""}>
               主打
             </option>
 
-            <option
-            ${p.role==="次主打"?"selected":""}>
+            <option ${p.role==="次主打"?"selected":""}>
               次主打
             </option>
 
-            <option
-            ${p.role==="穩定曝光"?"selected":""}>
+            <option ${p.role==="穩定曝光"?"selected":""}>
               穩定曝光
             </option>
 
-            <option
-            ${p.role==="輕曝光"?"selected":""}>
+            <option ${p.role==="輕曝光"?"selected":""}>
               輕曝光
             </option>
 
-            <option
-            ${p.role==="帶過"?"selected":""}>
+            <option ${p.role==="帶過"?"selected":""}>
               帶過
             </option>
 
-            <option
-            ${p.role==="活動款"?"selected":""}>
+            <option ${p.role==="活動款"?"selected":""}>
               活動款
+            </option>
+
+            <option ${p.role==="AI 幫我分配"?"selected":""}>
+              AI 幫我分配
             </option>
 
           </select>
@@ -4016,7 +3977,7 @@ function renderProductRows(rows=null){
         <div>
 
           <label class="field-title">
-            希望出現頻率
+            希望出現
           </label>
 
           <input
@@ -4025,7 +3986,7 @@ function renderProductRows(rows=null){
           placeholder="${
             productPlanPeriod==="week"
             ?"例如：4 天"
-            :"例如：每週 3 次"
+            :"例如：每週 3 天"
           }">
 
         </div>
@@ -4033,49 +3994,73 @@ function renderProductRows(rows=null){
       </div>
 
 
+      <div class="two-col">
+
+        <div>
+
+          <label class="field-title">
+            完整講幾次？
+          </label>
+
+          <input
+          class="product-full-count"
+          value="${escapeHtml(p.fullCount||"")}"
+          placeholder="例如：2 次">
+
+        </div>
+
+
+        <div>
+
+          <label class="field-title">
+            輕曝光／帶過幾次？
+          </label>
+
+          <input
+          class="product-light-count"
+          value="${escapeHtml(p.lightCount||"")}"
+          placeholder="例如：2 次">
+
+        </div>
+
+      </div>
+
+
       <label class="field-title">
-        希望怎麼講？
+        主要想用什麼角度？
       </label>
 
       <select class="product-angle">
 
-        <option
-        ${p.angle==="AI 幫我判斷"?"selected":""}>
+        <option ${p.angle==="AI 幫我判斷"?"selected":""}>
           AI 幫我判斷
         </option>
 
-        <option
-        ${p.angle==="生活使用"?"selected":""}>
+        <option ${p.angle==="生活使用"?"selected":""}>
           生活使用
         </option>
 
-        <option
-        ${p.angle==="建立需求"?"selected":""}>
+        <option ${p.angle==="建立需求"?"selected":""}>
           建立需求
         </option>
 
-        <option
-        ${p.angle==="知識教育"?"selected":""}>
+        <option ${p.angle==="知識教育"?"selected":""}>
           知識教育
         </option>
 
-        <option
-        ${p.angle==="FAQ／解惑"?"selected":""}>
+        <option ${p.angle==="FAQ／解惑"?"selected":""}>
           FAQ／解惑
         </option>
 
-        <option
-        ${p.angle==="使用感受"?"selected":""}>
+        <option ${p.angle==="使用感受"?"selected":""}>
           使用感受
         </option>
 
-        <option
-        ${p.angle==="活動轉換"?"selected":""}>
+        <option ${p.angle==="活動轉換"?"selected":""}>
           活動轉換
         </option>
 
-        <option
-        ${p.angle==="只要自然出現"?"selected":""}>
+        <option ${p.angle==="只要自然出現"?"selected":""}>
           只要自然出現
         </option>
 
@@ -4088,11 +4073,13 @@ function renderProductRows(rows=null){
 
       <textarea
       class="product-note"
-      placeholder="例如：早餐固定喝、最近詢問比較多、活動快開始">${escapeHtml(p.note||"")}</textarea>
+      placeholder="例如：早餐固定喝、最近詢問多、活動快開始">${escapeHtml(p.note||"")}</textarea>
 
     </div>
 
-  `).join("");
+  `;
+
+  }).join("");
 
 }
 
@@ -4128,26 +4115,13 @@ function saveProductPlan(){
 
   const data = {
 
-    period:
-    productPlanPeriod,
-
-    goal:
-    $("productPlanGoal").value,
-
-    maxPerDay:
-    $("productMaxPerDay").value,
-
-    maxHero:
-    $("productMaxHero").value,
-
-    restDays:
-    $("productRestDays").value,
-
-    events:
-    $("productPlanEvents").value.trim(),
-
-    products:
-    getCurrentProductRows()
+    period:productPlanPeriod,
+    goal:$("productPlanGoal").value,
+    maxPerDay:$("productMaxPerDay").value,
+    maxHero:$("productMaxHero").value,
+    restDays:$("productRestDays").value,
+    events:$("productPlanEvents").value.trim(),
+    products:getCurrentProductRows()
 
   };
 
@@ -4181,18 +4155,14 @@ function loadProductPlan(){
   $("productPlanGoal").value =
   data.goal || "AI 幫我判斷";
 
-
   $("productMaxPerDay").value =
   data.maxPerDay || "2 個";
-
 
   $("productMaxHero").value =
   data.maxHero || "1 個";
 
-
   $("productRestDays").value =
   data.restDays || "AI 幫我判斷";
-
 
   $("productPlanEvents").value =
   data.events || "";
@@ -4221,7 +4191,27 @@ function loadProductPlan(){
 }
 
 
-function buildProductPlanPrompt(){
+function productRowsText(){
+
+  return getCurrentProductRows()
+  .filter(p=>p.name)
+  .map((p,i)=>`
+
+【產品 ${i+1}】
+名稱：${p.name}
+目前設定角色：${p.role}
+希望出現：${p.frequency||"未設定"}
+完整講：${p.fullCount||"未設定"}
+輕曝光／帶過：${p.lightCount||"未設定"}
+主要角度：${p.angle}
+補充：${p.note||"沒有"}
+
+`).join("\n");
+
+}
+
+
+function generateProductAllocationPrompt(){
 
   const b =
   getBase();
@@ -4229,84 +4219,36 @@ function buildProductPlanPrompt(){
 
   const products =
   getCurrentProductRows()
-  .filter(
-    p=>p.name
-  );
+  .filter(p=>p.name);
 
 
   if(!products.length){
 
-    return null;
+    alert("先加入至少一個產品 ♡");
+
+    return;
 
   }
 
 
-  const productText =
-  products.map((p,i)=>`
-
-產品 ${i+1}
-名稱：${p.name}
-角色：${p.role}
-希望頻率：${p.frequency||"AI 幫我判斷"}
-希望切角：${p.angle}
-補充：${p.note||"沒有"}
-
-`).join("\n");
-
-
-  const periodText =
-  productPlanPeriod==="week"
-  ?"接下來 7 天"
-  :"接下來一個月";
-
-
-return `
-你是一位專門規劃 Instagram 產品限時動態曝光節奏的內容策略顧問。
-
-我要你規劃的不是「今天一組產品限動」，
-而是 ${periodText} 的產品曝光節奏。
-
-我的產品很多，
-所以不要每天把所有產品都拿出來講。
-
-同一天可以出現 0～多個產品，
-但不同產品要有不同角色。
-
-重要觀念：
-
-「主打」
-＝今天真正要讓觀眾記住的產品。
-可以完整鋪陳需求、使用情境、知識、FAQ 或轉換。
-
-「次主打」
-＝可以有一點資訊，但不要跟主打搶戲。
-
-「穩定曝光」
-＝平常自然固定出現，讓觀眾慢慢熟悉。
-
-「輕曝光」
-＝只在生活裡自然露出，不需要介紹一堆。
-
-「帶過」
-＝照片有拍到，或文字順便一句。
-
-不是一天只能一個產品。
-
-但除非真的有特殊活動，
-不要讓很多產品同時都像主角。
+  const prompt =
+`
+你是一位 Instagram 產品曝光節奏策略顧問。
 
 ${profileContext(b)}
 
-【排程期間】
-${productPlanPeriod==="week"?"一週":"一個月"}
+我要規劃：
+${productPlanPeriod==="week"?"接下來一週":"接下來一個月"}
 
-【這段時間主要目標】
+但我不想自己決定每個產品要當主打幾次。
+
+【主要目標】
 ${$("productPlanGoal").value}
 
-【一天最多可出現產品】
+【一天可出現產品數】
 ${$("productMaxPerDay").value}
 
-【一天最多主打產品】
+【一天最多主打】
 ${$("productMaxHero").value}
 
 【無產品日】
@@ -4315,161 +4257,260 @@ ${$("productRestDays").value}
 【活動／重要日期】
 ${$("productPlanEvents").value.trim()||"沒有"}
 
-【這段時間產品安排】
+【想安排的產品】
 
-${productText}
+${productRowsText()}
+
+請幫我重新分配每個產品：
+
+1. 角色：
+主打／次主打／穩定曝光／輕曝光／帶過／活動款
+
+2. 希望出現幾天
+
+3. 完整講幾次
+
+4. 輕曝光／帶過幾次
+
+5. 最適合的內容角度
+
+6. 哪些產品適合一起出現
+
+7. 哪些產品不適合同一天都完整介紹
+
+原則：
+
+一天可以出現兩個以上產品。
+
+但產品「出現」不等於每次都要銷售。
+
+可以是一個主打，
+另一個只在早餐、保養、餐前、日常畫面裡順便出現。
+
+不要把所有產品平均分配。
+
+要有主次。
+
+不要讓帳號變成產品型錄。
+`;
+
+
+  showProductPlanPrompt(
+    prompt,
+    "AI 產品角色與頻率分配"
+  );
+
+}
+
+
+function buildProductPlanPrompt(){
+
+  const b =
+  getBase();
+
+
+  const products =
+  getCurrentProductRows()
+  .filter(p=>p.name);
+
+
+  if(!products.length){
+    return null;
+  }
+
+
+return `
+你是一位專門規劃 Instagram 產品限時動態曝光節奏的內容策略顧問。
+
+我要規劃的不是今天單獨一組產品限動，
+而是：
+${productPlanPeriod==="week"?"接下來 7 天":"接下來一個月"}
+
+${profileContext(b)}
+
+【這段時間主要目標】
+${$("productPlanGoal").value}
+
+【一天最多可以出現】
+${$("productMaxPerDay").value}
+
+【一天最多主打】
+${$("productMaxHero").value}
+
+【無產品日】
+${$("productRestDays").value}
+
+【活動／重要日期】
+${$("productPlanEvents").value.trim()||"沒有"}
+
+【產品設定】
+
+${productRowsText()}
+
+請先理解：
+
+一天可以出現多個產品。
+
+例如：
+
+A 是今天主打，
+可以有完整鋪陳。
+
+B 可以只是早餐、餐前、保養時自然出現。
+
+C 甚至只需要照片拍到或一句話帶過。
+
+不要把「有出現」全部當成銷售內容。
+
 
 請先做策略分析：
 
-1. 哪 1～2 個產品最應該成為這段時間的記憶主軸？
-2. 哪些產品適合當穩定曝光？
-3. 哪些產品只需要偶爾帶過？
-4. 哪些產品不需要硬塞進排程？
-5. 有沒有產品設定的曝光頻率太高？
-6. 哪些產品適合在同一天一起出現？
-7. 哪些產品最好不要在同一天都重講？
+1. 哪些產品應該成為主要記憶點？
+2. 哪些適合次主打？
+3. 哪些適合固定自然出現？
+4. 哪些近期可以少講？
+5. 哪個產品的曝光設定太密？
+6. 哪個產品太少？
+7. 哪些產品很適合同一天自然一起出現？
+8. 哪些產品不要同一天都重講？
 
-產品內容角度請輪替使用：
+產品角度請輪替：
 
 生活使用
-真實情境
-需求／痛點
-知識教育
+需求
+痛點
+知識
 選擇理由
-FAQ
 使用感受
+FAQ
 客人常問
-日常補貨
+補貨
 活動資訊
 引導詢問
 
-不要讓同一個產品每次出現都在講一模一樣的賣點。
+不要讓同一個產品每次都講同一件事。
 
 
 ${
 productPlanPeriod==="week"
 ?`
 
-請安排週一～週日。
+請排週一～週日。
 
 每天提供：
 
 【星期】
 
-生活／內容主軸：
-今天整體限動應該先以什麼生活內容為主。
+今天生活／內容主軸：
+先決定整天限動的生活主線。
 
 主打產品：
-如果沒有，請寫「無」。
+沒有就寫無。
 
-主打角色：
+主打程度：
+完整鋪陳／1～2 則／輕帶／只露出
+
+主打切角：
 需求／生活／知識／FAQ／信任／轉換
 
-建議曝光程度：
-完整講／1～2 則／輕帶／只露出
+次主打：
+沒有就寫無。
 
-次主打產品：
-如果沒有就寫無。
-
-輕曝光／帶過產品：
+輕曝光／帶過：
 可以有 0～2 個。
 
 為什麼今天這樣排：
 
 建議素材：
 
-今天要避免什麼：
+產品總體感覺：
+低／中／高
 
-另外標示：
+今天要避免：
 
-「無產品日」
-如果今天其實不需要產品，就直接安排無產品。
+如果今天其實不適合放產品，
+直接寫「無產品日」。
 
 `
 :`
 
-這是一個月排程。
+請做一個月完整策略。
 
-不要只是把同一週複製 4 次。
+不能只是把同一週複製四次。
 
-請先安排四週不同任務：
+先決定：
 
-第 1 週：
-讓觀眾開始認識／產生需求
+Week 1：
+讓大家重新認識與產生需求
 
-第 2 週：
-增加生活使用感與熟悉度
+Week 2：
+生活使用與熟悉感
 
-第 3 週：
-知識、FAQ、信任累積
+Week 3：
+FAQ／知識／信任
 
-第 4 週：
-依活動、詢問與觀眾熟悉程度增加轉換
+Week 4：
+依熟悉度與活動決定是否提高轉換
 
-如果我的產品設定不適合這個四週架構，
-請自行調整，不要硬套。
+如果不適合這樣安排，
+可以自行調整。
 
 先提供：
 
-【本月產品總策略】
+【本月產品角色】
 
-主打產品：
+主打：
 次主打：
 穩定曝光：
 輕曝光：
 活動款：
 本月可以少講：
 
-再安排 Week 1～Week 4。
+再排 Week 1～Week 4。
 
 每週提供：
 
 本週主軸
-本週主打產品
-每個產品預計出現幾天
+主打產品
+每個產品出現幾天
 完整講幾次
 輕曝光幾次
-無產品日幾天
-主要內容角度
+無產品日
+主要切角
 
-接著再列出該週週一～週日的產品曝光安排。
+再列該週週一～週日安排。
 
 `
 }
 
-最後做一次「過度曝光檢查」。
+最後做：
 
-請列出：
+【過度曝光檢查】
 
-產品名稱
-預計曝光次數
-完整主打次數
+每個產品列：
+
+曝光天數
+完整介紹次數
 輕曝光次數
 是否過密
 是否太少
-下一週／下個月要不要調整
+下週／下月建議
 
-最後再提醒：
+再告訴我：
 
 哪一天產品感最重？
-怎麼修得更自然？
+怎麼修自然？
 
-哪兩個產品最適合自然一起出現？
+哪些產品適合一起出現？
 
-哪個產品近期可以先休息？
+哪個產品可以先休息？
 
-要求：
+原則：
 
-產品可以出現很多次，
-但「曝光」跟「完整銷售」不是同一件事。
+產品是生活的一部分，
+不是每天都要重新介紹。
 
-不要看到產品出現就每次都寫成銷售限動。
-
-生活內容仍然要是帳號主體。
-
-不要讓整週或整月看起來像商品型錄。
-
-使用繁體中文、自然台灣語氣。
+帳號主體仍然是生活、內容與個人。
 `;
 
 }
@@ -4483,43 +4524,59 @@ function generateProductPlanPrompt(){
 
   if(!prompt){
 
-    alert("至少先填一個產品 ♡");
+    alert("至少先加入一個產品 ♡");
 
     return;
 
   }
 
 
-  saveProductPlan();
+  saveProductPlanData({
 
+    period:productPlanPeriod,
+    goal:$("productPlanGoal").value,
+    maxPerDay:$("productMaxPerDay").value,
+    maxHero:$("productMaxHero").value,
+    restDays:$("productRestDays").value,
+    events:$("productPlanEvents").value.trim(),
+    products:getCurrentProductRows()
+
+  });
+
+
+  showProductPlanPrompt(
+    prompt,
+    `${productPlanPeriod==="week"?"一週":"一個月"}完整產品曝光排程`
+  );
+
+}
+
+
+function showProductPlanPrompt(prompt,title){
 
   $("productPlanPrompt").textContent =
   prompt;
 
 
   $("productPlanSummary").innerHTML =
-  `
-  <strong>
-    ${productPlanPeriod==="week"?"一週":"一個月"}產品曝光排程
-  </strong>
+`
+<strong>${escapeHtml(title)}</strong>
 
-  <br>
+<br><br>
 
-  ${
-    getCurrentProductRows()
-    .filter(p=>p.name)
-    .map(p=>`${escapeHtml(p.name)}｜${escapeHtml(p.role)}`)
-    .join("<br>")
-  }
-  `;
+${getCurrentProductRows()
+.filter(p=>p.name)
+.map(p=>`${escapeHtml(p.name)}｜${escapeHtml(p.role)}`)
+.join("<br>")}
+`;
 
 
-  $("productPlanResultCard").style.display =
-  "block";
+  $("productPlanResultCard")
+  .style.display="block";
 
 
-  $("productPlanPromptWrap").style.display =
-  "none";
+  $("productPlanPromptWrap")
+  .style.display="none";
 
 
   $("productPlanResultCard")
@@ -4532,7 +4589,8 @@ function generateProductPlanPrompt(){
 
 function toggleProductPlanPrompt(){
 
-  $("productPlanPromptWrap").style.display =
+  $("productPlanPromptWrap")
+  .style.display =
   $("productPlanPromptWrap").style.display==="block"
   ?"none"
   :"block";
@@ -4549,6 +4607,615 @@ function copyProductPlanPrompt(){
 }
 
 
+/* RHYTHM TEMPLATES */
+
+function renderTemplates(){
+
+  $("templateList").innerHTML =
+  rhythmTemplates.map((x,i)=>`
+
+    <div
+    class="template-card clickable-card"
+    onclick="useRhythmTemplate(${i})">
+
+      <div class="template-title">
+        ${escapeHtml(x.title)}
+      </div>
+
+      <div class="template-desc">
+        ${escapeHtml(x.desc)}
+      </div>
+
+      <div class="list-meta">
+        點一下直接套進 7 天規劃 →
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function useRhythmTemplate(index){
+
+  const t =
+  rhythmTemplates[index];
+
+
+  $("weekGoal").value =
+  t.goal;
+
+
+  $("weekTopics").value =
+  t.prompt;
+
+
+  goTool("week");
+
+}
+
+
+/* FORMULAS */
+
+function renderFormulas(){
+
+  $("formulaList").innerHTML =
+  formulas.map((x,i)=>`
+
+    <div
+    class="formula-card clickable-card"
+    onclick="openFormulaModal(${i})">
+
+      <div class="formula-name">
+        ${escapeHtml(x.name)}
+      </div>
+
+      <div class="formula-example">
+        ${escapeHtml(x.example)}
+      </div>
+
+      <div class="list-meta">
+        點一下拿這個公式做內容 →
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function openFormulaModal(index){
+
+  selectedFormulaIndex =
+  index;
+
+
+  if(index===-1){
+
+    $("formulaModalTitle").textContent =
+    "AI 幫我選文案公式";
+
+
+    $("formulaSelectedInfo").innerHTML =
+`
+先告訴我你想講什麼，
+AI 會從公式庫裡挑最適合的結構。
+`;
+
+  }else{
+
+    const f =
+    formulas[index];
+
+
+    $("formulaModalTitle").textContent =
+    f.name;
+
+
+    $("formulaSelectedInfo").innerHTML =
+`
+<strong>${escapeHtml(f.name)}</strong>
+
+<br><br>
+
+例如：
+${escapeHtml(f.example)}
+`;
+
+  }
+
+
+  $("formulaModal")
+  .classList.add("active");
+
+}
+
+
+function closeFormulaModal(){
+
+  $("formulaModal")
+  .classList.remove("active");
+
+}
+
+
+function formulaOverlayClose(e){
+
+  if(e.target.id==="formulaModal"){
+    closeFormulaModal();
+  }
+
+}
+
+
+function generateFormulaPrompt(){
+
+  const b =
+  getBase();
+
+
+  const topic =
+  $("formulaTopic").value.trim();
+
+
+  if(!topic){
+
+    alert("先填你想講什麼 ♡");
+
+    return;
+
+  }
+
+
+  const platform =
+  $("formulaPlatform").value;
+
+
+  const core =
+  $("formulaCore").value.trim();
+
+
+  let formulaInstruction = "";
+
+
+  if(selectedFormulaIndex===-1){
+
+    formulaInstruction =
+`
+請先從下面公式中選出最適合的一個：
+
+${formulas.map((f,i)=>`${i+1}. ${f.name}`).join("\n")}
+
+先說明為什麼選它，
+再使用這個公式寫內容。
+`;
+
+  }else{
+
+    const f =
+    formulas[selectedFormulaIndex];
+
+
+    formulaInstruction =
+`
+指定文案公式：
+
+${f.name}
+
+範例：
+${f.example}
+
+請保留這個結構的核心邏輯，
+但不要硬套到看起來很刻意。
+`;
+
+  }
+
+
+  const prompt =
+`
+你是一位擅長社群文案結構與內容節奏的內容顧問。
+
+${profileContext(b)}
+
+【平台】
+${platform}
+
+【我想講的主題】
+${topic}
+
+【一定要保留的核心】
+${core||"沒有"}
+
+${formulaInstruction}
+
+請完成：
+
+1. 先分析這個主題真正要打中的情緒／需求
+2. 判斷這個公式放在這個平台會不會自然
+3. 如果不自然，請微調公式，不要硬套
+4. 提供 3 個不同開頭
+5. 選最自然的一個
+6. 寫完整內容
+7. 再給 2 個不同版本
+
+如果平台是：
+
+IG 限動：
+請注意前後則銜接，不要像文章。
+
+Reels：
+請優先處理前三秒與口播／字幕節奏。
+
+IG 輪播：
+請把公式主要放在封面或前 2 頁，
+後面要有內容支撐。
+
+Threads：
+要像真人在發文，不要太工整。
+
+產品限動：
+先有生活／需求，
+不要直接把公式變成產品廣告。
+
+不要像 AI 作文。
+不要雞湯。
+`;
+
+
+  $("formulaPrompt").textContent =
+  prompt;
+
+
+  $("formulaResultTitle").textContent =
+  selectedFormulaIndex===-1
+  ?"AI 幫你選公式"
+  :formulas[selectedFormulaIndex].name;
+
+
+  $("formulaResultCard")
+  .style.display="block";
+
+
+  $("formulaPromptWrap")
+  .style.display="none";
+
+
+  closeFormulaModal();
+
+
+  $("formulaResultCard")
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+function toggleFormulaPrompt(){
+
+  $("formulaPromptWrap")
+  .style.display =
+  $("formulaPromptWrap").style.display==="block"
+  ?"none"
+  :"block";
+
+}
+
+
+function copyFormulaPrompt(){
+
+  copyText(
+    $("formulaPrompt").textContent
+  );
+
+}
+
+
+/* BOARD */
+
+function getBoard(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "weekBoard"
+      ) || "[]"
+    );
+
+  }catch{
+
+    return [];
+
+  }
+
+}
+
+
+function saveBoard(arr){
+
+  localStorage.setItem(
+    "weekBoard",
+    JSON.stringify(arr)
+  );
+
+}
+
+
+function addBoardItem(){
+
+  const title =
+  $("boardTitle").value.trim();
+
+
+  if(!title){
+
+    alert("先寫內容 ♡");
+
+    return;
+
+  }
+
+
+  const arr =
+  getBoard();
+
+
+  arr.push({
+
+    id:Date.now(),
+    day:$("boardDay").value,
+    type:$("boardType").value,
+    title
+
+  });
+
+
+  saveBoard(arr);
+
+  $("boardTitle").value="";
+
+  renderBoard();
+
+}
+
+
+function deleteBoard(id){
+
+  saveBoard(
+    getBoard()
+    .filter(x=>x.id!==id)
+  );
+
+  renderBoard();
+
+}
+
+
+function renderBoard(){
+
+  const days = [
+    "週一","週二","週三","週四",
+    "週五","週六","週日"
+  ];
+
+
+  const arr =
+  getBoard();
+
+
+  $("weekBoard").innerHTML =
+  days.map(day=>{
+
+    const items =
+    arr.filter(x=>x.day===day);
+
+
+    return`
+
+      <div class="day-col">
+
+        <div class="day-name">
+          ${day}
+        </div>
+
+        ${
+          items.length
+
+          ?items.map(x=>`
+
+            <div class="day-item">
+
+              <strong>
+                ${escapeHtml(x.type)}
+              </strong>
+
+              <br>
+
+              ${escapeHtml(x.title)}
+
+              <br>
+
+              <button
+              style="
+              border:none;
+              background:none;
+              color:#b45e75;
+              padding:5px 0 0;
+              font-size:10px"
+              onclick="deleteBoard(${x.id})">
+
+                刪除
+
+              </button>
+
+            </div>
+
+          `).join("")
+
+          :`
+            <div class="list-meta">
+              尚未安排
+            </div>
+          `
+        }
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+
+/* TASK */
+
+function localDateKey(){
+
+  const d =
+  new Date();
+
+
+  return[
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,"0"),
+    String(d.getDate()).padStart(2,"0")
+  ].join("-");
+
+}
+
+
+function getTodayTasks(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "todayTasks_"+localDateKey()
+      ) || "[]"
+    );
+
+  }catch{
+
+    return [];
+
+  }
+
+}
+
+
+function saveTodayTasks(arr){
+
+  localStorage.setItem(
+    "todayTasks_"+localDateKey(),
+    JSON.stringify(arr)
+  );
+
+}
+
+
+function addTodayTask(){
+
+  const text =
+  $("todayTaskInput").value.trim();
+
+
+  if(!text)return;
+
+
+  const arr =
+  getTodayTasks();
+
+
+  arr.push({
+    id:Date.now(),
+    text,
+    done:false
+  });
+
+
+  saveTodayTasks(arr);
+
+  $("todayTaskInput").value="";
+
+  refreshDashboard();
+
+}
+
+
+function toggleTodayTask(id){
+
+  const arr =
+  getTodayTasks();
+
+
+  const item =
+  arr.find(x=>x.id===id);
+
+
+  if(item){
+    item.done=!item.done;
+  }
+
+
+  saveTodayTasks(arr);
+
+  refreshDashboard();
+
+}
+
+
+function renderTodayTasks(){
+
+  const arr =
+  getTodayTasks();
+
+
+  $("todayTaskList").innerHTML =
+  arr.length
+
+  ?arr.map(x=>`
+
+    <div class="task-row">
+
+      <input
+      type="checkbox"
+      ${x.done?"checked":""}
+      onchange="toggleTodayTask(${x.id})">
+
+      <div class="task-main">
+
+        <div
+        class="task-title"
+        style="${
+          x.done
+          ?"text-decoration:line-through;color:#aaa"
+          :""
+        }">
+
+          ${escapeHtml(x.text)}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `).join("")
+
+  :`
+    <div class="muted">
+      今天還沒有任務。
+    </div>
+  `;
+
+}
+
+
 /* INSPIRATION */
 
 const inspirationData = {
@@ -4559,11 +5226,9 @@ const inspirationData = {
       "吃飯時",
       "睡前",
       "送小孩上學",
-      "接小孩回家",
       "孩子突然哭",
       "孩子突然說一句話"
     ],
-
     topics:[
       "一件當媽媽後才懂的事",
       "一個以前會生氣、現在比較能理解的行為",
@@ -4572,7 +5237,6 @@ const inspirationData = {
       "一個很小但很有感的瞬間"
     ]
   },
-
 
   "減脂／飲食":{
     situations:[
@@ -4584,7 +5248,6 @@ const inspirationData = {
       "便利商店",
       "體重停滯"
     ],
-
     topics:[
       "以前以為不能吃、現在知道其實可以的東西",
       "飲控最容易想太多的地方",
@@ -4593,7 +5256,6 @@ const inspirationData = {
       "嘴饞時比較實際的方法"
     ]
   },
-
 
   "料理":{
     situations:[
@@ -4605,7 +5267,6 @@ const inspirationData = {
       "只有 10 分鐘",
       "想吃甜點"
     ],
-
     topics:[
       "少材料料理",
       "看起來罪惡但很簡單的料理",
@@ -4616,7 +5277,6 @@ const inspirationData = {
     ]
   },
 
-
   "產品":{
     situations:[
       "早餐",
@@ -4624,10 +5284,8 @@ const inspirationData = {
       "外食前",
       "聚餐前",
       "晚上保養",
-      "忙碌的一天",
       "補貨"
     ],
-
     topics:[
       "為什麼會固定用它",
       "一開始為什麼想試",
@@ -4638,7 +5296,6 @@ const inspirationData = {
     ]
   },
 
-
   "事業／工作":{
     situations:[
       "陪新人",
@@ -4647,15 +5304,13 @@ const inspirationData = {
       "帶小孩的空檔",
       "晚上工作"
     ],
-
     topics:[
       "為什麼想保留自己的事情",
       "工作除了收入還代表什麼",
       "以前對經營的一個誤會",
-      "最希望新人不用自己摸索的事情"
+      "最希望新人不用自己摸索的事"
     ]
   },
-
 
   "生活／觀點":{
     situations:[
@@ -4666,7 +5321,6 @@ const inspirationData = {
       "帶小孩出門",
       "一個人待著"
     ],
-
     topics:[
       "最近一直在想的一件事",
       "以前跟現在想法不同的地方",
@@ -4758,7 +5412,6 @@ function generateOneIdea(){
     const category =
     randomItem(categories);
 
-
     const data =
     inspirationData[category];
 
@@ -4808,9 +5461,7 @@ function renderRadar(){
 
     currentRadarIdeas.push(idea);
 
-    rememberRadar(
-      idea.text
-    );
+    rememberRadar(idea.text);
 
   }
 
@@ -4831,8 +5482,7 @@ function renderRadar(){
 
       <div class="inline-actions">
 
-        <button
-        class="mini-btn"
+        <button class="mini-btn"
         onclick="saveRadarIdea(${i})">
           ♡ 存靈感
         </button>
@@ -4859,17 +5509,11 @@ function saveRadarIdea(index){
   arr.unshift({
 
     id:Date.now(),
-
     text:idea.text,
-
     category:idea.category,
-
     nature:"一個觀察",
-
     stage:"idea",
-
-    created:
-    new Date().toISOString()
+    created:new Date().toISOString()
 
   });
 
@@ -4883,25 +5527,23 @@ function saveRadarIdea(index){
 }
 
 
-/* CONTENT BALANCE */
+/* BALANCE */
 
 function renderBalance(){
 
   const arr =
   getBrain()
-  .filter(
-    x=>x.stage==="published"
-  );
+  .filter(x=>x.stage==="published");
 
 
   if(!arr.length){
 
     $("balanceRadar").innerHTML =
-    `
-    <div class="empty">
-      還沒有已發布紀錄。
-    </div>
-    `;
+`
+<div class="empty">
+  還沒有已發布紀錄。
+</div>
+`;
 
 
     $("balanceAdvice").textContent =
@@ -4930,18 +5572,14 @@ function renderBalance(){
 
   const sorted =
   Object.entries(counts)
-  .sort(
-    (a,b)=>b[1]-a[1]
-  );
+  .sort((a,b)=>b[1]-a[1]);
 
 
   $("balanceRadar").innerHTML =
   sorted.map(([name,count])=>{
 
     const p =
-    Math.round(
-      count/total*100
-    );
+    Math.round(count/total*100);
 
 
     return`
@@ -4954,10 +5592,8 @@ function renderBalance(){
         </div>
 
         <div class="balance-bar">
-          <div
-          class="balance-fill"
-          style="width:${p}%">
-          </div>
+          <div class="balance-fill"
+          style="width:${p}%"></div>
         </div>
 
       </div>
@@ -4987,465 +5623,6 @@ function renderBalance(){
 }
 
 
-/* BOARD */
-
-function getBoard(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "weekBoard"
-      ) || "[]"
-    );
-
-  }catch{
-
-    return [];
-
-  }
-
-}
-
-
-function saveBoard(arr){
-
-  localStorage.setItem(
-    "weekBoard",
-    JSON.stringify(arr)
-  );
-
-}
-
-
-function addBoardItem(){
-
-  const title =
-  $("boardTitle").value.trim();
-
-
-  if(!title){
-
-    alert("先寫內容 ♡");
-
-    return;
-
-  }
-
-
-  const arr =
-  getBoard();
-
-
-  arr.push({
-
-    id:Date.now(),
-
-    day:
-    $("boardDay").value,
-
-    type:
-    $("boardType").value,
-
-    title
-
-  });
-
-
-  saveBoard(arr);
-
-  $("boardTitle").value="";
-
-  renderBoard();
-
-}
-
-
-function deleteBoard(id){
-
-  saveBoard(
-    getBoard()
-    .filter(
-      x=>x.id!==id
-    )
-  );
-
-  renderBoard();
-
-}
-
-
-function renderBoard(){
-
-  const days = [
-    "週一",
-    "週二",
-    "週三",
-    "週四",
-    "週五",
-    "週六",
-    "週日"
-  ];
-
-
-  const arr =
-  getBoard();
-
-
-  $("weekBoard").innerHTML =
-  days.map(day=>{
-
-    const items =
-    arr.filter(
-      x=>x.day===day
-    );
-
-
-    return`
-
-      <div class="day-col">
-
-        <div class="day-name">
-          ${day}
-        </div>
-
-        ${
-          items.length
-
-          ?items.map(x=>`
-
-            <div class="day-item">
-
-              <strong>
-                ${escapeHtml(x.type)}
-              </strong>
-
-              <br>
-
-              ${escapeHtml(x.title)}
-
-              <br>
-
-              <button
-              style="
-              border:none;
-              background:none;
-              color:#b45e75;
-              padding:5px 0 0;
-              font-size:10px"
-              onclick="deleteBoard(${x.id})">
-                刪除
-              </button>
-
-            </div>
-
-          `).join("")
-
-          :`
-          <div class="list-meta">
-            尚未安排
-          </div>
-          `
-        }
-
-      </div>
-
-    `;
-
-  }).join("");
-
-}
-
-
-/* TEMPLATES */
-
-const rhythmTemplates = [
-
-  {
-    title:"最近限動觀看偏低",
-    desc:"生活與互動先回來，再慢慢接產品。"
-  },
-
-  {
-    title:"最近產品內容太多",
-    desc:"補生活、觀點與信任內容。"
-  },
-
-  {
-    title:"這週想增加粉絲",
-    desc:"流量內容＋個人品牌一起安排。"
-  },
-
-  {
-    title:"這週主推產品",
-    desc:"需求→信任→FAQ→最後才轉換。"
-  },
-
-  {
-    title:"這週想帶招商",
-    desc:"先談生活與工作選擇，再談加入。"
-  },
-
-  {
-    title:"這週真的很忙",
-    desc:"只留最不能省的內容。"
-  }
-
-];
-
-
-function renderTemplates(){
-
-  $("templateList").innerHTML =
-  rhythmTemplates
-  .map(x=>`
-
-    <div class="template-card">
-
-      <div class="template-title">
-        ${x.title}
-      </div>
-
-      <div class="template-desc">
-        ${x.desc}
-      </div>
-
-    </div>
-
-  `).join("");
-
-}
-
-
-const formulas = [
-
-  {
-    name:"A 不是 B，而是 C",
-    example:"你不是沒有自制力，而是一直用不適合自己的方法。"
-  },
-
-  {
-    name:"很多人不是 A，是 B",
-    example:"很多人不是沒有方向，是太習慣先看別人怎麼走。"
-  },
-
-  {
-    name:"我以前也以為…直到…",
-    example:"我以前也以為減脂就是一直少吃，直到我真的開始觀察自己的飲食。"
-  },
-
-  {
-    name:"你以為 X，其實 Y",
-    example:"你以為孩子只是故意鬧，其實他可能只是不知道怎麼表達。"
-  },
-
-  {
-    name:"如果你也常常…",
-    example:"如果你也常常下午突然很想吃甜的，先別急著怪自己。"
-  },
-
-  {
-    name:"我後來才發現…",
-    example:"我後來才發現，當媽媽最容易忘記的，是自己也有想做的事情。"
-  }
-
-];
-
-
-function renderFormulas(){
-
-  $("formulaList").innerHTML =
-  formulas
-  .map(x=>`
-
-    <div class="formula-card">
-
-      <div class="formula-name">
-        ${x.name}
-      </div>
-
-      <div class="formula-example">
-        ${x.example}
-      </div>
-
-    </div>
-
-  `).join("");
-
-}
-
-
-/* TASK */
-
-function localDateKey(){
-
-  const d =
-  new Date();
-
-
-  return[
-    d.getFullYear(),
-    String(d.getMonth()+1).padStart(2,"0"),
-    String(d.getDate()).padStart(2,"0")
-  ].join("-");
-
-}
-
-
-function getTodayTasks(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "todayTasks_"+localDateKey()
-      ) || "[]"
-    );
-
-  }catch{
-
-    return [];
-
-  }
-
-}
-
-
-function saveTodayTasks(arr){
-
-  localStorage.setItem(
-    "todayTasks_"+localDateKey(),
-    JSON.stringify(arr)
-  );
-
-}
-
-
-function addTodayTask(){
-
-  const text =
-  $("todayTaskInput").value.trim();
-
-
-  if(!text)return;
-
-
-  const arr =
-  getTodayTasks();
-
-
-  arr.push({
-
-    id:Date.now(),
-
-    text,
-
-    done:false
-
-  });
-
-
-  saveTodayTasks(arr);
-
-  $("todayTaskInput").value="";
-
-  refreshDashboard();
-
-}
-
-
-function toggleTodayTask(id){
-
-  const arr =
-  getTodayTasks();
-
-
-  const item =
-  arr.find(
-    x=>x.id===id
-  );
-
-
-  if(item){
-    item.done=!item.done;
-  }
-
-
-  saveTodayTasks(arr);
-
-  refreshDashboard();
-
-}
-
-
-function renderTodayTasks(){
-
-  const arr =
-  getTodayTasks();
-
-
-  $("todayTaskList").innerHTML =
-  arr.length
-
-  ?arr.map(x=>`
-
-    <div class="task-row">
-
-      <input
-      type="checkbox"
-      ${x.done?"checked":""}
-      onchange="toggleTodayTask(${x.id})">
-
-      <div class="task-main">
-
-        <div
-        class="task-title"
-        style="${
-          x.done
-          ?"text-decoration:line-through;color:#aaa"
-          :""
-        }">
-
-          ${escapeHtml(x.text)}
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `).join("")
-
-  :`
-    <div class="muted">
-      今天還沒有任務。
-    </div>
-  `;
-
-}
-
-
-/* REVIEWS */
-
-function getReviews(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "dailyReviews"
-      ) || "[]"
-    );
-
-  }catch{
-
-    return [];
-
-  }
-
-}
-
-
 /* PROMPTS */
 
 function buildStoryPrompt(){
@@ -5457,7 +5634,8 @@ function buildStoryPrompt(){
 return `
 你是一位專業的 Instagram 限時動態內容策略顧問。
 
-我要你安排的是今天整天的限動，不是單獨一組產品限動。
+我要你安排的是「今天整天的限動」，
+不是單獨一組產品限動。
 
 ${profileContext(b)}
 
@@ -5479,12 +5657,21 @@ ${$("storyInteraction").value}
 【限動數量】
 ${$("storyCount").value}
 
-請安排今天整天限動節奏。
+請先判斷今天最自然的節奏。
 
-不要把每一則都變成文章。
-不要每一則都有產品。
+每則提供：
+
+內容角色
+策略目的
+畫面
+可直接發布文字
+是否互動
+下一則如何接
+
+不要為了湊數硬拆。
+不要每則都帶產品。
 不要每則 CTA。
-產品可以只是自然出現在生活裡。
+產品可以只是一個生活畫面。
 `;
 }
 
@@ -5496,7 +5683,7 @@ function buildRetailPrompt(){
 
 
 return `
-你是一位專門規劃 Instagram 產品限動的內容策略顧問。
+你是一位專門規劃 Instagram 單一產品限動的內容策略顧問。
 
 ${profileContext(b)}
 
@@ -5518,17 +5705,20 @@ ${$("retailPain").value.trim()}
 【一定要講】
 ${$("retailMustSay").value.trim()}
 
-【數量】
+【限動數量】
 ${$("retailCount").value}
 
-請安排起承轉合：
+請依：
 
-起：生活情境／共鳴
-承：需求深化
+起：情境／共鳴
+承：深化需求
 轉：產品自然出現
-合：感受／FAQ／CTA
+合：感受／信任／FAQ／CTA
 
-不要一開始就硬介紹產品。
+設計完整內容。
+
+不要第一則就直接介紹產品。
+不要每則重複同一賣點。
 `;
 }
 
@@ -5556,11 +5746,11 @@ ${$("recruitSituation").value.trim()}
 【一定要講】
 ${$("recruitMustSay").value.trim()}
 
-從生活、選擇、工作方式、價值觀與真實經歷出發。
+請從生活、工作選擇、價值觀與真實經歷開始。
 
-不要第一則就直接招募。
+不要第一則直接招募。
 不要保證收入。
-不要寫成成功學。
+不要成功學。
 `;
 }
 
@@ -5576,7 +5766,7 @@ return `
 
 ${profileContext(b)}
 
-【主題】
+【類別】
 ${selectedValueCategory}
 
 【角度】
@@ -5591,7 +5781,8 @@ ${$("valueCore").value.trim()}
 【平台】
 ${$("valuePlatform").value}
 
-請先分析真正觀點，再幫我整理成內容。
+請先分析真正觀點，
+再整理成內容。
 
 不要雞湯。
 不要硬升華。
@@ -5605,18 +5796,17 @@ function buildReelsPrompt(){
   const b =
   getBase();
 
-
   const path =
   $("reelsPath").value;
-
 
   let task = "";
 
 
   if(path==="ideas"){
 
-task = `
-我不知道要拍什麼。
+task =
+`
+我完全不知道要拍什麼。
 
 【題材方向】
 ${$("reelsIdeaCategory").value}
@@ -5624,17 +5814,20 @@ ${$("reelsIdeaCategory").value}
 【最近不想再拍】
 ${$("reelsIdeaAvoid").value.trim()||"沒有"}
 
-請給 12 個具體 Reels 題材。
+請給 12 個具體到可以直接拍的 Reels 題材。
 
-每題提供：
-題目
-受眾為什麼會停
-爆點
+每個提供：
+
+題材
+類型
+為什麼停下來
+真正爆點
 前三秒
 畫面
-主要帶觀看／收藏／分享／留言／追蹤哪個
+主要帶觀看／收藏／分享／留言／追蹤哪一個
+難度
 
-最後選 3 個。
+最後選最值得拍的 3 個。
 `;
 
   }
@@ -5642,21 +5835,23 @@ ${$("reelsIdeaAvoid").value.trim()||"沒有"}
 
   if(path==="script"){
 
-task = `
+task =
+`
 我已經有題材：
 
 ${$("reelsTopic").value.trim()}
 
-不要直接寫普通腳本。
+不要直接寫腳本。
 
-先從：
+先分析至少 5 個不同切角：
+
 痛點
 結果
 反差
 好奇
 故事
 
-至少分析 5 個切角。
+再選最值得做的一個。
 `;
 
   }
@@ -5670,27 +5865,34 @@ ${$("reelsTopic").value.trim()}
 
     if(r==="brainstorm"){
 
-task = `
-我要做料理 Reels，但完全沒想法。
+task =
+`
+我要做料理 Reels，
+但完全沒有食譜想法。
 
 【方向】
 ${$("recipeCategory").value}
 
-【不要用】
+【不要用的食材／器具】
 ${$("recipeAvoid").value.trim()||"沒有"}
 
 請想 10 個具體食譜。
 
 每個提供：
+
 食譜名稱
+受眾為什麼想看
 主要食材
 做法概念
-爆點
-前三秒
+真正爆點
+前三秒畫面
 收藏理由
+特色
 難度
 
-最後選 3 個。
+最後選最值得拍的 3 個。
+
+不要亂宣稱低卡、高蛋白。
 `;
 
     }
@@ -5698,14 +5900,23 @@ ${$("recipeAvoid").value.trim()||"沒有"}
 
     if(r==="direction"){
 
-task = `
-料理方向：
+task =
+`
+我目前只有料理方向：
+
 ${$("recipeTopic").value.trim()}
 
-請先設計合理可做的食譜，
-包含材料、比例、做法、口感、容易失敗的地方。
+請先設計合理、可實際操作的食譜。
 
-再做 Reels 爆點與腳本。
+包含：
+
+材料
+合理比例
+作法
+口感
+容易失敗的地方
+
+再找 Reels 爆點與腳本。
 
 不要亂編熱量。
 `;
@@ -5713,25 +5924,25 @@ ${$("recipeTopic").value.trim()}
     }
 
 
-    if(
-      ["full","hook","optimize"]
-      .includes(r)
-    ){
+    if(["full","hook","optimize"].includes(r)){
 
-task = `
-已有食譜：
+task =
+`
+我已有食譜／影片內容：
 
 ${$("recipeDetails").value.trim()}
 
 不要擅自改我的食譜比例。
 
 先分析：
+
 最吸引人的地方
-哪些步驟可以省略
+哪些步驟不用全講
 前三秒最佳畫面
 標題方向
+哪些營養說法不能亂宣稱
 
-再做腳本。
+再做 Reels。
 `;
 
     }
@@ -5741,14 +5952,15 @@ ${$("recipeDetails").value.trim()}
 
   if(path==="other"){
 
-task = `
-【類型】
+task =
+`
+【內容類型】
 ${$("reelsOtherType").value}
 
 【題材】
 ${$("reelsOtherTopic").value.trim()}
 
-依內容類型安排最適合的短影音結構。
+依內容類型找最適合的短影音結構。
 `;
 
   }
@@ -5764,7 +5976,7 @@ ${task}
 【主要目標】
 ${$("reelsGoal").value}
 
-【鉤子】
+【鉤子方向】
 ${$("reelsHook").value}
 
 【影片形式】
@@ -5773,25 +5985,27 @@ ${$("reelsFormat").value}
 【影片長度】
 ${$("reelsLength").value}
 
-【核心】
+【最想講的核心】
 ${$("reelsCore").value.trim()||"請依題材判斷"}
 
 請完成：
 
 1. 爆點分析
-2. 5 個不同切角
-3. 最推薦切角
+2. 5 個完全不同的切角
+3. 選最推薦切角
 4. 5 個前三秒鉤子
 5. 0～3 秒畫面
 6. 完整時間軸
-7. 可直接拍的腳本
-8. 5 個封面
+7. 可直接拍攝的腳本
+8. 5 個封面標題
 9. Caption
 10. CTA 判斷
 11. 掉觀看檢查
-12. 延伸 5 個題材
+12. 如何縮短／改善完播
+13. 延伸 5 個下一支題材
 
 不要保證爆款。
+不要每支都用同一模板。
 `;
 }
 
@@ -5807,7 +6021,9 @@ function buildCarouselPrompt(){
 return `
 你是一位非常擅長 Instagram 輪播貼文、收藏率、分享率、滑頁率與漲粉策略的內容企劃。
 
-我完全沒想法，不要叫我自己先想主題。
+我完全沒想法。
+
+不要叫我自己先想主題。
 
 ${profileContext(b)}
 
@@ -5820,15 +6036,15 @@ ${$("carouselIdeaGoal").value}
 【最近不想再做】
 ${$("carouselIdeaAvoid").value.trim()||"沒有"}
 
-請先給 10 個具體輪播題材。
+請先想 10 個具體輪播題材。
 
 每個提供：
 
 主題
-適合共鳴／收藏／分享／討論／漲粉／信任哪一型
+最適合共鳴／收藏／分享／討論／漲粉／信任哪一型
 真正爆點
 封面方向
-為什麼會想滑下去
+為什麼會滑下去
 最可能帶來收藏／分享／留言／追蹤哪一個
 
 最後選 3 個最推薦。
@@ -5853,6 +6069,7 @@ ${$("carouselDirectionGoal").value}
 把這個大方向拆成 10 個可以直接做成輪播的具體題材。
 
 每題提供：
+
 受眾痛點
 真正爆點
 適合類型
@@ -5885,7 +6102,8 @@ ${$("carouselDirectionGoal").value}
 
       topic=t.title;
 
-      memory=`
+      memory =
+`
 【過去紀錄】
 
 核心：
@@ -5894,7 +6112,7 @@ ${t.core}
 痛點：
 ${t.pain}
 
-已經講過：
+已講過：
 ${t.used}
 
 下一步：
@@ -5910,7 +6128,7 @@ ${t.next}
 
   if(carouselPath==="new"){
 
-    topic=
+    topic =
     $("carouselTopic").value.trim();
 
   }
@@ -5946,36 +6164,63 @@ ${$("carouselCTA").value}
 
 先分析爆點。
 
-再給 10 個不同類型的吸睛封面標題。
+再給 10 個不同類型的封面標題。
 
-包含：
+至少包含：
+
 痛點
 反差
+結果
 數字
 故事
 問題
 反常識
 共鳴
 
+每個標示：
+
+停留力 1～5
+共鳴力 1～5
+收藏力 1～5
+分享力 1～5
+
 再選最推薦標題。
 
 接著做完整輪播：
 
 封面
-第 2 頁留人
+第 2 頁負責留人
 第 3 頁開始深化
-每頁主標＋內文＋視覺＋下一頁銜接
-最後一頁
-Caption
+
+每頁提供：
+
+頁面目的
+主標
+內文
+視覺
+上一頁怎麼接
+下一頁為什麼想繼續滑
+
+最後一頁依內容判斷 CTA。
+
+Caption 不要重貼全文。
 
 最後檢查：
 
-哪一頁最容易掉人
+哪頁最容易掉人
 哪頁太多字
 哪頁重複
+第 2 頁夠不夠留人
 封面夠不夠吸引
 
-再給 5 個下一篇延伸題材。
+最後再給：
+
+3 個備用封面
+3 個 CTA
+5 個延伸題材
+
+不要假性標題黨。
+不要像 AI 作文。
 `;
 }
 
@@ -6002,11 +6247,13 @@ ${$("threadsType").value}
 再選最自然的一個。
 
 最後提供：
+
 完整 Threads
 短版
 3 個不同開頭
 
 不要像作文。
+不要過度工整。
 `;
 }
 
@@ -6015,6 +6262,25 @@ function buildWeekPrompt(){
 
   const b =
   getBase();
+
+
+  const topics =
+  getTopics();
+
+
+  const topicMemory =
+  topics.length
+
+  ?topics.slice(0,8)
+  .map(t=>`
+
+- ${t.title}
+已講過：${t.used||"無"}
+下一步：${t.next||"無"}
+
+`).join("\n")
+
+  :"目前沒有主題紀錄";
 
 
 return `
@@ -6026,10 +6292,13 @@ ${profileContext(b)}
 ${$("weekGoal").value}
 
 【這週一定想分享】
-${$("weekTopics").value.trim()}
+${$("weekTopics").value.trim()||"沒有"}
 
 【固定事件】
-${$("weekEvents").value.trim()}
+${$("weekEvents").value.trim()||"沒有"}
+
+【近期主題紀錄】
+${topicMemory}
 
 請安排 Day1～Day7。
 
@@ -6046,14 +6315,31 @@ Threads
 
 但不需要每天全部發。
 
-不要每天都像行銷排程。
+同一核心主題可以跨平台，
+但不同平台不能只是複製貼上。
+
+最後整理：
+
+本週核心主軸
+流量內容
+信任內容
+生活內容
+產品內容
+招商內容
+最值得做的 Reels
+最值得做的輪播
+哪一天可以休息
+
+不要排得像制式行銷表。
 `;
 }
 
 
+/* GENERATE */
+
 function generatePrompt(){
 
-  let prompt="";
+  let prompt = "";
 
 
   if(selectedMode==="story"){
@@ -6063,7 +6349,7 @@ function generatePrompt(){
 
   if(selectedMode==="sales"){
 
-    prompt=
+    prompt =
     saleType==="retail"
     ?buildRetailPrompt()
     :buildRecruitPrompt();
@@ -6084,30 +6370,30 @@ function generatePrompt(){
   if(selectedMode==="carousel"){
 
     if(
-      carouselPath==="direction"
-      &&
+      carouselPath==="direction" &&
       !$("carouselDirection").value.trim()
     ){
 
       alert("先填一個大方向 ♡");
+
       return;
 
     }
 
 
     if(
-      carouselPath==="new"
-      &&
+      carouselPath==="new" &&
       !$("carouselTopic").value.trim()
     ){
 
       alert("先填輪播主題 ♡");
+
       return;
 
     }
 
 
-    prompt=
+    prompt =
     buildCarouselPrompt();
 
   }
@@ -6123,15 +6409,15 @@ function generatePrompt(){
   }
 
 
-  $("result").textContent=
+  $("result").textContent =
   prompt;
 
 
-  $("resultCard").style.display=
+  $("resultCard").style.display =
   "block";
 
 
-  $("fullPromptWrap").style.display=
+  $("fullPromptWrap").style.display =
   "none";
 
 
@@ -6145,47 +6431,10 @@ function generatePrompt(){
 
 function togglePrompt(){
 
-  $("fullPromptWrap").style.display=
+  $("fullPromptWrap").style.display =
   $("fullPromptWrap").style.display==="block"
   ?"none"
   :"block";
-
-}
-
-
-function copyText(text){
-
-  if(
-    navigator.clipboard
-    &&
-    navigator.clipboard.writeText
-  ){
-
-    navigator.clipboard
-    .writeText(text)
-    .then(
-      ()=>alert("已複製 ♡")
-    );
-
-  }else{
-
-    const ta=
-    document.createElement("textarea");
-
-    ta.value=text;
-
-    document.body
-    .appendChild(ta);
-
-    ta.select();
-
-    document.execCommand("copy");
-
-    ta.remove();
-
-    alert("已複製 ♡");
-
-  }
 
 }
 
@@ -6203,29 +6452,29 @@ function copyPrompt(){
 
 function refreshDashboard(){
 
-  const arr=
+  const arr =
   getBrain();
 
 
-  $("statIdea").textContent=
+  $("statIdea").textContent =
   arr.filter(
     x=>(x.stage||"idea")==="idea"
   ).length;
 
 
-  $("statDraft").textContent=
+  $("statDraft").textContent =
   arr.filter(
     x=>x.stage==="draft"
   ).length;
 
 
-  $("statReady").textContent=
+  $("statReady").textContent =
   arr.filter(
     x=>x.stage==="ready"
   ).length;
 
 
-  $("statPublished").textContent=
+  $("statPublished").textContent =
   arr.filter(
     x=>x.stage==="published"
   ).length;
@@ -6234,14 +6483,13 @@ function refreshDashboard(){
   renderTodayTasks();
 
 
-  const open=
+  const open =
   getTodayTasks()
-  .filter(
-    x=>!x.done
-  ).length;
+  .filter(x=>!x.done)
+  .length;
 
 
-  $("homeFocusTitle").textContent=
+  $("homeFocusTitle").textContent =
   open
   ?`今天還有 ${open} 件重要的事`
   :"今天先完成一個內容";
@@ -6291,6 +6539,8 @@ renderTemplates();
 renderFormulas();
 
 loadProductPlan();
+
+renderProductLibrary();
 
 refreshDashboard();
 
